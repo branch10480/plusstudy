@@ -22,7 +22,7 @@ class AccountsController extends AppController {
  */
 	public function beforeFilter() {
 			// 認証済みかどうか調べる
-			$this->Auth->isAuth($this);
+			$this->MyAuth->isAuth($this);
 		}
 
 /**
