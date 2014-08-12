@@ -6,3 +6,6 @@ b {
 i {
 	font-style: italic;
 }
+.errMsg {
+	color: red;
+}

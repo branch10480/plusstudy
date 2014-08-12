@@ -2,11 +2,11 @@
 	// このページ限定のCSS,JS
 	$this->Html->script(array(
 		'richeditor',
+		'BeatPicker',
 		), array('inline' => false));
-	// $this->Html->css(array(
-	// 	'pieChart',
-	// 	'glide',
-	// 	), null, array('inline' => false));
+	$this->Html->css(array(
+		'BeatPicker',
+		), null, array('inline' => false));
 ?>
 
 <!-- 新規会員登録 -->
@@ -20,13 +20,22 @@
 	<dd><a href="#">セミナーカバー画像を選ぶ</a></dd>
 	<dt>セミナー名称</dt>
 	<dd><?php echo $this->Form->text('Seminar.name'); ?></dd>
-	<dd><?php echo $eSmnName; ?></dd>
+	<dd class="errMsg"><?php echo $eSmnName; ?></dd>
 	<dt>開催場所</dt>
 	<dd><?php echo $this->Form->text('Seminar.place'); ?></dd>
+	<dd class="errMsg"><?php echo $ePlace; ?></dd>
 	<dt>参加人数上限</dt>
-	<dd><?php echo $this->Form->text('Seminar.upper_limit'); ?></dd>
+	<dd>
+		<?php echo $this->Form->text('Seminar.upper_limit', array(
+			'value' => $upperLimit,
+		)); ?>
+	</dd>
+	<dd class="errMsg">
+		<?php echo $eUpperLimit; ?>
+	</dd>
 	<dt>開催日</dt>
-	<dd><?php echo $this->Form->date('Seminar.date'); ?></dd>
+	<dd><?php echo $this->Form->text('Seminar.date', array('data-beatpicker' => 'true')); ?></dd>
+	<dd class="errMsg"><?php echo $eStartDate; ?></dd>
 	<dt>開始時間</dt>
 	<dd>
 	<?php echo $this->Form->input('Seminar.startH', array(
@@ -55,7 +64,7 @@
 	</dd>
 	<dt>予約締切日時</dt>
 	<dd>
-	<?php echo $this->Form->date('Seminar.reservation_limit_d'); ?>
+	<?php echo $this->Form->text('Seminar.reservation_limit_d', array('data-beatpicker' => 'true')); ?>
 	<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
 			'type' => 'select',
 			'options' => $hArray,
@@ -67,6 +76,7 @@
 			'label' => '',
 	)); ?>分
 	</dd>
+	<dd class="errMsg"><?php echo $eRsvLimitDate; ?></dd>
 	<dt>セミナー詳細</dt>
 	<dd>
 		<?php
