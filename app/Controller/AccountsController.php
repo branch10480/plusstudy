@@ -13,6 +13,7 @@ class AccountsController extends AppController {
  *
  * @var array
  */
+	public $uses = array('Account', 'Seminar');
 	public $components = array('Paginator', 'MyAuth');
 
 /**
@@ -113,6 +114,14 @@ class AccountsController extends AppController {
 		// 指定されたIDを元にアカウント情報を取得してViewに渡す
 		$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
 		$this->set('account', $this->Account->find('first', $options));
+
+		// その人が主催している勉強会の情報を取得する
+		$options = array(
+			'conditions' => array(
+					'Seminar.account_id' => $id
+				)
+		);
+		$this->set('myseminars', $this->Seminar->find('all', $options));
 	}
 
 /**
