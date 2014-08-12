@@ -10,7 +10,7 @@
 ?>
 
 <!-- 新規会員登録 -->
-<?php $this->Form->create('Seminar', array('action' => '')); ?>
+<?php echo $this->Form->create('Seminar'); ?>
 <div class="modal">
 	<div id="myImgs"></div>
 	<?php echo $this->Form->file('imgFile'); ?>
@@ -20,6 +20,7 @@
 	<dd><a href="#">セミナーカバー画像を選ぶ</a></dd>
 	<dt>セミナー名称</dt>
 	<dd><?php echo $this->Form->text('Seminar.name'); ?></dd>
+	<dd><?php echo $eSmnName; ?></dd>
 	<dt>開催場所</dt>
 	<dd><?php echo $this->Form->text('Seminar.place'); ?></dd>
 	<dt>参加人数上限</dt>
@@ -28,12 +29,12 @@
 	<dd><?php echo $this->Form->date('Seminar.date'); ?></dd>
 	<dt>開始時間</dt>
 	<dd>
-	<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
+	<?php echo $this->Form->input('Seminar.startH', array(
 			'type' => 'select',
 			'options' => $hArray,
 			'label' => '',
 	)); ?>時
-	<?php echo $this->Form->input('Seminar.reservation_limit_m', array(
+	<?php echo $this->Form->input('Seminar.startM', array(
 			'type' => 'select',
 			'options' => $minArray,
 			'label' => '',
@@ -41,12 +42,12 @@
 	</dd>
 	<dt>終了時間</dt>
 	<dd>
-	<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
+	<?php echo $this->Form->input('Seminar.endH', array(
 			'type' => 'select',
 			'options' => $hArray,
 			'label' => '',
 	)); ?>時
-	<?php echo $this->Form->input('Seminar.reservation_limit_m', array(
+	<?php echo $this->Form->input('Seminar.endM', array(
 			'type' => 'select',
 			'options' => $minArray,
 			'label' => '',

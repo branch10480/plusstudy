@@ -27,6 +27,65 @@ class SeminarsController extends AppController {
 	public function index() {
 		$this->set('title_for_layout', '新規勉強会登録');
 
+
+		$fileUrlArr = array();
+		$smnName = '';
+		$place = '';
+		$upperLimit = 0;
+		$startDate = '';
+		$startH = 0;
+		$startM = 0;
+		$endH = 0;
+		$endM = 0;
+		$rsvLimitDate = '';
+		$rsvLimitH = 0;
+		$rsvLimitM = 0;
+		$dsc = '';
+
+		$eFileUrlArr = '';
+		$eSmnName = '';
+		$ePlace = '';
+		$eUpperLimit = '';
+		$eStartDate = '';
+		$eStartH = '';
+		$eStartM = '';
+		$eEndH = '';
+		$eEndM = '';
+		$eRsvLimitDate = '';
+		$eRsvLimitH = '';
+		$eRsvLimitM = '';
+		$eDsc = '';
+
+		$validateResult = true;
+
+
+		if ($this->referer() === ROOT_URL . 'Seminars') {
+			// 自分自身から送信
+
+			// $fileUrlArr = array();
+			$smnName = $this->request->data['Seminar']['name'];
+			$place = $this->request->data['Seminar']['name'];
+			$upperLimit = $this->request->data['Seminar']['upper_limit'];
+			$startDate = $this->request->data['Seminar']['date'];
+			$startH = $this->request->data['Seminar']['startH'];
+			$startM = $this->request->data['Seminar']['startM'];
+			$endH = $this->request->data['Seminar']['endH'];
+			$endM = $this->request->data['Seminar']['endM'];
+			$rsvLimitDate = $this->request->data['Seminar']['endM'];
+			$rsvLimitH = 0;
+			$rsvLimitM = 0;
+			$dsc = '';
+
+			// バリデーションチェック
+			if ($smnName === '') {
+				$eSmnName = '何も入力されていません';
+				$validateResult = false;
+			} else if (!preg_match('/.{1, 20}/', $smnName)) {
+				$eSmnName = '入力された文字列が長すぎます';
+				$validateResult = false;
+			}
+		}
+
 		$minArray = array();
 		for ($i=0; $i<60; $i+=5) {
 			$minArray[] = $i;
@@ -55,6 +114,16 @@ class SeminarsController extends AppController {
 				'hArray' => $hArray,
 				'fontsizeArray' => $fontsizeArray,
 				'fontColor' => $fontColor,
+				'eSmnName' => $eSmnName,
+				// 'smnName' => $smnName,
+				// 'place' => $place,
+				// 'upperLimit' => $upperLimit,
+				// 'startDate' => $startDate,
+				// 'startH' => $startH,
+				// 'startM' => $startM,
+				// 'endH' => $endH,
+				// 'endM' => $endM,
+				// 'rsvLimitDate' => $rsvLimitDate,
 			));
 	}
 
