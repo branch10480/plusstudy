@@ -13,7 +13,7 @@ class AccountsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator', 'Auth');
+	public $components = array('Paginator', 'MyAuth');
 
 /**
  * beforeFilter method

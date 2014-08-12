@@ -1,6 +1,6 @@
 <?php
 App::uses('Component', 'Controller');
-class AuthComponent extends Component {
+class MyAuthComponent extends Component {
 
 	// 認証済みかどうか調べる
     public function isAuth($controller) {
