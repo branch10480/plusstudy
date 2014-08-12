@@ -15,12 +15,12 @@ class AccountTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.account',
 		'app.comment',
+		'app.question',
+		'app.seminar',
+		'app.teach_me',
 		'app.me_too',
 		'app.participant',
-		'app.question',
-		'app.seminar_image',
-		'app.seminar',
-		'app.teach_me'
+		'app.seminar_image'
 	);
 
 /**

@@ -57,9 +57,11 @@ class AccountsController extends AppController {
 
 				$msg = 'ユーザ名またはパスワードが間違っています';
 
-				//$this->request->data['Account']['passwd'] = '';
+				/* セッションテスト
 				$this->Session->write('backdata', $this->request->data);
-				//$this->set('Account', $this->Session->read('backdata'));		
+				$backdata = $this->Session->read('backdata');
+				$this->request->data['Account'] = $backdata['Account'];
+				*/	
 			}
 		}
 
