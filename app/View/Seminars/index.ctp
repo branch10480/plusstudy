@@ -27,7 +27,7 @@
 	<dt>参加人数上限</dt>
 	<dd>
 		<?php echo $this->Form->text('Seminar.upper_limit', array(
-			'value' => $upperLimit,
+			'default' => 0,
 		)); ?>
 	</dd>
 	<dd class="errMsg">

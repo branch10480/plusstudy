@@ -100,7 +100,7 @@ class SeminarsController extends AppController {
 			if ($upperLimit === '') {
 				$eUpperLimit = '何も入力されていません';
 				$validateResult = false;
-			} else if (!preg_match('/^[1-9][0-9]*$/', $upperLimit)) {
+			} else if (!preg_match('/^(0|[1-9][0-9]*)$/', $upperLimit)) {
 				$eUpperLimit = '半角数字で入力してください';
 				$validateResult = false;
 			}
@@ -139,27 +139,9 @@ class SeminarsController extends AppController {
 		// 詳細から戻ってきたときの処理
 		if ($this->referer() === ROOT_URL . 'Seminars/newSmnConfirm' || $this->referer() === ROOT_URL . 'Seminars/newSmnConfirm/') {
 
-			echo '戻った！';
-
-			var_dump($this->Session->read('newSmn'));
-
 			if ($this->Session->check('newSmn')) {
-				$this->set('Seminar', $this->Session->read('newSmn'));
-				echo '通った';
+				$this->request->data = $this->Session->read('newSmn');
 			}
-			// $smnName = $this->Session->read('newSmn.name');
-			// $place = $this->Session->read('newSmn.place');
-			// $upperLimit = $this->Session->read('newSmn.upperLimit');
-			// $startDate = $this->Session->read('newSmn.startDate');
-			// $startH = $this->Session->read('newSmn.startH');
-			// $startM = $this->Session->read('newSmn.startM');
-			// $endH = $this->Session->read('newSmn.endH');
-			// $endM = $this->Session->read('newSmn.endM');
-			// $rsvLimitDate = $this->Session->read('newSmn.rsvLimitDate');
-			// $rsvLimitH = $this->Session->read('newSmn.rsvLimitH');
-			// $rsvLimitM = $this->Session->read('newSmn.rsvLimitM');
-			// $dsc = $this->Session->read('newSmn.dsc');
-
 		}
 
 
@@ -206,9 +188,6 @@ class SeminarsController extends AppController {
 				// 'endM' => $endM,
 				// 'rsvLimitDate' => $rsvLimitDate,
 			));
-
-		echo $this->referer() . '<br />';
-		echo ROOT_URL;
 	}
 
 
@@ -220,10 +199,28 @@ class SeminarsController extends AppController {
  * @return void
  */
 	public function newSmnConfirm() {
-		var_dump($this->Session->read('newSmn'));
-		$this->Session->write('newSmn', $this->Session->read('newSmn'));
-		var_dump($this->Session->read('newSmn'));
-		// $this->Session->delete('newSmn');
+
+		if (!$this->Session->check('newSmn')) {
+			$this->redirect(array('action' => 'index'));
+		}
+
+		$newSmn = $this->Session->read('newSmn');
+		$newSmn = $newSmn['Seminar'];
+
+		$this->set(array(
+				'smnName' => $newSmn['name'],
+				'place' => $newSmn['place'],
+				'upperLimit' => $newSmn['upper_limit'],
+				'startDate' => $newSmn['date'],
+				'startH' => $newSmn['startH'],
+				'startM' => $newSmn['startM'],
+				'endH' => $newSmn['endH'],
+				'endM' => $newSmn['endM'],
+				'rsvLimitDate' => $newSmn['reservation_limit_d'],
+				'rsvLimitH' => $newSmn['reservation_limit_h'],
+				'rsvLimitM' => $newSmn['reservation_limit_m'],
+				'dsc' => $newSmn['description'],
+			));
 	}
 
 
