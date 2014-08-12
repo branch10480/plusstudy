@@ -70,7 +70,7 @@
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $account['Account']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $account['Account']['id']), array(), __('Are you sure you want to delete # %s?', $account['Account']['id'])); ?>
 		</td>
-	</tr>
+	</tr>--
 <?php endforeach; ?>
 	</tbody>
 	</table>

@@ -15,6 +15,7 @@ class QuestionTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.question',
 		'app.seminar',
+		'app.seminar_images',
 		'app.account',
 		'app.comment',
 		'app.me_too',

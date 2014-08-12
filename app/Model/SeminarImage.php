@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * SeminarImage Model
  *
  * @property Account $Account
+ * @property Seminar $Seminar
  */
 class SeminarImage extends AppModel {
 
@@ -24,4 +25,26 @@ class SeminarImage extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Seminar' => array(
+			'className' => 'Seminar',
+			'foreignKey' => 'seminar_image_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

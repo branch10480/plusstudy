@@ -17,10 +17,11 @@ class MeTooTest extends CakeTestCase {
 		'app.account',
 		'app.comment',
 		'app.question',
-		'app.participant',
-		'app.seminar_image',
 		'app.seminar',
-		'app.teach_me'
+		'app.seminar_images',
+		'app.teach_me',
+		'app.participant',
+		'app.seminar_image'
 	);
 
 /**
