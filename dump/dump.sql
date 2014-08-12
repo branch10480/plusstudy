@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: plusstudy
 -- ------------------------------------------------------
--- Server version	5.5.34
+-- Server version	5.5.34-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -213,6 +213,7 @@ DROP TABLE IF EXISTS `seminars`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seminars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `seminar_image_id` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `reservation_limit` datetime DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
@@ -224,7 +225,7 @@ CREATE TABLE `seminars` (
   `description` text,
   `upper_limit` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -233,6 +234,7 @@ CREATE TABLE `seminars` (
 
 LOCK TABLES `seminars` WRITE;
 /*!40000 ALTER TABLE `seminars` DISABLE KEYS */;
+INSERT INTO `seminars` VALUES (1,1,'Unity勉強会','2014-08-20 00:00:00','182教室',2,NULL,0,'2014-08-21 00:00:00','2014-08-22 00:00:00','簡単に3Dゲームが作れる！Unityを勉強しよう！',5),(2,1,'CakePHP勉強会','2014-08-20 00:00:00','182教室',3,NULL,0,'2014-08-21 00:00:00','2014-08-22 00:00:00','WebアプリケーションフレームワークのCakePHPを一緒に勉強しましょう！',10);
 /*!40000 ALTER TABLE `seminars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,4 +272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-12  2:37:53
+-- Dump completed on 2014-08-13  0:49:27

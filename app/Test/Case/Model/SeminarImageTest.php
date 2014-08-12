@@ -18,9 +18,10 @@ class SeminarImageTest extends CakeTestCase {
 		'app.comment',
 		'app.question',
 		'app.seminar',
+		'app.seminar_images',
+		'app.teach_me',
 		'app.me_too',
-		'app.participant',
-		'app.teach_me'
+		'app.participant'
 	);
 
 /**

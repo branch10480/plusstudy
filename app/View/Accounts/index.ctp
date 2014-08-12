@@ -1,3 +1,21 @@
+
+<div>
+<?php echo $this->Form->create('Account'); ?>
+
+	<fieldset>
+	<legend><?php echo __('Plus Study ログイン'); ?></legend>
+	<p>メールアドレス</p>
+	<p><?php echo $this->Form->mailaddress('mailaddress'); ?></p>
+	<p>パスワード</p>
+	<p><?php echo $this->Form->password('passwd'); ?></p>
+	<p style="color: red;"><?php echo $msg ?></p>	
+	</fieldset>
+
+
+<?php echo $this->Form->end(__('ログイン')); ?>
+</div>
+
+<!-- 以下は元々の記述
 <div class="accounts index">
 	<h2><?php echo __('Accounts'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -52,7 +70,7 @@
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $account['Account']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $account['Account']['id']), array(), __('Are you sure you want to delete # %s?', $account['Account']['id'])); ?>
 		</td>
-	</tr>
+	</tr>--
 <?php endforeach; ?>
 	</tbody>
 	</table>
@@ -70,6 +88,8 @@
 	?>
 	</div>
 </div>
+
+
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -90,3 +110,5 @@
 		<li><?php echo $this->Html->link(__('New Teach Me'), array('controller' => 'teach_mes', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+
+-->

@@ -13,7 +13,18 @@ class AccountsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $uses = array('Account', 'Seminar');
+	public $components = array('Paginator', 'MyAuth');
+
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
+	public function beforeFilter() {
+			// 認証済みかどうか調べる
+			$this->MyAuth->isAuth($this);
+		}
 
 /**
  * index method
@@ -21,23 +32,96 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Account->recursive = 0;
-		$this->set('accounts', $this->Paginator->paginate());
+
+		$msg = '';
+
+	   	if($this->Session->check('id')) {
+			// ログイン済み
+			return $this->redirect(array('action' => 'top'));
+		}
+
+		if ($this->request->is('post')) {
+			$options = array(
+				'conditions' => array(
+						'Account.mailaddress' => $this->request->data('Account.mailaddress'),
+						'Account.passwd' => $this->request->data('Account.passwd')
+					)
+			);
+			if($this->Account->find('count', $options) === 1) {
+
+				// セッションにIDを格納
+				$account = $this->Account->find('first', $options);
+				$this->Session->write('id', $account['Account']['id']);
+				return $this->redirect(array('action' => 'top'));
+			}
+			else {
+
+				$msg = 'ユーザ名またはパスワードが間違っています';
+
+				/* セッションテスト
+				$this->Session->write('backdata', $this->request->data);
+				$backdata = $this->Session->read('backdata');
+				$this->request->data['Account'] = $backdata['Account'];
+				*/	
+			}
+		}
+
+		$this->set('msg', $msg);
 	}
 
 /**
- * view method
+ * top method
  *
+ * @return void
+ */
+	public function top() {	
+
+		$msg = '';
+		if($this->request->is('post')) {
+			// ログアウト
+			$this->Session->delete('id');
+			return $this->redirect(array('action' => 'index'));			
+		}
+
+		if($this->Session->check('id')) {
+			// セッションのIDを元にデータを取得ｓる
+			$options = array(
+				'conditions' => array(
+						'Account.' . $this->Account->primaryKey => $this->Session->read('id')
+					)
+			);
+			$account = $this->Account->find('first', $options);
+			$msg = 'こんにちは'.$account['Account']['mailaddress'].'さん';
+		}
+
+		$this->set("msg", $msg);
+	}
+
+/**
+ * profile method
+ * プロフィールページ
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
-		if (!$this->Account->exists($id)) {
-			throw new NotFoundException(__('Invalid account'));
+	public function profile($id = null) {
+
+		// idが入っていなかったら自分のidを入れる
+		if($id === null) {
+			$id = $this->Session->read('id');
 		}
+
+		// 指定されたIDを元にアカウント情報を取得してViewに渡す
 		$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
 		$this->set('account', $this->Account->find('first', $options));
+
+		// その人が主催している勉強会の情報を取得する
+		$options = array(
+			'conditions' => array(
+					'Seminar.account_id' => $id
+				)
+		);
+		$this->set('myseminars', $this->Seminar->find('all', $options));
 	}
 
 /**
@@ -46,6 +130,7 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function add() {
+
 		if ($this->request->is('post')) {
 			$this->Account->create();
 			if ($this->Account->save($this->request->data)) {
