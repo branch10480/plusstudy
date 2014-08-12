@@ -100,13 +100,9 @@
 					'options' => $fontColor,
 				));
 		?>
-		<div id="editArea" contentEditable="true" style="border: 1px solid #ddd; height: 100px;"></div>
-		<?php
-			echo $this->Form->button('HTMLの取得', array(
-					'id' => 'getHtmlBtn',
-				));
-			?><br />
-		<?php echo $this->Form->textarea('Seminar.description'); ?>
+		<?php echo $this->Form->button('画像を挿入', array('id' => 'insertImg', 'type' => 'button')); ?>
+		<div id="editArea" contentEditable="true" style="border: 1px solid #ddd; height: 100px;"><?php echo $dsc; ?></div>
+		<?php echo $this->Form->hidden('Seminar.description'); ?>
 	</dd>
 </dl>
 <?php echo $this->Form->end('確認画面へ'); ?>

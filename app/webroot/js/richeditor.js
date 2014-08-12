@@ -107,9 +107,17 @@ window.onload = function () {
 			}
 		});
 
-	// //[生成された HTMLの取得] ボタン
-	$id("getHtmlBtn")
-		.addEventListener("click", function () {
-			ritchTextHtmlArea.setText(editArea.innerHTML);
-		});
+	editArea.addEventListener("keyup", function () {
+		ritchTextHtmlArea.value = editArea.innerHTML;
+	});
+	editArea.addEventListener("blur", function () {
+		ritchTextHtmlArea.value = editArea.innerHTML;
+	});
+
+	$id('insertImg').addEventListener("click", function (event) {
+		// event.preventDefault();
+		var imgElm = document.createElement('img');
+		imgElm.src = "http://amd.c.yimg.jp/im_siggf_VHByhUvs8k8G4G3_o44w---x150-y101-q90/amd/20140812-00000032-xinhua-000-0-thumb.jpg";
+		$id('editArea').appendChild(imgElm);
+	});
 }

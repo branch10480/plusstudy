@@ -1,8 +1,8 @@
 <?php
 	// このページ限定のCSS,JS
 	$this->Html->script(array(
-		'richeditor',
-		'BeatPicker',
+		// 'richeditor',
+		// 'BeatPicker',
 		), array('inline' => false));
 	$this->Html->css(array(
 		'BeatPicker',
@@ -15,7 +15,7 @@
 
 <dl>
 	<dt>セミナーカバー画像</dt>
-	<dd><a href="#">セミナーカバー画像を選ぶ</a></dd>
+	<dd></dd>
 	<dt>セミナー名称</dt>
 	<dd><?php echo $smnName; ?></dd>
 	<dt>開催場所</dt>

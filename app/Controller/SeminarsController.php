@@ -187,6 +187,7 @@ class SeminarsController extends AppController {
 				// 'endH' => $endH,
 				// 'endM' => $endM,
 				// 'rsvLimitDate' => $rsvLimitDate,
+				'dsc' => $this->Session->read('newSmn')['Seminar']['description'],
 			));
 	}
 
