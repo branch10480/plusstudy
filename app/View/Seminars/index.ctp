@@ -1,4 +1,16 @@
+<?php
+	// このページ限定のCSS,JS
+	$this->Html->script(array(
+		'richeditor',
+		), array('inline' => false));
+	// $this->Html->css(array(
+	// 	'pieChart',
+	// 	'glide',
+	// 	), null, array('inline' => false));
+?>
+
 <!-- 新規会員登録 -->
+<?php $this->Form->create('Seminar', array('action' => '')); ?>
 <div class="modal">
 	<div id="myImgs"></div>
 	<?php echo $this->Form->file('imgFile'); ?>
@@ -56,6 +68,34 @@
 	</dd>
 	<dt>セミナー詳細</dt>
 	<dd>
+		<?php
+			echo $this->Form->button('B', array(
+					'id' => 'bold'
+				));
+			echo $this->Form->button('U', array(
+					'id' => 'underline'
+				));
+			echo $this->Form->button('I', array(
+					'id' => 'italic'
+				));
+			echo $this->Form->input('fontsize', array(
+					'type' => 'select',
+					'label' => 'フォントサイズ',
+					'options' => $fontsizeArray,
+				));
+			echo $this->Form->input('fontColor', array(
+					'type' => 'select',
+					'label' => 'フォント色',
+					'options' => $fontColor,
+				));
+		?>
+		<div id="editArea" contentEditable="true" style="border: 1px solid #ddd; height: 100px;"></div>
+		<?php
+			echo $this->Form->button('HTMLの取得', array(
+					'id' => 'getHtmlBtn',
+				));
+			?><br />
 		<?php echo $this->Form->textarea('Seminar.description'); ?>
 	</dd>
 </dl>
+<?php echo $this->Form->end('確認画面へ'); ?>

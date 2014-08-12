@@ -31,14 +31,30 @@ class SeminarsController extends AppController {
 		for ($i=0; $i<60; $i+=5) {
 			$minArray[] = $i;
 		}
+
 		$hArray = array();
 		for ($i=0; $i<24; $i++) {
 			$hArray[] = $i;
 		}
 
+		$fontsizeArray = array();
+		for ($i=0; $i<10; $i++) {
+			$fontsizeArray[] = $i;
+		}
+
+		$fontColor = array(
+				'black' => '黒',
+				'red' => '赤',
+				'orange' => 'オレンジ',
+				'blue' => '青',
+				'green' => '緑',
+			);
+
 		$this->set(array(
 				'minArray' => $minArray,
 				'hArray' => $hArray,
+				'fontsizeArray' => $fontsizeArray,
+				'fontColor' => $fontColor,
 			));
 	}
 
