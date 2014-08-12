@@ -13,16 +13,81 @@ class AccountsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Auth');
+
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
+	public function beforeFilter() {
+			// 認証済みかどうか調べる
+			$this->Auth->isAuth($this);
+		}
 
 /**
  * index method
  *
  * @return void
  */
-	public function index() {
-		$this->Account->recursive = 0;
-		$this->set('accounts', $this->Paginator->paginate());
+	public function index() {	
+
+		$msg = '';
+
+	   	if($this->Session->check('id')) {
+			// ログイン済み
+			return $this->redirect(array('action' => 'top'));
+		}
+
+		if ($this->request->is('post')) {
+			$options = array(
+				'conditions' => array(
+						'Account.mailaddress' => $this->request->data('Account.mailaddress'),
+						'Account.passwd' => $this->request->data('Account.passwd')
+					)
+			);
+			if($this->Account->find('count', $options) === 1) {
+
+				// セッションにIDを格納
+				$account = $this->Account->find('first', $options);
+				$this->Session->write('id', $account['Account']['id']);
+				return $this->redirect(array('action' => 'top'));
+			}
+			else {
+
+				$msg = 'ユーザ名またはパスワードが間違っています';
+			}
+		}
+
+		$this->set('msg', $msg);
+	}
+
+/**
+ * top method
+ *
+ * @return void
+ */
+	public function top() {	
+
+		$msg = '';
+		if($this->request->is('post')) {
+			// ログアウト
+			$this->Session->delete('id');
+			return $this->redirect(array('action' => 'index'));			
+		}
+
+		if($this->Session->check('id')) {
+			// セッションのIDを元にデータを取得ｓる
+			$options = array(
+				'conditions' => array(
+						'Account.id' => $this->Session->read('id')
+					)
+			);
+			$account = $this->Account->find('first', $options);
+			$msg = 'こんにちは'.$account['Account']['mailaddress'].'さん';
+		}
+
+		$this->set("msg", $msg);
 	}
 
 /**
@@ -46,6 +111,7 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function add() {
+
 		if ($this->request->is('post')) {
 			$this->Account->create();
 			if ($this->Account->save($this->request->data)) {
