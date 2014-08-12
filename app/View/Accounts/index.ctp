@@ -11,6 +11,7 @@
 	<p style="color: red;"><?php echo $msg ?></p>	
 	</fieldset>
 
+
 <?php echo $this->Form->end(__('ログイン')); ?>
 </div>
 

@@ -30,7 +30,7 @@ class AccountsController extends AppController {
  *
  * @return void
  */
-	public function index() {	
+	public function index() {
 
 		$msg = '';
 
@@ -56,6 +56,10 @@ class AccountsController extends AppController {
 			else {
 
 				$msg = 'ユーザ名またはパスワードが間違っています';
+
+				//$this->request->data['Account']['passwd'] = '';
+				$this->Session->write('backdata', $this->request->data);
+				//$this->set('Account', $this->Session->read('backdata'));		
 			}
 		}
 
@@ -80,7 +84,7 @@ class AccountsController extends AppController {
 			// セッションのIDを元にデータを取得ｓる
 			$options = array(
 				'conditions' => array(
-						'Account.id' => $this->Session->read('id')
+						'Account.' . $this->Account->primaryKey => $this->Session->read('id')
 					)
 			);
 			$account = $this->Account->find('first', $options);
@@ -91,16 +95,20 @@ class AccountsController extends AppController {
 	}
 
 /**
- * view method
- *
+ * profile method
+ * プロフィールページ
  * @throws NotFoundException
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
-		if (!$this->Account->exists($id)) {
-			throw new NotFoundException(__('Invalid account'));
+	public function profile($id = null) {
+
+		// idが入っていなかったら自分のidを入れる
+		if($id === null) {
+			$id = $this->Session->read('id');
 		}
+
+		// 指定されたIDを元にアカウント情報を取得してViewに渡す
 		$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
 		$this->set('account', $this->Account->find('first', $options));
 	}

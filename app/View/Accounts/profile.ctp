@@ -1,103 +1,55 @@
-<div class="accounts view">
-<h2><?php echo __('Account'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Mailaddress'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['mailaddress']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Passwd'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['passwd']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Last Name'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['last_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('First Name'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['first_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Last Ruby'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['last_ruby']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('First Ruby'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['first_ruby']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Course'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['course']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Grade'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['grade']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Subject'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['subject']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Isteacher'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['isteacher']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Img Ext'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['img_ext']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Description'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['description']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Licenses'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['licenses']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Skill'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['skill']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Last Login'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['last_login']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Facebook'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['facebook']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Twitter'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['twitter']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Pub Mailaddress'); ?></dt>
-		<dd>
-			<?php echo h($account['Account']['pub_mailaddress']); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div>
+<h2><?php echo __('マイページ'); ?></h2>
+	<hr>
+	<p><b>プロフィール画像</b></p>
+	<p><?php echo $account['Account']['img_ext']; ?></p>
+	<hr>
+
+	<p><b>名前</b></p>
+	<p><?php echo $account['Account']['first_ruby'] . ' ' .
+				  $account['Account']['last_ruby']; ?></p>
+	<p><?php echo $account['Account']['first_name'] . ' ' .
+				  $account['Account']['last_name']; ?></p>
+	<hr>
+
+	<p><b>自己紹介</b></p>
+	<p><?php echo $account['Account']['description']; ?></p>
+	<hr>
+
+	<p><b>コース</b></p>
+	<p><?php echo $account['Account']['course'] . '年制課程'; ?></p>
+	<hr>
+
+	<p><b>学年</b></p>
+	<p><?php echo $account['Account']['grade']; ?></p>
+	<hr>
+
+	<p><b>学科</b></p>
+	<p><?php echo $account['Account']['subject']; ?></p>
+	<hr>
+
+	<p><b>資格</b></p>
+	<p><?php echo h($account['Account']['licenses']); ?></p>
+	<hr>
+
+	<p><b>スキル</b></p>
+	<p><?php echo h($account['Account']['skill']); ?></p>	
+	<hr>
+
+	<p><b>Facebook</b></p>
+	<p><?php echo h($account['Account']['facebook']); ?></p>
+	<hr>
+
+	<p><b>twitter</b></p>
+	<p><?php echo h($account['Account']['twitter']); ?></p>
+	<hr>
+
+	<p><b>公開メールアドレス</b></p>
+	<p><?php echo h($account['Account']['pub_mailaddress']); ?></p>
+	<hr>
 </div>
+
+<!-- 以下は元々の記述
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -366,3 +318,5 @@
 		</ul>
 	</div>
 </div>
+
+-->
