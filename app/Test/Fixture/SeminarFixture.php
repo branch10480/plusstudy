@@ -12,7 +12,7 @@ class SeminarFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'seminar_images_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'seminar_image_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'name' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 100, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'reservation_limit' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'place' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 100, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -37,15 +37,15 @@ class SeminarFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'seminar_images_id' => 1,
+			'seminar_image_id' => 1,
 			'name' => 'Lorem ipsum dolor sit amet',
-			'reservation_limit' => '2014-08-12 14:35:00',
+			'reservation_limit' => '2014-08-12 15:45:22',
 			'place' => 'Lorem ipsum dolor sit amet',
 			'account_id' => 1,
 			'teach_me_id' => 1,
 			'gj' => 1,
-			'start' => '2014-08-12 14:35:00',
-			'end' => '2014-08-12 14:35:00',
+			'start' => '2014-08-12 15:45:22',
+			'end' => '2014-08-12 15:45:22',
 			'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'upper_limit' => 1
 		),

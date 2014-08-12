@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Seminar Model
  *
- * @property SeminarImages $SeminarImages
+ * @property SeminarImage $SeminarImage
  * @property Account $Account
  * @property TeachMe $TeachMe
  * @property Participant $Participant
@@ -20,9 +20,9 @@ class Seminar extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'SeminarImages' => array(
-			'className' => 'SeminarImages',
-			'foreignKey' => 'seminar_images_id',
+		'SeminarImage' => array(
+			'className' => 'SeminarImage',
+			'foreignKey' => 'seminar_image_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
