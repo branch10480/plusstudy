@@ -15,7 +15,7 @@
 
 <dl>
 	<dt>セミナーカバー画像</dt>
-	<dd></dd>
+	<dd><?php echo $smnImgId === '' ? '' : '<img src="'.$smnImgId.'"" alt="" />' ?></dd>
 	<dt>セミナー名称</dt>
 	<dd><?php echo $smnName; ?></dd>
 	<dt>開催場所</dt>
@@ -47,3 +47,4 @@
 
 
 <?php echo $this->Html->link(__('戻る'), array('action' => 'index')); ?>
+<?php echo $this->Html->link(__('登録する'), array('action' => 'register')); ?>

@@ -41,6 +41,7 @@ class SeminarsController extends AppController {
 		$rsvLimitH = 0;
 		$rsvLimitM = 0;
 		$dsc = '';
+		$smnImgId = '';
 
 		$eFileUrlArr = '';
 		$eSmnName = '';
@@ -76,6 +77,7 @@ class SeminarsController extends AppController {
 			$rsvLimitH = 0;
 			$rsvLimitM = 0;
 			$dsc = $this->request->data['Seminar']['description'];
+			$smnImgId = $this->request->data['Seminar']['seminar_img_id'];
 
 			// --- バリデーションチェック ---
 			// 勉強会名
@@ -188,6 +190,7 @@ class SeminarsController extends AppController {
 				// 'endM' => $endM,
 				// 'rsvLimitDate' => $rsvLimitDate,
 				'dsc' => $this->Session->read('newSmn')['Seminar']['description'],
+				'smnImgId' => $this->Session->read('newSmn')['Seminar']['seminar_img_id'],
 			));
 	}
 
@@ -221,9 +224,20 @@ class SeminarsController extends AppController {
 				'rsvLimitH' => $newSmn['reservation_limit_h'],
 				'rsvLimitM' => $newSmn['reservation_limit_m'],
 				'dsc' => $newSmn['description'],
+				'smnImgId' => $newSmn['seminar_img_id'],
 			));
 	}
 
+
+
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function register() {
+
+	}
 
 
 
