@@ -13,7 +13,7 @@ class AccountsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Account', 'Seminar');
+	public $uses = array('Account', 'Seminar', 'Participant');
 	public $components = array('Paginator', 'MyAuth');
 
 /**
@@ -91,10 +91,13 @@ class AccountsController extends AppController {
 					)
 			);
 			$account = $this->Account->find('first', $options);
-			$msg = 'こんにちは'.$account['Account']['mailaddress'].'さん';
+			$msg = 'こんにちは、' . $account['Account']['last_name'] . $account['Account']['first_name'] . 'さん　';
 		}
 
 		$this->set("msg", $msg);
+
+		// セミナー一覧を取得
+		$this->set('seminars', $this->Seminar->find('all'));	
 	}
 
 /**
@@ -122,6 +125,26 @@ class AccountsController extends AppController {
 				)
 		);
 		$this->set('myseminars', $this->Seminar->find('all', $options));
+
+		// その人が参加予定の勉強会のIDを取得する
+		$options = array(
+			'conditions' => array(
+					'Participant.account_id' => $id
+				)
+		);
+		$participants = $this->Participant->find('all', $options);
+
+		// 参加予定のIDを元に勉強会の情報を取得する
+		$partseminars = array();
+		foreach($participants as $participant) {
+			$options = array(
+				'conditions' => array(
+					'Seminar.id' => $participant['Participant']['seminar_id']
+				)
+			);
+			$partseminars[] = $this->Seminar->find('first', $options);
+		}
+		$this->set('partseminars', $partseminars);
 	}
 
 /**
