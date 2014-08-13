@@ -1,74 +1,117 @@
-<div class="seminars index">
-	<h2><?php echo __('Seminars'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('reservation_limit'); ?></th>
-			<th><?php echo $this->Paginator->sort('place'); ?></th>
-			<th><?php echo $this->Paginator->sort('account_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('teach_me_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('gj'); ?></th>
-			<th><?php echo $this->Paginator->sort('start'); ?></th>
-			<th><?php echo $this->Paginator->sort('end'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
-			<th><?php echo $this->Paginator->sort('upper_limit'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($seminars as $seminar): ?>
-	<tr>
-		<td><?php echo h($seminar['Seminar']['id']); ?>&nbsp;</td>
-		<td><?php echo h($seminar['Seminar']['name']); ?>&nbsp;</td>
-		<td><?php echo h($seminar['Seminar']['reservation_limit']); ?>&nbsp;</td>
-		<td><?php echo h($seminar['Seminar']['place']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($seminar['Account']['id'], array('controller' => 'accounts', 'action' => 'view', $seminar['Account']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($seminar['TeachMe']['title'], array('controller' => 'teach_mes', 'action' => 'view', $seminar['TeachMe']['id'])); ?>
-		</td>
-		<td><?php echo h($seminar['Seminar']['gj']); ?>&nbsp;</td>
-		<td><?php echo h($seminar['Seminar']['start']); ?>&nbsp;</td>
-		<td><?php echo h($seminar['Seminar']['end']); ?>&nbsp;</td>
-		<td><?php echo h($seminar['Seminar']['description']); ?>&nbsp;</td>
-		<td><?php echo h($seminar['Seminar']['upper_limit']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $seminar['Seminar']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $seminar['Seminar']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $seminar['Seminar']['id']), array(), __('Are you sure you want to delete # %s?', $seminar['Seminar']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Seminar'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Accounts'), array('controller' => 'accounts', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Account'), array('controller' => 'accounts', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Teach Mes'), array('controller' => 'teach_mes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Teach Me'), array('controller' => 'teach_mes', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Participants'), array('controller' => 'participants', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Participant'), array('controller' => 'participants', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Questions'), array('controller' => 'questions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Question'), array('controller' => 'questions', 'action' => 'add')); ?> </li>
+<?php
+	// このページ限定のCSS,JS
+	$this->Html->script(array(
+		'richeditor',
+		'BeatPicker',
+		'SeminarsIndex',
+		), array('inline' => false));
+	$this->Html->css(array(
+		'BeatPicker',
+		), null, array('inline' => false));
+?>
+
+<!-- 新規会員登録 -->
+<?php echo $this->Form->create('Seminar'); ?>
+<div class="modal">
+	<ul id="myImgs">
+		<li><img onclick="selectImg(event)" src="http://amd.c.yimg.jp/im_siggf_VHByhUvs8k8G4G3_o44w---x150-y101-q90/amd/20140812-00000032-xinhua-000-0-thumb.jpg"></li>
+		<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=jf2irBgXyLFexHr1.eni1O.zPtXJQbcZaBker.FoyvieXvV8VlskGcdtIzFF0S8BovijwZ0is_YmJS5lkL6GsoJ_8E9D2ENxODejamdWnyQ8e4nP93JK6yWAobqFOrst5Kg-&sig=12tnbdk68&x=102&y=102"></li>
+		<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=EjNy.XcXyLEmAWZ4Kh7F1aPbFGVhy4mH7pOLh90Gbin0M9Ga82N1tirLBbpfKewvSfQgbv3mD04sj3eBqbvX7LXsd_5kJ_DmGN4d869rY4eFyra.zO4H4GuZeKAfZRL0a0M-&sig=12t3gqrm1&x=102&y=102"></li>
 	</ul>
+	<?php echo $this->Form->file('imgFile'); ?>
+	<a class="modalWinCloseBtn" href="#">キャンセル</a>
 </div>
+<?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
+<dl>
+	<dt>セミナーカバー画像</dt>
+	<dd><a href="#" id="selectImgsBtn">セミナーカバー画像を選ぶ</a></dd>
+	<dd id="coverImg"><?php echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
+	<dt>セミナー名称</dt>
+	<dd><?php echo $this->Form->text('Seminar.name'); ?></dd>
+	<dd class="errMsg"><?php echo $eSmnName; ?></dd>
+	<dt>開催場所</dt>
+	<dd><?php echo $this->Form->text('Seminar.place'); ?></dd>
+	<dd class="errMsg"><?php echo $ePlace; ?></dd>
+	<dt>参加人数上限</dt>
+	<dd>
+		<?php echo $this->Form->text('Seminar.upper_limit', array(
+			'default' => 0,
+		)); ?>
+	</dd>
+	<dd class="errMsg">
+		<?php echo $eUpperLimit; ?>
+	</dd>
+	<dt>開催日</dt>
+	<dd><?php echo $this->Form->text('Seminar.date', array('data-beatpicker' => 'true')); ?></dd>
+	<dd class="errMsg"><?php echo $eStartDate; ?></dd>
+	<dt>開始時間</dt>
+	<dd>
+	<?php echo $this->Form->input('Seminar.startH', array(
+			'type' => 'select',
+			'options' => $hArray,
+			'label' => '',
+	)); ?>時
+	<?php echo $this->Form->input('Seminar.startM', array(
+			'type' => 'select',
+			'options' => $minArray,
+			'label' => '',
+	)); ?>分
+	</dd>
+	<dt>終了時間</dt>
+	<dd>
+	<?php echo $this->Form->input('Seminar.endH', array(
+			'type' => 'select',
+			'options' => $hArray,
+			'label' => '',
+	)); ?>時
+	<?php echo $this->Form->input('Seminar.endM', array(
+			'type' => 'select',
+			'options' => $minArray,
+			'label' => '',
+	)); ?>分
+	</dd>
+	<dt>予約締切日時</dt>
+	<dd>
+	<?php echo $this->Form->text('Seminar.reservation_limit_d', array('data-beatpicker' => 'true')); ?>
+	<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
+			'type' => 'select',
+			'options' => $hArray,
+			'label' => '',
+	)); ?>時
+	<?php echo $this->Form->input('Seminar.reservation_limit_m', array(
+			'type' => 'select',
+			'options' => $minArray,
+			'label' => '',
+	)); ?>分
+	</dd>
+	<dd class="errMsg"><?php echo $eRsvLimitDate; ?></dd>
+	<dt>セミナー詳細</dt>
+	<dd>
+		<?php
+			echo $this->Form->button('B', array(
+					'id' => 'bold'
+				));
+			echo $this->Form->button('U', array(
+					'id' => 'underline'
+				));
+			echo $this->Form->button('I', array(
+					'id' => 'italic'
+				));
+			echo $this->Form->input('fontsize', array(
+					'type' => 'select',
+					'label' => 'フォントサイズ',
+					'options' => $fontsizeArray,
+				));
+			echo $this->Form->input('fontColor', array(
+					'type' => 'select',
+					'label' => 'フォント色',
+					'options' => $fontColor,
+				));
+		?>
+		<?php echo $this->Form->button('画像を挿入', array('id' => 'insertImg', 'type' => 'button')); ?>
+		<div id="editArea" contentEditable="true" style="border: 1px solid #ddd; height: 100px;"><?php echo $dsc; ?></div>
+		<?php echo $this->Form->hidden('Seminar.description'); ?>
+	</dd>
+</dl>
+<?php echo $this->Form->submit('確認画面へ', array('id' => 'submitBtn')); ?>
+<?php echo $this->Form->end(); ?>

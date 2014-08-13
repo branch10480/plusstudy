@@ -22,13 +22,20 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css(array(
+			// 'cake.generic',
+			'common',
+			'layout',
+			));
+		echo $this->Html->script(array(
+			'jquery-1.11.1.min.js',
+			'modalWin.js',
+			));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

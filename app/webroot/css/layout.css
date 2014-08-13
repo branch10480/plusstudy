@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+b {
+	font-weight: bold;
+}
+i {
+	font-style: italic;
+}
+.errMsg {
+	color: red;
+}
