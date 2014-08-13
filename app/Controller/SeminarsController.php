@@ -143,6 +143,8 @@ class SeminarsController extends AppController {
 
 			if ($this->Session->check('newSmn')) {
 				$this->request->data = $this->Session->read('newSmn');
+				$dsc = $this->Session->read('newSmn')['Seminar']['description'];
+				$smnImgId = $this->Session->read('newSmn')['Seminar']['seminar_img_id'];
 			}
 		}
 
@@ -189,8 +191,8 @@ class SeminarsController extends AppController {
 				// 'endH' => $endH,
 				// 'endM' => $endM,
 				// 'rsvLimitDate' => $rsvLimitDate,
-				'dsc' => $this->Session->read('newSmn')['Seminar']['description'],
-				'smnImgId' => $this->Session->read('newSmn')['Seminar']['seminar_img_id'],
+				'dsc' => $dsc,
+				'smnImgId' => $smnImgId,
 			));
 	}
 

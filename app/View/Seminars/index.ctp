@@ -89,13 +89,16 @@
 	<dd>
 		<?php
 			echo $this->Form->button('B', array(
-					'id' => 'bold'
+					'id' => 'bold',
+					'type' => 'button',
 				));
 			echo $this->Form->button('U', array(
-					'id' => 'underline'
+					'id' => 'underline',
+					'type' => 'button',
 				));
 			echo $this->Form->button('I', array(
-					'id' => 'italic'
+					'id' => 'italic',
+					'type' => 'button',
 				));
 			echo $this->Form->input('fontsize', array(
 					'type' => 'select',
