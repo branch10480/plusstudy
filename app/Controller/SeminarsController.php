@@ -233,7 +233,7 @@ class SeminarsController extends AppController {
 
 
 /**
- * index method
+ * register method
  *
  * @return void
  */
