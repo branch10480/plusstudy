@@ -35,7 +35,7 @@ class AccountsController extends AppController {
 
 		$msg = '';
 
-	   	if($this->Session->check('id')) {
+	   	if($this->Session->check('Auth')) {
 			// ログイン済み
 			return $this->redirect(array('action' => 'top'));
 		}
@@ -51,7 +51,7 @@ class AccountsController extends AppController {
 
 				// セッションにIDを格納
 				$account = $this->Account->find('first', $options);
-				$this->Session->write('id', $account['Account']['id']);
+				$this->Session->write('Auth.id', $account['Account']['id']);
 				return $this->redirect(array('action' => 'top'));
 			}
 			else {
@@ -62,7 +62,7 @@ class AccountsController extends AppController {
 				$this->Session->write('backdata', $this->request->data);
 				$backdata = $this->Session->read('backdata');
 				$this->request->data['Account'] = $backdata['Account'];
-				*/	
+				*/
 			}
 		}
 
@@ -74,20 +74,20 @@ class AccountsController extends AppController {
  *
  * @return void
  */
-	public function top() {	
+	public function top() {
 
 		$msg = '';
 		if($this->request->is('post')) {
 			// ログアウト
-			$this->Session->delete('id');
-			return $this->redirect(array('action' => 'index'));			
+			$this->Session->delete('Auth');
+			return $this->redirect(array('action' => 'index'));
 		}
 
-		if($this->Session->check('id')) {
+		if($this->Session->check('Auth')) {
 			// セッションのIDを元にデータを取得ｓる
 			$options = array(
 				'conditions' => array(
-						'Account.' . $this->Account->primaryKey => $this->Session->read('id')
+						'Account.' . $this->Account->primaryKey => $this->Session->read('Auth.id')
 					)
 			);
 			$account = $this->Account->find('first', $options);
@@ -97,7 +97,7 @@ class AccountsController extends AppController {
 		$this->set("msg", $msg);
 
 		// セミナー一覧を取得
-		$this->set('seminars', $this->Seminar->find('all'));	
+		$this->set('seminars', $this->Seminar->find('all'));
 	}
 
 /**
@@ -111,7 +111,7 @@ class AccountsController extends AppController {
 
 		// idが入っていなかったら自分のidを入れる
 		if($id === null) {
-			$id = $this->Session->read('id');
+			$id = $this->Session->read('Auth.id');
 		}
 
 		// 指定されたIDを元にアカウント情報を取得してViewに渡す
