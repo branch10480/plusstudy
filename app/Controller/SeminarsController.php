@@ -14,6 +14,7 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	public $uses = array('Seminar');
 
 
 
@@ -239,6 +240,45 @@ class SeminarsController extends AppController {
  */
 	public function register() {
 
+		$rcvData = $this->Session->read('newSmn')['Seminar'];
+
+		/*** データ整形 ***/
+		// 開催日時
+		$date = $rcvData['date'];
+		$start = array(sprintf('%02d', $rcvData['startH']), sprintf('%02d', $rcvData['startM']), '00');
+		$end = array(sprintf('%02d', $rcvData['endH']), sprintf('%02d', $rcvData['endM']), '00');
+		$start = implode(':', $start);
+		$end = implode(':', $end);
+		$start = $date . ' ' . $start;
+		$end = $date . ' ' . $end;
+		// 予約期限
+		$rsvLimDate = $rcvData['reservation_limit_d'];
+		$rsvLim = array(sprintf('%02d', $rcvData['reservation_limit_h']), sprintf('%02d', $rcvData['reservation_limit_m']), '00');
+		$rsvLim = implode(':', $rsvLim);
+		$rsvLim = $rsvLimDate . ' ' . $rsvLim;
+
+		// セミナー画像
+		$seminar_img_id = 1;
+
+		$data = array(
+				'Seminar' => array(
+						'seminar_img_id' => +$seminar_img_id,
+						'name' => $rcvData['name'],
+						'reservation_limit' => $rsvLim,
+						'place' => $rcvData['place'],
+						'account_id' => +$this->Session->read('id'),
+						'upper_limit' => +$rcvData['upper_limit'],
+						'start' => $start,
+						'end' => $end,
+						'description' => $rcvData['description'],
+					),
+			);
+
+		// 勉強会登録処理
+		if (!$this->Seminar->save($data)) die('保存失敗');
+
+		// 登録完了後、新規勉強会登録用のセッション削除
+		$this->Session->delete('newSmn');
 	}
 
 
