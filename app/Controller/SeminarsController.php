@@ -13,9 +13,21 @@ class SeminarsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'MyAuth');
 	public $uses = array('Seminar');
 
+
+
+
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
+	public function beforeFilter() {
+			// 認証済みかどうか調べる
+			$this->MyAuth->isAuth($this);
+	}
 
 
 
@@ -26,6 +38,7 @@ class SeminarsController extends AppController {
  * @return void
  */
 	public function index() {
+
 		$this->set('title_for_layout', '新規勉強会登録');
 
 
@@ -194,6 +207,7 @@ class SeminarsController extends AppController {
 				// 'rsvLimitDate' => $rsvLimitDate,
 				'dsc' => $dsc,
 				'smnImgId' => $smnImgId,
+				'accId' => $this->Session->read('id'),
 			));
 	}
 
@@ -258,11 +272,11 @@ class SeminarsController extends AppController {
 		$rsvLim = $rsvLimDate . ' ' . $rsvLim;
 
 		// セミナー画像
-		$seminar_img_id = 1;
+		$seminarImgId = 1;
 
 		$data = array(
 				'Seminar' => array(
-						'seminar_img_id' => +$seminar_img_id,
+						'seminar_image_id' => +$seminarImgId,
 						'name' => $rcvData['name'],
 						'reservation_limit' => $rsvLim,
 						'place' => $rcvData['place'],

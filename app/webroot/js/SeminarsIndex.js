@@ -1,6 +1,7 @@
 // SeminarsIndex.js
 
 $(function () {
+	getSmnImgs();
 	$.setModalWin('#selectImgsBtn', '#insertImg');
 
 	document.getElementById('selectImgsBtn').addEventListener("click", function () {
@@ -44,4 +45,31 @@ function selectImg(event) {
 		default:
 			break;
 	}
+}
+
+function getSmnImgs() {
+	$.ajax({
+		url: WEB_ROOT + 'SeminarImages/getSmnImgs/' + $('#accId').val(),
+		type: 'POST',
+		dataType: 'json',
+	})
+	.done(function(data) {
+		console.log(data);
+
+		// モーダルウィンドウ内出力データ整形
+		var outStr = '';
+		for (var i=0; i<data.length; i++) {
+			outStr += '<li><img onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[i]['SeminarImage']['id'] + data[i]['SeminarImage']['ext'] + '" alt="' + data[i]['SeminarImage']['description'] + '" /></li>';
+		}
+
+		// 画像出力
+		$('#myImgs').html(outStr);
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+
 }

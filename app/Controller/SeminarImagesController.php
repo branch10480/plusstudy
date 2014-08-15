@@ -14,6 +14,7 @@ class SeminarImagesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	public $uses = array('SeminarImage');
 
 /**
  * index method
@@ -24,6 +25,65 @@ class SeminarImagesController extends AppController {
 		$this->SeminarImage->recursive = 0;
 		$this->set('seminarImages', $this->Paginator->paginate());
 	}
+
+
+
+
+
+/**
+ * getSmnImgs method
+ *
+ * @param int $accountId
+ * @return void
+ */
+	public function getSmnImgs( $accountId = null ) {
+
+		$result = '';
+		// if ($this->RequestHandler->isAjax()) {
+			// 正常処理
+			// if ($this->request->is('post')) {
+				// $mailaddress = $_POST['id'];
+				$this->layout = 'ajax';
+				$loginId = $this->Session->read('Auth.id');
+
+				if ($accountId === null) die('アカウントIDが指定されていません');
+
+				$params = array(
+					'conditions' => array(
+						'SeminarImage.account_id' => $accountId,
+						), //検索条件の配列
+					'recursive' => 1, //int
+					// 'fields' => array('Model.field1', 'DISTINCT Model.field2'), //フィールド名の配列
+					// 'order' => array('Post.post_datetime DESC'), //並び順を文字列または配列で指定
+					'order' => array('SeminarImage.id DESC'), //並び順を文字列または配列で指定
+					// 'group' => array('Model.field'), //GROUP BYのフィールド
+					// 'limit' => $this->read_limit, //int
+					// 'page' => 1, //int
+					// 'offset' => n, //int
+					// 'callbacks' => true //falseの他に'before'、'after'を指定できます
+					);
+				$result = $this->SeminarImage->find('all', $params);
+			// }
+		// } else {
+		// 	// 不正処理
+		// }
+		$this->set('result', $result);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * view method

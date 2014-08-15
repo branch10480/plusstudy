@@ -24,6 +24,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
+	<script src="<?php echo ROOT_URL.'Configs/'; ?>"></script>
 	<?php
 		echo $this->Html->meta('icon');
 

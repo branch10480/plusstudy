@@ -1,0 +1,1 @@
+var WEB_ROOT = '<?php echo ROOT_URL; ?>';

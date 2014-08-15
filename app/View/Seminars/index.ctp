@@ -11,6 +11,7 @@
 ?>
 
 <!-- 新規会員登録 -->
+<input type="hidden" id="accId" value="<?php echo $accId; ?>" />
 <?php echo $this->Form->create('Seminar'); ?>
 <div class="modal">
 	<ul id="myImgs">
