@@ -11,12 +11,6 @@ $(function () {
 		window.selectImgType = 1;
 	});
 
-	// $('#insertImg').click(function (event) {
-	// 	event.preventDefault();
-	// 	var imgElm = document.createElement('img');
-	// 	imgElm.src = "http://amd.c.yimg.jp/im_siggf_VHByhUvs8k8G4G3_o44w---x150-y101-q90/amd/20140812-00000032-xinhua-000-0-thumb.jpg";
-	// 	$('#editArea').append(imgElm);
-	// });
 });
 
 function selectImg(event) {
@@ -59,7 +53,7 @@ function getSmnImgs() {
 		// モーダルウィンドウ内出力データ整形
 		var outStr = '';
 		for (var i=0; i<data.length; i++) {
-			outStr += '<li><img onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[i]['SeminarImage']['id'] + data[i]['SeminarImage']['ext'] + '" alt="' + data[i]['SeminarImage']['description'] + '" /></li>';
+			outStr += '<li><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[i]['SeminarImage']['id'] + data[i]['SeminarImage']['ext'] + '" alt="' + data[i]['SeminarImage']['description'] + '" width="' + data[i]['SeminarImage']['width'] + '" height="' + data[i]['SeminarImage']['height'] + '" /></li>';
 		}
 
 		// 画像出力
@@ -71,5 +65,9 @@ function getSmnImgs() {
 	.always(function() {
 		console.log("complete");
 	});
+}
 
+function optim() {
+	ImgOpt.setImgId('.smnImg');
+	ImgOpt.optimize();
 }

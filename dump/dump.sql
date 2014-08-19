@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.29, for osx10.6 (i386)
 --
 -- Host: localhost    Database: plusstudy
 -- ------------------------------------------------------
--- Server version	5.5.34-log
+-- Server version	5.5.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -193,7 +193,7 @@ CREATE TABLE `seminar_images` (
   `description` varchar(100) DEFAULT NULL,
   `ext` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,6 +202,7 @@ CREATE TABLE `seminar_images` (
 
 LOCK TABLES `seminar_images` WRITE;
 /*!40000 ALTER TABLE `seminar_images` DISABLE KEYS */;
+INSERT INTO `seminar_images` VALUES (1,2,'1番目','.jpg'),(2,2,'2番目','.jpg'),(3,2,'3番目','.jpg'),(4,1,'4番目','.jpg');
 /*!40000 ALTER TABLE `seminar_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-13 13:37:02
+-- Dump completed on 2014-08-19 15:29:52

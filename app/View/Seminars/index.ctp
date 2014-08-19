@@ -7,6 +7,7 @@
 		), array('inline' => false));
 	$this->Html->css(array(
 		'BeatPicker',
+		'testSmn',
 		), null, array('inline' => false));
 ?>
 

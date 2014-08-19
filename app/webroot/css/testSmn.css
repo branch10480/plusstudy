@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+#myImgs li {
+	display: block;
+	width: 100px;
+	height: 100px;
+}
