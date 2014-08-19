@@ -34,8 +34,8 @@ function getImgOpt() {
 			_imgElms.each(function () {
 
 				var parent = $(this).parent();
-				var imgH = this.height;
-				var imgW = this.width;
+				var imgH = (this.height === null || this.height === 0) ? +$(this).height() : this.height;
+				var imgW = (this.width === null || this.width === 0) ? +$(this).width() : this.width;
 				var pH = +parent.height();
 				var pW = +parent.width();
 				var newTop = 0;
