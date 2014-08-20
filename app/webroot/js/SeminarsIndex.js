@@ -21,7 +21,10 @@ $(function () {
 		event.preventDefault();
 		var callbacks_ = {
 				'begin'   : function(){},
-				'success' : function(){},
+				'success' : function(){
+					alert('画像アップロード完了！');
+					getSmnImgs();
+				},
 				'error'   : function(){},
 				'complete': function(){},
 		};
