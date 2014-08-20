@@ -1,5 +1,10 @@
 // SeminarsIndex.js
 
+//*****************************************************************************
+//
+// main
+//
+//*****************************************************************************
 $(function () {
 	getSmnImgs();
 	$.setModalWin('#selectImgsBtn', '#insertImg');
@@ -11,8 +16,27 @@ $(function () {
 		window.selectImgType = 1;
 	});
 
+	//----- 画像アップロード -----
+	$('#imgUpForm').submit(function(event) {
+		event.preventDefault();
+		var callbacks_ = {
+				'begin'   : function(){},
+				'success' : function(){},
+				'error'   : function(){},
+				'complete': function(){},
+		};
+		ajax_submit($(this), callbacks_);
+	});
+
 });
 
+
+
+//*****************************************************************************
+//
+// Declaration Area
+//
+//*****************************************************************************
 function selectImg(event) {
 	switch (window.selectImgType) {
 		case 0:
