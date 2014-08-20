@@ -194,6 +194,7 @@ CREATE TABLE `seminar_images` (
   `ext` varchar(8) DEFAULT NULL,
   `width` int(11) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
+  `tmp_id` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -204,7 +205,7 @@ CREATE TABLE `seminar_images` (
 
 LOCK TABLES `seminar_images` WRITE;
 /*!40000 ALTER TABLE `seminar_images` DISABLE KEYS */;
-INSERT INTO `seminar_images` VALUES (1,2,'1番目','.jpg',1600,1200),(2,2,'2番目','.jpg',1200,675),(3,2,'3番目','.jpg',170,127),(4,1,'4番目','.jpg',400,331);
+INSERT INTO `seminar_images` VALUES (1,2,'1番目','.jpg',1600,1200,0),(2,2,'2番目','.jpg',1200,675,0),(3,2,'3番目','.jpg',170,127,0),(4,1,'4番目','.jpg',400,331,0);
 /*!40000 ALTER TABLE `seminar_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,4 +277,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-19 15:58:24
+-- Dump completed on 2014-08-20 16:15:28

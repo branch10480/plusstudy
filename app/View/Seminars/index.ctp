@@ -13,16 +13,23 @@
 
 <!-- 新規会員登録 -->
 <input type="hidden" id="accId" value="<?php echo $accId; ?>" />
-<?php echo $this->Form->create('Seminar'); ?>
 <div class="modal">
-	<ul id="myImgs">
-		<li><img onclick="selectImg(event)" src="http://amd.c.yimg.jp/im_siggf_VHByhUvs8k8G4G3_o44w---x150-y101-q90/amd/20140812-00000032-xinhua-000-0-thumb.jpg"></li>
-		<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=jf2irBgXyLFexHr1.eni1O.zPtXJQbcZaBker.FoyvieXvV8VlskGcdtIzFF0S8BovijwZ0is_YmJS5lkL6GsoJ_8E9D2ENxODejamdWnyQ8e4nP93JK6yWAobqFOrst5Kg-&sig=12tnbdk68&x=102&y=102"></li>
-		<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=EjNy.XcXyLEmAWZ4Kh7F1aPbFGVhy4mH7pOLh90Gbin0M9Ga82N1tirLBbpfKewvSfQgbv3mD04sj3eBqbvX7LXsd_5kJ_DmGN4d869rY4eFyra.zO4H4GuZeKAfZRL0a0M-&sig=12t3gqrm1&x=102&y=102"></li>
-	</ul>
-	<?php echo $this->Form->file('imgFile'); ?>
-	<a class="modalWinCloseBtn" href="#">キャンセル</a>
+	<form method="post" action="<?php echo ROOT_URL . 'SeminarImages/uploadImg/'; ?>" name="imgUpForm" id="imgUpForm">
+		<ul id="myImgs">
+			<li><img onclick="selectImg(event)" src="http://amd.c.yimg.jp/im_siggf_VHByhUvs8k8G4G3_o44w---x150-y101-q90/amd/20140812-00000032-xinhua-000-0-thumb.jpg"></li>
+			<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=jf2irBgXyLFexHr1.eni1O.zPtXJQbcZaBker.FoyvieXvV8VlskGcdtIzFF0S8BovijwZ0is_YmJS5lkL6GsoJ_8E9D2ENxODejamdWnyQ8e4nP93JK6yWAobqFOrst5Kg-&sig=12tnbdk68&x=102&y=102"></li>
+			<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=EjNy.XcXyLEmAWZ4Kh7F1aPbFGVhy4mH7pOLh90Gbin0M9Ga82N1tirLBbpfKewvSfQgbv3mD04sj3eBqbvX7LXsd_5kJ_DmGN4d869rY4eFyra.zO4H4GuZeKAfZRL0a0M-&sig=12t3gqrm1&x=102&y=102"></li>
+		</ul>
+		<?php echo $this->Form->file('imgFile', array(
+			'enctype' => 'multipart/form-data',
+			'name' => 'up_img',
+			)); ?>
+		<?php echo $this->Form->text('imgDsc', array('name' => 'dsc')); ?>
+		<?php echo $this->Form->submit('画像をアップロードする'); ?>
+		<a class="modalWinCloseBtn" href="#">キャンセル</a>
+	</form>
 </div>
+<?php echo $this->Form->create('Seminar'); ?>
 <?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
 <dl>
 	<dt>セミナーカバー画像</dt>
