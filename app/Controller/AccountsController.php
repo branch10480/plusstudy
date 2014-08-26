@@ -28,11 +28,12 @@ class AccountsController extends AppController {
 
 /**
  * index method
- *
+ * ログインページ
  * @return void
  */
 	public function index() {
 
+		$this->set('title_for_layout', 'PlusStudy ログイン');
 		$msg = '';
 
 	   	if($this->Session->check('Auth')) {
@@ -71,11 +72,12 @@ class AccountsController extends AppController {
 
 /**
  * top method
- *
+ * トップページ
  * @return void
  */
 	public function top() {
 
+		$this->set('title_for_layout', 'PlusStudy');
 		$msg = '';
 		if($this->request->is('post')) {
 			// ログアウト
@@ -104,7 +106,7 @@ class AccountsController extends AppController {
  * profile method
  * プロフィールページ
  * @throws NotFoundException
- * @param string $id
+ * @param int $id
  * @return void
  */
 	public function profile($id = null) {
@@ -116,7 +118,11 @@ class AccountsController extends AppController {
 
 		// 指定されたIDを元にアカウント情報を取得してViewに渡す
 		$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
-		$this->set('account', $this->Account->find('first', $options));
+		$account = $this->Account->find('first', $options);
+		$this->set('account', $account);
+
+		// ページタイトル設定
+		$this->set('title_for_layout', 'プロフィール - ' . $account['Account']['last_name'] . $account['Account']['first_name']);
 
 		// その人が主催している勉強会の情報を取得する
 		$options = array(

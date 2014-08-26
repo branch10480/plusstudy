@@ -4,7 +4,7 @@ class MyAuthComponent extends Component {
 
 	// 認証済みかどうか調べる
     public function isAuth($controller) {
-   		if($controller->Session->check('id')) {
+   		if($controller->Session->check('Auth.id')) {
 			// 認証済み
 		} 
 		else {

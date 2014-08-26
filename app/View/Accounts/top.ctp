@@ -9,6 +9,7 @@
 	<?php echo $msg ?>
 
 	<?php echo $this->Html->link(__('マイページ'), array('action' => 'profile')); ?>
+	<?php echo $this->Html->link(__('ニーズ登録'), array('controller' => 'TeachMes', 'action' => 'index')); ?>	
 </div>
 
 
