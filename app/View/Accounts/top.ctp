@@ -12,13 +12,27 @@
 	<?php echo $this->Html->link(__('ニーズ登録'), array('controller' => 'TeachMes', 'action' => 'index')); ?>	
 </div>
 
-
 <div>
 	<?php echo $this->Form->create('Logout'); ?>
 	<?php echo $this->Form->end(__('ログアウト')); ?>	
 	<hr>
 </div>
 
+<div>
+	<h2><?php echo __('ニーズ一覧'); ?></h2>
+	<?php if(count($teachmes) === 0): ?> 
+		<p><?php echo '現在ニーズはありません'; ?></p>
+		<hr>
+	<?php endif; ?>	
+
+	<?php foreach($teachmes as $teachme): ?>
+		
+		<p><b><?php echo $teachme['TeachMe']['title']; ?></b></p>
+
+	<?php endforeach; ?>
+</div>
+
+<br>
 
 <div>
 	<h2><?php echo __('勉強会一覧'); ?></h2>
@@ -38,7 +52,6 @@
 		<p><?php echo '申込締切：' . $seminar['Seminar']['reservation_limit']; ?></p>		
 
 		<p><?php echo '参加人数：' . count($seminar['Participant']) . '/' . $seminar['Seminar']['upper_limit']; ?></p>
-		<hr>
 
 	<?php endforeach; ?>
 </div>

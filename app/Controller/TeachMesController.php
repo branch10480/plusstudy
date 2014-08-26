@@ -115,8 +115,17 @@ class TeachMesController extends AppController {
 	public function register() {
 		// セッションがあればデータを登録する
 		if ($this->Session->check('newTeachme')) {
+			
+			$newTeachme = $this->Session->read('newTeachme');
+			$newTeachme = $newTeachme['TeachMe'];
+			$param = array(
+				'account_id' => $this->Session->read('Auth.id'),
+				'title' => $newTeachme['title'],
+				'content' => $newTeachme['content']
+				);
+
 			$this->TeachMe->create();
-			$this->TeachMe->save($this->Session->read('newTeachme'));
+			$this->TeachMe->save($param);
 			$this->Session->delete('newTeachme');
 		}
 	}

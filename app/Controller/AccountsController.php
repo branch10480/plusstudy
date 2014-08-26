@@ -13,7 +13,7 @@ class AccountsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Account', 'Seminar', 'Participant');
+	public $uses = array('Account', 'Seminar', 'Participant', 'TeachMe');
 	public $components = array('Paginator', 'MyAuth');
 
 /**
@@ -97,6 +97,9 @@ class AccountsController extends AppController {
 		}
 
 		$this->set("msg", $msg);
+
+		// ニーズ一覧を取得
+		$this->set('teachmes', $this->TeachMe->find('all'));
 
 		// セミナー一覧を取得
 		$this->set('seminars', $this->Seminar->find('all'));
