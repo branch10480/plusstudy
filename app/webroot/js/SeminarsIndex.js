@@ -6,6 +6,8 @@
 //
 //*****************************************************************************
 $(function () {
+
+	//----- セミナー画像一覧取得 -----
 	getSmnImgs();
 
 	//----- モーダルウィンドウ設定処理 -----
@@ -21,17 +23,39 @@ $(function () {
 	//----- 画像アップロード -----
 	$('#imgUpForm').submit(function(event) {
 		event.preventDefault();
+
+		// 画像が選択されているかチェック
+		if ($('#imgFile').val() === '') {
+			alert('画像が選択されていません');
+			return;
+		}
+
 		var callbacks_ = {
 				'begin'   : function(){},
-				'success' : function(){
-					alert('画像アップロード完了！');
-					getSmnImgs();
+				'success' : function(data){
+					if (data[0] ==='true') {
+						alert('画像アップロード完了！');
+						getSmnImgs();
+					} else {
+						alert(data[1]);
+					}
 				},
 				'error'   : function(){},
 				'complete': function(){},
 		};
 		ajax_submit($(this), callbacks_);
 	});
+
+	//----- セミナー画像リセットボタン -----
+	$('#smnImgReset').click((function(){
+		var coverImg = $('#coverImg');
+		var smnImgId = $('#SeminarSeminarImgId');
+		return function(event){
+			event.preventDefault();
+			coverImg.html('');
+			smnImgId.val('');
+		};
+	})());
 
 
 	//----- ページング処理登録 -----
@@ -44,6 +68,7 @@ $(function () {
 		var maxPage = 1;
 		var myImgs = null;
 		var pagingInfo = null;
+		var storage = null;
 
 		//--- 処理 ---
 		return function ( dataArr, preOrNxt ) {
@@ -70,6 +95,7 @@ $(function () {
 			// 要素をキャッシュ
 			if (myImgs === null) myImgs = $('#myImgs');
 			if (pagingInfo === null) pagingInfo = $('#pagingNav .info');
+			if (storage === null) storage = $('#storage');
 
 			var dispCnt = 0;
 			var dataNo = 0;					// 表示する配列の添え字
@@ -87,6 +113,14 @@ $(function () {
 
 			// ページング情報部更新
 			pagingInfo.html(page + ' / ' + maxPage);
+
+			// 使用容量更新
+			var mydatasize = 0;
+			for (var i=0; i<data.length; i++) {
+				mydatasize = mydatasize + +data[i]['SeminarImage']['size'];
+			}
+			storage.html(sprintf('%.3f', mydatasize/(1024*1024)) + 'MB / 50MB');
+
 		};
 	})();
 	$('#pagingNav li .pre').click(function(event) {

@@ -79,117 +79,128 @@ class SeminarImagesController extends AppController {
 	 */
 	function uploadImg() {
 		$this->layout = 'ajax';
-		// if ($this->RequestHandler->isAjax()) {
+		$returnArr = array();
+		if ($this->RequestHandler->isAjax()) {
 			// 正常処理
-			// if ($this->request->is('post')) {
-				// $mailaddress = $_POST['id'];
+			if ($this->request->is('post')) {
 
-				// 画像ファイルの保存 & ディレクトリの移動
-
-				$up_dir = UP_PATH_SMN;				// 保存先の相対パス
-				$filename = $_FILES['up_img']['name'];
-				$filetype = $_FILES['up_img']['type'];
+				//----- 容量制限チェック -----
+				// アカウントが使用可能な容量を確認、警告
+				$query = 'SELECT SUM(size) as sum FROM seminar_images WHERE account_id = ' . $this->Session->read('Auth.id');
+				$result = $this->SeminarImage->query($query);
 				$filesize = $_FILES['up_img']['size'];
-				$tmpfile = $_FILES['up_img']['tmp_name'];		// 一時的に保管
-				$msg = '';
-				$flg = true;																// エラーがあるか無いか
-				$completeFlg = 'false';
-				$rand = mt_rand(1, 2147483647);							// 1以上 int の最大値以下の乱数を生成 - 一時的なidとなる
-																										// 後にこれを基に 画像id（seminar_images.id） を取得する
-				$lastName = '';
-				$returnArr = array();
+				// 確認
+				if ($result[0][0]['sum'] + $filesize > 52428800) {									// 50 MB = 52428800 B
+					$msg = '１アカウントで使える容量は 50MB 以下です';
+					$returnArr[] = 'false';
+					$returnArr[] = $msg;
+				} else {
 
-				// 画像の幅と高さ
-				$imgW = 0;
-				$imgH = 0;
+					//----- 画像ファイルの保存 & ディレクトリの移動
 
+					$up_dir = UP_PATH_SMN;				// 保存先の相対パス
+					$filename = $_FILES['up_img']['name'];
+					$filetype = $_FILES['up_img']['type'];
+					$tmpfile = $_FILES['up_img']['tmp_name'];		// 一時的に保管
+					$msg = '';
+					$flg = true;																// エラーがあるか無いか
+					$completeFlg = 'false';
+					$rand = mt_rand(1, 2147483647);							// 1以上 int の最大値以下の乱数を生成 - 一時的なidとなる
+																											// 後にこれを基に 画像id（seminar_images.id） を取得する
+					$lastName = '';
 
-				// 画像データを仮登録 - 後に情報を追加する
-				$data = array(
-					'SeminarImage' => array(
-						'tmp_id' => $rand,
-						),
-					);
-				$this->SeminarImage->saveAll($data);
-
-
-				// 乱数をもとに、post_id を取得
-				$params = array(
-					'conditions' => array(
-						'SeminarImage.tmp_id' => $rand
-						),
-					'fields' => array(
-						'SeminarImage.id'
-						)
-					);
-				$tmpData = $this->SeminarImage->find('first', $params);
-				$imgId = $tmpData['SeminarImage']['id'];
+					// 画像の幅と高さ
+					$imgW = 0;
+					$imgH = 0;
 
 
-				//----- ファイルが選択されたかを判断 -----
-				if (is_uploaded_file($tmpfile)) {
-					// ファイル名の分割 -> 取得
-					list($firstName, $lastName) = explode('.', $filename);
-					$newFileName = $imgId . '.' . $lastName;
-					$uppath = $up_dir . $newFileName;					// アップロード先のファイルパス
+					// 画像データを仮登録 - 後に情報を追加する
+					$data = array(
+						'SeminarImage' => array(
+							'tmp_id' => $rand,
+							),
+						);
+					$this->SeminarImage->saveAll($data);
 
-					// ファイルが選択されている場合
-					if (move_uploaded_file($tmpfile, $uppath)) {
 
-						//--- 画像ファイルかどうかの判断 ---
-						$fileinfo = getimagesize($uppath);
-						if ($fileinfo[2] != IMAGETYPE_GIF && $fileinfo[2] != IMAGETYPE_JPEG && $fileinfo[2] != IMAGETYPE_PNG) {
+					// 乱数をもとに、post_id を取得
+					$params = array(
+						'conditions' => array(
+							'SeminarImage.tmp_id' => $rand
+							),
+						'fields' => array(
+							'SeminarImage.id'
+							)
+						);
+					$tmpData = $this->SeminarImage->find('first', $params);
+					$imgId = $tmpData['SeminarImage']['id'];
 
-							// ファイルの削除
-							unlink($uppath);
-							$msg = '画像以外のファイルが選択されました。';
-							$flg = false;
+
+					//----- ファイルが選択されたかを判断 -----
+					if (is_uploaded_file($tmpfile)) {
+						// ファイル名の分割 -> 取得
+						list($firstName, $lastName) = explode('.', $filename);
+						$newFileName = $imgId . '.' . $lastName;
+						$uppath = $up_dir . $newFileName;					// アップロード先のファイルパス
+
+						// ファイルが選択されている場合
+						if (move_uploaded_file($tmpfile, $uppath)) {
+
+							//--- 画像ファイルかどうかの判断 ---
+							$fileinfo = getimagesize($uppath);
+							if ($fileinfo[2] != IMAGETYPE_GIF && $fileinfo[2] != IMAGETYPE_JPEG && $fileinfo[2] != IMAGETYPE_PNG) {
+
+								// ファイルの削除
+								unlink($uppath);
+								$msg = '画像以外のファイルが選択されました。';
+								$flg = false;
+							} else {
+								//--- 正常時 ---
+								$lastName = '.' . $lastName;				// 拡張子の前に . を付ける
+								$img_ext = "'" . $lastName . "'";
+								$imgW = $fileinfo[0];
+								$imgH = $fileinfo[1];
+							}
 						} else {
-							//--- 正常時 ---
-							$lastName = '.' . $lastName;				// 拡張子の前に . を付ける
-							$img_ext = "'" . $lastName . "'";
-							$imgW = $fileinfo[0];
-							$imgH = $fileinfo[1];
+							$msg = '移動できませんでした。';
+							$flg = false;
 						}
 					} else {
-						$msg = '移動できませんでした。';
-						$flg = false;
+						// ファイルが選択されていない場合
+						$msg = 'ファイルが選択されていませんでした。';
 					}
-				} else {
-					// ファイルが選択されていない場合
-					$msg = 'ファイルが選択されていませんでした。';
-				}
 
 
-				// データベースに格納処理
-				if ($flg) {
-					$data = array(
-						'SeminarImage.account_id' => $this->Session->read('Auth.id'),
-						'SeminarImage.description' => "'" . (isset($_POST['dsc']) ? $_POST['dsc'] : '') . "'",
-						'SeminarImage.ext' => $img_ext,
-						'SeminarImage.width' => $imgW,
-						'SeminarImage.height' => $imgH,
-						'SeminarImage.tmp_id' => 0,
-						'SeminarImage.size' => $filesize,
-						);
-					$conditions = array(
-							'SeminarImage.id' => $imgId,
+					// データベースに格納処理
+					if ($flg) {
+						$data = array(
+							'SeminarImage.account_id' => $this->Session->read('Auth.id'),
+							'SeminarImage.description' => "'" . (isset($_POST['dsc']) ? $_POST['dsc'] : '') . "'",
+							'SeminarImage.ext' => $img_ext,
+							'SeminarImage.width' => $imgW,
+							'SeminarImage.height' => $imgH,
+							'SeminarImage.tmp_id' => 0,
+							'SeminarImage.size' => $filesize,
 							);
-					if ($this->SeminarImage->updateAll($data, $conditions)) {
-						$completeFlg = 'true';
+						$conditions = array(
+								'SeminarImage.id' => $imgId,
+								);
+						if ($this->SeminarImage->updateAll($data, $conditions)) {
+							$completeFlg = 'true';
+						}
+					} else {
+
 					}
-				} else {
 
+					$returnArr[] = $completeFlg;
+					if ($msg !== '') {
+						$returnArr[] = $msg;
+					}
 				}
-
-				$returnArr[] = $completeFlg;
-				if ($msg !== '') {
-					$returnArr[] = $msg;
-				}
-			// }
-		// } else {
-		// 	// 不正処理
-		// }
+			}
+		} else {
+			// 不正処理
+		}
 		$this->set(array(
 			'result' => $returnArr,
 			));
