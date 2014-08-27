@@ -17,35 +17,49 @@ $(function () {
 	});
 
 	//----- 画像アップロード -----
-	// $('#imgUpForm').submit(function(event) {
-	// 	event.preventDefault();
-	// 	var callbacks_ = {
-	// 			'begin'   : function(){},
-	// 			'success' : function(){
-	// 				alert('画像アップロード完了！');
-	// 				getSmnImgs();
-	// 			},
-	// 			'error'   : function(){},
-	// 			'complete': function(){},
-	// 	};
-	// 	ajax_submit($(this), callbacks_);
-	// });
+	$('#imgUpForm').submit(function(event) {
+		event.preventDefault();
+		var callbacks_ = {
+				'begin'   : function(){},
+				'success' : function(){
+					alert('画像アップロード完了！');
+					getSmnImgs();
+				},
+				'error'   : function(){},
+				'complete': function(){},
+		};
+		ajax_submit($(this), callbacks_);
+	});
 
 
-	// //----- ページング処理 -----
-	// window.disp = (function( dataArr ){
+	//----- ページング処理登録 -----
+	window.disp = (function( dataArr ){
 
-	// 	if (!!dataArr) return;
+		if (!!dataArr) return;
 
-	// 	//--- メンバ ---
-	// 	var page = 1;
-	// 	var data = dataArr;
+		//--- メンバ ---
+		var page = 1;
+		var data = dataArr;
 
-	// 	//--- 処理 ---
+		//--- 処理 ---
+		return function () {
+			// 処理
+			var dispCnt = 0;
+			var dataNo = (page-1)*10;					// 表示する配列の添え字
 
+			// モーダルウィンドウ内出力データ整形
+			var outStr = '';
+			for (var i=startNo; i<data.length; dataNo++) {
+				if (dispCnt > 10) break;
+				outStr += '<li><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /></li>';
 
+				dispCnt++;
+			}
 
-	// })();
+			// 画像出力
+			$('#myImgs').html(outStr);
+		};
+	})();
 
 });
 
@@ -93,18 +107,8 @@ function getSmnImgs() {
 	.done(function(data) {
 		console.log(data);
 
-
-		//----- 出力処理 ------
-
-		// モーダルウィンドウ内出力データ整形
-		var outStr = '';
-		for (var i=0; i<data.length; i++) {
-			outStr += '<li><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[i]['SeminarImage']['id'] + data[i]['SeminarImage']['ext'] + '" alt="' + data[i]['SeminarImage']['description'] + '" width="' + data[i]['SeminarImage']['width'] + '" height="' + data[i]['SeminarImage']['height'] + '" /></li>';
-		}
-
-		// 画像出力
-		$('#myImgs').html(outStr);
-
+		// 出力
+		disp( data );
 
 	})
 	.fail(function() {
