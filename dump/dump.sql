@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.29, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
 --
 -- Host: localhost    Database: plusstudy
 -- ------------------------------------------------------
--- Server version	5.5.29
+-- Server version	5.5.34-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -113,11 +113,12 @@ DROP TABLE IF EXISTS `me_toos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `me_toos` (
-  `teach_me_id` int(11) NOT NULL DEFAULT '0',
-  `account_id` int(11) NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `teach_me_id` int(11) DEFAULT NULL,
+  `account_id` int(11) DEFAULT NULL,
   `resolved` char(1) DEFAULT NULL,
-  PRIMARY KEY (`teach_me_id`,`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,10 +138,11 @@ DROP TABLE IF EXISTS `participants`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `participants` (
-  `seminar_id` int(11) NOT NULL DEFAULT '0',
-  `account_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`seminar_id`,`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `seminar_id` int(11) DEFAULT NULL,
+  `account_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +151,6 @@ CREATE TABLE `participants` (
 
 LOCK TABLES `participants` WRITE;
 /*!40000 ALTER TABLE `participants` DISABLE KEYS */;
-INSERT INTO `participants` VALUES (1,2),(1,3),(2,1),(2,3);
 /*!40000 ALTER TABLE `participants` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +198,7 @@ CREATE TABLE `seminar_images` (
   `tmp_id` int(11) DEFAULT '0',
   `size` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +258,7 @@ CREATE TABLE `teach_mes` (
   `title` varchar(100) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +267,7 @@ CREATE TABLE `teach_mes` (
 
 LOCK TABLES `teach_mes` WRITE;
 /*!40000 ALTER TABLE `teach_mes` DISABLE KEYS */;
-INSERT INTO `teach_mes` VALUES (1,1,'PHPのMySQL設定について','ほげほげ');
+INSERT INTO `teach_mes` VALUES (1,3,'ハムスターの飼い方','ハムスター飼いたいよおおおおおおおおおおおおおおおおおおおおお'),(3,1,'PHPがあああああ','わからないぞおおおおおおおおおおおおおおおお'),(4,1,'うおおおおおおおおおお','あああああああああああああああああああああ');
 /*!40000 ALTER TABLE `teach_mes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -279,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-27 11:11:56
+-- Dump completed on 2014-08-27 16:45:23
