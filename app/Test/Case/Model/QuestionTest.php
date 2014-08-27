@@ -15,12 +15,11 @@ class QuestionTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.question',
 		'app.seminar',
-		'app.seminar_images',
+		'app.seminar_image',
 		'app.account',
 		'app.comment',
 		'app.me_too',
 		'app.participant',
-		'app.seminar_image',
 		'app.teach_me'
 	);
 

@@ -18,10 +18,9 @@ class MeTooTest extends CakeTestCase {
 		'app.comment',
 		'app.question',
 		'app.seminar',
-		'app.seminar_images',
+		'app.seminar_image',
 		'app.teach_me',
-		'app.participant',
-		'app.seminar_image'
+		'app.participant'
 	);
 
 /**

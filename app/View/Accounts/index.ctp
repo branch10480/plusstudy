@@ -8,7 +8,7 @@
 	<p><?php echo $this->Form->mailaddress('mailaddress'); ?></p>
 	<p>パスワード</p>
 	<p><?php echo $this->Form->password('passwd'); ?></p>
-	<p style="color: red;"><?php echo $msg ?></p>	
+	<p class="errMsg"><?php echo $msg ?></p>	
 	</fieldset>
 
 

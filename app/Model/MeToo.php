@@ -3,34 +3,11 @@ App::uses('AppModel', 'Model');
 /**
  * MeToo Model
  *
+ * @property TeachMe $TeachMe
  * @property Account $Account
  */
 class MeToo extends AppModel {
 
-/**
- * Primary key field
- *
- * @var string
- */
-	public $primaryKey = 'teach_me_id';
-
-/**
- * Validation rules
- *
- * @var array
- */
-	public $validate = array(
-		'account_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -40,6 +17,13 @@ class MeToo extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
+		'TeachMe' => array(
+			'className' => 'TeachMe',
+			'foreignKey' => 'teach_me_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Account' => array(
 			'className' => 'Account',
 			'foreignKey' => 'account_id',

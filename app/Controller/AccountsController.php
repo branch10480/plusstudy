@@ -32,7 +32,7 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function index() {
-
+		// ページタイトル設定
 		$this->set('title_for_layout', 'PlusStudy ログイン');
 		$msg = '';
 
@@ -76,7 +76,7 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function top() {
-
+		// ページタイトル設定
 		$this->set('title_for_layout', 'PlusStudy');
 		$msg = '';
 		if($this->request->is('post')) {

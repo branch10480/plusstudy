@@ -19,9 +19,9 @@
 </div>
 
 <div>
-	<h2><?php echo __('ニーズ一覧'); ?></h2>
+	<h2><?php echo __('今求められている勉強会'); ?></h2>
 	<?php if(count($teachmes) === 0): ?> 
-		<p><?php echo '現在ニーズはありません'; ?></p>
+		<p><?php echo '今求められている勉強会はありません'; ?></p>
 		<hr>
 	<?php endif; ?>	
 
@@ -32,6 +32,7 @@
 		 	'action' => 'details', 
 		 	'?' => array('id' => $teachme['TeachMe']['id'])
 		 	)); ?>
+		<?php echo count($teachme['MeToo']) . '人' ?>
 		<br>
 
 	<?php endforeach; ?>
@@ -40,7 +41,7 @@
 <br>
 
 <div>
-	<h2><?php echo __('勉強会一覧'); ?></h2>
+	<h2><?php echo __('参加者募集中の勉強会'); ?></h2>
 	<?php if(count($seminars) === 0): ?> 
 		<p><?php echo '現在予定されている勉強会はありません'; ?></p>
 		<hr>

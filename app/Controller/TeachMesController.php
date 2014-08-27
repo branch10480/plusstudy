@@ -13,6 +13,7 @@ class TeachMesController extends AppController {
  *
  * @var array
  */
+	public $uses = array('TeachMe', 'MeToo');
 	public $components = array('Paginator', 'MyAuth');
 
 /**
@@ -21,8 +22,9 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function beforeFilter() {
+
 			// 認証済みかどうか調べる
-			$this->MyAuth->isAuth($this);
+			$this->MyAuth->isAuth($this);			
 		}
 
 /**
@@ -31,7 +33,8 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function index() {
-		// タイトル設定
+
+		// ページタイトル設定
 		$this->set('title_for_layout', 'ニーズ登録');
 
 		// エラーメッセージ初期化
@@ -92,6 +95,10 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function newTeachmeConfirm() {
+
+		// ページタイトル設定
+		$this->set('title_for_layout', 'ニーズ登録確認');
+
 		// セッションが存在しなかったら(直接飛んできた)作成ページにリダイレクト
 		if (!$this->Session->check('newTeachme')) {
 			$this->redirect(array('action' => 'index'));
@@ -113,6 +120,10 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function register() {
+
+		// ページタイトル設定
+		$this->set('title_for_layout', 'ニーズ登録完了');
+
 		// セッションがあればデータを登録する
 		if ($this->Session->check('newTeachme')) {
 			
@@ -150,7 +161,52 @@ class TeachMesController extends AppController {
 		}
 		// データが見つかったらViewへ渡す
 		else {
-			$this->set('teachme', $teachme);			
+			$this->set('teachme', $teachme);
+
+			// タイトル設定
+			$this->set('title_for_layout', 'ニーズ - ' . $teachme['TeachMe']['title']);		
+		}
+
+		// 既に「私も教えて欲しい！」ボタンを押しているかどうかで表示を分ける
+		$alreadyMetoo = false;
+		$options = array(
+			'conditions' => array(
+				'MeToo.teach_me_id' => $id,
+				'MeToo.account_id' => $this->Session->read('Auth.id'),
+			));
+		if($this->MeToo->find('count', $options) === 1) {
+			$alreadyMetoo = true;
+		}
+		$this->set('alreadyMetoo', $alreadyMetoo);
+
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+			// 私も教えて欲しい！ボタンが押された時
+			if(isset($this->request->data['metoo'])) {
+				// me_toosにデータ登録
+				$param = array(
+					'teach_me_id' => $id,
+					'account_id' => $this->Session->read('Auth.id'),
+					);	
+				$this->MeToo->create();
+				$this->MeToo->save($param);
+				$this->redirect(array('action' => 'details',
+								'?' => array('id' => $id)));
+			}
+			// 取り消しボタンが押された時
+			else if(isset($this->request->data['cancel'])) {
+				// me_toosからデータを削除
+				$options = array(
+					'conditions' => array(
+						'MeToo.teach_me_id' => $id,
+						'MeToo.account_id' => $this->Session->read('Auth.id')
+					));
+				$deleteRecord = $this->MeToo->find('first', $options);
+				$this->MeToo->id = $deleteRecord['MeToo']['id'];
+				$this->MeToo->delete();
+				$this->redirect(array('action' => 'details',
+								'?' => array('id' => $id)));
+			}			
 		}
 	}
 }
