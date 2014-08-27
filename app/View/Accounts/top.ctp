@@ -32,7 +32,7 @@
 		 	'action' => 'details', 
 		 	'?' => array('id' => $teachme['TeachMe']['id'])
 		 	)); ?>
-		<?php echo count($teachme['MeToo']) . '人' ?>
+		<?php echo count($teachme['MeToo']) + 1 . '人' ?>
 		<br>
 
 	<?php endforeach; ?>

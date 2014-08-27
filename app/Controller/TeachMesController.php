@@ -194,7 +194,7 @@ class TeachMesController extends AppController {
 								'?' => array('id' => $id)));
 			}
 			// 取り消しボタンが押された時
-			else if(isset($this->request->data['cancel'])) {
+			if(isset($this->request->data['cancel'])) {
 				// me_toosからデータを削除
 				$options = array(
 					'conditions' => array(
@@ -206,6 +206,12 @@ class TeachMesController extends AppController {
 				$this->MeToo->delete();
 				$this->redirect(array('action' => 'details',
 								'?' => array('id' => $id)));
+			}
+			// 削除ボタンが押された時
+			if(isset($this->request->data['delete'])) {
+				$this->TeachMe->id = $id;
+				$this->TeachMe->delete();
+				$this->redirect(array('controller' => 'Accounts' ,'action' => 'index'));		
 			}			
 		}
 	}
