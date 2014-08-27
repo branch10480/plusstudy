@@ -13,7 +13,7 @@ class SeminarImagesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'RequestHandler');
 	public $uses = array('SeminarImage');
 
 /**
@@ -79,7 +79,6 @@ class SeminarImagesController extends AppController {
 	 */
 	function uploadImg() {
 		$this->layout = 'ajax';
-		$result = array();
 		// if ($this->RequestHandler->isAjax()) {
 			// 正常処理
 			// if ($this->request->is('post')) {
@@ -87,7 +86,7 @@ class SeminarImagesController extends AppController {
 
 				// 画像ファイルの保存 & ディレクトリの移動
 
-				$up_dir = '../webroot/img/seminar/';				// 保存先の相対パス
+				$up_dir = UP_PATH_SMN;				// 保存先の相対パス
 				$filename = $_FILES['up_img']['name'];
 				$filetype = $_FILES['up_img']['type'];
 				$filesize = $_FILES['up_img']['size'];
@@ -165,7 +164,7 @@ class SeminarImagesController extends AppController {
 				// データベースに格納処理
 				if ($flg) {
 					$data = array(
-						'SeminarImage.account_id' => $this->Session->read('id'),
+						'SeminarImage.account_id' => $this->Session->read('Auth.id'),
 						'SeminarImage.description' => "'" . (isset($_POST['dsc']) ? $_POST['dsc'] : '') . "'",
 						'SeminarImage.ext' => $img_ext,
 						'SeminarImage.width' => $imgW,
@@ -193,6 +192,42 @@ class SeminarImagesController extends AppController {
 		// }
 		$this->set(array(
 			'result' => $returnArr,
+			));
+	}
+
+
+
+/**
+ * getSmnImgs method
+ *
+ * @param string $filename
+ * @return void
+ */
+	public function delSmnImgs( $filename = null ) {
+		if ( empty($filename) ) die('ファイル名が指定されていません');
+		$this->layout = 'ajax';
+		$result = array();
+		if ($this->RequestHandler->isAjax()) {
+
+			// ----- 正常処理 -----
+			if ($this->request->is('post')) {
+				if(!file_exists(UP_PATH_SMN . $filename)) die('ファイルが存在しません | ' . UP_PATH_SMN . $filename);
+
+				//--- ファイル削除処理 ---
+				if (!unlink(UP_PATH_SMN . $filename)) die('ファイル削除失敗');
+
+				//--- DBからセミナー画像情報を削除 ---
+				list($imgId, $ext) = explode('.', $filename);
+				if ($this->SeminarImage->delete($imgId))
+					$result[] = 'true';
+				else
+					$result[] = 'false';
+			}
+		} else {
+			// 不正処理
+		}
+		$this->set(array(
+			'result' => $result,
 			));
 	}
 

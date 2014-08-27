@@ -79,7 +79,7 @@ $(function () {
 			for (dataNo = (page-1)*dispNo; dataNo<data.length; dataNo++) {
 				dispCnt++;
 				if (dispCnt > dispNo) break;
-				outStr += '<li><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /></li>';
+				outStr += '<li><a class="delBtn" onclick="delSmnImg(event)" href="#">×</a><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /><input type="hidden" value="' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" /></li>';
 			}
 
 			// 画像出力
@@ -159,4 +159,30 @@ function getSmnImgs() {
 function optim() {
 	ImgOpt.setImgId('.smnImg');
 	ImgOpt.optimize();
+}
+
+function delSmnImg(event) {
+	// alert($(event.target).parent().find('input').val());
+	if (!window.confirm('この写真を削除します。よろしいですか？')) return;
+
+	//----- 削除処理 -----
+	$.ajax({
+		url: WEB_ROOT + 'SeminarImages/delSmnImgs/' + $(event.target).parent().find('input').val(),
+		type: 'POST',
+		dataType: 'json',
+	})
+	.done(function(data) {
+		console.log(data);
+
+		// 画像データの再取得&表示
+		getSmnImgs();
+
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+
 }
