@@ -7,6 +7,8 @@
 //*****************************************************************************
 $(function () {
 	getSmnImgs();
+
+	//----- モーダルウィンドウ設定処理 -----
 	$.setModalWin('#selectImgsBtn', '#insertImg');
 
 	document.getElementById('selectImgsBtn').addEventListener("click", function () {
@@ -33,33 +35,68 @@ $(function () {
 
 
 	//----- ページング処理登録 -----
-	window.disp = (function( dataArr ){
-
-		if (!!dataArr) return;
+	window.disp = (function(){
 
 		//--- メンバ ---
 		var page = 1;
-		var data = dataArr;
+		var dispNo = 2;					// 1ページに表示する数
+		var data = null;
+		var maxPage = 1;
+		var myImgs = null;
+		var pagingInfo = null;
 
 		//--- 処理 ---
-		return function () {
-			// 処理
+		return function ( dataArr, preOrNxt ) {
+
+			if (arguments[0] !== null) data = dataArr;
+			// 前のページ、もしくは次のページに移る場合の処理
+			if (arguments[1]) {
+				if (preOrNxt === 'pre') {
+					// 前ページに進む処理
+					if (page-1 < 1)
+						page = maxPage;
+					else
+						page--;
+				} else if (preOrNxt === 'nxt') {
+					// 次ページに進む処理
+					if (page+1 > maxPage)
+						page = 1;
+					else
+						page++;
+				}
+			}
+			maxPage = Math.floor((data.length - 1)/dispNo) + 1;
+
+			// 要素をキャッシュ
+			if (myImgs === null) myImgs = $('#myImgs');
+			if (pagingInfo === null) pagingInfo = $('#pagingNav .info');
+
 			var dispCnt = 0;
-			var dataNo = (page-1)*10;					// 表示する配列の添え字
+			var dataNo = 0;					// 表示する配列の添え字
 
 			// モーダルウィンドウ内出力データ整形
 			var outStr = '';
-			for (var i=startNo; i<data.length; dataNo++) {
-				if (dispCnt > 10) break;
-				outStr += '<li><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /></li>';
-
+			for (dataNo = (page-1)*dispNo; dataNo<data.length; dataNo++) {
 				dispCnt++;
+				if (dispCnt > dispNo) break;
+				outStr += '<li><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /></li>';
 			}
 
 			// 画像出力
-			$('#myImgs').html(outStr);
+			myImgs.html(outStr);
+
+			// ページング情報部更新
+			pagingInfo.html(page + ' / ' + maxPage);
 		};
 	})();
+	$('#pagingNav li .pre').click(function(event) {
+		event.preventDefault();
+		disp(null, 'pre');
+	});
+	$('#pagingNav li .nxt').click(function(event) {
+		event.preventDefault();
+		disp(null, 'nxt');
+	});
 
 });
 

@@ -87,7 +87,7 @@ class SeminarImagesController extends AppController {
 
 				// 画像ファイルの保存 & ディレクトリの移動
 
-				$up_dir = '../webroot/img/seminar/';							// 保存先の相対パス
+				$up_dir = '../webroot/img/seminar/';				// 保存先の相対パス
 				$filename = $_FILES['up_img']['name'];
 				$filetype = $_FILES['up_img']['type'];
 				$filesize = $_FILES['up_img']['size'];
@@ -147,7 +147,7 @@ class SeminarImagesController extends AppController {
 							$flg = false;
 						} else {
 							//--- 正常時 ---
-								$lastName = '.' . $lastName;				// 拡張子の前に . を付ける
+							$lastName = '.' . $lastName;				// 拡張子の前に . を付ける
 							$img_ext = "'" . $lastName . "'";
 							$imgW = $fileinfo[0];
 							$imgH = $fileinfo[1];
@@ -171,6 +171,7 @@ class SeminarImagesController extends AppController {
 						'SeminarImage.width' => $imgW,
 						'SeminarImage.height' => $imgH,
 						'SeminarImage.tmp_id' => 0,
+						'SeminarImage.size' => $filesize,
 						);
 					$conditions = array(
 							'SeminarImage.id' => $imgId,
