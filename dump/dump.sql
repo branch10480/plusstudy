@@ -195,6 +195,7 @@ CREATE TABLE `seminar_images` (
   `width` int(11) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
   `tmp_id` int(11) DEFAULT '0',
+  `size` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -205,7 +206,7 @@ CREATE TABLE `seminar_images` (
 
 LOCK TABLES `seminar_images` WRITE;
 /*!40000 ALTER TABLE `seminar_images` DISABLE KEYS */;
-INSERT INTO `seminar_images` VALUES (1,2,'1番目','.jpg',1600,1200,0),(2,2,'2番目','.jpg',1200,675,0),(3,2,'3番目','.jpg',170,127,0),(4,1,'4番目','.jpg',400,331,0);
+INSERT INTO `seminar_images` VALUES (1,2,'1番目','.jpg',1600,1200,0,71948),(2,2,'2番目','.jpg',1200,675,0,235746),(3,2,'3番目','.jpg',170,127,0,4168),(4,1,'4番目','.jpg',400,331,0,36157);
 /*!40000 ALTER TABLE `seminar_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +257,7 @@ CREATE TABLE `teach_mes` (
   `title` varchar(100) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,6 +266,7 @@ CREATE TABLE `teach_mes` (
 
 LOCK TABLES `teach_mes` WRITE;
 /*!40000 ALTER TABLE `teach_mes` DISABLE KEYS */;
+INSERT INTO `teach_mes` VALUES (1,1,'PHPのMySQL設定について','ほげほげ');
 /*!40000 ALTER TABLE `teach_mes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -277,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-20 16:15:28
+-- Dump completed on 2014-08-27 11:11:56
