@@ -13,7 +13,7 @@ class AccountsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Account', 'Seminar', 'Participant');
+	public $uses = array('Account', 'Seminar', 'Participant', 'TeachMe');
 	public $components = array('Paginator', 'MyAuth');
 
 /**
@@ -28,14 +28,15 @@ class AccountsController extends AppController {
 
 /**
  * index method
- *
+ * ログインページ
  * @return void
  */
 	public function index() {
 
+		$this->set('title_for_layout', 'PlusStudy ログイン');
 		$msg = '';
 
-	   	if($this->Session->check('id')) {
+	   	if($this->Session->check('Auth')) {
 			// ログイン済み
 			return $this->redirect(array('action' => 'top'));
 		}
@@ -51,7 +52,7 @@ class AccountsController extends AppController {
 
 				// セッションにIDを格納
 				$account = $this->Account->find('first', $options);
-				$this->Session->write('id', $account['Account']['id']);
+				$this->Session->write('Auth.id', $account['Account']['id']);
 				return $this->redirect(array('action' => 'top'));
 			}
 			else {
@@ -62,7 +63,7 @@ class AccountsController extends AppController {
 				$this->Session->write('backdata', $this->request->data);
 				$backdata = $this->Session->read('backdata');
 				$this->request->data['Account'] = $backdata['Account'];
-				*/	
+				*/
 			}
 		}
 
@@ -71,23 +72,24 @@ class AccountsController extends AppController {
 
 /**
  * top method
- *
+ * トップページ
  * @return void
  */
-	public function top() {	
+	public function top() {
 
+		$this->set('title_for_layout', 'PlusStudy');
 		$msg = '';
 		if($this->request->is('post')) {
 			// ログアウト
-			$this->Session->delete('id');
-			return $this->redirect(array('action' => 'index'));			
+			$this->Session->delete('Auth');
+			return $this->redirect(array('action' => 'index'));
 		}
 
-		if($this->Session->check('id')) {
+		if($this->Session->check('Auth')) {
 			// セッションのIDを元にデータを取得ｓる
 			$options = array(
 				'conditions' => array(
-						'Account.' . $this->Account->primaryKey => $this->Session->read('id')
+						'Account.' . $this->Account->primaryKey => $this->Session->read('Auth.id')
 					)
 			);
 			$account = $this->Account->find('first', $options);
@@ -96,27 +98,34 @@ class AccountsController extends AppController {
 
 		$this->set("msg", $msg);
 
+		// ニーズ一覧を取得
+		$this->set('teachmes', $this->TeachMe->find('all'));
+
 		// セミナー一覧を取得
-		$this->set('seminars', $this->Seminar->find('all'));	
+		$this->set('seminars', $this->Seminar->find('all'));
 	}
 
 /**
  * profile method
  * プロフィールページ
  * @throws NotFoundException
- * @param string $id
+ * @param int $id
  * @return void
  */
 	public function profile($id = null) {
 
 		// idが入っていなかったら自分のidを入れる
 		if($id === null) {
-			$id = $this->Session->read('id');
+			$id = $this->Session->read('Auth.id');
 		}
 
 		// 指定されたIDを元にアカウント情報を取得してViewに渡す
 		$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
-		$this->set('account', $this->Account->find('first', $options));
+		$account = $this->Account->find('first', $options);
+		$this->set('account', $account);
+
+		// ページタイトル設定
+		$this->set('title_for_layout', 'プロフィール - ' . $account['Account']['last_name'] . $account['Account']['first_name']);
 
 		// その人が主催している勉強会の情報を取得する
 		$options = array(
