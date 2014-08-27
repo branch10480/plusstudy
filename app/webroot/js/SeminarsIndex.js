@@ -17,19 +17,35 @@ $(function () {
 	});
 
 	//----- 画像アップロード -----
-	$('#imgUpForm').submit(function(event) {
-		event.preventDefault();
-		var callbacks_ = {
-				'begin'   : function(){},
-				'success' : function(){
-					alert('画像アップロード完了！');
-					getSmnImgs();
-				},
-				'error'   : function(){},
-				'complete': function(){},
-		};
-		ajax_submit($(this), callbacks_);
-	});
+	// $('#imgUpForm').submit(function(event) {
+	// 	event.preventDefault();
+	// 	var callbacks_ = {
+	// 			'begin'   : function(){},
+	// 			'success' : function(){
+	// 				alert('画像アップロード完了！');
+	// 				getSmnImgs();
+	// 			},
+	// 			'error'   : function(){},
+	// 			'complete': function(){},
+	// 	};
+	// 	ajax_submit($(this), callbacks_);
+	// });
+
+
+	// //----- ページング処理 -----
+	// window.disp = (function( dataArr ){
+
+	// 	if (!!dataArr) return;
+
+	// 	//--- メンバ ---
+	// 	var page = 1;
+	// 	var data = dataArr;
+
+	// 	//--- 処理 ---
+
+
+
+	// })();
 
 });
 
@@ -77,6 +93,9 @@ function getSmnImgs() {
 	.done(function(data) {
 		console.log(data);
 
+
+		//----- 出力処理 ------
+
 		// モーダルウィンドウ内出力データ整形
 		var outStr = '';
 		for (var i=0; i<data.length; i++) {
@@ -85,6 +104,8 @@ function getSmnImgs() {
 
 		// 画像出力
 		$('#myImgs').html(outStr);
+
+
 	})
 	.fail(function() {
 		console.log("error");
