@@ -139,10 +139,18 @@ class TeachMesController extends AppController {
  */
 	public function details($id = null) {
 
-		// 指定されたIDを元にニーズ情報を取得してViewに渡す
+		// 指定されたIDを元にニーズ情報を取得
 		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('TeachMe.' . $this->TeachMe->primaryKey => $id));
 		$teachme = $this->TeachMe->find('first', $options);
-		$this->set('teachme', $teachme);
+		
+		// データが見つからなかったらトップページへリダイレクト
+		if(count($teachme) === 0) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+		// データが見つかったらViewへ渡す
+		else {
+			$this->set('teachme', $teachme);			
+		}
 	}
 }
