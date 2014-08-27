@@ -46,6 +46,6 @@ class Participant extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),		
+		)
 	);
 }

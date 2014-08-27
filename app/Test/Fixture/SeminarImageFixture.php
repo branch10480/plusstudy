@@ -15,6 +15,10 @@ class SeminarImageFixture extends CakeTestFixture {
 		'account_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'description' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 100, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'ext' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 8, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'width' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'height' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'tmpid' => array('type' => 'integer', 'null' => true, 'default' => '0', 'unsigned' => false),
+		'size' => array('type' => 'integer', 'null' => true, 'default' => '0', 'unsigned' => false),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
@@ -31,7 +35,11 @@ class SeminarImageFixture extends CakeTestFixture {
 			'id' => 1,
 			'account_id' => 1,
 			'description' => 'Lorem ipsum dolor sit amet',
-			'ext' => 'Lorem '
+			'ext' => 'Lorem ',
+			'width' => 1,
+			'height' => 1,
+			'tmpid' => 1,
+			'size' => 1
 		),
 	);
 

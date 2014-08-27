@@ -32,7 +32,7 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function index() {
-
+		// ページタイトル設定
 		$this->set('title_for_layout', 'PlusStudy ログイン');
 		$msg = '';
 
@@ -76,7 +76,7 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function top() {
-
+		// ページタイトル設定
 		$this->set('title_for_layout', 'PlusStudy');
 		$msg = '';
 		if($this->request->is('post')) {
@@ -154,68 +154,5 @@ class AccountsController extends AppController {
 			$partseminars[] = $this->Seminar->find('first', $options);
 		}
 		$this->set('partseminars', $partseminars);
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-
-		if ($this->request->is('post')) {
-			$this->Account->create();
-			if ($this->Account->save($this->request->data)) {
-				$this->Session->setFlash(__('The account has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The account could not be saved. Please, try again.'));
-			}
-		}
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Account->exists($id)) {
-			throw new NotFoundException(__('Invalid account'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Account->save($this->request->data)) {
-				$this->Session->setFlash(__('The account has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The account could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
-			$this->request->data = $this->Account->find('first', $options);
-		}
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Account->id = $id;
-		if (!$this->Account->exists()) {
-			throw new NotFoundException(__('Invalid account'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Account->delete()) {
-			$this->Session->setFlash(__('The account has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The account could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
 	}
 }

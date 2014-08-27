@@ -194,7 +194,7 @@ CREATE TABLE `seminar_images` (
   `ext` varchar(8) DEFAULT NULL,
   `width` int(11) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
-  `tmp_id` int(11) DEFAULT '0',
+  `tmpid` int(11) DEFAULT '0',
   `size` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -279,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-27 11:11:56
+-- Dump completed on 2014-08-27 18:13:42

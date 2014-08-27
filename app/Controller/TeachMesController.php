@@ -13,6 +13,7 @@ class TeachMesController extends AppController {
  *
  * @var array
  */
+	public $uses = array('TeachMe', 'MeToo');
 	public $components = array('Paginator', 'MyAuth');
 
 /**
@@ -21,8 +22,9 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function beforeFilter() {
+
 			// 認証済みかどうか調べる
-			$this->MyAuth->isAuth($this);
+			$this->MyAuth->isAuth($this);			
 		}
 
 /**
@@ -31,7 +33,8 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function index() {
-		// タイトル設定
+
+		// ページタイトル設定
 		$this->set('title_for_layout', 'ニーズ登録');
 
 		// エラーメッセージ初期化
@@ -92,6 +95,10 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function newTeachmeConfirm() {
+
+		// ページタイトル設定
+		$this->set('title_for_layout', 'ニーズ登録確認');
+
 		// セッションが存在しなかったら(直接飛んできた)作成ページにリダイレクト
 		if (!$this->Session->check('newTeachme')) {
 			$this->redirect(array('action' => 'index'));
@@ -113,6 +120,10 @@ class TeachMesController extends AppController {
  * @return void
  */
 	public function register() {
+
+		// ページタイトル設定
+		$this->set('title_for_layout', 'ニーズ登録完了');
+
 		// セッションがあればデータを登録する
 		if ($this->Session->check('newTeachme')) {
 			
@@ -130,85 +141,72 @@ class TeachMesController extends AppController {
 		}
 	}
 
-
 /**
- * view method
- *
+ * details method
+ * 詳細ページ
  * @throws NotFoundException
- * @param string $id
+ * @param int $id
  * @return void
  */
-	public function view($id = null) {
-		if (!$this->TeachMe->exists($id)) {
-			throw new NotFoundException(__('Invalid teach me'));
-		}
+	public function details($id = null) {
+
+		// 指定されたIDを元にニーズ情報を取得
+		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('TeachMe.' . $this->TeachMe->primaryKey => $id));
-		$this->set('teachMe', $this->TeachMe->find('first', $options));
-	}
+		$teachme = $this->TeachMe->find('first', $options);
+		
+		// データが見つからなかったらトップページへリダイレクト
+		if(count($teachme) === 0) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+		// データが見つかったらViewへ渡す
+		else {
+			$this->set('teachme', $teachme);
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->TeachMe->create();
-			if ($this->TeachMe->save($this->request->data)) {
-				$this->Session->setFlash(__('The teach me has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The teach me could not be saved. Please, try again.'));
+			// タイトル設定
+			$this->set('title_for_layout', 'ニーズ - ' . $teachme['TeachMe']['title']);		
+		}
+
+		// 既に「私も教えて欲しい！」ボタンを押しているかどうかで表示を分ける
+		$alreadyMetoo = false;
+		$options = array(
+			'conditions' => array(
+				'MeToo.teach_me_id' => $id,
+				'MeToo.account_id' => $this->Session->read('Auth.id'),
+			));
+		if($this->MeToo->find('count', $options) === 1) {
+			$alreadyMetoo = true;
+		}
+		$this->set('alreadyMetoo', $alreadyMetoo);
+
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+			// 私も教えて欲しい！ボタンが押された時
+			if(isset($this->request->data['metoo'])) {
+				// me_toosにデータ登録
+				$param = array(
+					'teach_me_id' => $id,
+					'account_id' => $this->Session->read('Auth.id'),
+					);	
+				$this->MeToo->create();
+				$this->MeToo->save($param);
+				$this->redirect(array('action' => 'details',
+								'?' => array('id' => $id)));
 			}
+			// 取り消しボタンが押された時
+			else if(isset($this->request->data['cancel'])) {
+				// me_toosからデータを削除
+				$options = array(
+					'conditions' => array(
+						'MeToo.teach_me_id' => $id,
+						'MeToo.account_id' => $this->Session->read('Auth.id')
+					));
+				$deleteRecord = $this->MeToo->find('first', $options);
+				$this->MeToo->id = $deleteRecord['MeToo']['id'];
+				$this->MeToo->delete();
+				$this->redirect(array('action' => 'details',
+								'?' => array('id' => $id)));
+			}			
 		}
-		$accounts = $this->TeachMe->Account->find('list');
-		$this->set(compact('accounts'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->TeachMe->exists($id)) {
-			throw new NotFoundException(__('Invalid teach me'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->TeachMe->save($this->request->data)) {
-				$this->Session->setFlash(__('The teach me has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The teach me could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('TeachMe.' . $this->TeachMe->primaryKey => $id));
-			$this->request->data = $this->TeachMe->find('first', $options);
-		}
-		$accounts = $this->TeachMe->Account->find('list');
-		$this->set(compact('accounts'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->TeachMe->id = $id;
-		if (!$this->TeachMe->exists()) {
-			throw new NotFoundException(__('Invalid teach me'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->TeachMe->delete()) {
-			$this->Session->setFlash(__('The teach me has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The teach me could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
 	}
 }

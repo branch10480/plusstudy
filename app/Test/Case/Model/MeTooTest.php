@@ -14,14 +14,14 @@ class MeTooTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.me_too',
+		'app.teach_me',
 		'app.account',
 		'app.comment',
 		'app.question',
 		'app.seminar',
-		'app.seminar_images',
-		'app.teach_me',
-		'app.participant',
-		'app.seminar_image'
+		'app.seminar_image',
+		'app.tmp',
+		'app.participant'
 	);
 
 /**
