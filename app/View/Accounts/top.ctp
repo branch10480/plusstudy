@@ -27,7 +27,12 @@
 
 	<?php foreach($teachmes as $teachme): ?>
 		
-		<p><b><?php echo $teachme['TeachMe']['title']; ?></b></p>
+		<?php echo $this->Html->link($teachme['TeachMe']['title'], array(
+			'controller' => 'TeachMes' ,
+		 	'action' => 'details', 
+		 	'?' => array('id' => $teachme['TeachMe']['id'])
+		 	)); ?>
+		<br>
 
 	<?php endforeach; ?>
 </div>
