@@ -33,7 +33,7 @@ class CommentFixture extends CakeTestFixture {
 			'question_id' => 1,
 			'content' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
 			'account_id' => 1,
-			'timestamp' => 1409130596
+			'timestamp' => 1409134548
 		),
 	);
 

@@ -18,7 +18,6 @@ class AccountTest extends CakeTestCase {
 		'app.question',
 		'app.seminar',
 		'app.seminar_image',
-		'app.tmp',
 		'app.teach_me',
 		'app.me_too',
 		'app.participant'
