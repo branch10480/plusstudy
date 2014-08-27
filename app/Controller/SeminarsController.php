@@ -207,7 +207,7 @@ class SeminarsController extends AppController {
 				// 'rsvLimitDate' => $rsvLimitDate,
 				'dsc' => $dsc,
 				'smnImgId' => $smnImgId,
-				'accId' => $this->Session->read('id'),
+				'accId' => $this->Session->read('Auth.id'),
 			));
 	}
 

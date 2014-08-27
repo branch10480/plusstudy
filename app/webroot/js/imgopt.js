@@ -34,6 +34,7 @@ function getImgOpt() {
 			_imgElms.each(function () {
 
 				var parent = $(this).parent();
+				parent.hide();
 				var imgH = (this.height === null || this.height === 0) ? +$(this).height() : this.height;
 				var imgW = (this.width === null || this.width === 0) ? +$(this).width() : this.width;
 				var pH = +parent.height();
@@ -91,6 +92,9 @@ function getImgOpt() {
 					'top': newTop,
 					'left': newLeft
 				});
+
+				// 表示
+				parent.fadeIn(200);
 			});
 		};
 

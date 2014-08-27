@@ -11,14 +11,21 @@
 		), null, array('inline' => false));
 ?>
 
-<!-- 新規会員登録 -->
+<!-- 新規勉強会登録 -->
 <input type="hidden" id="accId" value="<?php echo $accId; ?>" />
 <div class="modal">
 	<form method="post" action="<?php echo ROOT_URL . 'SeminarImages/uploadImg/'; ?>" name="imgUpForm" id="imgUpForm">
+		<h3>現在の使用容量</h3>
+		<p id="storage">0MB / 50MB</p>
 		<ul id="myImgs">
 			<li><img onclick="selectImg(event)" src="http://amd.c.yimg.jp/im_siggf_VHByhUvs8k8G4G3_o44w---x150-y101-q90/amd/20140812-00000032-xinhua-000-0-thumb.jpg"></li>
 			<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=jf2irBgXyLFexHr1.eni1O.zPtXJQbcZaBker.FoyvieXvV8VlskGcdtIzFF0S8BovijwZ0is_YmJS5lkL6GsoJ_8E9D2ENxODejamdWnyQ8e4nP93JK6yWAobqFOrst5Kg-&sig=12tnbdk68&x=102&y=102"></li>
 			<li><img onclick="selectImg(event)" src="http://msp.c.yimg.jp/yjimage?q=EjNy.XcXyLEmAWZ4Kh7F1aPbFGVhy4mH7pOLh90Gbin0M9Ga82N1tirLBbpfKewvSfQgbv3mD04sj3eBqbvX7LXsd_5kJ_DmGN4d869rY4eFyra.zO4H4GuZeKAfZRL0a0M-&sig=12t3gqrm1&x=102&y=102"></li>
+		</ul>
+		<ul id="pagingNav">
+			<li><a class="pre" href="">&laquo; 前へ</a></li>
+			<li class="info">1/1</li>
+			<li><a class="nxt" href="">次へ &raquo;</a></li>
 		</ul>
 		<?php echo $this->Form->file('imgFile', array(
 			'enctype' => 'multipart/form-data',
@@ -34,7 +41,8 @@
 <dl>
 	<dt>セミナーカバー画像</dt>
 	<dd><a href="#" id="selectImgsBtn">セミナーカバー画像を選ぶ</a></dd>
-	<dd id="coverImg"><?php echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
+	<dd><a href="#" id="smnImgReset">画像をリセット</a></dd>
+	<dd id="coverImg"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
 	<dt>セミナー名称</dt>
 	<dd><?php echo $this->Form->text('Seminar.name'); ?></dd>
 	<dd class="errMsg"><?php echo $eSmnName; ?></dd>
