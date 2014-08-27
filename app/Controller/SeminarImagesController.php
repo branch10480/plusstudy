@@ -117,7 +117,7 @@ class SeminarImagesController extends AppController {
 					// 画像データを仮登録 - 後に情報を追加する
 					$data = array(
 						'SeminarImage' => array(
-							'tmp_id' => $rand,
+							'tmpid' => $rand,
 							),
 						);
 					$this->SeminarImage->saveAll($data);
@@ -126,7 +126,7 @@ class SeminarImagesController extends AppController {
 					// 乱数をもとに、post_id を取得
 					$params = array(
 						'conditions' => array(
-							'SeminarImage.tmp_id' => $rand
+							'SeminarImage.tmpid' => $rand
 							),
 						'fields' => array(
 							'SeminarImage.id'
@@ -179,7 +179,7 @@ class SeminarImagesController extends AppController {
 							'SeminarImage.ext' => $img_ext,
 							'SeminarImage.width' => $imgW,
 							'SeminarImage.height' => $imgH,
-							'SeminarImage.tmp_id' => 0,
+							'SeminarImage.tmpid' => 0,
 							'SeminarImage.size' => $filesize,
 							);
 						$conditions = array(

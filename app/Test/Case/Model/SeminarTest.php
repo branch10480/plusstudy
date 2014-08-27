@@ -19,8 +19,9 @@ class SeminarTest extends CakeTestCase {
 		'app.comment',
 		'app.question',
 		'app.me_too',
+		'app.teach_me',
 		'app.participant',
-		'app.teach_me'
+		'app.tmp'
 	);
 
 /**

@@ -11,13 +11,12 @@ class ParticipantFixture extends CakeTestFixture {
  * @var array
  */
 	public $fields = array(
-		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'seminar_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'account_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'seminar_id' => array('type' => 'integer', 'null' => false, 'default' => '0', 'unsigned' => false, 'key' => 'primary'),
+		'account_id' => array('type' => 'integer', 'null' => false, 'default' => '0', 'unsigned' => false, 'key' => 'primary'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+			'PRIMARY' => array('column' => array('seminar_id', 'account_id'), 'unique' => 1)
 		),
-		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 
 /**
@@ -27,7 +26,6 @@ class ParticipantFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id' => 1,
 			'seminar_id' => 1,
 			'account_id' => 1
 		),

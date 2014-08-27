@@ -19,6 +19,7 @@ class TeachMeTest extends CakeTestCase {
 		'app.question',
 		'app.seminar',
 		'app.seminar_image',
+		'app.tmp',
 		'app.participant',
 		'app.me_too'
 	);

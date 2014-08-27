@@ -4,7 +4,6 @@ App::uses('AppModel', 'Model');
  * SeminarImage Model
  *
  * @property Account $Account
- * @property Tmp $Tmp
  * @property Seminar $Seminar
  */
 class SeminarImage extends AppModel {
@@ -21,13 +20,6 @@ class SeminarImage extends AppModel {
 		'Account' => array(
 			'className' => 'Account',
 			'foreignKey' => 'account_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Tmp' => array(
-			'className' => 'Tmp',
-			'foreignKey' => 'tmp_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

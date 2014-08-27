@@ -17,7 +17,8 @@ class SeminarImageFixture extends CakeTestFixture {
 		'ext' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 8, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'width' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'height' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'tmp_id' => array('type' => 'integer', 'null' => true, 'default' => '0', 'unsigned' => false),
+		'tmpid' => array('type' => 'integer', 'null' => true, 'default' => '0', 'unsigned' => false),
+		'size' => array('type' => 'integer', 'null' => true, 'default' => '0', 'unsigned' => false),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
@@ -37,7 +38,8 @@ class SeminarImageFixture extends CakeTestFixture {
 			'ext' => 'Lorem ',
 			'width' => 1,
 			'height' => 1,
-			'tmp_id' => 1
+			'tmpid' => 1,
+			'size' => 1
 		),
 	);
 
