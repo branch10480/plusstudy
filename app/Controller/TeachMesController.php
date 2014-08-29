@@ -24,7 +24,7 @@ class TeachMesController extends AppController {
 	public function beforeFilter() {
 
 			// 認証済みかどうか調べる
-			$this->MyAuth->isAuth($this);			
+			$this->MyAuth->isAuth($this);
 		}
 
 /**
@@ -39,7 +39,7 @@ class TeachMesController extends AppController {
 
 		// エラーメッセージ初期化
 		$eTitle = '';
-		$eContent = '';	
+		$eContent = '';
 
 		// 確認画面へ進むボタンが押された時
 		if ($this->request->is('post')) {
@@ -80,13 +80,13 @@ class TeachMesController extends AppController {
 		// セッションにデータが保存されている場合、フォームに自動入力する
 		else if ($this->Session->check('newTeachme')) {
 			$this->request->data = $this->Session->read('newTeachme');
-		}			
+		}
 
 		// Viewに値をセット
 		$this->set(array(
 			'eTitle' => $eTitle,
 			'eContent' => $eContent
-			));		
+			));
 	}
 
 /**
@@ -112,7 +112,7 @@ class TeachMesController extends AppController {
 			'title' => $newTeachme['title'],
 			'content' => $newTeachme['content']
 			));
-	}	
+	}
 
 /**
  * register method
@@ -126,7 +126,7 @@ class TeachMesController extends AppController {
 
 		// セッションがあればデータを登録する
 		if ($this->Session->check('newTeachme')) {
-			
+
 			$newTeachme = $this->Session->read('newTeachme');
 			$newTeachme = $newTeachme['TeachMe'];
 			$param = array(
@@ -152,7 +152,7 @@ class TeachMesController extends AppController {
 		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('TeachMe.' . $this->TeachMe->primaryKey => $id));
 		$teachme = $this->TeachMe->find('first', $options);
-		
+
 		// データが見つからなかったらトップページへリダイレクト
 		if(count($teachme) === 0) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
@@ -184,7 +184,7 @@ class TeachMesController extends AppController {
 				$param = array(
 					'teach_me_id' => $id,
 					'account_id' => $this->Session->read('Auth.id'),
-					);	
+					);
 				$this->MeToo->create();
 				$this->MeToo->save($param);
 				$this->redirect(array('action' => 'details',
@@ -208,8 +208,8 @@ class TeachMesController extends AppController {
 			if(isset($this->request->data['delete'])) {
 				$this->TeachMe->id = $id;
 				$this->TeachMe->delete();
-				$this->redirect(array('controller' => 'Accounts' ,'action' => 'index'));		
-			}			
+				$this->redirect(array('controller' => 'Accounts' ,'action' => 'index'));
+			}
 		}
 	}
 }

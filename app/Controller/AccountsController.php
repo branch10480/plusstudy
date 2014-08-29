@@ -86,14 +86,14 @@ class AccountsController extends AppController {
 		}
 
 		if($this->Session->check('Auth')) {
-			// セッションのIDを元にデータを取得ｓる
+			// セッションのIDを元にデータを取得する
 			$options = array(
 				'conditions' => array(
 						'Account.' . $this->Account->primaryKey => $this->Session->read('Auth.id')
 					)
 			);
 			$account = $this->Account->find('first', $options);
-			$msg = 'こんにちは、' . $account['Account']['last_name'] . $account['Account']['first_name'] . 'さん　';
+			$msg = 'こんにちは、' . $account['Account']['last_name'] . $account['Account']['first_name'] . 'さん！';
 		}
 
 		$this->set("msg", $msg);
@@ -113,7 +113,7 @@ class AccountsController extends AppController {
 	public function profile() {
 
 		// 指定されたIDを元にアカウント情報を取得
-		$id = $this->params['url']['id'];	
+		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
 		$account = $this->Account->find('first', $options);
 
