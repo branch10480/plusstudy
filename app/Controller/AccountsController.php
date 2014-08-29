@@ -166,6 +166,27 @@ class AccountsController extends AppController {
 	 */
 	public function startNewAcc() {
 		$this->set('title_for_layout', '新規アカウント登録');
+
+		$msg = '';
+
+		if ($this->referer() === ROOT_URL . $this->name . '/' . $this->action ||
+			  $this->referer() === ROOT_URL . $this->name . '/' . $this->action . '/') {
+
+			if (empty($this->request->data['Accounts']['mailaddress']))
+				$msg = 'メールアドレスが入力されていません';
+			else if (!preg_match('/^.+@.+$/', $this->request->data['Accounts']['mailaddress']))
+				$msg = '正しいメールアドレスを入力してください';
+			else {
+				//--- 正しくメールアドレスが入力されていた場合 ---
+				$this->Session->write('NewAcc.mailaddress', $this->request->data['Accounts']['mailaddress']);
+				$this->redirect(array('action' => 'sentMail'));
+			}
+
+		}
+
+		$this->set(array(
+			'msg' => $msg,
+		));
 	}
 
 
@@ -178,6 +199,13 @@ class AccountsController extends AppController {
 	 */
 	public function sentMail() {
 		$this->set('title_for_layout', '新規アカウント登録 | メールアドレス送信完了');
+
+		if ($this->Session->check('NewAcc.mailaddress')) {
+			echo 'メールアドレス送信完了';
+		}
+
+		$this->Session->delete('NewAcc.mailaddress');
+
 	}
 
 
