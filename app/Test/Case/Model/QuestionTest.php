@@ -19,8 +19,8 @@ class QuestionTest extends CakeTestCase {
 		'app.account',
 		'app.comment',
 		'app.me_too',
-		'app.participant',
-		'app.teach_me'
+		'app.teach_me',
+		'app.participant'
 	);
 
 /**

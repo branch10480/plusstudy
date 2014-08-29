@@ -19,8 +19,8 @@ class CommentTest extends CakeTestCase {
 		'app.seminar_image',
 		'app.account',
 		'app.me_too',
-		'app.participant',
-		'app.teach_me'
+		'app.teach_me',
+		'app.participant'
 	);
 
 /**

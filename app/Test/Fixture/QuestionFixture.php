@@ -34,7 +34,7 @@ class QuestionFixture extends CakeTestFixture {
 			'seminar_id' => 1,
 			'title' => 'Lorem ipsum dolor sit amet',
 			'content' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'timestamp' => 1409134549,
+			'timestamp' => 1409309080,
 			'account_id' => 1
 		),
 	);
