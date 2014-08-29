@@ -155,4 +155,31 @@ class AccountsController extends AppController {
 		}
 		$this->set('partseminars', $partseminars);
 	}
+
+
+	/**
+	 * startNewAcc method
+	 * 新規アカウント登録メールアドレス入力ページ
+	 * @throws NotFoundException
+	 * @param int $id
+	 * @return void
+	 */
+	public function startNewAcc() {
+		$this->set('title_for_layout', '新規アカウント登録');
+	}
+
+
+	/**
+	 * sentMail method
+	 * 登録メールアドレス確認メール送信完了ページ
+	 * @throws NotFoundException
+	 * @param int $id
+	 * @return void
+	 */
+	public function sentMail() {
+		$this->set('title_for_layout', '新規アカウント登録 | メールアドレス送信完了');
+	}
+
+
+
 }
