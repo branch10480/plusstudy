@@ -60,7 +60,11 @@
 
 	<?php foreach($myseminars as $myseminar): ?>
 		
-		<p><b><?php echo $myseminar['Seminar']['name']; ?></b></p>
+		<p><?php echo $this->Html->link($myseminar['Seminar']['name'], array(
+			'controller' => 'Seminars' ,
+		 	'action' => 'details', 
+		 	'?' => array('id' => $myseminar['Seminar']['id'])
+		 	)); ?></p>
 
 		<p><?php echo '　主催者：' . $myseminar['Account']['last_name'] . $myseminar['Account']['first_name']; ?></p>		
 		
@@ -73,6 +77,8 @@
 	<?php endforeach; ?>
 </div>
 
+<br>
+
 <div>
 	<b><?php echo __('参加予定の勉強会'); ?></b>
 	<?php if(count($partseminars) === 0): ?> 
@@ -82,7 +88,11 @@
 
 	<?php foreach($partseminars as $partseminar): ?>
 	
-		<p><b><?php echo $partseminar['Seminar']['name']; ?></b></p>
+		<p><?php echo $this->Html->link($partseminar['Seminar']['name'], array(
+			'controller' => 'Seminars' ,
+		 	'action' => 'details', 
+		 	'?' => array('id' => $partseminar['Seminar']['id'])
+		 	)); ?></p>
 	
 		<p><?php echo '　主催者：' . $partseminar['Account']['last_name'] . $partseminar['Account']['first_name']; ?></p>
 	

@@ -86,14 +86,14 @@ class AccountsController extends AppController {
 		}
 
 		if($this->Session->check('Auth')) {
-			// セッションのIDを元にデータを取得ｓる
+			// セッションのIDを元にデータを取得する
 			$options = array(
 				'conditions' => array(
 						'Account.' . $this->Account->primaryKey => $this->Session->read('Auth.id')
 					)
 			);
 			$account = $this->Account->find('first', $options);
-			$msg = 'こんにちは、' . $account['Account']['last_name'] . $account['Account']['first_name'] . 'さん　';
+			$msg = 'こんにちは、' . $account['Account']['last_name'] . $account['Account']['first_name'] . 'さん！';
 		}
 
 		$this->set("msg", $msg);
@@ -108,20 +108,21 @@ class AccountsController extends AppController {
 /**
  * profile method
  * プロフィールページ
- * @throws NotFoundException
- * @param int $id
  * @return void
  */
-	public function profile($id = null) {
+	public function profile() {
 
-		// idが入っていなかったら自分のidを入れる
-		if($id === null) {
-			$id = $this->Session->read('Auth.id');
-		}
-
-		// 指定されたIDを元にアカウント情報を取得してViewに渡す
+		// 指定されたIDを元にアカウント情報を取得
+		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
 		$account = $this->Account->find('first', $options);
+
+		// データが見つからなかったらトップページへリダイレクト
+		if(count($account) === 0) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
+		// データをViewに渡す
 		$this->set('account', $account);
 
 		// ページタイトル設定

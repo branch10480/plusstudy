@@ -8,7 +8,10 @@
 <div>
 	<?php echo $msg ?>
 
-	<?php echo $this->Html->link(__('マイページ'), array('action' => 'profile')); ?>
+	<?php echo $this->Html->link(__('マイページ'), array(
+		'action' => 'profile',
+		'?' => array('id' => $this->Session->read('Auth.id'))
+		)); ?>
 	<?php echo $this->Html->link(__('ニーズ登録'), array('controller' => 'TeachMes', 'action' => 'index')); ?>	
 </div>
 
@@ -22,7 +25,6 @@
 	<h2><?php echo __('今求められている勉強会'); ?></h2>
 	<?php if(count($teachmes) === 0): ?> 
 		<p><?php echo '今求められている勉強会はありません'; ?></p>
-		<hr>
 	<?php endif; ?>	
 
 	<?php foreach($teachmes as $teachme): ?>
@@ -42,14 +44,18 @@
 
 <div>
 	<h2><?php echo __('参加者募集中の勉強会'); ?></h2>
+
 	<?php if(count($seminars) === 0): ?> 
 		<p><?php echo '現在予定されている勉強会はありません'; ?></p>
-		<hr>
 	<?php endif; ?>
 
 	<?php foreach($seminars as $seminar): ?>
 		
-		<p><b><?php echo $seminar['Seminar']['name']; ?></b></p>
+		<p><?php echo $this->Html->link($seminar['Seminar']['name'], array(
+			'controller' => 'Seminars' ,
+		 	'action' => 'details', 
+		 	'?' => array('id' => $seminar['Seminar']['id'])
+		 	)); ?></p>
 
 		<p><?php echo '　主催者：' . $seminar['Account']['last_name'] . $seminar['Account']['first_name']; ?></p>		
 		
