@@ -298,11 +298,9 @@ class SeminarsController extends AppController {
 /**
  * details method
  * 詳細ページ
- * @throws NotFoundException
- * @param int $id
  * @return void
  */
-	public function details($id = null) {
+	public function details() {
 		// 指定されたIDを元に勉強会情報を取得
 		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $id));
@@ -312,12 +310,11 @@ class SeminarsController extends AppController {
 		if(count($seminar) === 0) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
-		// データが見つかったらViewへ渡す
-		else {
-			$this->set('seminar', $seminar);
 
-			// タイトル設定
-			$this->set('title_for_layout', '勉強会 - ' . $seminar['Seminar']['name']);		
-		}
+		// データをViewへ渡す
+		$this->set('seminar', $seminar);
+
+		// タイトル設定
+		$this->set('title_for_layout', '勉強会 - ' . $seminar['Seminar']['name']);
 	}	
 }

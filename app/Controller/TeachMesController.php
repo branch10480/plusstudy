@@ -144,11 +144,9 @@ class TeachMesController extends AppController {
 /**
  * details method
  * 詳細ページ
- * @throws NotFoundException
- * @param int $id
  * @return void
  */
-	public function details($id = null) {
+	public function details() {
 
 		// 指定されたIDを元にニーズ情報を取得
 		$id = $this->params['url']['id'];
@@ -159,13 +157,12 @@ class TeachMesController extends AppController {
 		if(count($teachme) === 0) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
-		// データが見つかったらViewへ渡す
-		else {
-			$this->set('teachme', $teachme);
 
-			// タイトル設定
-			$this->set('title_for_layout', 'ニーズ - ' . $teachme['TeachMe']['title']);		
-		}
+		// データをViewへ渡す
+		$this->set('teachme', $teachme);
+
+		// タイトル設定
+		$this->set('title_for_layout', 'ニーズ - ' . $teachme['TeachMe']['title']);
 
 		// 既に「私も教えて欲しい！」ボタンを押しているかどうかで表示を分ける
 		$alreadyMetoo = false;
