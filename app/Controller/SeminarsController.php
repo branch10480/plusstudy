@@ -319,4 +319,12 @@ class SeminarsController extends AppController {
 
 		//
 	}
+
+/**
+ * join method
+ * 参加確認ページ
+ * @return void
+ */
+	public function join() {
+	}
 }
