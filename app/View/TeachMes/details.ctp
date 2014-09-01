@@ -1,5 +1,3 @@
-<h1>ニーズ詳細</h1>
-
 <div>
 	<p><b>ニーズタイトル</b><p>
 	<p><?php echo $teachme['TeachMe']['title'] ?></p>

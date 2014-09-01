@@ -280,7 +280,7 @@ class SeminarsController extends AppController {
 						'name' => $rcvData['name'],
 						'reservation_limit' => $rsvLim,
 						'place' => $rcvData['place'],
-						'account_id' => +$this->Session->read('id'),
+						'account_id' => +$this->Session->read('Auth.id'),
 						'upper_limit' => +$rcvData['upper_limit'],
 						'start' => $start,
 						'end' => $end,
@@ -305,7 +305,7 @@ class SeminarsController extends AppController {
 		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $id));
 		$seminar = $this->Seminar->find('first', $options);
-		
+
 		// データが見つからなかったらトップページへリダイレクト
 		if(count($seminar) === 0) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
@@ -316,5 +316,7 @@ class SeminarsController extends AppController {
 
 		// タイトル設定
 		$this->set('title_for_layout', '勉強会 - ' . $seminar['Seminar']['name']);
-	}	
+
+		//
+	}
 }
