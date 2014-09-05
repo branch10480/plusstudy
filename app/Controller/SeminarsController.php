@@ -315,7 +315,7 @@ class SeminarsController extends AppController {
 		$this->set('seminar', $seminar);
 
 		// タイトル設定
-		$this->set('title_for_layout', '勉強会 - ' . $seminar['Seminar']['name']);
+		$this->set('title_for_layout', $seminar['Seminar']['name']);
 
 		// エラーメッセージ初期化
 		$eTitle = '';

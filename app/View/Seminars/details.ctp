@@ -25,6 +25,10 @@
 
 <div>
 	<p><b>勉強会に対する質問</b></p>
+	<?php if(count($seminar['Question']) === 0): ?>
+		<p><?php echo 'この勉強会に対する質問はありません'; ?></p>
+	<?php endif; ?>
+
 	<?php foreach($seminar['Question'] as $question): ?>
 		<p><?php echo $this->Html->link($question['title'], array(
 			'controller' => 'Questions' ,

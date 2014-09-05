@@ -162,7 +162,7 @@ class TeachMesController extends AppController {
 		$this->set('teachme', $teachme);
 
 		// タイトル設定
-		$this->set('title_for_layout', 'ニーズ - ' . $teachme['TeachMe']['title']);
+		$this->set('title_for_layout', $teachme['TeachMe']['title']);
 
 		// 既に「私も教えて欲しい！」ボタンを押しているかどうかで表示を分ける
 		$alreadyMetoo = false;
