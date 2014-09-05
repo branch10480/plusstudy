@@ -34,7 +34,6 @@
 	<?php endforeach; ?>
 </div>
 
-
 <br>
 <?php echo $this->Html->link(__('戻る'), array('controller' => 'Accounts', 'action' => 'index')); ?>
 <?php echo $this->Html->link(__('参加する'), array('action' => 'join')); ?>
@@ -46,7 +45,12 @@
 	<p><b>質問投稿フォーム</b></p>
 	<p>質問タイトル</p>
 	<p><?php echo $this->Form->text('title'); ?></p>
+	<p class="errMsg"><?php echo $eTitle ?></p>
 	<p>内容</p>
 	<p><?php echo $this->Form->textarea('content'); ?></p>
+	<p class="errMsg"><?php echo $eContent ?></p>
+	<?php echo $this->Form->submit('質問を投稿する', array(
+		'name' => 'question')); ?>
 </div>
 <?php echo $this->Form->end(); ?>
+<hr>

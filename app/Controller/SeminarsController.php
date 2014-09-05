@@ -14,7 +14,7 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'MyAuth');
-	public $uses = array('Seminar');
+	public $uses = array('Seminar', 'Question');
 
 
 
@@ -317,7 +317,55 @@ class SeminarsController extends AppController {
 		// タイトル設定
 		$this->set('title_for_layout', '勉強会 - ' . $seminar['Seminar']['name']);
 
-		//
+		// エラーメッセージ初期化
+		$eTitle = '';
+		$eContent = '';
+
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+			// 質問投稿ボタンが押された時
+			if(isset($this->request->data['question'])) {
+				//--バリデーションチェック--
+				$validateResult = true;
+				// タイトル
+				$title   = $this->request->data('Question.title');
+				if ($title === '') {
+					$eTitle = '何も入力されていません';
+					$validateResult = false;
+				} else if (!preg_match('/.{1,20}/', $title)) {
+					$eTitle = '入力された文字列が長すぎます';
+					$validateResult = false;
+				}
+				// 内容
+				$content = $this->request->data('Question.content');
+				if ($content === '') {
+					$eContent = '何も入力されていません';
+					$validateResult = false;
+				} else if (!preg_match('/.{1,20}/', $content)) {
+					$eContent = '入力された文字列が長すぎます';
+					$validateResult = false;
+				}
+
+				// questionsにデータ登録
+				if($validateResult) {
+					$param = array(
+						'seminar_id' => $id,
+						'title' => $title,
+						'content' => $content,
+						'account_id' => $this->Session->read('Auth.id'),
+						);
+					$this->Question->create();
+					$this->Question->save($param);
+					$this->redirect(array('action' => 'details',
+									'?' => array('id' => $id)));
+				}
+			}
+		}
+		// Viewにデータを渡す
+		$this->set(array(
+				'eTitle' => $eTitle,
+				'eContent' => $eContent,
+				));
 	}
 
 /**
