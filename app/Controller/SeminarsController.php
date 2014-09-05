@@ -354,7 +354,7 @@ class SeminarsController extends AppController {
 						'content' => $content,
 						'account_id' => $this->Session->read('Auth.id'),
 						);
-					$this->Question->create();
+					$this->Comment->create(false);
 					$this->Question->save($param);
 					$this->redirect(array('action' => 'details',
 									'?' => array('id' => $id)));

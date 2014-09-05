@@ -62,7 +62,7 @@ class QuestionsController extends AppController {
 						'content' => $content,
 						'account_id' => $this->Session->read('Auth.id'),
 						);
-					$this->Comment->create();
+					$this->Comment->create(false);
 					$this->Comment->save($param);
 					$this->redirect(array('action' => 'index',
 									'?' => array('id' => $id)));
