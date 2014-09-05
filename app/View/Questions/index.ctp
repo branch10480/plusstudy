@@ -42,3 +42,10 @@
 </div>
 <?php echo $this->Form->end(); ?>
 <hr>
+
+<p><?php echo $this->Html->link('勉強会の詳細へ戻る', array(
+	'controller' => 'Seminars' ,
+ 	'action' => 'details',
+ 	'?' => array('id' => $question['Seminar']['id'])
+ 	)); ?></p>
+<br>
