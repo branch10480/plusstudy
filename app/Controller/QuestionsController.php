@@ -36,5 +36,41 @@ class QuestionsController extends AppController {
 		$options = array('conditions' => array('Comment.question_id' => $id));
 		$comments = $this->Comment->find('all', $options);
 		$this->set('comments', $comments);
+
+		// エラーメッセージ初期化
+		$eContent = '';
+
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+			// コメントボタンが押された時
+			if(isset($this->request->data['comment'])) {
+				//--バリデーションチェック--
+				$validateResult = true;
+				// 内容
+				$content = $this->request->data('Comment.content');
+				if ($content === '') {
+					$eContent = '何も入力されていません';
+					$validateResult = false;
+				} else if (!preg_match('/.{1,20}/', $content)) {
+					$eContent = '入力された文字列が長すぎます';
+					$validateResult = false;
+				}
+				// questionsにデータ登録
+				if($validateResult) {
+					$param = array(
+						'question_id' => $id,
+						'content' => $content,
+						'account_id' => $this->Session->read('Auth.id'),
+						);
+					$this->Comment->create();
+					$this->Comment->save($param);
+					$this->redirect(array('action' => 'index',
+									'?' => array('id' => $id)));
+				}
+			}
+		}
+		// Viewにデータを渡す
+		$this->set('eContent', $eContent);
+
 	}
 }
