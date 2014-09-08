@@ -14,6 +14,7 @@ class QuestionsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	public $uses = array('Question', 'Comment');
 
 /**
  * index method
@@ -21,90 +22,55 @@ class QuestionsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Question->recursive = 0;
-		$this->set('questions', $this->Paginator->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Question->exists($id)) {
-			throw new NotFoundException(__('Invalid question'));
-		}
+		// 指定されたIDを元に質問情報を取得
+		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
-		$this->set('question', $this->Question->find('first', $options));
-	}
+		$question = $this->Question->find('first', $options);
+		$this->set('question', $question);
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Question->create();
-			if ($this->Question->save($this->request->data)) {
-				$this->Session->setFlash(__('The question has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The question could not be saved. Please, try again.'));
+		// タイトル設定
+		// 勉強会名 - 質問タイトル
+		$this->set('title_for_layout', $question['Seminar']['name'] . ' - ' . $question['Question']['title']);
+
+		// コメント情報を取得
+		$options = array('conditions' => array('Comment.question_id' => $id));
+		$comments = $this->Comment->find('all', $options);
+		$this->set('comments', $comments);
+
+		// エラーメッセージ初期化
+		$eContent = '';
+
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+			// コメントボタンが押された時
+			if(isset($this->request->data['comment'])) {
+				//--バリデーションチェック--
+				$validateResult = true;
+				// 内容
+				$content = $this->request->data('Comment.content');
+				if ($content === '') {
+					$eContent = '何も入力されていません';
+					$validateResult = false;
+				} else if (!preg_match('/.{1,20}/', $content)) {
+					$eContent = '入力された文字列が長すぎます';
+					$validateResult = false;
+				}
+				// questionsにデータ登録
+				if($validateResult) {
+					$param = array(
+						'question_id' => $id,
+						'content' => $content,
+						'account_id' => $this->Session->read('Auth.id'),
+						);
+					$this->Comment->create(false);
+					$this->Comment->save($param);
+					$this->redirect(array('action' => 'index',
+									'?' => array('id' => $id)));
+				}
 			}
 		}
-		$seminars = $this->Question->Seminar->find('list');
-		$accounts = $this->Question->Account->find('list');
-		$this->set(compact('seminars', 'accounts'));
-	}
+		// Viewにデータを渡す
+		$this->set('eContent', $eContent);
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Question->exists($id)) {
-			throw new NotFoundException(__('Invalid question'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Question->save($this->request->data)) {
-				$this->Session->setFlash(__('The question has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The question could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
-			$this->request->data = $this->Question->find('first', $options);
-		}
-		$seminars = $this->Question->Seminar->find('list');
-		$accounts = $this->Question->Account->find('list');
-		$this->set(compact('seminars', 'accounts'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Question->id = $id;
-		if (!$this->Question->exists()) {
-			throw new NotFoundException(__('Invalid question'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Question->delete()) {
-			$this->Session->setFlash(__('The question has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The question could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
 	}
 }
