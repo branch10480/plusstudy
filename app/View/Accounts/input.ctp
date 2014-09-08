@@ -1,4 +1,4 @@
-<?php echo $this->Form->create('Accounts'); ?>
+<?php echo $this->Form->create('Account'); ?>
 <dl>
 	<dt>登録用メールアドレス（非公開）</dt>
 	<dd><?php echo $this->Form->text('mailaddress', array('readonly' => 'true')); ?></dd>
