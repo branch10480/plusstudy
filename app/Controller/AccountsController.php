@@ -13,7 +13,7 @@ class AccountsController extends AppController {
  *
  * @var array
  */
-	public $uses = array('Account', 'Seminar', 'Participant', 'TeachMe');
+	public $uses = array('Account', 'Seminar', 'Participant', 'TeachMe', 'NewaccTmp');
 	public $components = array('Paginator', 'MyAuth');
 
 /**
@@ -195,17 +195,246 @@ class AccountsController extends AppController {
 	 * sentMail method
 	 * 登録メールアドレス確認メール送信完了ページ
 	 * @throws NotFoundException
-	 * @param int $id
 	 * @return void
 	 */
 	public function sentMail() {
 		$this->set('title_for_layout', '新規アカウント登録 | メールアドレス送信完了');
 
-		if ($this->Session->check('NewAcc.mailaddress')) {
+		if (!$this->Session->check('NewAcc.mailaddress')) {
 			echo 'メールアドレス送信完了';
 		}
 
-		$this->Session->delete('NewAcc.mailaddress');
+		// 仮登録ワンタイムパスワード
+		$passwd = mt_rand(0, getrandmax());
+
+		//----- 仮登録処理 -----
+		$data = array(
+			'NewaccTmp' => array(
+				'mailaddress' => $this->Session->read('NewAcc.mailaddress'),
+				'passwd' => $passwd,
+			),
+		);
+		$this->NewaccTmp->save($data);
+		// $this->Session->delete('NewAcc.mailaddress');
+
+		// 本登録用URL整形
+		$url = ROOT_URL . 'Accounts/input/' . $passwd . '/';
+
+		//----- パラメタセット -----
+		$this->set(array(
+			'url' => $url,
+		));
+
+	}
+
+
+	/**
+	 * input method
+	 * 会員情報入力ページ
+	 * @throws NotFoundException
+	 * @param string $passwd
+	 * @return void
+	 */
+	public function input( $passwd = null ) {
+
+		// 不正アクセス時に強制遷移
+		if ($passwd === null && !$this->Session->check('NewAcc1Pass')) $this->redirect(array('action' => 'index'));
+
+		// 仮登録ワンパスワードを格納
+		if ($passwd !== null)
+			$this->Session->write('NewAcc1Pass', $passwd);
+
+		// メールアドレス取得
+		if ($this->Session->check('NewAcc.mailaddress'))
+			$this->request->data['Accounts']['mailaddress'] = $this->Session->read('NewAcc.mailaddress');
+
+
+		//----- バリデーションチェック -----
+		$validFlg = true;
+
+		// エラーメッセージ
+		$msgName = '';						// 漢字氏名
+		$msgNameKana = '';				// カナ氏名
+		$msgCourse = '';					// コース
+		$msgGrade = '';						// 学年
+		$msgSubject = '';					// 学科
+		$msgPR = '';							// 自己PR
+		$msgPasswd = '';							// パスワード
+
+
+		if ($this->referer() === ROOT_URL . $this->name . '/' . $this->action ||
+			  $this->referer() === ROOT_URL . $this->name . '/' . $this->action . '/') {
+
+			// 名前 ---------------------------------
+			if (empty($this->request->data['Accounts']['last_name']) || empty($this->request->data['Accounts']['first_name'])) {
+
+				$msgName = '氏名が入力されていません';
+				$validFlg = false;
+
+			} else if (!preg_match('/^.+$/', $this->request->data['Accounts']['last_name']) || !preg_match('/^.+$/', $this->request->data['Accounts']['first_name'])) {
+
+				$msgName = '氏名に記号は使えません';
+				$validFlg = false;
+
+			}
+
+			// ナマエ ---------------------------------
+			if (empty($this->request->data['Accounts']['last_ruby']) || empty($this->request->data['Accounts']['first_ruby'])) {
+
+				$msgNameKana = '氏名（カナ）が入力されていません';
+				$validFlg = false;
+
+			} else if (!preg_match('/^[ァ-ヾ]+$/u', $this->request->data['Accounts']['last_ruby']) || !preg_match('/^[ァ-ヾ]+$/u', $this->request->data['Accounts']['first_ruby'])) {
+
+				$msgNameKana = '全角カタカナ以外入力できません';
+				$validFlg = false;
+
+			}
+
+			// パスワード ---------------------------------
+			if (empty($this->request->data['Accounts']['passwd']) || empty($_POST['confirm'])) {
+
+				$msgPasswd = 'パスワードが入力されていません';
+				$validFlg = false;
+
+			} else if (!preg_match('/^.{8,20}$/', $this->request->data['Accounts']['passwd'])) {
+
+				$msgPasswd = '8文字以上20文字未満の半角英数で入力ください';
+				$validFlg = false;
+
+			} else if ($this->request->data['Accounts']['passwd'] !== $_POST['confirm']) {
+
+				$msgPasswd = 'パスワードが一致しません';
+				$validFlg = false;
+			}
+
+			// コース ---------------------------------
+			if (empty($this->request->data['Accounts']['course'])) {
+				$msgCourse = 'コースを選択してください';
+				$validFlg = false;
+			}
+
+			// 学年 ---------------------------------
+			if ($this->request->data['Accounts']['grade'] === '') {
+
+				$msgGrade = '学年が入力されていません';
+				$validFlg = false;
+
+			} else if (+$this->request->data['Accounts']['grade'] === 0) {
+
+				$msgGrade = '正しい学年を入力してください';
+				$validFlg = false;
+
+			} else if (!preg_match('/^[1-9]+[0-9]*$/', $this->request->data['Accounts']['grade'])) {
+
+				$msgGrade = '半角数字でご入力ください';
+				$validFlg = false;
+
+			}
+
+			// 学科 ---------------------------------
+			if (empty($this->request->data['Accounts']['subject'])) {
+
+				$msgSubject = '学科が入力されていません';
+				$validFlg = false;
+
+			}
+
+			// 自己PR ---------------------------------
+			if (mb_strlen($this->request->data['Accounts']['description']) > 200) {
+
+				$msgPR = '文字数が多すぎます（200字以内）';
+				$validFlg = false;
+
+			}
+
+
+			// $validFlg = true;			// デバッグ用
+			if ($validFlg) {
+
+				//--- 遷移 ---
+				$this->Session->write('NewAcc', $this->request->data['Accounts']);
+				$this->redirect(array('action' => 'inputConfirm'));
+			}
+		}
+
+
+
+		//----- 戻るボタンで戻ってきた時の処理 -----
+		if ($this->referer() === ROOT_URL . $this->name . '/inputConfirm' ||
+			  $this->referer() === ROOT_URL . $this->name . '/inputConfirm/') {
+			$this->request->data['Accounts'] = $this->Session->read('NewAcc');
+		}
+
+
+
+		$this->set(array(
+			'msgName' => $msgName,
+			'msgNameKana' => $msgNameKana,
+			'msgCourse' => $msgCourse,
+			'msgGrade' => $msgGrade,
+			'msgSubject' => $msgSubject,
+			'msgPR' => $msgPR,
+			'msgPasswd' => $msgPasswd,
+		));
+
+	}
+
+
+	/**
+	 * inputConfirm method
+	 * 入力情報確認ページ
+	 * @throws NotFoundException
+	 * @return void
+	 */
+	public function inputConfirm() {
+		if (!$this->Session->check('NewAcc')) $this->redirect(array('action' => 'index'));
+
+		$this->set('acc', $this->Session->read('NewAcc'));
+	}
+
+
+	/**
+	 * inputComp method
+	 * アカウント本登録完了ページ
+	 * @throws NotFoundException
+	 * @return void
+	 */
+	public function inputComp() {
+		if (!$this->Session->check('NewAcc') && $this->Session->check('NewAcc1Pass')) $this->redirect(array('action' => 'index'));
+
+
+
+
+
+
+
+		// ▼▼▼
+
+
+		//----- 本登録処理 -----
+		$data = array('Account' => $this->Session->read('NewAcc'));
+		if ($this->Account->save($data)) {
+			//----- 成功 -----
+			// 仮登録レコード削除
+			$query = "DELETE FROM newacc_tmps WHERE passwd = " . $this->Session->read('NewAcc1Pass');
+			$query .= " AND mailaddress = '" . $this->Session->read('NewAcc.mailaddress') ."'";
+			$this->NewaccTmp->query($query);
+
+			// 新規アカウント登録セッション削除
+			$this->Session->delete('NewAcc');
+			$this->Session->delete('NewAcc1Pass');
+
+		}
+
+
+		// ▲▲▲
+
+
+
+
+
+
 
 	}
 

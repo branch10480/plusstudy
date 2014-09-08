@@ -9,6 +9,9 @@ class MyAuthComponent extends Component {
 			'index',
 			'startNewAcc',			// 新規会員登録メールアドレス入力ページ
 			'sentMail',					// mailAdd確認メール送信完了ページ
+			'input',						// 会員情報入力ページ
+			'inputConfirm',			// 会員情報確認ページ
+			'inputComp',				// 会員情報本登録完了ページ
 		),
 	);
 
