@@ -406,7 +406,7 @@ class AccountsController extends AppController {
 
 	/**
 	 * inputComp method
-	 * アカウント本登録完了ページ
+	 * アカウント情報編集ページ
 	 * @throws NotFoundException
 	 * @return void
 	 */
@@ -428,5 +428,185 @@ class AccountsController extends AppController {
 			$this->Session->delete('NewAcc1Pass');
 		}
 	}
+
+
+	/**
+	 * edit method
+	 * アカウント基本情報編集ページ
+	 * @throws NotFoundException
+	 * @return void
+	 */
+	public function edit() {
+
+		//----- バリデーションチェック -----
+		$validFlg = true;
+
+		// エラーメッセージ
+		$msgName = '';						// 漢字氏名
+		$msgNameKana = '';				// カナ氏名
+		$msgCourse = '';					// コース
+		$msgGrade = '';						// 学年
+		$msgSubject = '';					// 学科
+		$msgPR = '';							// 自己PR
+
+
+
+		if ($this->referer() === ROOT_URL . $this->name . '/' . $this->action ||
+			  $this->referer() === ROOT_URL . $this->name . '/' . $this->action . '/') {
+
+			// 名前 ---------------------------------
+			if (empty($this->request->data['Account']['last_name']) || empty($this->request->data['Account']['first_name'])) {
+
+				$msgName = '氏名が入力されていません';
+				$validFlg = false;
+
+			} else if (!preg_match('/^.+$/', $this->request->data['Account']['last_name']) || !preg_match('/^.+$/', $this->request->data['Account']['first_name'])) {
+
+				$msgName = '氏名に記号は使えません';
+				$validFlg = false;
+
+			}
+
+			// ナマエ ---------------------------------
+			if (empty($this->request->data['Account']['last_ruby']) || empty($this->request->data['Account']['first_ruby'])) {
+
+				$msgNameKana = '氏名（カナ）が入力されていません';
+				$validFlg = false;
+
+			} else if (!preg_match('/^[ァ-ヾ]+$/u', $this->request->data['Account']['last_ruby']) || !preg_match('/^[ァ-ヾ]+$/u', $this->request->data['Account']['first_ruby'])) {
+
+				$msgNameKana = '全角カタカナ以外入力できません';
+				$validFlg = false;
+
+			}
+
+			// コース ---------------------------------
+			if (empty($this->request->data['Account']['course'])) {
+				$msgCourse = 'コースを選択してください';
+				$validFlg = false;
+			}
+
+			// 学年 ---------------------------------
+			if ($this->request->data['Account']['grade'] === '') {
+
+				$msgGrade = '学年が入力されていません';
+				$validFlg = false;
+
+			} else if (+$this->request->data['Account']['grade'] === 0) {
+
+				$msgGrade = '正しい学年を入力してください';
+				$validFlg = false;
+
+			} else if (!preg_match('/^[1-9]+[0-9]*$/', $this->request->data['Account']['grade'])) {
+
+				$msgGrade = '半角数字でご入力ください';
+				$validFlg = false;
+
+			}
+
+			// 学科 ---------------------------------
+			if (empty($this->request->data['Account']['subject'])) {
+
+				$msgSubject = '学科が入力されていません';
+				$validFlg = false;
+
+			}
+
+			// 自己PR ---------------------------------
+			if (mb_strlen($this->request->data['Account']['description']) > 200) {
+
+				$msgPR = '文字数が多すぎます（200字以内）';
+				$validFlg = false;
+
+			}
+
+
+			if ($validFlg) {
+
+				$this->request->data['Account']['id'] = $this->Session->read('Auth.id');
+
+				//--- アップデート処理 ---
+				$this->Account->save($this->request->data);
+
+				//--- 遷移 ---
+				// $this->redirect(array('action' => 'profile'));
+			}
+		} else {
+			$result = $this->Account->find('first', array(
+					'conditions' => array('Account.id' => $this->Session->read('Auth.id')),
+				));
+			$this->request->data['Account'] = $result['Account'];
+		}
+
+
+
+		$this->set(array(
+			'msgName' => $msgName,
+			'msgNameKana' => $msgNameKana,
+			'msgCourse' => $msgCourse,
+			'msgGrade' => $msgGrade,
+			'msgSubject' => $msgSubject,
+			'msgPR' => $msgPR,
+		));
+	}
+
+
+
+
+
+	/**
+	 * alterPasswd method
+	 * パスワード変更ページ
+	 * @throws NotFoundException
+	 * @return void
+	 */
+	public function alterPasswd() {
+
+		$validFlg = true;
+		$msg = '';
+		$oldPasswd = '';
+
+		if (isset($_POST['oldPasswd'])) $oldPasswd = $_POST['oldPasswd'];
+		if ($this->referer() === ROOT_URL . $this->name . '/' . $this->action ||
+			  $this->referer() === ROOT_URL . $this->name . '/' . $this->action . '/') {
+
+
+			// 値がちゃんと入っているか確認
+			if (empty($_POST['oldPasswd']) || empty($_POST['newPasswd']) || empty($_POST['confirm'])) {
+				$msg = '未入力の項目があります';
+				$validFlg = false;
+			} else if ($this->Account->find('count', array('conditions' => array('Account.id' => $this->Session->read('Auth.id'), 'Account.passwd' => $_POST['oldPasswd']))) === 0) {
+
+				$msg = '現在のパスワードが間違っています';
+				$validFlg = false;
+
+			} else if (!preg_match('/^.{8,20}$/u', $_POST['newPasswd'])) {
+				$msg = '8文字以上20文字以下の半角英数で入力ください';
+				$validFlg = false;
+			} else if ($_POST['newPasswd'] !== $_POST['confirm']) {
+				$msg = '新しいパスワードが一致しません';
+				$validFlg = false;
+			}
+
+			if ($validFlg) {
+
+				// パスワード更新処理
+				$data = array(
+						'Account' => array(
+								'id' => $this->Session->read('Auth.id'),
+								'passwd' => $_POST['newPasswd'],
+							),
+					);
+				if ($this->Account->save($data)) echo '更新完了';
+			}
+
+		}
+
+		$this->set(array(
+			'msg' => $msg,
+			'oldPasswd' => $oldPasswd,
+			));
+	}
+
 
 }
