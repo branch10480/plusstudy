@@ -20,8 +20,8 @@
 	<p><b>詳細</b></p>
 	<p><?php echo $seminar['Seminar']['description'] ?></p>
 </div>
-
 <br>
+
 
 <div>
 	<p><b>勉強会に対する質問</b></p>
@@ -37,24 +37,38 @@
 		 	)); ?></p>
 	<?php endforeach; ?>
 </div>
-
 <br>
-<?php echo $this->Html->link(__('戻る'), array('controller' => 'Accounts', 'action' => 'index')); ?>
-<?php echo $this->Html->link(__('参加する'), array('action' => 'join')); ?>
-<hr>
 
 
-<?php echo $this->Form->create('Question'); ?>
+<?php echo $this->Form->create('Button'); ?>
 <div>
-	<p><b>質問投稿フォーム</b></p>
-	<p>質問タイトル</p>
-	<p><?php echo $this->Form->text('title'); ?></p>
-	<p class="errMsg"><?php echo $eTitle ?></p>
-	<p>内容</p>
-	<p><?php echo $this->Form->textarea('content'); ?></p>
-	<p class="errMsg"><?php echo $eContent ?></p>
-	<?php echo $this->Form->submit('質問を投稿する', array(
-		'name' => 'question')); ?>
+	<?php echo $this->Html->link(__('戻る'), array('controller' => 'Accounts', 'action' => 'index')); ?>
+
+	<?php if($userType === 'NoJoin'): ?>
+		<?php echo $this->Form->submit('この勉強会に参加する', array('name' => 'join')); ?>
+	<?php elseif($userType === 'Manager'): ?>
+		<?php echo $this->Form->submit('編集する', array('name' => 'edit')); ?>
+	<?php elseif($userType === 'Join'): ?>
+		<p style="color:green">この勉強会に参加予定です</p>
+	<?php endif; ?>
 </div>
 <?php echo $this->Form->end(); ?>
 <hr>
+
+
+<?php if($userType !== 'Manager'): ?>
+	<?php echo $this->Form->create('Question'); ?>
+	<div>
+		<p><b>質問投稿フォーム</b></p>
+		<p>質問タイトル</p>
+		<p><?php echo $this->Form->text('title'); ?></p>
+		<p class="errMsg"><?php echo $eTitle ?></p>
+		<p>内容</p>
+		<p><?php echo $this->Form->textarea('content'); ?></p>
+		<p class="errMsg"><?php echo $eContent ?></p>
+		<?php echo $this->Form->submit('質問を投稿する', array(
+			'name' => 'question')); ?>
+	</div>
+	<?php echo $this->Form->end(); ?>
+	<hr>
+<?php endif; ?>

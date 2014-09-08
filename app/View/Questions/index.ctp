@@ -17,6 +17,7 @@
 
 <div>
 	<?php foreach($comments as $comment): ?>
+
 		<?php if($question['Question']['account_id'] === $comment['Comment']['account_id']): ?>
 			<p style="color:blue"><?php echo $comment['Account']['last_name'] . $comment['Account']['first_name']; ?></p>
 

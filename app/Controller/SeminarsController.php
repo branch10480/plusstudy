@@ -14,7 +14,7 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'MyAuth');
-	public $uses = array('Seminar', 'Question');
+	public $uses = array('Seminar', 'Question', 'Participant');
 
 
 
@@ -317,12 +317,41 @@ class SeminarsController extends AppController {
 		// タイトル設定
 		$this->set('title_for_layout', $seminar['Seminar']['name']);
 
+		//-- ユーザの種類を判定 --
+		// デフォルトは勉強会に未参加
+		$userType = 'NoJoin';
+
+		// 作成者
+		if($seminar['Seminar']['account_id'] === $this->Session->read('Auth.id')) {
+			$userType = 'Manager';
+		}
+		// 勉強会に参加予定
+		foreach($seminar['Participant'] as $participant) {
+			if($participant['account_id'] === $this->Session->read('Auth.id')) {
+				$userType = 'Join';
+			}
+		}
+
 		// エラーメッセージ初期化
 		$eTitle = '';
 		$eContent = '';
 
 		// ボタンが押された時の処理
 		if($this->request->is('post')) {
+
+			// 参加ボタンが押された時
+			if(isset($this->request->data['join'])) {
+				// セッション作成
+				$this->Session->write('joinSmn.id', $id);
+				// 参加ページへリダイレクト
+				return $this->redirect(array('action' => 'join'));
+			}
+
+			// 編集ボタンが押された時
+			if(isset($this->request->data['edit'])) {
+				//-- ここに編集処理を書く --
+			}
+
 			// 質問投稿ボタンが押された時
 			if(isset($this->request->data['question'])) {
 				//--バリデーションチェック--
@@ -365,6 +394,7 @@ class SeminarsController extends AppController {
 		$this->set(array(
 				'eTitle' => $eTitle,
 				'eContent' => $eContent,
+				'userType' => $userType
 				));
 	}
 
@@ -374,5 +404,43 @@ class SeminarsController extends AppController {
  * @return void
  */
 	public function join() {
+		// セッションから勉強会IDを取得
+	   	if($this->Session->check('joinSmn')) {
+	   		$id = $this->Session->read('joinSmn.id');
+		}
+		else {
+			// 無い場合はトップへリダイレクト
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
+		// 勉強会情報を取得
+		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $id));
+		$seminar = $this->Seminar->find('first', $options);
+
+		// データをViewへ渡す
+		$this->set('seminar', $seminar);
+
+		// タイトル設定
+		$this->set('title_for_layout', $seminar['Seminar']['name']);
+
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+
+			// 参加ボタンが押された時
+			if(isset($this->request->data['join'])) {
+				// Participantsにデータ登録
+				$param = array(
+					'seminar_id' => $id,
+					'account_id' => $this->Session->read('Auth.id'));
+				$this->Participant->create(false);
+				$this->Participant->save($param);
+
+				// セッション削除
+				$this->Session->delete('joinSmn');
+
+				// 詳細ページへリダイレクト
+				return $this->redirect(array('action' => 'details', '?' => array('id' => $id)));
+			}
+		}
 	}
 }
