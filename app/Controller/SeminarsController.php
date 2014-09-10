@@ -347,6 +347,14 @@ class SeminarsController extends AppController {
 				return $this->redirect(array('action' => 'join'));
 			}
 
+			// キャンセルボタンが押された時
+			if(isset($this->request->data['cancel'])) {
+				// セッション作成
+				$this->Session->write('cancelSmn.id', $id);
+				// キャンセルページへリダイレクト
+				return $this->redirect(array('action' => 'cancel'));
+			}
+
 			// 編集ボタンが押された時
 			if(isset($this->request->data['edit'])) {
 				//-- ここに編集処理を書く --
@@ -417,6 +425,11 @@ class SeminarsController extends AppController {
 		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $id));
 		$seminar = $this->Seminar->find('first', $options);
 
+		// データが見つからなかったらトップページへリダイレクト
+		if(count($seminar) === 0) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
 		// データをViewへ渡す
 		$this->set('seminar', $seminar);
 
@@ -437,6 +450,58 @@ class SeminarsController extends AppController {
 
 				// セッション削除
 				$this->Session->delete('joinSmn');
+
+				// 詳細ページへリダイレクト
+				return $this->redirect(array('action' => 'details', '?' => array('id' => $id)));
+			}
+		}
+	}
+
+/**
+ * cancel method
+ * 参加キャンセルページ
+ * @return void
+ */
+	public function cancel() {
+		// セッションから勉強会IDを取得
+	   	if($this->Session->check('cancelSmn')) {
+	   		$id = $this->Session->read('cancelSmn.id');
+		}
+		else {
+			// 無い場合はトップへリダイレクト
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
+		// 勉強会情報を取得
+		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $id));
+		$seminar = $this->Seminar->find('first', $options);
+
+		// データが見つからなかったらトップページへリダイレクト
+		if(count($seminar) === 0) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
+		// データをViewへ渡す
+		$this->set('seminar', $seminar);
+
+		// タイトル設定
+		$this->set('title_for_layout', $seminar['Seminar']['name']);
+
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+
+			// キャンセルボタンが押された時
+			if(isset($this->request->data['cancel'])) {
+				// Participantsのレコード削除
+				$param = array(
+					'seminar_id' => $id,
+					'account_id' => $this->Session->read('Auth.id'));
+				$deleteRecord = $this->Participant->find('first', $options);
+				$this->Participant->id = $deleteRecord['Participant']['id'];
+				$this->Participant->delete();
+
+				// セッション削除
+				$this->Session->delete('cancelSmn');
 
 				// 詳細ページへリダイレクト
 				return $this->redirect(array('action' => 'details', '?' => array('id' => $id)));

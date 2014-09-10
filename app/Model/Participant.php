@@ -3,34 +3,11 @@ App::uses('AppModel', 'Model');
 /**
  * Participant Model
  *
+ * @property Seminar $Seminar
  * @property Account $Account
  */
 class Participant extends AppModel {
 
-/**
- * Primary key field
- *
- * @var string
- */
-	public $primaryKey = 'seminar_id';
-
-/**
- * Validation rules
- *
- * @var array
- */
-	public $validate = array(
-		'account_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -40,6 +17,13 @@ class Participant extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
+		'Seminar' => array(
+			'className' => 'Seminar',
+			'foreignKey' => 'seminar_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Account' => array(
 			'className' => 'Account',
 			'foreignKey' => 'account_id',
