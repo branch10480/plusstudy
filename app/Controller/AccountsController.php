@@ -36,7 +36,7 @@ class AccountsController extends AppController {
 		$this->set('title_for_layout', 'PlusStudy ログイン');
 		$msg = '';
 
-	   	if($this->Session->check('Auth')) {
+		if($this->Session->check('Auth')) {
 			// ログイン済み
 			return $this->redirect(array('action' => 'top'));
 		}
