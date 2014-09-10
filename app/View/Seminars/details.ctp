@@ -49,7 +49,7 @@
 	<?php elseif($userType === 'Manager'): ?>
 		<?php echo $this->Form->submit('編集する', array('name' => 'edit')); ?>
 	<?php elseif($userType === 'Join'): ?>
-		<p style="color:green">この勉強会に参加予定です</p>
+		<?php echo $this->Form->submit('参加を取り消す', array('name' => 'cancel')); ?>
 	<?php endif; ?>
 </div>
 <?php echo $this->Form->end(); ?>

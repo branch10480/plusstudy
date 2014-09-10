@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.29, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
 --
 -- Host: localhost    Database: plusstudy
 -- ------------------------------------------------------
--- Server version	5.5.29
+-- Server version	5.5.34-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -70,7 +70,7 @@ CREATE TABLE `comments` (
   `account_id` int(11) DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,6 +79,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (6,1,'おおおおおおおおおおおおおお',3,'0000-00-00 00:00:00'),(7,1,'あああああああああ',3,'2014-09-05 10:46:08'),(8,3,'うおおおおおおお',3,'2014-09-05 10:52:27'),(9,3,'管理者だよおおおおん',1,'2014-09-05 10:52:53'),(10,1,'おおおおおおおおおおおお',1,'2014-09-08 10:30:21'),(11,4,'ああああああああああああああ',1,'2014-09-08 10:40:04');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,31 +132,6 @@ LOCK TABLES `me_toos` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `newacc_tmps`
---
-
-DROP TABLE IF EXISTS `newacc_tmps`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `newacc_tmps` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mailaddress` varchar(100) DEFAULT NULL,
-  `passwd` varchar(100) DEFAULT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `newacc_tmps`
---
-
-LOCK TABLES `newacc_tmps` WRITE;
-/*!40000 ALTER TABLE `newacc_tmps` DISABLE KEYS */;
-/*!40000 ALTER TABLE `newacc_tmps` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `participants`
 --
 
@@ -163,10 +139,11 @@ DROP TABLE IF EXISTS `participants`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `participants` (
-  `seminar_id` int(11) NOT NULL DEFAULT '0',
-  `account_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`seminar_id`,`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `seminar_id` int(11) DEFAULT NULL,
+  `account_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +152,6 @@ CREATE TABLE `participants` (
 
 LOCK TABLES `participants` WRITE;
 /*!40000 ALTER TABLE `participants` DISABLE KEYS */;
-INSERT INTO `participants` VALUES (1,2),(1,3),(2,1),(2,3);
 /*!40000 ALTER TABLE `participants` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,7 +170,7 @@ CREATE TABLE `questions` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `account_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +179,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` VALUES (1,1,'あ！！','え？！！','2014-09-01 12:51:23',1),(2,1,'aaaaaaa','aaaaaaaa','0000-00-00 00:00:00',1),(3,1,'福島だよーん','あっはっはっは','0000-00-00 00:00:00',3),(4,1,'ああああああああ','ううううううううううう','0000-00-00 00:00:00',3),(5,1,'うほおおおおおおおお','あああああああああああああぁぁ','2014-09-05 10:52:03',3);
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-30  1:54:58
+-- Dump completed on 2014-09-10 12:33:27

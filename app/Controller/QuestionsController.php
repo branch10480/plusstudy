@@ -26,7 +26,11 @@ class QuestionsController extends AppController {
 		$id = $this->params['url']['id'];
 		$options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
 		$question = $this->Question->find('first', $options);
-		$this->set('question', $question);
+
+		// データが見つからなかったらトップページへリダイレクト
+		if(count($question) === 0) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
 
 		// タイトル設定
 		// 勉強会名 - 質問タイトル
@@ -70,7 +74,7 @@ class QuestionsController extends AppController {
 			}
 		}
 		// Viewにデータを渡す
+		$this->set('question', $question);
 		$this->set('eContent', $eContent);
-
 	}
 }
