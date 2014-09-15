@@ -10,29 +10,16 @@
 <?php echo $this->Form->create('MeToo'); ?>
 <div>
 	<br>
-	<p><b>私も！している人数</b></p>
-	<p><?php echo count($teachme['MeToo']) + 1 . '人' ?></p>
+	<p><b>教えて欲しい！している人数</b></p>
+	<p><?php echo count($teachme['MeToo']) . '人' ?></p>
 
-	<?php if($teachme['TeachMe']['account_id'] !== $this->Session->read('Auth.id')) : ?>
-
-		<?php if($alreadyMetoo === false): ?>
-			<?php echo $this->Form->submit('私も教えて欲しい！', array(
-	    		'name' => 'metoo')); ?>
-	    <?php else : ?>
-			<?php echo $this->Form->submit('私も！を取り消す', array(
-	    		'name' => 'cancel')); ?>
-	    <?php endif; ?>
-
-	<?php else : ?>
-
-		<?php if(count($teachme['MeToo']) === 0) : ?>
-			<?php echo $this->Form->submit('このニーズを削除する', array(
-	    		'name' => 'delete')); ?>
-	    <?php else : ?>
-			<?php echo '他に同意している人がいるので削除できません' ?>
-	    <?php endif; ?>
-
-	<?php endif; ?>
+	<?php if($alreadyMetoo === false): ?>
+		<?php echo $this->Form->submit('教えて欲しい！', array(
+    		'name' => 'metoo')); ?>
+    <?php else : ?>
+		<?php echo $this->Form->submit('教えて欲しい！を取り消す', array(
+    		'name' => 'cancel')); ?>
+    <?php endif; ?>
 </div>
 <?php echo $this->Form->end(); ?>
 

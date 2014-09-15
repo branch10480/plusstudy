@@ -12,29 +12,29 @@
 		'action' => 'profile',
 		'?' => array('id' => $this->Session->read('Auth.id'))
 		)); ?>
-	<?php echo $this->Html->link(__('ニーズ登録'), array('controller' => 'TeachMes', 'action' => 'index')); ?>	
+	<?php echo $this->Html->link(__('ニーズ登録'), array('controller' => 'TeachMes', 'action' => 'index')); ?>
 </div>
 
 <div>
 	<?php echo $this->Form->create('Logout'); ?>
-	<?php echo $this->Form->end(__('ログアウト')); ?>	
+	<?php echo $this->Form->end(__('ログアウト')); ?>
 	<hr>
 </div>
 
 <div>
 	<h2><?php echo __('今求められている勉強会'); ?></h2>
-	<?php if(count($teachmes) === 0): ?> 
+	<?php if(count($teachmes) === 0): ?>
 		<p><?php echo '今求められている勉強会はありません'; ?></p>
-	<?php endif; ?>	
+	<?php endif; ?>
 
 	<?php foreach($teachmes as $teachme): ?>
-		
+
 		<?php echo $this->Html->link($teachme['TeachMe']['title'], array(
 			'controller' => 'TeachMes' ,
-		 	'action' => 'details', 
+		 	'action' => 'details',
 		 	'?' => array('id' => $teachme['TeachMe']['id'])
 		 	)); ?>
-		<?php echo count($teachme['MeToo']) + 1 . '人' ?>
+		<?php echo count($teachme['MeToo']) . '人' ?>
 		<br>
 
 	<?php endforeach; ?>
@@ -45,23 +45,23 @@
 <div>
 	<h2><?php echo __('参加者募集中の勉強会'); ?></h2>
 
-	<?php if(count($seminars) === 0): ?> 
+	<?php if(count($seminars) === 0): ?>
 		<p><?php echo '現在予定されている勉強会はありません'; ?></p>
 	<?php endif; ?>
 
 	<?php foreach($seminars as $seminar): ?>
-		
+
 		<p><?php echo $this->Html->link($seminar['Seminar']['name'], array(
 			'controller' => 'Seminars' ,
-		 	'action' => 'details', 
+		 	'action' => 'details',
 		 	'?' => array('id' => $seminar['Seminar']['id'])
 		 	)); ?></p>
 
-		<p><?php echo '　主催者：' . $seminar['Account']['last_name'] . $seminar['Account']['first_name']; ?></p>		
-		
+		<p><?php echo '　主催者：' . $seminar['Account']['last_name'] . $seminar['Account']['first_name']; ?></p>
+
 		<p><?php echo '開催日程：' . $seminar['Seminar']['start'] . ' 〜 ' . $seminar['Seminar']['end']; ?></p>
 
-		<p><?php echo '申込締切：' . $seminar['Seminar']['reservation_limit']; ?></p>		
+		<p><?php echo '申込締切：' . $seminar['Seminar']['reservation_limit']; ?></p>
 
 		<p><?php echo '参加人数：' . count($seminar['Participant']) . '/' . $seminar['Seminar']['upper_limit']; ?></p>
 
