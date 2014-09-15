@@ -134,10 +134,28 @@ class TeachMesController extends AppController {
 				'title' => $newTeachme['title'],
 				'content' => $newTeachme['content']
 				);
+			// Viewにデータをセット
+			$this->set('teachme',$this->Session->read('newTeachme'));
 
+			//  teach_mesにデータ登録
 			$this->TeachMe->create();
-			$this->TeachMe->save($param);
+			$newRecord = $this->TeachMe->save($param);
+
+			// 作成者を１人目のme_toosとして追加する
+			$param = array(
+				'teach_me_id' => $newRecord['TeachMe']['id'],
+				'account_id' => $this->Session->read('Auth.id'),
+				'resolved' => 0
+				);
+			$this->MeToo->create();
+			$this->MeToo->save($param);
+
+			//  セッションのデータ削除
 			$this->Session->delete('newTeachme');
+		}
+		// なければトップページにリダイレクト
+		else {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
 	}
 
@@ -201,14 +219,21 @@ class TeachMesController extends AppController {
 				$deleteRecord = $this->MeToo->find('first', $options);
 				$this->MeToo->id = $deleteRecord['MeToo']['id'];
 				$this->MeToo->delete();
+
+				// me_toosが0件になったらニーズを削除
+				$options = array(
+					'conditions' => array(
+						'MeToo.teach_me_id' => $id
+					));
+				$metoos = $this->MeToo->find('first', $options);
+				if(count($metoos) === 0) {
+					$this->TeachMe->id = $id;
+					$this->TeachMe->delete();
+				}
+
+				// リダイレクト
 				$this->redirect(array('action' => 'details',
 								'?' => array('id' => $id)));
-			}
-			// 削除ボタンが押された時
-			if(isset($this->request->data['delete'])) {
-				$this->TeachMe->id = $id;
-				$this->TeachMe->delete();
-				$this->redirect(array('controller' => 'Accounts' ,'action' => 'index'));
 			}
 		}
 	}
