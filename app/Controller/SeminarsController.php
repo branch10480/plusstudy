@@ -508,4 +508,18 @@ class SeminarsController extends AppController {
 			}
 		}
 	}
+
+/**
+ * feedback method
+ * フィードバックページ
+ * @return void
+ */
+	public function feedback() {
+		// participantsを削除
+		$this->Participant->id = $this->Session->read('participant')['Participant']['id'];
+		$this->Participant->delete();
+
+		// セッション削除
+		$this->Session->delete('participant');
+	}
 }

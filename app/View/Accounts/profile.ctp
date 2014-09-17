@@ -53,23 +53,23 @@
 
 <div>
 	<b><?php echo __('主催している勉強会'); ?></b>
-	<?php if(count($myseminars) === 0): ?> 
+	<?php if(count($myseminars) === 0): ?>
 		<p><?php echo '現在主催している勉強会はありません'; ?></p>
 		<br>
 	<?php endif; ?>
 
 	<?php foreach($myseminars as $myseminar): ?>
-		
+
 		<p><?php echo $this->Html->link($myseminar['Seminar']['name'], array(
 			'controller' => 'Seminars' ,
-		 	'action' => 'details', 
+		 	'action' => 'details',
 		 	'?' => array('id' => $myseminar['Seminar']['id'])
 		 	)); ?></p>
 
-		<p><?php echo '　主催者：' . $myseminar['Account']['last_name'] . $myseminar['Account']['first_name']; ?></p>		
-		
+		<p><?php echo '　主催者：' . $myseminar['Account']['last_name'] . $myseminar['Account']['first_name']; ?></p>
+
 		<p><?php echo '開催日程：' . $myseminar['Seminar']['start'] . ' 〜 ' . $myseminar['Seminar']['end']; ?></p>
-		
+
 		<p><?php echo '申込締切：' . $myseminar['Seminar']['reservation_limit']; ?></p>
 
 		<p><?php echo '参加人数：' . count($myseminar['Participant']) . '/' . $myseminar['Seminar']['upper_limit']; ?></p>
@@ -81,21 +81,21 @@
 
 <div>
 	<b><?php echo __('参加予定の勉強会'); ?></b>
-	<?php if(count($partseminars) === 0): ?> 
+	<?php if(count($partseminars) === 0): ?>
 		<p><?php echo '参加予定の勉強会はありません'; ?></p>
 		<hr>
-	<?php endif; ?>	
+	<?php endif; ?>
 
 	<?php foreach($partseminars as $partseminar): ?>
-	
+
 		<p><?php echo $this->Html->link($partseminar['Seminar']['name'], array(
 			'controller' => 'Seminars' ,
-		 	'action' => 'details', 
+		 	'action' => 'details',
 		 	'?' => array('id' => $partseminar['Seminar']['id'])
 		 	)); ?></p>
-	
+
 		<p><?php echo '　主催者：' . $partseminar['Account']['last_name'] . $partseminar['Account']['first_name']; ?></p>
-	
+
 		<p><?php echo '開催日程：' . $partseminar['Seminar']['start'] . ' 〜 ' . $partseminar['Seminar']['end']; ?></p>
 
 		<p><?php echo '申込締切：' . $partseminar['Seminar']['reservation_limit']; ?></p>

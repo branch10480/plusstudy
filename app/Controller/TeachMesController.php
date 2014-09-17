@@ -223,7 +223,7 @@ class TeachMesController extends AppController {
 				// me_toosが0件になったらニーズを削除
 				$options = array(
 					'conditions' => array(
-						'MeToo.teach_me_id' => $id
+						'MeToo.teach_me_id' => $id,
 					));
 				$metoos = $this->MeToo->find('first', $options);
 				if(count($metoos) === 0) {
