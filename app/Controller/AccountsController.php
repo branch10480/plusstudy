@@ -14,7 +14,7 @@ class AccountsController extends AppController {
  * @var array
  */
 	public $uses = array('Account', 'Seminar', 'Participant', 'TeachMe', 'NewaccTmp');
-	public $components = array('Paginator', 'MyAuth');
+	public $components = array('Paginator', 'MyAuth', 'RequestHandler');
 
 /**
  * beforeFilter method
@@ -606,6 +606,192 @@ class AccountsController extends AppController {
 			'msg' => $msg,
 			'oldPasswd' => $oldPasswd,
 			));
+	}
+
+
+
+
+
+	/**
+	 * uploadProfImg method
+	 *
+	 * @return void
+	 */
+	function uploadProfImg() {
+		$this->layout = 'ajax';
+		$returnArr = array();
+		if ($this->RequestHandler->isAjax()) {
+			// 正常処理
+			if ($this->request->is('post')) {
+
+				//----- 容量制限チェック -----
+				// アカウントが使用可能な容量を確認、警告
+				// $query = 'SELECT SUM(size) as sum FROM seminar_images WHERE account_id = ' . $this->Session->read('Auth.id');
+				// $result = $this->SeminarImage->query($query);
+				$filesize = $_FILES['up_img']['size'];
+				$msg = '';
+				// 確認
+				// if ($result[0][0]['sum'] + $filesize > 52428800) {									// 50 MB = 52428800 B
+				if ($filesize > 2097152) {									// 50 MB = 52428800 B
+					$msg = 'プロフィール写真で使える写真は 2MB 以下です';
+					$returnArr[] = 'false';
+					$returnArr[] = $msg;
+				} else {
+
+					//----- 画像ファイルの保存 & ディレクトリの移動
+
+					$up_dir = UP_PATH_PROF;				// 保存先の相対パス
+					$filename = $_FILES['up_img']['name'];
+					$filetype = $_FILES['up_img']['type'];
+					$tmpfile = $_FILES['up_img']['tmp_name'];		// 一時的に保管
+					$msg = '';
+					$flg = true;																// エラーがあるか無いか
+					$completeFlg = 'false';
+					$accountId = $this->Session->read('Auth.id');
+					// $rand = mt_rand(1, 2147483647);							// 1以上 int の最大値以下の乱数を生成 - 一時的なidとなる
+					// 																						// 後にこれを基に 画像id（seminar_images.id） を取得する
+					$lastName = '';
+
+					// // 画像の幅と高さ
+					// $imgW = 0;
+					// $imgH = 0;
+
+
+					// // 画像データを仮登録 - 後に情報を追加する
+					// $data = array(
+					// 	'SeminarImage' => array(
+					// 		'tmpid' => $rand,
+					// 		),
+					// 	);
+					// $this->SeminarImage->saveAll($data);
+
+
+					// // 乱数をもとに、post_id を取得
+					// $params = array(
+					// 	'conditions' => array(
+					// 		'SeminarImage.tmpid' => $rand
+					// 		),
+					// 	'fields' => array(
+					// 		'SeminarImage.id'
+					// 		)
+					// 	);
+					// $tmpData = $this->SeminarImage->find('first', $params);
+					// $imgId = $tmpData['SeminarImage']['id'];
+
+
+					//----- ファイルが選択されたかを判断 -----
+					if (is_uploaded_file($tmpfile)) {
+						// ファイル名の分割 -> 取得
+						list($firstName, $lastName) = explode('.', $filename);
+						$newFileName = $accountId . '.' . $lastName;
+						$uppath = $up_dir . $newFileName;					// アップロード先のファイルパス
+
+						// ファイルが選択されている場合
+						if (move_uploaded_file($tmpfile, $uppath)) {
+
+							//--- 画像ファイルかどうかの判断 ---
+							$fileinfo = getimagesize($uppath);
+							if ($fileinfo[2] != IMAGETYPE_GIF && $fileinfo[2] != IMAGETYPE_JPEG && $fileinfo[2] != IMAGETYPE_PNG) {
+
+								// ファイルの削除
+								unlink($uppath);
+								$msg = '画像以外のファイルが選択されました。';
+								$flg = false;
+							} else {
+								//--- 正常時 ---
+								// $lastName = '.' . $lastName;				// 拡張子の前に . を付ける
+								$img_ext = "'" . $lastName . "'";
+								$imgW = $fileinfo[0];
+								$imgH = $fileinfo[1];
+							}
+						} else {
+							$msg = '移動できませんでした。';
+							$flg = false;
+						}
+					} else {
+						// ファイルが選択されていない場合
+						$msg = 'ファイルが選択されていませんでした。';
+					}
+
+
+					// データベースに格納処理
+					if ($flg) {
+						$data = array(
+								'Account.img_ext' => "'" . $lastName . "'",
+							);
+						$conditions = array(
+								'Account.id' => $accountId,
+								);
+						if ($this->Account->updateAll($data, $conditions)) {
+							$completeFlg = 'true';
+						}
+					} else {
+
+					}
+
+					$returnArr[] = $completeFlg;
+					// if ($msg !== '') {
+					// 	$returnArr[] = $msg;
+					// }
+					$returnArr[] = $msg;
+					$returnArr[] = $lastName;
+				}
+			}
+		} else {
+			// 不正処理
+		}
+		$this->set(array(
+			'result' => $returnArr,
+			));
+	}
+
+
+
+
+
+	/**
+	 * deleteProfImg method
+	 *
+	 * @return void
+	 */
+	public function deleteProfImg() {
+
+		$result = '';
+		// if ($this->RequestHandler->isAjax()) {
+			// 正常処理
+			// if ($this->request->is('post')) {
+				// $mailaddress = $_POST['id'];
+				$this->layout = 'ajax';
+				$accountId = $this->Session->read('Auth.id');
+
+				if ($accountId === null) die('アカウントIDが指定されていません');
+
+				// 画像拡張子の取得
+				$options = array(
+					'conditions' => array('Account.id' => $accountId),
+					);
+				$res = $this->Account->find('first', $options);
+				$img_ext = $res['Account']['img_ext'];
+
+				//----- 削除処理 -----
+				$data = array(
+						'Account' => array(
+								'id' => $accountId,
+								'img_ext' => NULL,
+							),
+					);
+				if ($res = $this->Account->save($data)) {
+
+					// プロフィール画像の削除
+					unlink(UP_PATH_PROF . $accountId . '.' . $img_ext);
+
+				}
+
+			// }
+		// } else {
+		// 	// 不正処理
+		// }
+		$this->set('result', $result);
 	}
 
 
