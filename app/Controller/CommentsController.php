@@ -37,7 +37,7 @@ class CommentsController extends AppController {
 			$newRecord = $this->Comment->save($param);
 
 			// 追加したレコードのidを元に情報を取得する
-			$options = array('conditions' => array('Comment.id' => $newRecord['id']));
+			$options = array('conditions' => array('Comment.id' => $newRecord['Comment']['id']));
 			$comment = $this->Comment->find('first', $options);
 
 			// Viewに情報を渡す
@@ -47,7 +47,7 @@ class CommentsController extends AppController {
 				'comment' => $comment['Comment'],
 				'account' => $comment['Account']);
 			$this->header('Content-Type: application/json');
-			return json_encode($response);
+			echo json_encode($response);
 			exit();
 		}
 		// エラー
