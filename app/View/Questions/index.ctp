@@ -15,7 +15,7 @@
 	<hr>
 </div>
 
-<div>
+<div class="comment">
 	<?php foreach($comments as $comment): ?>
 
 		<?php if($question['Question']['account_id'] === $comment['Comment']['account_id']): ?>
@@ -36,10 +36,11 @@
 
 <?php echo $this->Form->create('Comment'); ?>
 <div>
-	<p><?php echo $this->Form->textarea('content'); ?></p>
+	<?php echo $this->Form->hidden('question_id', array('value' => $question['Question']['id'], 'id' => 'question_id')); ?>
+
+	<?php echo $this->Form->textarea('content', array('id' => 'content')); ?>
 	<p class="errMsg"><?php echo $eContent ?></p>
-	<?php echo $this->Form->submit('コメントする', array(
-		'name' => 'comment')); ?>
+	<?php echo $this->Form->button('コメントする', array('type' => 'button', 'id' => 'add')); ?>
 </div>
 <?php echo $this->Form->end(); ?>
 <hr>
@@ -50,3 +51,19 @@
  	'?' => array('id' => $question['Seminar']['id'])
  	)); ?></p>
 <br>
+
+<script>
+$(function() {
+	$('button#add').click(function(e) {
+		$.post('/plusstudy/Comments/add', {
+				content: $('textarea#content').val(),
+				question_id: $('input#question_id').val()
+			}, function(res) {
+				alert("テスト");
+				//var p = $('<p>').text(res.comment.content);
+				//$('div.comment').append(p);
+				//$('textarea#content').empty();
+		}, "json");
+	});
+});
+</script>
