@@ -17,7 +17,7 @@ class CommentsController extends AppController {
 
 /**
  * add method
- *
+ * Ajaxでコメントの追加処理を行う
  * @return void
  */
 	public function add() {
@@ -55,12 +55,38 @@ class CommentsController extends AppController {
 	}
 
 /**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
+ * get method
+ * Ajaxで追加されたコメントを取得する
  * @return void
  */
-	public function delete($id) {
+	public function get() {
+		// 直接アクセスの場合はTOPへリダイレクト
+		if($this->request->is('get')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+		// Ajax処理
+		if($this->request->is('ajax')) {
+			// 該当する質問のコメントを取得
+			$options = array(
+				'conditions' => array('question_id' => $this->request->data['question_id']),
+				);
+			$comments = $this->Comment->find('all', $options);
+
+			// 件数が増えていたらデータ取得
+			$this->autoRender = false;
+			$this->autoLayout = false;
+			if($this->request->data['cnt'] < count($comments)) {
+				$response = array(
+					'result' => true,
+					'comment' => $comments[$this->request->data['cnt']]['Comment'],
+					'account' => $comments[$this->request->data['cnt']]['Account']);
+			}
+			else {
+				$response = array('result' => false);
+			}
+			$this->header('Content-Type: application/json');
+			echo json_encode($response);
+			exit();
+		}
 	}
 }
