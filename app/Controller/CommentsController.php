@@ -21,6 +21,11 @@ class CommentsController extends AppController {
  * @return void
  */
 	public function add() {
+		// ログインしていなかったら追加処理は行わない
+	   	if(!$this->Session->check('Auth')) {
+			exit();
+		}
+
 		// 直接アクセスの場合はTOPへリダイレクト
 		if($this->request->is('get')) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));

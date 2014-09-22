@@ -124,7 +124,6 @@ $(function () {
 			}, function(res) {
 				// 入力フォームをクリア
 				$('textarea#content').val('');
-
 				// 追加したコメントを取得しにいく
 				getComment();
 		}, "json");
