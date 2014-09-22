@@ -1,9 +1,17 @@
+<?php
+	// このページ限定のCSS,JS
+	$this->Html->script('profile', array('inline' => false));
+	// $this->Html->css('pieChart', null, array('inline' => false));
+?>
+<input id="accountId" type="hidden" value="<?php echo $this->Session->read('Auth.id'); ?>" />
 <div>
 	<h2><?php echo __('マイページ'); ?></h2>
 
 	<br>
 	<p><b>プロフィール画像</b></p>
-	<p><?php echo $account['Account']['img_ext']; ?></p>
+	<form action="<?php echo ROOT_URL . 'Accounts/uploadProfImg/'; ?>" method="post" id="ImgUpForm">
+	<p><img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" /><input id="profile_img" enctype="multipart/form-data" name="up_img" type="file"><input id="delProfImg" type="button" value="画像を削除"></p>
+	</form>
 	<br>
 
 	<p><b>名前</b></p>
