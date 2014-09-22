@@ -5,6 +5,22 @@
 // main
 //
 //*****************************************************************************
+
+//----- 画像反映時のブラウザ無効化処理 -----
+alterProfImgName = (function() {
+
+	var no = 1;
+
+	return function (data) {
+
+		console.log(data);
+
+		// プロフィール画像の変更を画面に反映
+		$('#profileImg').attr('src', PROF_IMG_PATH + $('#accountId').val() + '.' + data[2] + '?' + no++);
+	}
+})();
+
+
 $(function () {
 
 	//----- 画像アップロード -----
@@ -26,8 +42,9 @@ $(function () {
 					if (data[0] ==='true') {
 						alert('画像アップロード完了！');
 
-						// プロフィール画像の変更を画面に反映
-						$('#profileImg').attr('src', PROF_IMG_PATH + $('#accountId').val() + '.' + data[2] + '?1');
+						// アップロードを画面に反映
+						alterProfImgName(data);
+
 
 					} else {
 						alert(data[1]);
