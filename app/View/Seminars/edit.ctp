@@ -37,12 +37,12 @@
 	</form>
 </div>
 <?php echo $this->Form->create('Seminar'); ?>
-<?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
+<?php echo $this->Form->hidden('Seminar.seminar_img_id', array('value' => $smnImgId)); ?>
 <dl>
 	<dt>セミナーカバー画像</dt>
 	<dd><a href="#" id="selectImgsBtn">セミナーカバー画像を選ぶ</a></dd>
 	<dd><a href="#" id="smnImgReset">画像をリセット</a></dd>
-	<dd id="coverImg"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
+	<dd id="coverImg"><?php if ($smnImgId !== '') echo $smnImgId === '' ? '' : '<img src="' . SMN_IMG_PATH . $smnImgId . $smnImgExt . '" alt="" />'; ?></dd>
 	<dt>セミナー名称</dt>
 	<dd><?php echo $this->Form->text('Seminar.name'); ?></dd>
 	<dd class="errMsg"><?php echo $eSmnName; ?></dd>

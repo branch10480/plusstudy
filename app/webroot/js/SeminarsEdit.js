@@ -7,6 +7,8 @@
 //*****************************************************************************
 $(function () {
 
+	// リッチエディタhiddenフィールドから編集エリアへ値の反映
+	$('#editArea').html($('#SeminarDescription').val());
 	//----- セミナー画像一覧取得 -----
 	getSmnImgs();
 
@@ -105,7 +107,7 @@ $(function () {
 			for (dataNo = (page-1)*dispNo; dataNo<data.length; dataNo++) {
 				dispCnt++;
 				if (dispCnt > dispNo) break;
-				outStr += '<li><a class="delBtn" onclick="delSmnImg(event)" href="#">×</a><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /><input type="hidden" value="' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" /></li>';
+				outStr += '<li><a class="delBtn" onclick="delSmnImg(event)" href="#">×</a><img name="' + data[dataNo]['SeminarImage']['id'] + '" class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /><input type="hidden" value="' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" /></li>';
 			}
 
 			// 画像出力
@@ -153,6 +155,7 @@ function selectImg(event) {
 			// coverImgDispArea.appendChild(coverImg);
 			$('#coverImg').html('').append(coverImg);
 			$('#SeminarSeminarImgId').val(event.target.src);
+			$('#SeminarSeminarImgId').val($(event.target).attr('name'));
 			$.closeModalWin();
 			break;
 
