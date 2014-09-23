@@ -9,4 +9,5 @@ define('SALT_BLOWFISH', '$2a$11$inagakiimaedafukushima$');
 define('STRETCH_COUNT', 1000);
 define('IMG_PATH', ROOT_URL . 'img/');
 define('PROF_IMG_PATH', ROOT_URL . 'img/profile/');
+define('SMN_IMG_PATH', ROOT_URL . 'img/seminar/');
 define('NO_IMG_URL', PROF_IMG_PATH . 'no_image.gif');
