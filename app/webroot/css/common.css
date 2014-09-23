@@ -109,6 +109,11 @@ header{
 }
 
 
+#hNav ul  li a:hover{
+	opacity: 0.7;
+}
+
+
 #hNav ul li img{
 	width: 138px;
 	height:54px;

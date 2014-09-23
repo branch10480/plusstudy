@@ -31,7 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css(array(
 			// 'cake.generic',
 			'normalize',
-			'default',
+			'login',
 			));
 		echo $this->Html->script(array(
 			'jquery-1.11.1.min.js',
@@ -47,9 +47,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	?>
 </head>
 <body>
-	<div id="container">
+	<div id="wrap">
 
-		<div id="content">
+		<div id="container">
 
 			<?php echo $this->Session->flash(); ?>
 
