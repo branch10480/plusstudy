@@ -14,7 +14,7 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'MyAuth');
-	public $uses = array('Seminar', 'Question', 'Participant');
+	public $uses = array('Seminar', 'Question', 'Participant', 'SeminarImage');
 
 
 
@@ -99,6 +99,8 @@ class SeminarsController extends AppController {
 			$rsvLimitM = 0;
 			$dsc = $this->request->data['Seminar']['description'];
 			$smnImgId = $this->request->data['Seminar']['seminar_img_id'];
+			$smnImgInfo = $this->SeminarImage->find('first', array('conditions' => array('SeminarImage.id' => $smnImgId)));
+			$smnImgExt = $smnImgInfo['SeminarImage']['ext'];
 
 			// --- バリデーションチェック ---
 			// 勉強会名
