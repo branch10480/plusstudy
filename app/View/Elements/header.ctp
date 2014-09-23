@@ -1,5 +1,5 @@
 <header>
-	<div id="headerContent" class="plot">
+	<div id="headerContent" class="plot cf">
 		<h1 id="logo"><a href="#"><img src="<?php echo IMG_PATH . 'logo.png'; ?>" alt="plusStudy"></a></h1>
 
 		<nav id="hNav">

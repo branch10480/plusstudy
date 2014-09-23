@@ -11,8 +11,10 @@
 			<p class="errMsg"><?php echo $msg ?></p>
 		</fieldset>
 
-		<?php echo $this->Form->button('', array('type' => 'submit', 'class' => 'loginBtn')); ?>
-		<a href="#"><img class="createAccountBtn" src="<?php echo IMG_PATH . 'createaccount_btn.png'; ?>" alt="新規アカウント登録"></a>
+		<div class="cf">
+			<?php echo $this->Form->button('', array('type' => 'submit', 'class' => 'loginBtn')); ?>
+			<a href="#"><img class="createAccountBtn" src="<?php echo IMG_PATH . 'createaccount_btn.png'; ?>" alt="新規アカウント登録"></a>
+		</div>
 	<?php echo $this->Form->end(); ?>
 
 	<a href="#" id="noLogin"><img class="ar" src="<?php echo IMG_PATH . 'ar.png'; ?>" alt="▶">ログインできない方はこちら</a>
