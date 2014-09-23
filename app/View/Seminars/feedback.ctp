@@ -2,12 +2,36 @@
 <p>参加した勉強会のフィードバックにご協力お願いします</p>
 <br>
 
-<p>勉強会に参加してみて良かったですか？</p>
+<?php echo $this->Form->hidden('seminar_id', array('value' => $seminar['Seminar']['id'], 'id' => 'seminar_id')); ?>
+
+<p>この勉強会に参加してみて良かったですか？</p>
+<p><?php echo '勉強会名：' . $seminar['Seminar']['name']; ?>
 <p><?php echo $this->Form->button('良かった！', array('type' => 'button', 'id' => 'gj')); ?><p>
 
+<?php if($seminar['Seminar']['teach_me_id'] !== NULL): ?>
 <br>
 <p>あなたのニーズは解決しましたか？</p>
-<p><?php echo $this->Form->button('解決した！', array('type' => 'button', 'id' => 'gj')); ?><p>
+<p><?php echo 'ニーズ名：' . $seminar['TeachMe']['title']; ?>
+<p><?php echo $this->Form->button('解決した！', array('type' => 'button', 'id' => 'resolve')); ?><p>
+<?php endif; ?>
 
 <br>
 <?php echo $this->Html->link(__('TOPへ'), array('controller' => 'Accounts', 'action' => 'index')); ?>
+
+<script>
+// フィードバック処理
+$(function () {
+	// GJボタンがクリックされたら
+	$('button#gj').click(function(e) {
+		// ajax通信
+		$.post('/plusstudy/Comments/add', {
+				seminar_id: $('input#seminar_id').val()
+			}, function(res) {
+				// 入力フォームをクリア
+				$('textarea#content').val('');
+				// 追加したコメントを取得しにいく
+				getComment();
+		}, "json");
+	});
+});
+</script>
