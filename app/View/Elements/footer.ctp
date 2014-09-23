@@ -9,10 +9,10 @@
 				<img id="flogo" src="<?php echo IMG_PATH . 'f_logo.png'; ?>" alt="">
 
 				<ul id="fNav" class="cf">
-					<li><a href="#">ホーム</a></li>
-					<li><a href="#">勉強会を作成</a></li>
-					<li><a href="#">教えてほしいことを登録</a></li>
-					<li><a href="#">マイプロフィール</a></li>
+					<li><?php echo $this->Html->link(__('トップ'), array('controller' => 'Accounts', 'action' => 'index')); ?></li>
+					<li><?php echo $this->Html->link(__('勉強会を作成'), array('controller' => 'Seminars', 'action' => 'index')); ?></li>
+					<li><?php echo $this->Html->link(__('教えてほしいことを登録'), array('controller' => 'TeachMes', 'action' => 'index')); ?></li>
+					<li><?php echo $this->Html->link(__('マイプロフィール'), array('controller' => 'Accounts', 'action' => 'profile','?' => array('id' => $this->Session->read('Auth.id')))); ?></li>
 				</ul>
 			</nav>
 
