@@ -123,9 +123,21 @@ class SeminarsController extends AppController {
 			if ($upperLimit === '') {
 				$eUpperLimit = '何も入力されていません';
 				$validateResult = false;
-			} else if (!preg_match('/^(0|[1-9][0-9]*)$/', $upperLimit)) {
-				$eUpperLimit = '半角数字で入力してください';
+			} else if (!preg_match('/^([1-9][0-9]*)$/', $upperLimit)) {
+				$eUpperLimit = '1 以上の半角数字で入力してください';
 				$validateResult = false;
+			} else {
+				//--- 現在の参加人数より下に設定できなくする ---
+				$param = array(
+						'conditions' => array(
+								'Participant.seminar_id' => $seminar_id,
+							),
+					);
+				$currentJoinerNum = $this->Participant->find('count', $param);
+				if ($upperLimit < $currentJoinerNum) {
+					$eUpperLimit = '現在の参加人数 ' . $currentJoinerNum . '人 より少なく設定できません';
+					$validateResult = false;
+				}
 			}
 
 			// 開催日
