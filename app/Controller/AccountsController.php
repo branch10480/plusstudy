@@ -75,6 +75,19 @@ class AccountsController extends AppController {
 	}
 
 /**
+ * logout method
+ * ログアウト処理
+ * @return void
+ */
+	public function logout() {
+		// ログアウト
+		if($this->Session->check('Auth')) {
+			$this->Session->delete('Auth');
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
+
+/**
  * top method
  * トップページ
  * @return void

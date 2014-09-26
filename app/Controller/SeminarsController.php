@@ -309,7 +309,7 @@ class SeminarsController extends AppController {
 
 
 
-		if ($this->referer() === ROOT_URL . 'Seminars' || $this->referer() === ROOT_URL . 'Seminars/') {
+		if (($this->referer() === ROOT_URL . 'Seminars' || $this->referer() === ROOT_URL . 'Seminars/') && $this->request->is('post')) {
 			// 自分自身から送信
 
 			// $fileUrlArr = array();
@@ -806,11 +806,55 @@ class SeminarsController extends AppController {
  * @return void
  */
 	public function feedback() {
+		// セッションが無い場合はTOPへリダイレクト
+		if(!$this->Session->check('participant')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
 		// participantsを削除
 		$this->Participant->id = $this->Session->read('participant')['Participant']['id'];
 		$this->Participant->delete();
 
+		// 勉強会情報を取得
+		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $this->Session->read('participant')['Seminar']['id']));
+		$seminar = $this->Seminar->find('first', $options);
+		$this->set('seminar', $seminar);
+
 		// セッション削除
 		$this->Session->delete('participant');
+	}
+
+/**
+ * gj method
+ * ajaxでgjカウンタを増やす
+ * @return void
+ */
+	public function gj() {
+		// 直接アクセスの場合はTOPへリダイレクト
+		if($this->request->is('get')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+		// Ajax処理
+		if($this->request->is('ajax')) {
+			// 勉強会情報を取得
+			$options = array(
+				'conditions' => array('Seminar.id' => $this->request->data['seminar_id']),
+				);
+			$seminar = $this->Seminar->find('first', $options);
+
+			// GJを加算
+			$param = array('gj' => $seminar['Seminar']['gj'] + 1);
+			$this->Seminar->id = $seminar['Seminar']['id'];
+			$conditions = $options['conditions'];
+
+			if($this->Seminar->updateAll($param, $conditions)) {
+				$response = array('result' => true);
+			} else {
+				$response = array('result' => false);
+			}
+			$this->header('Content-Type: application/json');
+			echo json_encode($response);
+			exit();
+		}
 	}
 }
