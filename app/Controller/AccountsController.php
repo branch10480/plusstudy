@@ -22,8 +22,6 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function beforeFilter() {
-			// ログインページ用のテンプレートを指定
-			$this->layout = 'newacc';
 			// 認証済みかどうか調べる
 			$this->MyAuth->isAuth($this);
 		}
@@ -173,6 +171,8 @@ class AccountsController extends AppController {
 	 */
 	public function startNewAcc() {
 
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
 
 		$this->set('title_for_layout', '新規アカウント登録');
 
@@ -215,6 +215,10 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function sentMail() {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
+
 		$this->set('title_for_layout', '新規アカウント登録 | メールアドレス送信完了');
 
 		if (!$this->Session->check('NewAcc.mailaddress')) {
@@ -254,6 +258,9 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function input( $passwd = null ) {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
 
 		// 不正アクセス時に強制遷移
 		if ($passwd === null && !$this->Session->check('NewAcc1Pass')) $this->redirect(array('action' => 'index'));
@@ -406,6 +413,10 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function inputConfirm() {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
+
 		if (!$this->Session->check('NewAcc')) $this->redirect(array('action' => 'index'));
 
 		$this->set('acc', $this->Session->read('NewAcc'));
@@ -419,6 +430,10 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function inputComp() {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
+		
 		if (!$this->Session->check('NewAcc') && $this->Session->check('NewAcc1Pass')) $this->redirect(array('action' => 'index'));
 
 		//----- 本登録処理 -----
