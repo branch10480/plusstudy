@@ -24,13 +24,15 @@ $(function () {
 	// GJボタンがクリックされたら
 	$('button#gj').click(function(e) {
 		// ajax通信
-		$.post('/plusstudy/Comments/add', {
+		$.post('/plusstudy/Seminars/gj', {
 				seminar_id: $('input#seminar_id').val()
 			}, function(res) {
-				// 入力フォームをクリア
-				$('textarea#content').val('');
-				// 追加したコメントを取得しにいく
-				getComment();
+				if(res.result == true) {
+					// GJボタンを削除
+					$('button#gj').remove();
+				} else {
+					return;
+				}
 		}, "json");
 	});
 });

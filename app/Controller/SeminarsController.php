@@ -534,6 +534,31 @@ class SeminarsController extends AppController {
  * @return void
  */
 	public function gj() {
+		// 直接アクセスの場合はTOPへリダイレクト
+		if($this->request->is('get')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+		// Ajax処理
+		if($this->request->is('ajax')) {
+			// 勉強会情報を取得
+			$options = array(
+				'conditions' => array('Seminar.id' => $this->request->data['seminar_id']),
+				);
+			$seminar = $this->Seminar->find('first', $options);
 
+			// GJを加算
+			$param = array('gj' => $seminar['Seminar']['gj'] + 1);
+			$this->Seminar->id = $seminar['Seminar']['id'];
+			$conditions = $options['conditions'];
+
+			if($this->Seminar->updateAll($param, $conditions)) {
+				$response = array('result' => true);
+			} else {
+				$response = array('result' => false);
+			}
+			$this->header('Content-Type: application/json');
+			echo json_encode($response);
+			exit();
+		}
 	}
 }
