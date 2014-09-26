@@ -14,7 +14,7 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'MyAuth');
-	public $uses = array('Seminar', 'Question', 'Participant');
+	public $uses = array('Seminar', 'Question', 'Participant', 'SeminarImage');
 
 
 
@@ -27,6 +27,242 @@ class SeminarsController extends AppController {
 	public function beforeFilter() {
 			// 認証済みかどうか調べる
 			$this->MyAuth->isAuth($this);
+	}
+
+
+
+
+/**
+ * edit method
+ *
+ * @return void
+ */
+	public function edit( $seminar_id = '' ) {
+
+		if ($seminar_id === '') $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+
+		$this->set('title_for_layout', '勉強会編集');
+
+
+		$fileUrlArr = array();
+		$smnName = '';
+		$place = '';
+		$upperLimit = 0;
+		$startDate = '';
+		$startH = 0;
+		$startM = 0;
+		$endH = 0;
+		$endM = 0;
+		$rsvLimitDate = '';
+		$rsvLimitH = 0;
+		$rsvLimitM = 0;
+		$dsc = '';
+		$smnImgId = '';
+		$smnImgExt = '';
+
+		$eFileUrlArr = '';
+		$eSmnName = '';
+		$ePlace = '';
+		$eUpperLimit = '';
+		$eStartDate = '';
+		$eStartH = '';
+		$eStartM = '';
+		$eEndH = '';
+		$eEndM = '';
+		$eRsvLimitDate = '';
+		$eRsvLimitH = '';
+		$eRsvLimitM = '';
+		$eDsc = '';
+
+		$time = '';						// 一時的な時間変数
+
+
+
+
+
+		if ($this->referer() === ROOT_URL . 'Seminars/' . $this->action . '/' . $seminar_id || $this->referer() === ROOT_URL . 'Seminars/' . $this->action . '/' . $seminar_id . '/') {
+			// 自分自身から送信
+
+			// $fileUrlArr = array();
+			$validateResult = true;
+
+			$smnName = $this->request->data['Seminar']['name'];
+			$place = $this->request->data['Seminar']['place'];
+			$upperLimit = $this->request->data['Seminar']['upper_limit'];
+			$startDate = $this->request->data['Seminar']['date'];
+			$startH = $this->request->data['Seminar']['startH'];
+			$startM = $this->request->data['Seminar']['startM'];
+			$endH = $this->request->data['Seminar']['endH'];
+			$endM = $this->request->data['Seminar']['endM'];
+			$rsvLimitDate = $this->request->data['Seminar']['reservation_limit_d'];
+			$rsvLimitH = 0;
+			$rsvLimitM = 0;
+			$dsc = $this->request->data['Seminar']['description'];
+			$smnImgId = $this->request->data['Seminar']['seminar_img_id'];
+			$smnImgInfo = $this->SeminarImage->find('first', array('conditions' => array('SeminarImage.id' => $smnImgId)));
+			$smnImgExt = $smnImgInfo['SeminarImage']['ext'];
+
+			// --- バリデーションチェック ---
+			// 勉強会名
+			if ($smnName === '') {
+				$eSmnName = '何も入力されていません';
+				$validateResult = false;
+			} else if (!preg_match('/.{1,20}/', $smnName)) {
+				$eSmnName = '入力された文字列が長すぎます';
+				$validateResult = false;
+			}
+
+			// 開催場所
+			if ($place === '') {
+				$ePlace = '何も入力されていません';
+				$validateResult = false;
+			} else if (!preg_match('/.{1,50}/', $place)) {
+				$ePlace = '入力された文字列が長すぎます';
+				$validateResult = false;
+			}
+
+			// 参加人数上限
+			if ($upperLimit === '') {
+				$eUpperLimit = '何も入力されていません';
+				$validateResult = false;
+			} else if (!preg_match('/^([1-9][0-9]*)$/', $upperLimit)) {
+				$eUpperLimit = '1 以上の半角数字で入力してください';
+				$validateResult = false;
+			} else {
+				//--- 現在の参加人数より下に設定できなくする ---
+				$param = array(
+						'conditions' => array(
+								'Participant.seminar_id' => $seminar_id,
+							),
+					);
+				$currentJoinerNum = $this->Participant->find('count', $param);
+				if ($upperLimit < $currentJoinerNum) {
+					$eUpperLimit = '現在の参加人数 ' . $currentJoinerNum . '人 より少なく設定できません';
+					$validateResult = false;
+				}
+			}
+
+			// 開催日
+			if ($startDate === '') {
+				$eStartDate = '何も入力されていません';
+				$validateResult = false;
+			} else if (!preg_match('/^[1,2][0-9]{3}-(01|02|03|04|05|06|07|08|09|10|11|12)-(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)$/', $startDate)) {
+				$eStartDate = '半角数字で0000-00-00の書式で入力してください';
+				$validateResult = false;
+			}
+
+			// 予約締め切り日
+			if ($rsvLimitDate === '') {
+				$eRsvLimitDate = '何も入力されていません';
+				$validateResult = false;
+			} else if (!preg_match('/^[1,2][0-9]{3}-(01|02|03|04|05|06|07|08|09|10|11|12)-(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)$/', $rsvLimitDate)) {
+				$eRsvLimitDate = '半角数字で0000-00-00の書式で入力してください';
+				$validateResult = false;
+			}
+
+
+			if ($validateResult) {
+
+				// 受け渡し用Session作成
+				$this->request->data['Seminar']['id'] = $seminar_id;
+				$this->Session->write('editSmn', $this->request->data);
+
+				// 更新ページへ
+				$this->redirect(array('action' => 'update'));
+			}
+		} else {
+			//----- 登録済みの勉強会情報を取得 -----
+			$param = array(
+					'conditions' => array(
+							'Seminar.id' => $seminar_id,
+						),
+				);
+
+			$result = '';
+			if (!$result = $this->Seminar->find('first', $param)) $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+			// var_dump($result);
+
+
+
+			//----- datetime型の値を分割処理 -----
+			list($rsvLimitDate, $time) = split(" ", $result['Seminar']['reservation_limit']);
+			list($rsvLimitH, $rsvLimitM) = split(":", $time);
+			$this->request->data['Seminar']['reservation_limit_d'] = $rsvLimitDate;
+			$this->request->data['Seminar']['reservation_limit_h'] = $rsvLimitH;
+			$this->request->data['Seminar']['reservation_limit_m'] = $rsvLimitM;
+
+			// 開始日時
+			list($startDate, $time) = split(" ", $result['Seminar']['start']);
+			list($startH, $startM) = split(":", $time);
+			$this->request->data['Seminar']['date'] = $startDate;
+			$this->request->data['Seminar']['startH'] = $startH;
+			$this->request->data['Seminar']['startM'] = $startM;
+
+			// 終了日時
+			list($endDate, $time) = split(" ", $result['Seminar']['end']);
+			list($endH, $endM) = split(":", $time);
+			$this->request->data['Seminar']['endH'] = $endH;
+			$this->request->data['Seminar']['endM'] = $endM;
+
+			// その他のパラメータ格納
+			$this->request->data['Seminar']['name'] = $result['Seminar']['name'];
+			$this->request->data['Seminar']['place'] = $result['Seminar']['place'];
+			$this->request->data['Seminar']['upper_limit'] = $result['Seminar']['upper_limit'];
+			$this->request->data['Seminar']['place'];
+			$this->request->data['Seminar']['description'] = $result['Seminar']['description'];
+			$smnImgId = $result['Seminar']['seminar_image_id'];
+			$smnImgExt = $result['SeminarImage']['ext'];
+
+		}
+
+
+		$minArray = array();
+		for ($i=0; $i<60; $i+=5) {
+			$minArray[] = $i;
+		}
+
+		$hArray = array();
+		for ($i=0; $i<24; $i++) {
+			$hArray[] = $i;
+		}
+
+		$fontsizeArray = array();
+		for ($i=0; $i<10; $i++) {
+			$fontsizeArray[] = $i;
+		}
+
+		$fontColor = array(
+				'black' => '黒',
+				'red' => '赤',
+				'orange' => 'オレンジ',
+				'blue' => '青',
+				'green' => '緑',
+			);
+
+		$this->set(array(
+				'minArray' => $minArray,
+				'hArray' => $hArray,
+				'fontsizeArray' => $fontsizeArray,
+				'fontColor' => $fontColor,
+				'eSmnName' => $eSmnName,
+				'ePlace' => $ePlace,
+				'eUpperLimit' => $eUpperLimit,
+				'eStartDate' => $eStartDate,
+				'eRsvLimitDate' => $eRsvLimitDate,
+				// 'smnName' => $smnName,
+				// 'place' => $place,
+				'upperLimit' => $upperLimit,
+				// 'startDate' => $startDate,
+				// 'startH' => $startH,
+				// 'startM' => $startM,
+				// 'endH' => $endH,
+				// 'endM' => $endM,
+				// 'rsvLimitDate' => $rsvLimitDate,
+				'dsc' => $dsc,
+				'smnImgId' => $smnImgId,
+				'smnImgExt' => $smnImgExt,
+				'accId' => $this->Session->read('Auth.id'),
+			));
 	}
 
 
@@ -293,6 +529,61 @@ class SeminarsController extends AppController {
 
 		// 登録完了後、新規勉強会登録用のセッション削除
 		$this->Session->delete('newSmn');
+	}
+
+
+
+/**
+ * update method
+ *
+ * @return void
+ */
+	public function update() {
+
+		$rcvData = $this->Session->read('editSmn')['Seminar'];
+
+		$id = $rcvData['id'];
+
+		/*** データ整形 ***/
+		// 開催日時
+		$date = $rcvData['date'];
+		$start = array(sprintf('%02d', $rcvData['startH']), sprintf('%02d', $rcvData['startM']), '00');
+		$end = array(sprintf('%02d', $rcvData['endH']), sprintf('%02d', $rcvData['endM']), '00');
+		$start = implode(':', $start);
+		$end = implode(':', $end);
+		$start = $date . ' ' . $start;
+		$end = $date . ' ' . $end;
+		// 予約期限
+		$rsvLimDate = $rcvData['reservation_limit_d'];
+		$rsvLim = array(sprintf('%02d', $rcvData['reservation_limit_h']), sprintf('%02d', $rcvData['reservation_limit_m']), '00');
+		$rsvLim = implode(':', $rsvLim);
+		$rsvLim = $rsvLimDate . ' ' . $rsvLim;
+
+		// セミナー画像
+		$seminarImgId = $rcvData['seminar_img_id'];
+
+		$data = array(
+			'Seminar.seminar_image_id' => +$seminarImgId,
+			'Seminar.name' => "'" . $rcvData['name'] . "'",
+			'Seminar.reservation_limit' => "'" . $rsvLim . "'",
+			'Seminar.place' => "'" . $rcvData['place'] . "'",
+			'Seminar.account_id' => +$this->Session->read('Auth.id'),
+			'Seminar.upper_limit' => +$rcvData['upper_limit'],
+			'Seminar.start' => "'" . $start . "'",
+			'Seminar.end' => "'" . $end . "'",
+			'Seminar.description' => "'" . $rcvData['description'] . "'",
+			);
+		$conditions = array('Seminar.id' => $id);
+		// 勉強会登録処理
+		if (!$this->Seminar->updateAll($data, $conditions)) die('保存失敗');
+
+		$this->set('smnId', $id);
+
+		// 登録完了後、新規勉強会登録用のセッション削除
+		$this->Session->delete('editSmn');
+
+		// 詳細ページへジャンプ
+		$this->redirect(ROOT_URL . $this->name . '/details?id=' . $id);
 	}
 
 /**

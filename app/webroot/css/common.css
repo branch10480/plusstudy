@@ -1,94 +1,224 @@
-@charset "utf-8";
+@charset "UTF-8";
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-style:normal;
-	font-weight: normal;
-	font-size: 100%;
-	vertical-align: baseline;
+
+/*---------------------------------
+
+# Universal
+# Header
+# Footer
+
+----------------------------------*/
+
+
+
+/* Universal
+----------------------------------------------------------------------*/
+html,body {
+	min-width: 978px;
+	width: 100%;
+	height: 100%;
+	background: #4cbdce;
+	letter-spacing: 0.02em;
+	font-size: 12px;
+	font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+	line-height: 1.4;
 }
 
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
+
+#wrap {
+	position: relative;
+	margin: 0 auto;
+	min-height: 100%;
+	height:auto !important; /*IE6対策*/
+	height: 100%; /*IE6対策*/
 }
 
-html{
-    overflow-y: scroll;
-}
 
-blockquote, q {
-	quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-
-input, textarea,{
-	margin: 0;
-	padding: 0;
-}
-
-ol, ul{
-    list-style:none;
-}
-
-table{
-    border-collapse: collapse;
-    border-spacing:0;
-}
-
-caption, th{
-    text-align: left;
-}
-
-a:focus {
-	outline:none;
-}
-
-.clearfix:after {
-	content: ".";
-	display: block;
-	clear: both;
-	height: 0;
-	visibility: hidden;
-}
-
-.clearfix {
-	min-height: 1px;
-}
-
-* html .clearfix {
-	height: 1px;
-	/*¥*//*/
-	height: auto;
+#container{
 	overflow: hidden;
-	/**/
+	padding-bottom: 305px;
+	height: auto;
 }
 
-.both{
-	clear:both;
+
+.plot{
+	margin: 0 auto;
+	width: 978px;
 }
 
-.inline_block {
+
+a{
+	margin: 0;
+	padding: 0;
+}
+
+
+img{
+	border: none;
+}
+
+
+
+
+
+/* Header
+----------------------------------------------------------------------*/
+header{
+	display: block;
+	width: 100%;
+	height: 110px;
+	background: #fff;
+}
+
+
+#headerContent{
+	padding:30px 0 0 0;
+	height: 80px;
+}
+
+
+#logo{
+	display: inline;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+
+#logo img{
+	margin: 0;
+	padding: 0;
+	width: 222px;
+}
+
+
+#hNav{
+	float: right;
+}
+
+
+#hNav ul{
+	margin: 0;
+}
+
+
+#hNav ul li{
+	float: left;
+	margin-left:30px;
+	list-style: none;
+}
+
+
+#hNav ul  li a:hover{
+	opacity: 0.7;
+}
+
+
+#hNav ul li img{
+	width: 138px;
+	height:54px;
+}
+
+
+
+
+
+
+/* Footer
+----------------------------------------------------------------------*/
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 275px;
+}
+
+
+#pagetopArArea{
+	height: 35px;
+}
+
+
+#pagetopArArea a{
 	display: inline-block;
-	*display: inline;
-	*zoom: 1;
+	float: right;
+	width: 50px;
+	height: 35px;
 }
+
+
+#pagetopAr{
+	width: 50px;
+}
+
+
+#footerContent{
+	padding-top: 60px;
+	width: 100%;
+	height: 180px;
+	background: #fff;
+}
+
+
+#flogo{
+	width: 222px;
+}
+
+
+#fNav{
+	float: right;
+	margin: 10px 0 0 0;
+	padding: 0;
+	height: 10px;
+	font-size: 9.72px;
+}
+
+
+#fNav li{
+	float: left;
+	height: 10px;
+	list-style: none;
+	line-height: 1;
+}
+
+
+#fNav li a{
+	display: inline-block;
+	padding: 0 12px;
+	height: 6px;
+	border-right: solid 1px #45acbb;
+	color: #45acbb;
+	text-decoration: none;
+	line-height: 0.6;
+}#fNav li a:hover{
+	text-decoration: underline;
+}
+
+
+#fNav li:first-child a{
+	padding-left: 0;
+}
+
+
+#fNav li:last-child a{
+	padding-right: 0;
+	border: none;
+}
+
+
+#copyright{
+	margin-top: 40px;
+}
+
+
+#copyright img{
+	height: 12px;
+}
+
+
+
+
+
+
+
+
