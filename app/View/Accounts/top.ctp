@@ -10,8 +10,10 @@
 </div>
 
 <div>
-	<?php echo $this->Form->create('Logout'); ?>
-	<?php echo $this->Form->end(__('ログアウト')); ?>
+	<?php echo $this->Html->link('ログアウト', array(
+		'controller' => 'Accounts',
+	 	'action' => 'logout'
+	 	)); ?>
 	<hr>
 </div>
 

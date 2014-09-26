@@ -75,6 +75,19 @@ class AccountsController extends AppController {
 	}
 
 /**
+ * logout method
+ * ログアウト処理
+ * @return void
+ */
+	public function logout() {
+		// ログアウト
+		if($this->Session->check('Auth')) {
+			$this->Session->delete('Auth');
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
+
+/**
  * top method
  * トップページ
  * @return void
@@ -107,6 +120,28 @@ class AccountsController extends AppController {
 
 		// セミナー一覧を取得
 		$this->set('seminars', $this->Seminar->find('all'));
+
+		// 参加申請している勉強会を取得
+		$options = array(
+			'conditions' => array(
+					'Participant.account_id' => $this->Session->read('Auth.id')
+				)
+		);
+		$participants = $this->Participant->find('all', $options);
+
+		// 参加申請している勉強会の中に終わっているものがあるか調べる
+		$dt = new DateTime();
+		$dt->setTimeZone(new DateTimeZone('Asia/Tokyo'));
+		$today = $dt->format('Y-m-d');
+		foreach($participants as $participant) {
+			if(strtotime($participant['Seminar']['end']) < strtotime($today)) {
+				// セッション作成
+				$this->Session->write('participant', $participant);
+
+				// フィードバックページへリダイレクト
+				return $this->redirect(array('controller' => 'Seminars',   'action' => 'feedback'));
+			}
+		}
 	}
 
 /**
