@@ -10,14 +10,6 @@
 </div>
 
 <div>
-	<?php echo $this->Html->link('ログアウト', array(
-		'controller' => 'Accounts',
-	 	'action' => 'logout'
-	 	)); ?>
-	<hr>
-</div>
-
-<div>
 	<h2><?php echo __('今求められている勉強会'); ?></h2>
 	<?php if(count($teachmes) === 0): ?>
 		<p><?php echo '今求められている勉強会はありません'; ?></p>
