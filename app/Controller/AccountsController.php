@@ -22,6 +22,8 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function beforeFilter() {
+			// ログインページ用のテンプレートを指定
+			$this->layout = 'newacc';
 			// 認証済みかどうか調べる
 			$this->MyAuth->isAuth($this);
 		}
@@ -171,8 +173,6 @@ class AccountsController extends AppController {
 	 */
 	public function startNewAcc() {
 
-		// 新規アカウント登録用のテンプレートを指定
-		$this->layout = 'newacc';
 
 		$this->set('title_for_layout', '新規アカウント登録');
 

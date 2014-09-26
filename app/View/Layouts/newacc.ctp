@@ -31,7 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css(array(
 			// 'cake.generic',
 			'normalize',
-			'default',
+			'new_acc',
 			));
 		echo $this->Html->script(array(
 			'jquery-1.11.1.min.js',
@@ -48,7 +48,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body>
 	<div id="container">
-		<?php echo $this->element('header'); ?>
 
 		<div id="content">
 
@@ -56,8 +55,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
-
-		<?php echo $this->element('footer'); ?>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
 </body>
