@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+
+/*---------------------------------
+
+# Control
+----------------------------------*/
+
+
+
+/* Control
+----------------------------------------------------------------------*/
+.text, .email {
+	border: solid 1px #45acbb;
+	font-size: 16px;
+	padding: 0 10px;
+	width: 284px;
+	height: 30px;
+	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+}
+.text:focus,
+.email:focus {
+	outline: 0;
+	box-shadow: 0px 0px 0pt 0pt aqua;
+}
