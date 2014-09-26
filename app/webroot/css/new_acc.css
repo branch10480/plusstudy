@@ -5,13 +5,124 @@
 
 # Universal
 
+
 ----------------------------------*/
+
+
+html,body {
+	min-width: 978px;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	letter-spacing: 0.02em;
+	font-size: 12px;
+	font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+	line-height: 1.4;
+}
+
+
+
+.plot{
+	margin: 0 auto;
+	width: 978px;
+}
+
+
+a{
+	margin: 0;
+	padding: 0;
+}
+
+
+img{
+	border: none;
+}
+
+
+body{
+	background-color:#FFF;
+}
+
+li{
+	list-style: none;
+}
+
+h1{
+	color:#4cbdce;
+}
+
+p{
+	color:#4cbdce;
+	line-height: 1.8;
+}
 
 
 
 /* Universal
 ----------------------------------------------------------------------*/
+.container{
+	padding-left: 250px;
+}
 
+.title{
+	margin: 60px 0 0 85px;
+	width: 306px;
+	height: 109px;
+	
+}
+.new_acc_header{
+	width: 306px;
+	height: 109px;
+	
+}
+
+
+.pankuzu{
+	margin: 40px auto 0 auto ;
+	width:550px;
+}
+
+.navi_1,.navi_2,.navi_3,.navi_4,.navi_5{
+	float: left;
+	margin-left: -16px;
+	width: 118px;
+	height: 88px;
+}
+
+.start_new_acc_title{
+	margin: 120px 0 60px 0;
+	font-size:22pt;
+}
+
+.email_title{
+	color:#4cbdce;
+	float: left;
+	font-size: 16pt;
+}
+.email_form{
+	float: left;
+	margin: 0 0 0 20px;
+}
+
+.email_input{
+	margin-top: 60px;
+}
+
+.longin_mail_btn{
+	display: inline-block;
+	margin: 0 0 200px 55px;
+}
+
+.img_back_login{
+	width: 168px;
+	height: 38px;
+}
+
+.img_check_mail{
+	margin-left: 30px;
+	width: 168px;
+	height: 38px;
+}
 
 
 
