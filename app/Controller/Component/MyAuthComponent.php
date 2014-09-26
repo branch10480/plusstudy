@@ -21,6 +21,7 @@ class MyAuthComponent extends Component {
 		if($controller->Session->check('Auth.id')) {
 			if ($controller->action !== 'index' && $controller->action !== 'top' && $controller->action !== 'logout')
 			{
+				// ログインした状態で新規会員登録ページを利用できなくする処理
 				$controller->redirect(array('controller' => 'Accounts', 'action' => 'top'));
 			}
 		}
