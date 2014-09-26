@@ -309,7 +309,7 @@ class SeminarsController extends AppController {
 
 
 
-		if ($this->referer() === ROOT_URL . 'Seminars' || $this->referer() === ROOT_URL . 'Seminars/') {
+		if (($this->referer() === ROOT_URL . 'Seminars' || $this->referer() === ROOT_URL . 'Seminars/') && $this->request->is('post')) {
 			// 自分自身から送信
 
 			// $fileUrlArr = array();
@@ -806,6 +806,11 @@ class SeminarsController extends AppController {
  * @return void
  */
 	public function feedback() {
+		// セッションが無い場合はTOPへリダイレクト
+		if(!$this->Session->check('participant')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
 		// participantsを削除
 		$this->Participant->id = $this->Session->read('participant')['Participant']['id'];
 		$this->Participant->delete();

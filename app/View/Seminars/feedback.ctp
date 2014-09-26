@@ -6,6 +6,7 @@
 
 <p>この勉強会に参加してみて良かったですか？</p>
 <p><?php echo '勉強会名：' . $seminar['Seminar']['name']; ?>
+<p id='gjcnt'><?php echo $seminar['Seminar']['gj']; ?>
 <p><?php echo $this->Form->button('良かった！', array('type' => 'button', 'id' => 'gj')); ?><p>
 
 <?php if($seminar['Seminar']['teach_me_id'] !== NULL): ?>
@@ -28,6 +29,9 @@ $(function () {
 				seminar_id: $('input#seminar_id').val()
 			}, function(res) {
 				if(res.result == true) {
+					// GJを加算
+					var cnt = parseInt($('#gjcnt').text()) + 1;
+					$('#gjcnt').text(cnt);
 					// GJボタンを削除
 					$('button#gj').remove();
 				} else {
