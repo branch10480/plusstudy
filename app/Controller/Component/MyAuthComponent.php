@@ -19,7 +19,13 @@ class MyAuthComponent extends Component {
 	// 認証済みかどうか調べる
 	public function isAuth($controller) {
 		if($controller->Session->check('Auth.id')) {
-			if ($controller->action !== 'index' && $controller->action !== 'top' && $controller->action !== 'logout')
+			if (
+				$controller->action === 'startNewAcc' ||
+				$controller->action === 'sentMail' ||
+				$controller->action === 'input' ||
+				$controller->action === 'inputConfirm' ||
+				$controller->action === 'inputComp'
+				)
 			{
 				// ログインした状態で新規会員登録ページを利用できなくする処理
 				$controller->redirect(array('controller' => 'Accounts', 'action' => 'top'));
