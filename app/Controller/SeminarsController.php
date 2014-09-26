@@ -808,7 +808,7 @@ class SeminarsController extends AppController {
 	public function feedback() {
 		// participantsを削除
 		$this->Participant->id = $this->Session->read('participant')['Participant']['id'];
-		//$this->Participant->delete();
+		$this->Participant->delete();
 
 		// 勉強会情報を取得
 		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $this->Session->read('participant')['Seminar']['id']));
@@ -816,7 +816,7 @@ class SeminarsController extends AppController {
 		$this->set('seminar', $seminar);
 
 		// セッション削除
-		//$this->Session->delete('participant');
+		$this->Session->delete('participant');
 	}
 
 /**
