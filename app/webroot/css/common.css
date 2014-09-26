@@ -114,11 +114,16 @@ header{
 }
 
 
-#hNav ul li img{
+.hNavst1 img{
 	width: 138px;
 	height:54px;
 }
 
+
+.hNavst2 img{
+	width: 54px;
+	height: 54px;
+}
 
 
 
