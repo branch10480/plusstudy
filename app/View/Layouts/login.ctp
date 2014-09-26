@@ -31,7 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css(array(
 			// 'cake.generic',
 			'normalize',
-			'common',
+			'login',
 			));
 		echo $this->Html->script(array(
 			'jquery-1.11.1.min.js',
@@ -39,7 +39,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			'common',
 			'modalWin.js',
 			'imgopt.js',
-			'scripts.js',
 			));
 
 		echo $this->fetch('meta');
@@ -49,15 +48,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body>
 	<div id="wrap">
-		<?php echo $this->element('header'); ?>
 
 		<div id="container">
+
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
 
-		<?php echo $this->element('footer'); ?>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
 </body>

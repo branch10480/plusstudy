@@ -32,6 +32,10 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function index() {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'login';
+
 		// ページタイトル設定
 		$this->set('title_for_layout', 'PlusStudy ログイン');
 		$msg = '';
@@ -188,6 +192,10 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function startNewAcc() {
+
+		// 新規アカウント登録用のテンプレートを指定
+		$this->layout = 'newacc';
+
 		$this->set('title_for_layout', '新規アカウント登録');
 
 		$msg = '';
