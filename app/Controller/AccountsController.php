@@ -75,6 +75,19 @@ class AccountsController extends AppController {
 	}
 
 /**
+ * logout method
+ * ログアウト処理
+ * @return void
+ */
+	public function logout() {
+		// ログアウト
+		if($this->Session->check('Auth')) {
+			$this->Session->delete('Auth');
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
+
+/**
  * top method
  * トップページ
  * @return void
@@ -107,6 +120,28 @@ class AccountsController extends AppController {
 
 		// セミナー一覧を取得
 		$this->set('seminars', $this->Seminar->find('all'));
+
+		// 参加申請している勉強会を取得
+		$options = array(
+			'conditions' => array(
+					'Participant.account_id' => $this->Session->read('Auth.id')
+				)
+		);
+		$participants = $this->Participant->find('all', $options);
+
+		// 参加申請している勉強会の中に終わっているものがあるか調べる
+		$dt = new DateTime();
+		$dt->setTimeZone(new DateTimeZone('Asia/Tokyo'));
+		$today = $dt->format('Y-m-d');
+		foreach($participants as $participant) {
+			if(strtotime($participant['Seminar']['end']) < strtotime($today)) {
+				// セッション作成
+				$this->Session->write('participant', $participant);
+
+				// フィードバックページへリダイレクト
+				return $this->redirect(array('controller' => 'Seminars',   'action' => 'feedback'));
+			}
+		}
 	}
 
 /**
@@ -171,7 +206,7 @@ class AccountsController extends AppController {
 	 */
 	public function startNewAcc() {
 
-		// 新規アカウント登録用のテンプレートを指定
+		// ログインページ用のテンプレートを指定
 		$this->layout = 'newacc';
 
 		$this->set('title_for_layout', '新規アカウント登録');
@@ -215,6 +250,10 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function sentMail() {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
+
 		$this->set('title_for_layout', '新規アカウント登録 | メールアドレス送信完了');
 
 		if (!$this->Session->check('NewAcc.mailaddress')) {
@@ -254,6 +293,9 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function input( $passwd = null ) {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
 
 		// 不正アクセス時に強制遷移
 		if ($passwd === null && !$this->Session->check('NewAcc1Pass')) $this->redirect(array('action' => 'index'));
@@ -406,6 +448,10 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function inputConfirm() {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
+
 		if (!$this->Session->check('NewAcc')) $this->redirect(array('action' => 'index'));
 
 		$this->set('acc', $this->Session->read('NewAcc'));
@@ -419,6 +465,10 @@ class AccountsController extends AppController {
 	 * @return void
 	 */
 	public function inputComp() {
+
+		// ログインページ用のテンプレートを指定
+		$this->layout = 'newacc';
+		
 		if (!$this->Session->check('NewAcc') && $this->Session->check('NewAcc1Pass')) $this->redirect(array('action' => 'index'));
 
 		//----- 本登録処理 -----

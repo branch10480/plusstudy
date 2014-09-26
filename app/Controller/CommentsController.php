@@ -16,95 +16,82 @@ class CommentsController extends AppController {
 	public $components = array('Paginator');
 
 /**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Comment->recursive = 0;
-		$this->set('comments', $this->Paginator->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Comment->exists($id)) {
-			throw new NotFoundException(__('Invalid comment'));
-		}
-		$options = array('conditions' => array('Comment.' . $this->Comment->primaryKey => $id));
-		$this->set('comment', $this->Comment->find('first', $options));
-	}
-
-/**
  * add method
- *
+ * Ajaxでコメントの追加処理を行う
  * @return void
  */
 	public function add() {
-		if ($this->request->is('post')) {
-			$this->Comment->create();
-			if ($this->Comment->save($this->request->data)) {
-				$this->Session->setFlash(__('The comment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The comment could not be saved. Please, try again.'));
-			}
+		// ログインしていなかったら追加処理は行わない
+	   	if(!$this->Session->check('Auth')) {
+			exit();
 		}
-		$questions = $this->Comment->Question->find('list');
-		$accounts = $this->Comment->Account->find('list');
-		$this->set(compact('questions', 'accounts'));
+
+		// 直接アクセスの場合はTOPへリダイレクト
+		if($this->request->is('get')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+		// Ajaxでコメント追加処理を行う
+		if($this->request->is('ajax')) {
+			// データ追加
+			$this->Comment->create(false);
+			$param = array(
+				'question_id' => $this->request->data['question_id'],
+				'account_id' => $this->Session->read('Auth.id'),
+				'content' => $this->request->data['content']
+				);
+			$newRecord = $this->Comment->save($param);
+
+			// 追加したレコードのidを元に情報を取得する
+			$options = array('conditions' => array('Comment.id' => $newRecord['Comment']['id']));
+			$comment = $this->Comment->find('first', $options);
+
+			// Viewに情報を渡す
+			$this->autoRender = false;
+			$this->autoLayout = false;
+			$response = array(
+				'comment' => $comment['Comment'],
+				'account' => $comment['Account']);
+			$this->header('Content-Type: application/json');
+			echo json_encode($response);
+			exit();
+		}
+		// エラー
+		$this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 	}
 
 /**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
+ * get method
+ * Ajaxで追加されたコメントを取得する
  * @return void
  */
-	public function edit($id = null) {
-		if (!$this->Comment->exists($id)) {
-			throw new NotFoundException(__('Invalid comment'));
+	public function get() {
+		// 直接アクセスの場合はTOPへリダイレクト
+		if($this->request->is('get')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Comment->save($this->request->data)) {
-				$this->Session->setFlash(__('The comment has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The comment could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Comment.' . $this->Comment->primaryKey => $id));
-			$this->request->data = $this->Comment->find('first', $options);
-		}
-		$questions = $this->Comment->Question->find('list');
-		$accounts = $this->Comment->Account->find('list');
-		$this->set(compact('questions', 'accounts'));
-	}
+		// Ajax処理
+		if($this->request->is('ajax')) {
+			// 該当する質問のコメントを取得
+			$options = array(
+				'conditions' => array('question_id' => $this->request->data['question_id']),
+				);
+			$comments = $this->Comment->find('all', $options);
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Comment->id = $id;
-		if (!$this->Comment->exists()) {
-			throw new NotFoundException(__('Invalid comment'));
+			// 件数が増えていたらデータ取得
+			$this->autoRender = false;
+			$this->autoLayout = false;
+			if($this->request->data['cnt'] < count($comments)) {
+				$response = array(
+					'result' => true,
+					'comment' => $comments[$this->request->data['cnt']]['Comment'],
+					'account' => $comments[$this->request->data['cnt']]['Account']);
+			}
+			else {
+				$response = array('result' => false);
+			}
+			$this->header('Content-Type: application/json');
+			echo json_encode($response);
+			exit();
 		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Comment->delete()) {
-			$this->Session->setFlash(__('The comment has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The comment could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
 	}
 }
