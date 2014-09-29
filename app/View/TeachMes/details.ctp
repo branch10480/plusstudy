@@ -2,7 +2,7 @@
 	<p><b>ニーズタイトル</b><p>
 	<p><?php echo $teachme['TeachMe']['title'] ?></p>
 	<p><b>作成者</b><p>
-	<p><?php echo $teachme['Account']['last_name'] . $teachme['Account']['first_name'] ?></p>
+	<p><?php echo $this->Html->link($teachme['Account']['last_name'] . $teachme['Account']['first_name'], array('controller' => 'Accounts', 'action' => 'profile', '?' => array('id' => $teachme['Account']['id']))); ?></p>
 	<p><b>内容</b></p>
 	<p><?php echo $teachme['TeachMe']['content'] ?></p>
 </div>

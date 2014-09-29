@@ -7,10 +7,21 @@
 <div>
 	<h2><?php echo __('マイページ'); ?></h2>
 
+	<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
+	<?php echo $this->Html->link('プロフィールを編集する', array('controller' => 'Accounts', 'action' => 'edit')); ?>
+	<?php endif; ?>
+
 	<br>
 	<p><b>プロフィール画像</b></p>
 	<form action="<?php echo ROOT_URL . 'Accounts/uploadProfImg/'; ?>" method="post" id="ImgUpForm">
-	<p><img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" /><input id="profile_img" enctype="multipart/form-data" name="up_img" type="file"><input id="delProfImg" type="button" value="画像を削除"></p>
+	<p>
+	<img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" />
+
+	<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
+	<input id="profile_img" enctype="multipart/form-data" name="up_img" type="file"><input id="delProfImg" type="button" value="画像を削除">
+	<?php endif; ?>
+
+	</p>
 	</form>
 	<br>
 

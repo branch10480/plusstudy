@@ -2,8 +2,11 @@
 	<p><b>勉強会タイトル</b></p>
 	<p><?php echo $seminar['Seminar']['name'] ?></p>
 
+	<p><b>対応する教えて欲しいこと</b></p>
+	<p><?php echo $this->Html->link($seminar['TeachMe']['title'], array('controller' => 'TeachMes', 'action' => 'details', '?' => array('id' => $seminar['Seminar']['teach_me_id']))); ?></p>
+
 	<p><b>作成者</b></p>
-	<p><?php echo $seminar['Account']['last_name'] . $seminar['Account']['first_name'] ?></p>
+	<p><?php echo $this->Html->link($seminar['Account']['last_name'] . $seminar['Account']['first_name'], array('controller' => 'Accounts', 'action' => 'profile', '?' => array('id' => $seminar['Account']['id']))); ?></p>
 
 	<p><b>開催場所</b></p>
 	<p><?php echo $seminar['Seminar']['place'] ?></p>
