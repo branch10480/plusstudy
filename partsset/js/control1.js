@@ -1,30 +1,30 @@
 // control.js
 
 
-function Select($el) {
-    this.$el = $($el);
-    this.$select = this.$el.find('.select-select');
-    this.select = this.$select[0];
-    this.$value = this.$el.find('.select-value');
+// function Select($el) {
+//     this.$el = $($el);
+//     this.$select = this.$el.find('.select-select');
+//     this.select = this.$select[0];
+//     this.$value = this.$el.find('.select-value');
 
-    this.$select.on('change keydown', $.proxy(this, '_onChange')).change();
-}
+//     this.$select.on('change keydown', $.proxy(this, '_onChange')).change();
+// }
 
-Select.prototype._onChange = function (e) {
-    setTimeout($.proxy(this, 'update'), 0);
-};
+// Select.prototype._onChange = function (e) {
+//     setTimeout($.proxy(this, 'update'), 0);
+// };
 
-Select.prototype.update = function () {
-    var value = this.select.options[this.select.selectedIndex].innerText;
-    this.$value.text(value);
-};
+// Select.prototype.update = function () {
+//     var value = this.select.options[this.select.selectedIndex].innerText;
+//     this.$value.text(value);
+// };
 
 
-$(function () {
-    $('.select').each(function () {
-        new Select(this);
-    });
-});
+// $(function () {
+//     $('.select').each(function () {
+//         new Select(this);
+//     });
+// });
 
 
 
