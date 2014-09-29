@@ -5,77 +5,13 @@
 <meta name="description" content="">
 <title>Parts Set</title>
 <link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/control2.css">
+<link rel="stylesheet" href="css/control3.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="js/easyselectbox.min.js"></script>
-<script>
-	$(function(){
-		$('.select').easySelectBox();
-	});
-</script>
 </head>
 <body>
 	<h1>テキストボックス</h1>
 	<input type="text" class="text" value="テキスト"><br />
-	<input type="email" class="email" value="mail@mail.com">
-	<input type="date" class="date" value="">
-	<!-- <h1>ラジオボタン</h1>
-	<input type="radio" class="radio" value="1">男<br />
-	<input type="radio" class="radio" value="2">女
-	<h1>チェックボックス</h1>
-	<input type="checkbox" class="checkbox" checked="checked">
-	<input type="checkbox" class="checkbox"> -->
-	<h1>セレクトメニュー</h1>
-	<p>
-	<select name="" class="select">
-		<option value="1">00</option>
-		<option value="2">01</option>
-		<option value="2">02</option>
-		<option value="3">03</option>
-		<option value="4">04</option>
-		<option value="5">05</option>
-		<option value="6">06</option>
-		<option value="7">07</option>
-		<option value="8">08</option>
-		<option value="9">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-	</select>
-	</p>
-	<h1>リッチエディタ</h1>
-	<div class="richeditor">
-		<ul class="cf">
-			<li onclick="(function(event){ event.preventDefault(); })(event)" class="buiBtn"><a href="#">B</a></li>
-			<li onclick="(function(event){ event.preventDefault(); })(event)" class="buiBtn"><a href="#">U</a></li>
-			<li onclick="(function(event){ event.preventDefault(); })(event)" class="buiBtn"><a href="#">I</a></li>
-			<li class="labelLi"><label>フォントサイズ</label></li>
-			<li class='selectFontSize'>
-				<select name="" class="select">
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="14">14</option>
-					<option value="18">18</option>
-					<option value="24">24</option>
-					<option value="32">32</option>
-					<option value="64">64</option>
-				</select>
-			</li>
-			<li class="labelLi"><label>フォント色</label></li>
-			<li>
-				<select name="" class="select">
-					<option value="orange">オレンジ</option>
-					<option value="red">赤</option>
-					<option value="blue">青</option>
-					<option value="green">緑</option>
-				</select>
-			</li>
-			<li class="insertImg"><a onclick="(function(event){ event.preventDefault();$('#fileBtn').click(); })(event);" href="#">画像を挿入</a><input id="fileBtn" type="file" style="display: none;"></li>
-		</ul>
-		<div id="editArea" contenteditable="true"></div>
-	</div>
+	<h1>テキストエリア</h1>
+	<textarea cols="30" rows="10"></textarea>
 </body>
 </html>
