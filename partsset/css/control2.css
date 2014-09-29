@@ -18,6 +18,7 @@
 	height: 30px;
 	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
 	border-radius: 5px;
+	color: #777;
 }
 .date {
 	background-image: url('../');
@@ -160,7 +161,9 @@
 #editArea {
 	background: #fff;
 	height: 295px;
-	padding: 5px;
+	padding: 10px;
+	color: #777;
+	font-size: 14px;
 }
 #editArea:focus {
 	outline: none;
