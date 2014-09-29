@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+
+/*---------------------------------
+
+# Control
+----------------------------------*/
+
+
+
+/* Control
+----------------------------------------------------------------------*/
+.text, .email, .date {
+	border: solid 1px #3e99a7;
+	font-size: 18px;
+	padding: 10px;
+	width: 472px;
+	height: 30px;
+	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+	border-radius: 5px;
+}
+.date {
+	background-image: url('../');
+}
+.text:focus,
+.email:focus {
+	outline: 0;
+	box-shadow: 0px 0px 0pt 0pt aqua;
+}
+.easy-select-box{
+	display:inline-block;
+	position:relative;
+	border-radius: 5px;
+	border: #45acbb solid 1px;
+}
+.easy-select-box:focus {
+	outline: none;
+}
+.easy-select-box .esb-dropdown{
+	position:absolute;
+	top:100%;
+	left:0;
+	z-index:99;
+	display:none;
+}
+.easy-select-box{
+	width:84px;
+	text-align:left;
+	font-size:14px;
+	color:#0c2245;
+}
+.easy-select-box .esb-displayer{
+	background: url('../img/selectctlar1.png') no-repeat right 10px center;
+	background-size: 7px 16px;
+	color:#4cbdce;
+	padding:5px;
+	height:18px;
+	line-height:18px;
+	cursor: default;
+}
+.easy-select-box:hover .esb-displayer{
+	text-decoration:none;
+	cursor: pointer;
+}
+.easy-select-box.disabled .esb-displayer,
+.easy-select-box:hover.disabled .esb-displayer{
+	background-position: 0 -36px;
+}
+.easy-select-box .esb-dropdown{
+	border:1px solid #cccccc;
+	width:116px;
+	max-height:200px;
+	overflow:auto;
+	background:#FFFFFF;
+}
+.easy-select-box .esb-dropdown .esb-item{
+	padding:5px;
+	background:#ffffff;
+	color:#0c2245;
+	cursor:default;
+}
+.easy-select-box .esb-dropdown .esb-item:hover{
+	background:#45acbb;
+	color:#fff;
+	text-decoration:none;
+	cursor: pointer;
+}
+.select-box {
+  background: #FFFDF4;
+  border: 2px solid #D2BA85;
+  border-radius: 5px;
+  color: #0C2245;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  text-indent: 5px;
+  vertical-align: middle;
+  width: 140px;
+}
+.richeditor {
+	border-radius: 5px;
+	background: #3e99a7;
+	padding: 10px 1px 16px;
+	width: 640px;
+}
+.richeditor ul {
+	width: 642px;
+	height: 40px;
+	padding: 0;
+	margin: 0;
+}
+.richeditor li {
+	float: left;
+	display: block;
+	height: 25px;
+	margin: 0 0 0 10px;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	min-width: 25px;
+	text-align: center;
+}
+.richeditor .easy-select-box {
+	border: none;
+}
+.richeditor label {
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+.richeditor .esb-displayer {
+	padding: 0 0 0 5px;
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+}
+.richeditor .selectFontSize,
+.richeditor .selectFontSize .esb-displayer {
+	width: 50px;
+	font-weight: normal;
+}
+.richeditor .esb-displayer {
+	background: url('../img/selectrichar.png') no-repeat right 10px center;
+	background-size: 5px 12px;
+}
+.richeditor li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 3px 0 0;
+}
+#editArea {
+	background: #fff;
+	height: 295px;
+	padding: 5px;
+}
+#editArea:focus {
+	outline: none;
+}
+.richeditor li.labelLi {
+	border: solid 1px #3e99a7;
+}
+.richeditor li.buiBtn,
+.richeditor li.insertImg {
+	overflow: hidden;
+}
+.richeditor li.buiBtn a {
+	font-weight: normal;
+	padding: 3px 0 0;
+}
+.richeditor li.buiBtn a:active,
+.richeditor li.insertImg a:active {
+	background: #fff;
+	color: #3e99a7;
+}
+.richeditor li.insertImg {
+	width: 88px;
+	text-align: center;
+}
