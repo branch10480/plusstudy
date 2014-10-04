@@ -36,7 +36,7 @@ li {
 	text-align: center;
 }
 .card .bottom {
-	padding: 29px 14px;
+	padding: 29px 14px 16px;
 }
 .early .top, .early .bottom {
 	background: #86d956;
@@ -53,6 +53,7 @@ li {
 .card .middle h3 {
 	padding: 18px 26px;
 	color: #613323;
+	text-align: center;
 }
 .card dt, .card dd {
 	font-size: 12px;
