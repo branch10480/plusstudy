@@ -6,16 +6,95 @@
 # Universal
 
 ----------------------------------*/
-
+ul,li,h2,h3,p {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
 
 
 /* Universal
 ----------------------------------------------------------------------*/
-
-
-
-
-
+#container {
+	color: #656565;
+	font-size: 20px;
+}
+#container h2 {
+	font-size: 24px;
+}
+#container section {
+	padding: 80px 0 0;
+}
+h2 {
+	text-align: center;
+	margin-bottom: 60px;
+}
+.hidden {
+	display: none;
+}
+#needsArea {
+	width: 1008px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+#needsArea ul {
+	width: 1008px;
+	margin-left: -20px;
+}
+#needsArea li {
+	width: 474px;
+	margin-left: 30px;
+	float: left;
+	background: #fff;
+	padding: 15px 0 12px;
+	margin-bottom: 20px;
+}
+#needsArea a {
+	color: #656565;
+	text-decoration: none;
+}
+#needsArea a:hover {
+	text-decoration: underline;
+}
+#needsArea span {
+	padding-left:
+}
+.needsWrapper {
+	width: 474px;
+}
+.needsWrapper > div {
+	float: left;
+}
+.needsWrapper .left {
+	width: 233px;
+	padding-left: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.needsWrapper .middle {
+	width: 63px;
+	text-align: right;
+	padding-right: 10px;
+	color: #48b2c2;
+}
+.needsWrapper .right {
+	width: 140px;
+}
+.seminarsArea {
+	width: 1008px;
+	overflow: hidden;
+	margin-left: -30px;
+	margin: 0 auto;
+	padding-bottom: 80px;
+}
+.card {
+	float: left;
+	margin-left: 30px;
+}
+.thumb {
+	overflow: hidden;
+}
 
 
 

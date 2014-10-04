@@ -777,6 +777,8 @@ class AccountsController extends AppController {
 					if ($flg) {
 						$data = array(
 								'Account.img_ext' => "'" . $lastName . "'",
+								'Account.img_w' => "'" . $imgW . "'",
+								'Account.img_h' => "'" . $imgH . "'",
 							);
 						$conditions = array(
 								'Account.id' => $accountId,
