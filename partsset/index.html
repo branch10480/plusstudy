@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<title>Parts Set</title>
+<link rel="stylesheet" href="css/control1.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="js/easyselectbox.min.js"></script>
+<script>
+	$(function(){
+		$('.select').easySelectBox();
+	});
+</script>
+</head>
+<body>
+	<h1>テキストボックス</h1>
+	<input type="text" class="text" value="テキスト"><br />
+	<input type="email" class="email" value="mail@mail.com">
+	<!-- <h1>ラジオボタン</h1>
+	<input type="radio" class="radio" value="1">男<br />
+	<input type="radio" class="radio" value="2">女
+	<h1>チェックボックス</h1>
+	<input type="checkbox" class="checkbox" checked="checked">
+	<input type="checkbox" class="checkbox"> -->
+	<h1>セレクトメニュー</h1>
+	<p>
+		<select name="" class="select">
+			<option value="">--- 選択してください ---</option>
+			<option value="1">4年制課程</option>
+			<option value="2">2年制課程</option>
+		</select>
+	</p>
+	<h1>テキストエリア</h1>
+	<textarea cols="30" rows="10"></textarea>
+</body>
+</html>
