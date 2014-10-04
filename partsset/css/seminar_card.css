@@ -36,18 +36,18 @@ li {
 	text-align: center;
 }
 .card .bottom {
-	padding: 29px 14px 16px;
+	padding: 30px 14px 16px;
 }
 .early .top, .early .bottom {
-	background: #86d956;
-	color: #fff;
-}
-.mid .top, .mid .bottom {
 	background: #fd865b;
 	color: #fff;
 }
+.mid .top, .mid .bottom {
+	background: #f5d23f;
+	color: #fff;
+}
 .late .top, .late .bottom {
-	background: #666;
+	background: #20ccaa;
 	color: #fff;
 }
 .card .middle h3 {
@@ -109,22 +109,22 @@ li {
 	font-weight: normal;
 }
 .seminarsArea .early p {
-	color: #86d956;
+	color: #fd865b;
 }
 .seminarsArea .mid p {
-	color: #fd865b;
+	color: #f5d23f;
 }
 .seminarsArea .late p {
-	color: #666;
+	color: #20ccaa;
 }
 .early h4 {
-	color: #86d956;
-}
-.mid h4 {
 	color: #fd865b;
 }
+.mid h4 {
+	color: #f5d23f;
+}
 .late h4 {
-	color: #666;
+	color: #20ccaa;
 }
 .card .limitDate {
 	font-size: 14px;

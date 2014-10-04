@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.29, for osx10.6 (i386)
 --
 -- Host: localhost    Database: plusstudy
 -- ------------------------------------------------------
--- Server version	5.5.34-log
+-- Server version	5.5.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -42,6 +42,8 @@ CREATE TABLE `accounts` (
   `facebook` varchar(100) DEFAULT NULL,
   `twitter` varchar(100) DEFAULT NULL,
   `pub_mailaddress` varchar(100) DEFAULT NULL,
+  `img_w` int(11) DEFAULT '0',
+  `img_h` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -52,7 +54,7 @@ CREATE TABLE `accounts` (
 
 LOCK TABLES `accounts` WRITE;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (1,'masaya@gmail.com','masaya','稲垣','匡哉','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp'),(2,'masaya2@gmail.com','masaya2','稲垣','匡哉２','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp'),(3,'taka@gmail.com','taka','福島','孝明','フクシマ','タカアキ','4',4,'WEB開発学科','0','jpg','さくらちゃ〜ん！！！','色彩検定2級','お笑い','2014-08-11 00:00:00','taka','taka','taka@yahoo.co.jp');
+INSERT INTO `accounts` VALUES (1,'masaya@gmail.com','masaya','稲垣','匡哉','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp',460,460),(2,'masaya2@gmail.com','masaya2','稲垣','匡哉２','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp',0,0),(3,'taka@gmail.com','taka','福島','孝明','フクシマ','タカアキ','4',4,'WEB開発学科','0','01','さーーーーーーーーーーーーーーーーーーーーーーーーーーっぷ！！！','色彩検定2級','お笑い','2014-08-11 00:00:00','taka','taka','taka@yahoo.co.jp',244,175);
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +72,7 @@ CREATE TABLE `comments` (
   `account_id` int(11) DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +81,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (6,1,'おおおおおおおおおおおおおお',3,'0000-00-00 00:00:00'),(7,1,'あああああああああ',3,'2014-09-05 10:46:08'),(8,3,'うおおおおおおお',3,'2014-09-05 10:52:27'),(9,3,'管理者だよおおおおん',1,'2014-09-05 10:52:53'),(10,1,'おおおおおおおおおおおお',1,'2014-09-08 10:30:21'),(11,4,'ああああああああああああああ',1,'2014-09-08 10:40:04');
+INSERT INTO `comments` VALUES (170,3,'あああああああああ',3,'2014-09-19 14:33:39'),(171,3,'死ねええええええええ',3,'2014-09-19 14:33:44'),(172,3,'あああああああああああ',3,'2014-09-19 14:33:52'),(173,3,'おおおおおおおお',2,'2014-09-19 14:33:59'),(174,3,'付き合ってください\n',3,'2014-09-19 14:34:18'),(175,3,'断る by 北折',2,'2014-09-19 14:34:33'),(176,3,'マックスバリュいこう',3,'2014-09-19 14:35:06'),(177,3,'いいでしょう',2,'2014-09-19 14:35:33'),(178,3,'あああああああ',2,'2014-09-19 14:36:07'),(179,3,'\n\n\n；',2,'2014-09-19 14:36:24'),(180,3,'あ\nあ\nあ\nあ\nあ\n',2,'2014-09-19 14:36:33'),(181,3,'ああああああ',2,'2014-09-19 15:59:47'),(182,3,'ああああああああ',3,'2014-09-19 15:59:54'),(183,3,'ああ',2,'2014-09-19 15:59:57'),(184,3,'お',3,'2014-09-19 16:00:06'),(185,3,'あ',2,'2014-09-19 16:00:10'),(186,3,'あ',3,'2014-09-19 16:00:29'),(187,3,'あ',2,'2014-09-19 16:00:32'),(188,4,'あああ',3,'2014-09-19 16:00:49'),(189,6,'aaaaaa',3,'2014-09-22 08:39:07'),(190,1,'aaaaaaaaaaa',1,'2014-09-23 02:37:28'),(191,1,'aaaaaaaaa',1,'2014-09-23 02:37:38'),(192,7,'aaaaaaaaaaaaa',1,'2014-09-23 02:37:53'),(193,7,'aaaaaaaaa',1,'2014-09-23 02:37:56'),(194,NULL,NULL,3,'2014-09-23 07:25:21'),(195,NULL,NULL,3,'2014-09-23 07:25:21'),(196,NULL,NULL,3,'2014-09-23 07:25:21'),(197,NULL,NULL,3,'2014-09-23 07:25:21');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +121,7 @@ CREATE TABLE `me_toos` (
   `account_id` int(11) DEFAULT NULL,
   `resolved` char(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +130,33 @@ CREATE TABLE `me_toos` (
 
 LOCK TABLES `me_toos` WRITE;
 /*!40000 ALTER TABLE `me_toos` DISABLE KEYS */;
+INSERT INTO `me_toos` VALUES (1,NULL,1,'0'),(2,1,3,'0');
 /*!40000 ALTER TABLE `me_toos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `newacc_tmps`
+--
+
+DROP TABLE IF EXISTS `newacc_tmps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `newacc_tmps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mailaddress` varchar(100) DEFAULT NULL,
+  `passwd` varchar(100) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `newacc_tmps`
+--
+
+LOCK TABLES `newacc_tmps` WRITE;
+/*!40000 ALTER TABLE `newacc_tmps` DISABLE KEYS */;
+/*!40000 ALTER TABLE `newacc_tmps` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -142,8 +170,9 @@ CREATE TABLE `participants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `seminar_id` int(11) DEFAULT NULL,
   `account_id` int(11) DEFAULT NULL,
+  `feedbacked` char(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,6 +181,7 @@ CREATE TABLE `participants` (
 
 LOCK TABLES `participants` WRITE;
 /*!40000 ALTER TABLE `participants` DISABLE KEYS */;
+INSERT INTO `participants` VALUES (1,2,1,NULL),(4,2,3,NULL);
 /*!40000 ALTER TABLE `participants` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +200,7 @@ CREATE TABLE `questions` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `account_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +209,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,1,'あ！！','え？！！','2014-09-01 12:51:23',1),(2,1,'aaaaaaa','aaaaaaaa','0000-00-00 00:00:00',1),(3,1,'福島だよーん','あっはっはっは','0000-00-00 00:00:00',3),(4,1,'ああああああああ','ううううううううううう','0000-00-00 00:00:00',3),(5,1,'うほおおおおおおおお','あああああああああああああぁぁ','2014-09-05 10:52:03',3);
+INSERT INTO `questions` VALUES (1,1,'あ！！','え？！！','2014-09-01 12:51:23',1),(2,1,'aaaaaaa','aaaaaaaa','0000-00-00 00:00:00',1),(3,1,'福島だよーん','あっはっはっは','0000-00-00 00:00:00',3),(4,1,'ああああああああ','ううううううううううう','0000-00-00 00:00:00',3),(5,1,'うほおおおおおおおお','あああああああああああああぁぁ','2014-09-05 10:52:03',3),(6,2,'aaaaa','aaaaaaa','2014-09-15 16:41:58',1),(7,2,'あああああああ','ああああああああああああああ','2014-09-16 14:16:35',1);
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +273,7 @@ CREATE TABLE `seminars` (
 
 LOCK TABLES `seminars` WRITE;
 /*!40000 ALTER TABLE `seminars` DISABLE KEYS */;
-INSERT INTO `seminars` VALUES (1,1,'Unity勉強会','2014-08-20 00:00:00','182教室',1,NULL,0,'2014-08-21 00:00:00','2014-08-22 00:00:00','簡単に3Dゲームが作れる！Unityを勉強しよう！',5),(2,1,'CakePHP勉強会','2014-08-20 00:00:00','182教室',2,NULL,0,'2014-08-21 00:00:00','2014-08-22 00:00:00','WebアプリケーションフレームワークのCakePHPを一緒に勉強しましょう！',10);
+INSERT INTO `seminars` VALUES (1,1,'Unity勉強会','2014-08-20 00:00:00','182教室',1,NULL,14,'2014-08-21 00:00:00','2014-08-22 00:00:00','簡単に3Dゲームが作れる！Unityを勉強しよう！',5),(2,3,'CakePHP勉強会','2014-08-20 00:00:00','182教室',3,NULL,0,'2014-10-21 00:00:00','2014-10-21 00:00:00','WebアプリケーションフレームワークのCakePHPを一緒に勉強しましょう！',5);
 /*!40000 ALTER TABLE `seminars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +290,7 @@ CREATE TABLE `teach_mes` (
   `title` varchar(100) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,6 +299,7 @@ CREATE TABLE `teach_mes` (
 
 LOCK TABLES `teach_mes` WRITE;
 /*!40000 ALTER TABLE `teach_mes` DISABLE KEYS */;
+INSERT INTO `teach_mes` VALUES (1,3,'aaaaaaaaaaa','aaaaaaaa');
 /*!40000 ALTER TABLE `teach_mes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -281,4 +312,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-10 12:33:27
+-- Dump completed on 2014-10-04 20:14:53

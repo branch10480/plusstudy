@@ -14,13 +14,13 @@ class ParticipantTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.participant',
+		'app.seminar',
+		'app.seminar_image',
 		'app.account',
 		'app.comment',
 		'app.question',
-		'app.seminar',
-		'app.seminar_image',
-		'app.teach_me',
-		'app.me_too'
+		'app.me_too',
+		'app.teach_me'
 	);
 
 /**
