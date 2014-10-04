@@ -468,7 +468,7 @@ class AccountsController extends AppController {
 
 		// ログインページ用のテンプレートを指定
 		$this->layout = 'newacc';
-		
+
 		if (!$this->Session->check('NewAcc') && $this->Session->check('NewAcc1Pass')) $this->redirect(array('action' => 'index'));
 
 		//----- 本登録処理 -----
@@ -776,6 +776,8 @@ class AccountsController extends AppController {
 					if ($flg) {
 						$data = array(
 								'Account.img_ext' => "'" . $lastName . "'",
+								'Account.img_w' => "'" . $imgW . "'",
+								'Account.img_h' => "'" . $imgH . "'",
 							);
 						$conditions = array(
 								'Account.id' => $accountId,
