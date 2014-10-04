@@ -83,7 +83,7 @@ li {
 	margin-left: 0;
 }
 .card .bottom ul {
-	padding-bottom: 20px;
+	padding-bottom: 30px;
 	width: 290px;
 	height: 74px;
 	display: block;
@@ -128,7 +128,7 @@ li {
 	color: #20ccaa;
 }
 .card .limitDate {
-	font-size: 14px;
+	font-size: 16px;
 	padding-top: 5px;
 }
 .card .btnArea {
