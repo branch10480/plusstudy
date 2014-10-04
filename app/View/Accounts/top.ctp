@@ -102,7 +102,7 @@
 							<dt>主催者</dt>
 							<dd class="hostname"><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?></dd>
 							<dt>開催日時</dt>
-							<dd><?php echo sprintf('%d', $openingMonth) . '/' . sprintf('%d', $openingDay) . ' ' . $openingM . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
+							<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingM . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
 						</dl>
 					</li>
 				</ul>
@@ -122,7 +122,7 @@
 					</li>
 					<li>
 						<h4>募集締切</h4>
-						<p class="limitDate"><?php echo sprintf('%d', $limitMonth) . '/' . sprintf('%d', $limitDay); ?></p>
+						<p class="limitDate"><?php echo sprintf('%d', $limitMonth) . ' / ' . sprintf('%d', $limitDay); ?></p>
 					</li>
 				</ul>
 				<div class="btnArea"><a href="<?php echo ROOT_URL . 'Seminars/details?id=' . $seminar['Seminar']['id']; ?>"><img src="<?php echo IMG_PATH; ?>seminar_description_btn.png" width="120" height="59" alt="詳細へ"></a></div>

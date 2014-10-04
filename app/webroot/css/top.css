@@ -67,7 +67,7 @@ h2 {
 }
 .needsWrapper .left {
 	width: 233px;
-	padding-left: 20px;
+	padding: 2px 0 0 20px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -75,7 +75,7 @@ h2 {
 .needsWrapper .middle {
 	width: 63px;
 	text-align: right;
-	padding-right: 10px;
+	padding: 2px 10px 0 0;
 	color: #48b2c2;
 }
 .needsWrapper .right {
