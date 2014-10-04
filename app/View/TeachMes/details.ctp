@@ -23,7 +23,7 @@
 	<h2><img src="<?php echo IMG_PATH; ?>needsdetails_h.png" alt="教えて欲しいこと詳細" width="306" height="109"><span class="hidden">教えて欲しいこと詳細</span></h2>
 	<section>
 		<h3><?php echo $teachme['TeachMe']['title'] ?></h3>
-		<p><?php echo $teachme['TeachMe']['content'] ?></p>
+		<p><?php echo nl2br($teachme['TeachMe']['content']); ?></p>
 		<p class="metooNum"><?php echo count($teachme['MeToo']) . '人 の方がこの内容を教えて欲しいと言っています。' ?></p>
 	</section>
 	<div class="btnArea cf">
