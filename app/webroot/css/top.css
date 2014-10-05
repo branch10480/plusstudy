@@ -97,12 +97,12 @@ section .wrapper {
 }
 .seminarsArea {
 	width: 1008px;
-	margin-left: -30px;
+	margin: -30px 0 0 -30px;
 	padding-bottom: 80px;
 }
 .card {
 	float: left;
-	margin-left: 30px;
+	margin: 30px 0 0 30px;
 }
 .thumb {
 	overflow: hidden;
