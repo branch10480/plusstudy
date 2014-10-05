@@ -81,7 +81,7 @@
 			$cardClass = 'early';
 		} else if (12 <= $openingH && $openingH < 18) {
 			// 昼
-			$cardClass = 'middle';
+			$cardClass = 'mid';
 		} else {
 			// 夜
 			$cardClass = 'late';

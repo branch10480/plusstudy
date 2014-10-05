@@ -14,7 +14,7 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'MyAuth');
-	public $uses = array('Seminar', 'Question', 'Participant', 'SeminarImage');
+	public $uses = array('Account', 'Seminar', 'Question', 'Participant', 'SeminarImage');
 
 
 
@@ -479,6 +479,14 @@ class SeminarsController extends AppController {
 				'dsc' => $newSmn['description'],
 				'smnImgId' => $newSmn['seminar_img_id'],
 			));
+
+		// ログインユーザの情報を首都区
+		$result = $this->Account->find('first', array(
+				'conditions' => array(
+						'Account.id' => $this->Session->read('Auth.id'),
+					),
+			));
+		$this->set('hostUser', $result['Account']);
 	}
 
 
