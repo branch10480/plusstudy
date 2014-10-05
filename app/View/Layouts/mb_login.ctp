@@ -31,7 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css(array(
 			// 'cake.generic',
 			'normalize',
-			'login',
+			'mb_login',
 			));
 		echo $this->Html->script(array(
 			'jquery-1.11.1.min.js',
@@ -45,9 +45,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimal-ui"/>
 </head>
 <body>
-	モバイル
 	<div id="wrap">
 
 		<div id="container">
