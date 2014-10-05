@@ -35,7 +35,7 @@ h2 {
 #needsArea {
 	width: 1008px;
 	overflow: hidden;
-	margin: 0 auto;
+	margin-left: -30px;
 }
 #needsArea ul {
 	width: 1008px;
@@ -90,11 +90,14 @@ h2 {
 	padding-top: 2px;
 	width: 140px;
 }
+section .wrapper {
+	width: 978px;
+	overflow: hidden;
+	margin: 0 auto;
+}
 .seminarsArea {
 	width: 1008px;
-	overflow: hidden;
 	margin-left: -30px;
-	margin: 0 auto;
 	padding-bottom: 80px;
 }
 .card {
