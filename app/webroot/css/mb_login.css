@@ -1,11 +1,10 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 
 /*---------------------------------
 
 # Universal
 # Content
-# Footer
 
 ----------------------------------*/
 
@@ -14,54 +13,54 @@
 /* Universal
 ----------------------------------------------------------------------*/
 html,body {
-	min-height: 480px;
-	width: 100%;
-	height: 100%;
-	background: #fff;
-	letter-spacing: 0.02em;
-	font-size: 12px;
-	font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
-	line-height: 1.4;
+   width: 100%;
+   height: 100%;
+   min-height: 480px;
+   font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+   font-size: 12px;
+   line-height: 1.4;
+   letter-spacing: .02em;
+   background: #fff;
 }
 
 
 #wrap {
-	position: relative;
-	margin: 0 auto;
-	min-height: 100%;
-	height:auto !important; /*IE6対策*/
-	height: 100%; /*IE6対策*/
+   position: relative;
+   height: auto !important; /*IE6対策*/
+   height: 100%; /*IE6対策*/
+   min-height: 100%;
+   margin: 0 auto;
 }
 
 
-#container{
-	overflow: hidden;
-	height: auto;
+#container {
+   overflow: hidden;
+   height: auto;
 }
 
 
-.plot{
-	margin: 0 auto;
-	width: 100%;
-	text-align: center;
+.plot {
+   width: 100%;
+   margin: 0 auto;
+   text-align: center;
 }
 
 
-p{
-	margin: 0;
-	padding: 0;
-	line-height: 1;
+p {
+   margin: 0;
+   padding: 0;
+   line-height: 1;
 }
 
 
-a{
-	margin: 0;
-	padding: 0;
+a {
+   margin: 0;
+   padding: 0;
 }
 
 
-img{
-	border: none;
+img {
+   border: none;
 }
 
 
@@ -70,104 +69,82 @@ img{
 
 /* Content
 ----------------------------------------------------------------------*/
-#content{
-	margin-top: 95px;
-}
-
-.logo{
-	width: 190px;
-	height: 52px;
-	margin: 0 auto;
-}
-
-.mailTextbox{
-	margin-top: 20px;
-	width: 90.625%;
-	height: 46px;
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
-  	-webkit-appearance: none;
-	border-radius: 0;
-	border-color: #45acbb;
-	font-size: 14px;
-	padding-left: 12px;
-	color: #a5a5a5;
-}
-.passTextbox{
-	border-top: none;
-	width: 90.625%;
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
-	height: 45px;
-  	-webkit-appearance: none;
-   	border-radius: 0;
-	border-color: #45acbb;
-	font-size: 14px;
-	padding-left: 12px;
-	color: #a5a5a5;
-}
-
-.loginBtn{
-	margin: 20px auto 40px auto;
-	background-image: url(../img/mb_img/login_btn.png);
-	width: 90.3125%;
-	border: none;
-	display:block;
-	-webkit-background-size: 100%;
-	     -o-background-size: 100%;
-	        background-size: 100%;
-	height: auto;
-	min-height: 44px;
-}
-
-#noLogin{
-	color:#45acbb;
-	text-decoration: none;
-	font-weight: bold;
+#content {
+   margin-top: 95px;
 }
 
 
+.logo {
+   width: 190px;
+   height: 52px;
+   margin: 0 auto;
+}
 
 
+.mailTextbox {
+   -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+   width: 90.625%;
+   height: 46px;
+   margin-top: 20px;
+   padding-left: 12px;
+   font-size: 14px;
+   color: #000;
+   border-color: #45acbb;
+   border-radius: 0;
+
+   -webkit-appearance: none;
+}
 
 
+.passTextbox {
+   -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+   width: 90.625%;
+   height: 45px;
+   padding-left: 12px;
+   font-size: 14px;
+   color: #000;
+   border-color: #45acbb;
+   border-top: none;
+   border-radius: 0;
+
+   -webkit-appearance: none;
+}
 
 
+.loginBtn {
+   display: block;
+   width: 90.3125%;
+   height: auto;
+   min-height: 44px;
+   margin: 20px auto 40px auto;
+   border: none;
+   background-image: url(../img/mb_img/login_btn.png);
+   -webkit-background-size: 100%;
+        -o-background-size: 100%;
+           background-size: 100%;
+}
 
 
+#noLogin {
+   font-weight: bold;
+   text-decoration: none;
+   color: #45acbb;
+}
 
 
+/*for Webkit*/
+::-webkit-input-placeholder {
+   line-height: 1.5;
+   color: #a5a5a5;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*for Firefox*/
+:-moz-placeholder {
+   line-height: 1.5;
+   color: #a5a5a5;
+}
