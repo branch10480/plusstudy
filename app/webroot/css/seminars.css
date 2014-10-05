@@ -41,6 +41,28 @@ dt {
 	text-align: center;
 	padding: 60px 0;
 }
+section .wrapper dl .btnArea {
+	width: 390px;
+	padding: 0;
+	padding-bottom: 20px;
+}
+section .wrapper dl .btnArea > a {
+	display: block;
+	height: 59px;
+	width: 138px;
+	float: left;
+	margin-left: 30px;
+}
+section .wrapper dl dd .btnArea > a:first-child {
+	float: left;
+	margin-left: 0;
+	width: 222px;
+}
+.newSmnInputCover img {
+	padding-bottom: 20px;
+	max-width: 400px;
+	max-height: 400px;
+}
 
 
 

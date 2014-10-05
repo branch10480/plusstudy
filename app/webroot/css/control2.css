@@ -162,7 +162,7 @@
 	text-decoration: none;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 3px 0 0;
+	padding: 5px 0 0;
 }
 #editArea {
 	background: #fff;
@@ -190,7 +190,7 @@
 }
 .richeditor li.buiBtn a {
 	font-weight: normal;
-	padding: 3px 0 0;
+	padding: 5px 0 0;
 }
 .richeditor li.buiBtn a:active,
 .richeditor li.insertImg a:active {

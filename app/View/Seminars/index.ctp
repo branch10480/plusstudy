@@ -55,9 +55,13 @@
 		<?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
 		<dl>
 			<dt>セミナーカバー画像</dt>
-			<dd><a href="#" id="selectImgsBtn">セミナーカバー画像を選ぶ</a></dd>
-			<dd><a href="#" id="smnImgReset">画像をリセット</a></dd>
-			<dd id="coverImg"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
+			<dd>
+				<div class="btnArea cf">
+					<a href="#" id="selectImgsBtn"><img src="<?php echo IMG_PATH; ?>seminarcoverimgselect_btn.png" alt="セミナーカバー画像を選ぶ" width="222" height="54"></a>
+					<a href="#" id="smnImgReset"><img src="<?php echo IMG_PATH; ?>seminarcoverimgreset_btn.png" alt="画像をリセット" width="138" height="54"></a>
+				</div>
+			</dd>
+			<dd id="coverImg" class="newSmnInputCover"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
 			<dt>セミナー名称</dt>
 			<dd><?php echo $this->Form->text('Seminar.name', array('class' => 'text')); ?></dd>
 			<dd class="errMsg"><?php echo $eSmnName; ?></dd>
