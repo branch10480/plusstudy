@@ -65,7 +65,7 @@ img{
 }
 
 
-
+/* 580/640*100 */
 
 
 /* Content
@@ -81,32 +81,45 @@ img{
 }
 
 .mailTextbox{
-	margin-top: 40px;
-	width: calc(100% - 50px);
+	margin-top: 20px;
+	width: 90.625%;
 	height: 46px;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
   	-webkit-appearance: none;
 	border-radius: 0;
 	border-color: #45acbb;
-	font-size: 16px;
+	font-size: 14px;
+	padding-left: 24px;
+	color: #a5a5a5;
 }
 .passTextbox{
-	width: calc(100% - 50px);
-	height: 46px;
+	border-top: none;
+	width: 90.625%;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	height: 45px;
   	-webkit-appearance: none;
    	border-radius: 0;
 	border-color: #45acbb;
-	font-size: 16px;	
+	font-size: 14px;
+	padding-left: 24px;
+	color: #a5a5a5;
 }
 
 .loginBtn{
-	margin: 20px 0 40px 0;
+	margin: 20px auto 40px auto;
 	background-image: url(../img/mb_img/login_btn.png);
-	-webkit-background-size: 289px 44px;
-	     -o-background-size: 289px 44px;
-	        background-size: 289px 44px;
-	height: 46px;
-	width: calc(100% - 50px);
+	width: 90.3125%;
 	border: none;
+	display:block;
+	-webkit-background-size: 100%;
+	     -o-background-size: 100%;
+	        background-size: 100%;
+	height: auto;
+	min-height: 44px;
 }
 
 #noLogin{
