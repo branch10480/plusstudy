@@ -43,5 +43,11 @@ class QuestionsController extends AppController {
 
 		// Viewにデータを渡す
 		$this->set('question', $question);
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			return $this->render('mb_' . $this->action);
+		}
 	}
 }

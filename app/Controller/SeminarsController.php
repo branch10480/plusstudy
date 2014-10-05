@@ -695,6 +695,12 @@ class SeminarsController extends AppController {
 				'eContent' => $eContent,
 				'userType' => $userType
 				));
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			return $this->render('mb_' . $this->action);
+		}
 	}
 
 /**
@@ -822,6 +828,12 @@ class SeminarsController extends AppController {
 
 		// セッション削除
 		$this->Session->delete('participant');
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			return $this->render('mb_' . $this->action);
+		}
 	}
 
 /**

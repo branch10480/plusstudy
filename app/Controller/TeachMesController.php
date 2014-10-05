@@ -87,6 +87,12 @@ class TeachMesController extends AppController {
 			'eTitle' => $eTitle,
 			'eContent' => $eContent
 			));
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			return $this->render('mb_' . $this->action);
+		}
 	}
 
 /**
@@ -112,6 +118,12 @@ class TeachMesController extends AppController {
 			'title' => $newTeachme['title'],
 			'content' => $newTeachme['content']
 			));
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			return $this->render('mb_' . $this->action);
+		}
 	}
 
 /**
@@ -156,6 +168,12 @@ class TeachMesController extends AppController {
 		// なければトップページにリダイレクト
 		else {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			return $this->render('mb_' . $this->action);
 		}
 	}
 
