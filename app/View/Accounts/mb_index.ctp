@@ -8,9 +8,7 @@
 		<p class="errMsg"><?php echo $msg ?></p>
 		<!-- </fieldset> -->
 
-		<div class="cf">
-			<?php echo $this->Form->button('', array('type' => 'submit', 'class' => 'loginBtn')); ?>
-		</div>
+		<?php echo $this->Form->button('', array('type' => 'submit', 'class' => 'loginBtn')); ?>
 	<?php echo $this->Form->end(); ?>
 
 	<a href="#" id="noLogin">ログインできない方はこちら</a>
