@@ -3,13 +3,25 @@
 	$this->Html->script(array(
 		'richeditor',
 		'BeatPicker',
+		'easyselectbox.min',
 		'SeminarsIndex',
 		), array('inline' => false));
 	$this->Html->css(array(
 		'BeatPicker',
-		'testSmn',
+		'control2',
+		'seminars',
 		), null, array('inline' => false));
 ?>
+<script>
+	$(function(){
+		$('.select select').easySelectBox();
+
+		$('.btnSubmit').click(function(event) {
+			event.preventDefault();
+			$('#SeminarIndexForm').submit();
+		});
+	});
+</script>
 
 <!-- 新規勉強会登録 -->
 <input type="hidden" id="accId" value="<?php echo $accId; ?>" />
@@ -36,102 +48,117 @@
 		<a class="modalWinCloseBtn" href="#">キャンセル</a>
 	</form>
 </div>
-<?php echo $this->Form->create('Seminar'); ?>
-<?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
-<dl>
-	<dt>セミナーカバー画像</dt>
-	<dd><a href="#" id="selectImgsBtn">セミナーカバー画像を選ぶ</a></dd>
-	<dd><a href="#" id="smnImgReset">画像をリセット</a></dd>
-	<dd id="coverImg"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
-	<dt>セミナー名称</dt>
-	<dd><?php echo $this->Form->text('Seminar.name'); ?></dd>
-	<dd class="errMsg"><?php echo $eSmnName; ?></dd>
-	<dt>開催場所</dt>
-	<dd><?php echo $this->Form->text('Seminar.place'); ?></dd>
-	<dd class="errMsg"><?php echo $ePlace; ?></dd>
-	<dt>参加人数上限</dt>
-	<dd>
-		<?php echo $this->Form->text('Seminar.upper_limit', array(
-			'default' => 0,
-		)); ?>
-	</dd>
-	<dd class="errMsg">
-		<?php echo $eUpperLimit; ?>
-	</dd>
-	<dt>開催日</dt>
-	<dd><?php echo $this->Form->text('Seminar.date', array('data-beatpicker' => 'true')); ?></dd>
-	<dd class="errMsg"><?php echo $eStartDate; ?></dd>
-	<dt>開始時間</dt>
-	<dd>
-	<?php echo $this->Form->input('Seminar.startH', array(
-			'type' => 'select',
-			'options' => $hArray,
-			'label' => '',
-	)); ?>時
-	<?php echo $this->Form->input('Seminar.startM', array(
-			'type' => 'select',
-			'options' => $minArray,
-			'label' => '',
-	)); ?>分
-	</dd>
-	<dt>終了時間</dt>
-	<dd>
-	<?php echo $this->Form->input('Seminar.endH', array(
-			'type' => 'select',
-			'options' => $hArray,
-			'label' => '',
-	)); ?>時
-	<?php echo $this->Form->input('Seminar.endM', array(
-			'type' => 'select',
-			'options' => $minArray,
-			'label' => '',
-	)); ?>分
-	</dd>
-	<dt>予約締切日時</dt>
-	<dd>
-	<?php echo $this->Form->text('Seminar.reservation_limit_d', array('data-beatpicker' => 'true')); ?>
-	<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
-			'type' => 'select',
-			'options' => $hArray,
-			'label' => '',
-	)); ?>時
-	<?php echo $this->Form->input('Seminar.reservation_limit_m', array(
-			'type' => 'select',
-			'options' => $minArray,
-			'label' => '',
-	)); ?>分
-	</dd>
-	<dd class="errMsg"><?php echo $eRsvLimitDate; ?></dd>
-	<dt>セミナー詳細</dt>
-	<dd>
-		<?php
-			echo $this->Form->button('B', array(
-					'id' => 'bold',
-					'type' => 'button',
-				));
-			echo $this->Form->button('U', array(
-					'id' => 'underline',
-					'type' => 'button',
-				));
-			echo $this->Form->button('I', array(
-					'id' => 'italic',
-					'type' => 'button',
-				));
-			echo $this->Form->input('fontsize', array(
+<h2><img src="<?php echo IMG_PATH; ?>seminarcreate_h.png" alt="勉強会作成" width="306" height="109"><span class="hidden">勉強会作成</span></h2>
+<section>
+	<div class="wrapper">
+		<?php echo $this->Form->create('Seminar'); ?>
+		<?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
+		<dl>
+			<dt>セミナーカバー画像</dt>
+			<dd><a href="#" id="selectImgsBtn">セミナーカバー画像を選ぶ</a></dd>
+			<dd><a href="#" id="smnImgReset">画像をリセット</a></dd>
+			<dd id="coverImg"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
+			<dt>セミナー名称</dt>
+			<dd><?php echo $this->Form->text('Seminar.name', array('class' => 'text')); ?></dd>
+			<dd class="errMsg"><?php echo $eSmnName; ?></dd>
+			<dt>開催場所</dt>
+			<dd><?php echo $this->Form->text('Seminar.place', array('class' => 'text')); ?></dd>
+			<dd class="errMsg"><?php echo $ePlace; ?></dd>
+			<dt>参加人数上限</dt>
+			<dd>
+				<?php echo $this->Form->text('Seminar.upper_limit', array(
+					'default' => 0,
+					'class' => 'text',
+				)); ?>
+			</dd>
+			<dd class="errMsg">
+				<?php echo $eUpperLimit; ?>
+			</dd>
+			<dt>開催日</dt>
+			<dd><?php echo $this->Form->text('Seminar.date', array('data-beatpicker' => 'true', 'class' => 'date')); ?></dd>
+			<dd class="errMsg"><?php echo $eStartDate; ?></dd>
+			<dt>開始時間</dt>
+			<dd>
+			<?php echo $this->Form->input('Seminar.startH', array(
 					'type' => 'select',
-					'label' => 'フォントサイズ',
-					'options' => $fontsizeArray,
-				));
-			echo $this->Form->input('fontColor', array(
+					'options' => $hArray,
+					'label' => '',
+					'class' => 'select',
+			)); ?>時
+			<?php echo $this->Form->input('Seminar.startM', array(
 					'type' => 'select',
-					'label' => 'フォント色',
-					'options' => $fontColor,
-				));
-		?>
-		<?php echo $this->Form->button('画像を挿入', array('id' => 'insertImg', 'type' => 'button')); ?>
-		<div id="editArea" contentEditable="true" style="border: 1px solid #ddd; height: 100px;"><?php echo $dsc; ?></div>
-		<?php echo $this->Form->hidden('Seminar.description'); ?>
-	</dd>
-</dl>
-<?php echo $this->Form->submit('確認画面へ', array('id' => 'submitBtn')); ?>
-<?php echo $this->Form->end(); ?>
+					'options' => $minArray,
+					'label' => '',
+					'class' => 'select',
+			)); ?>分
+			</dd>
+			<dt>終了時間</dt>
+			<dd>
+			<?php echo $this->Form->input('Seminar.endH', array(
+					'type' => 'select',
+					'options' => $hArray,
+					'label' => '',
+					'class' => 'select',
+			)); ?>時
+			<?php echo $this->Form->input('Seminar.endM', array(
+					'type' => 'select',
+					'options' => $minArray,
+					'label' => '',
+					'class' => 'select',
+			)); ?>分
+			</dd>
+			<dt>予約締切日時</dt>
+			<dd>
+			<?php echo $this->Form->text('Seminar.reservation_limit_d', array('data-beatpicker' => 'true', 'class' => 'date')); ?>
+			<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
+					'type' => 'select',
+					'options' => $hArray,
+					'label' => '',
+			)); ?>時
+			<?php echo $this->Form->input('Seminar.reservation_limit_m', array(
+					'type' => 'select',
+					'options' => $minArray,
+					'label' => '',
+			)); ?>分
+			</dd>
+			<dd class="errMsg"><?php echo $eRsvLimitDate; ?></dd>
+			<dt>セミナー詳細</dt>
+			<dd>
+				<!-- リッチエディタ -->
+				<div class="richeditor">
+					<ul class="cf">
+						<li onclick="(function(event){ event.preventDefault(); })(event)" class="buiBtn"><a href="#" id="bold">B</a></li>
+						<li onclick="(function(event){ event.preventDefault(); })(event)" class="buiBtn"><a href="#" id="underline">U</a></li>
+						<li onclick="(function(event){ event.preventDefault(); })(event)" class="buiBtn"><a href="#" id="italic">I</a><?php echo $this->Form->button('I', array(
+								'id' => 'italic',
+								'type' => 'button',
+							)); ?></li>
+						<li class="labelLi"><label>フォントサイズ</label></li>
+						<li class='selectFontSize'>
+							<?php echo $this->Form->input('fontsize', array(
+								'type' => 'select',
+								'label' => false,
+								'options' => $fontsizeArray,
+								'class' => 'select',
+							)); ?>
+						</li>
+						<li class="labelLi"><label>フォント色</label></li>
+						<li>
+							<?php echo $this->Form->input('fontColor', array(
+								'type' => 'select',
+								'label' => false,
+								'options' => $fontColor,
+								'class' => 'select',
+							)); ?>
+						</li>
+						<li class="insertImg"><a href="#" id="insertImg">画像を挿入</a></li>
+					</ul>
+					<div id="editArea" contenteditable="true"><?php echo $dsc; ?></div>
+				</div>
+				<?php echo $this->Form->hidden('Seminar.description'); ?>
+			</dd>
+		</dl>
+		<?php echo $this->Form->end(); ?>
+	</div>
+</section>
+<div class="btnArea"><a href="#" class="btnSubmit" id="submitBtn"><img src="<?php echo IMG_PATH; ?>next_btn.png" alt="" width="222" height="50"></a></div>

@@ -3,20 +3,34 @@
 
 /*---------------------------------
 
-# Universal
-
+# Control
 ----------------------------------*/
 
 
 
-/* Universal
+/* Control
 ----------------------------------------------------------------------*/
-
-
-
-
-
-
-
-
-
+.text, textarea {
+	border: solid 1px #3e99a7;
+	font-size: 24px;
+	padding: 10px;
+	width: 472px;
+	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+	border-radius: 5px;
+	color: #8a8a8a;
+	font-weight: bold;
+}
+.text {
+	height: 30px;
+}
+textarea {
+	width: 640px;
+	border-radius: 5px;
+	font-size: 24px;
+	height: 250px;
+}
+.text:focus,
+.textarea:focus {
+	outline: 0;
+	box-shadow: 0px 0px 0pt 0pt aqua;
+}

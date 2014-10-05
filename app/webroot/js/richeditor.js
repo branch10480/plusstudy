@@ -85,7 +85,8 @@ window.onload = function () {
 
 	//[太字] ボタン
 	$id("bold")
-		.addEventListener("click", function () {
+		.addEventListener("click", function (event) {
+			event.preventDefault();
 			if (checkSelectionText()) {
 				document.execCommand("bold", false);
 			}
@@ -93,7 +94,8 @@ window.onload = function () {
 
 	//[下線] ボタン
 	$id("underline")
-		.addEventListener("click", function () {
+		.addEventListener("click", function (event) {
+			event.preventDefault();
 			if (checkSelectionText()) {
 				document.execCommand("underline", false);
 			}
@@ -101,7 +103,8 @@ window.onload = function () {
 
 	//[イタリック] ボタン
 	$id("italic")
-		.addEventListener("click", function () {
+		.addEventListener("click", function (event) {
+			event.preventDefault();
 			if (checkSelectionText()) {
 				document.execCommand("italic", false);
 			}
