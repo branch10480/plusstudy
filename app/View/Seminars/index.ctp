@@ -165,4 +165,4 @@
 		<?php echo $this->Form->end(); ?>
 	</div>
 </section>
-<div class="btnArea"><a href="#" class="btnSubmit" id="submitBtn"><img src="<?php echo IMG_PATH; ?>next_round_btn.png" alt="" width="222" height="50"></a></div>
+<div class="btnArea"><a href="#" class="btnSubmit" id="submitBtn"><img src="<?php echo IMG_PATH; ?>next_round_btn.png" alt="" width="222" height="54"></a></div>
