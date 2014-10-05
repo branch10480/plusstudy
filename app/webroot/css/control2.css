@@ -185,6 +185,7 @@
 }
 .richeditor li.labelLi {
 	border: solid 1px #3e99a7;
+	padding-top: 3px;
 }
 .richeditor li.buiBtn,
 .richeditor li.insertImg {

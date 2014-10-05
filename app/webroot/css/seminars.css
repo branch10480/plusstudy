@@ -171,6 +171,21 @@ section .wrapper dl dd .btnArea > a:first-child {
 	font-weight: bold;
 	text-align: center;
 }
+.newSmnRegisterBtnArea {
+	width: 474px;
+	margin: 60px auto;
+}
+.newSmnRegisterBtnArea a {
+	display: block;
+	margin-left: 30px;
+	width: 306px;
+	height: 54px;
+	float: left;
+}
+.newSmnRegisterBtnArea a:first-child {
+	margin-left: 0;
+	width: 138px;
+}
 
 
 

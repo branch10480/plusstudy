@@ -15,7 +15,7 @@
 		<p>勉強会が作成されました。</p>
 	</div>
 </section>
-<div class="btnArea cf" id="newSmnConfirmbtnArea">
+<div class="newSmnRegisterBtnArea cf">
 	<?php echo $this->Html->link($this->HTML->image('backtop_btn.png', array('width' => '138', 'height' => '54')), array('controller' => 'Accounts', 'action' => 'index'), array('escape' => false)); ?>
 	<?php echo $this->Html->link($this->HTML->image('hrefseminar_btn.png', array('width' => '306', 'height' => '54')), array('controler' => 'Accounts', 'action' => 'register'), array('escape' => false)); ?>
 </div>
