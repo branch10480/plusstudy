@@ -22,12 +22,12 @@
 	<h2><img src="<?php echo IMG_PATH; ?>needsdetails_h.png" alt="教えて欲しいこと詳細" width="306" height="109"><span class="hidden">教えて欲しいこと詳細</span></h2>
 	<section>
 		<h3><?php echo $teachme['TeachMe']['title'] ?></h3>
-		<p><?php echo $teachme['TeachMe']['content'] ?></p>
+		<p><?php echo nl2br($teachme['TeachMe']['content']); ?></p>
 		<p class="metooNum"><?php echo count($teachme['MeToo']) . '人 の方がこの内容を教えて欲しいと言っています。' ?></p>
 	</section>
 	<div class="btnArea cf">
-		<a href="<?php echo ROOT_URL . 'Seminars/index/'; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容に合った勉強会を作成する" width="306" height="59"></a>
-		<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH; ?>needsdetailsmetoo_btn.png" alt="私も教えて欲しい！" width="222" height="59"></a>
+		<a href="<?php echo ROOT_URL . 'Seminars/index/'; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容に合った勉強会を作成する" width="306" height="54"></a>
+		<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH; ?>needsdetailsmetoo_btn.png" alt="私も教えて欲しい！" width="222" height="54"></a>
 	</div>
 
 	<?php echo $this->Form->create('MeToo', array('class' => 'hidden')); ?>

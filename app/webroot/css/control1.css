@@ -3,20 +3,103 @@
 
 /*---------------------------------
 
-# Universal
-
+# Control
 ----------------------------------*/
 
 
 
-/* Universal
+/* Control
 ----------------------------------------------------------------------*/
-
-
-
-
-
-
-
-
-
+.text, .email {
+	border: solid 1px #45acbb;
+	font-size: 16px;
+	padding: 0 10px;
+	width: 284px;
+	height: 30px;
+	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+	color: #45acbb;
+}
+.text:focus,
+.email:focus {
+	outline: 0;
+	box-shadow: 0px 0px 0pt 0pt aqua;
+}
+textarea {
+	border: 1px solid #45acbb;
+	width: 368px;
+	font-size: 16px;
+	padding: 10px;
+}
+textarea:focus {
+	outline: 0;
+}
+.easy-select-box{
+	display:inline-block;
+	position:relative;
+	border: #45acbb solid 1px;
+}
+.easy-select-box:focus {
+	outline: none;
+}
+.easy-select-box .esb-dropdown{
+	position:absolute;
+	top:100%;
+	left:0;
+	z-index:99;
+	display:none;
+}
+.easy-select-box{
+	width:222px;
+	text-align:left;
+	font-size:14px;
+	color:#0c2245;
+}
+.easy-select-box .esb-displayer{
+	background: url('../img/selectctlar1.png') no-repeat right 10px center;
+	background-size: 7px 16px;
+	color:#45acbb;
+	padding:5px;
+	height:18px;
+	line-height:18px;
+	cursor: default;
+}
+.easy-select-box:hover .esb-displayer{
+	text-decoration:none;
+	cursor: pointer;
+}
+.easy-select-box.disabled .esb-displayer,
+.easy-select-box:hover.disabled .esb-displayer{
+	background-position: 0 -36px;
+}
+.easy-select-box .esb-dropdown{
+	border:1px solid #cccccc;
+	width:116px;
+	max-height:200px;
+	overflow:auto;
+	background:#FFFFFF;
+}
+.easy-select-box .esb-dropdown .esb-item{
+	padding:5px;
+	background:#ffffff;
+	color:#45acbb;
+	cursor:default;
+}
+.easy-select-box .esb-dropdown .esb-item:hover{
+	background:#45acbb;
+	color:#fff;
+	text-decoration:none;
+	cursor: pointer;
+}
+.select-box {
+  background: #FFFDF4;
+  border: 2px solid #D2BA85;
+  border-radius: 5px;
+  color: #0C2245;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  text-indent: 5px;
+  vertical-align: middle;
+  width: 140px;
+}

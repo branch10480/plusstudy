@@ -14,9 +14,8 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'MyAuth');
-	public $uses = array('Seminar', 'Question', 'Participant', 'SeminarImage', 'MeToo', 'TeachMe');
 
-
+	public $uses = array('Account', 'Seminar', 'Question', 'Participant', 'SeminarImage', 'MeToo', 'TeachMe');
 
 
 /**
@@ -479,6 +478,14 @@ class SeminarsController extends AppController {
 				'dsc' => $newSmn['description'],
 				'smnImgId' => $newSmn['seminar_img_id'],
 			));
+
+		// ログインユーザの情報を首都区
+		$result = $this->Account->find('first', array(
+				'conditions' => array(
+						'Account.id' => $this->Session->read('Auth.id'),
+					),
+			));
+		$this->set('hostUser', $result['Account']);
 	}
 
 
@@ -695,6 +702,13 @@ class SeminarsController extends AppController {
 				'eContent' => $eContent,
 				'userType' => $userType
 				));
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			$this->layout = 'mb_default';
+			return $this->render('mb_' . $this->action);
+		}
 	}
 
 /**
@@ -826,6 +840,13 @@ class SeminarsController extends AppController {
 
 		// セッション削除
 		$this->Session->delete('participant');
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			$this->layout = 'mb_default';
+			return $this->render('mb_' . $this->action);
+		}
 	}
 
 /**

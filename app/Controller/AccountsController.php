@@ -22,9 +22,9 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function beforeFilter() {
-			// 認証済みかどうか調べる
-			$this->MyAuth->isAuth($this);
-		}
+		// 認証済みかどうか調べる
+		$this->MyAuth->isAuth($this);
+	}
 
 /**
  * index method
@@ -72,6 +72,14 @@ class AccountsController extends AppController {
 		}
 
 		$this->set('msg', $msg);
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			$this->layout = 'mb_login';
+			return $this->render('mb_' . $this->action);
+		}
+
 	}
 
 /**
@@ -142,6 +150,13 @@ class AccountsController extends AppController {
 				// フィードバックページへリダイレクト
 				return $this->redirect(array('controller' => 'Seminars',   'action' => 'feedback'));
 			}
+		}
+
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			$this->layout = 'mb_default';
+			return $this->render('mb_' . $this->action);
 		}
 	}
 
