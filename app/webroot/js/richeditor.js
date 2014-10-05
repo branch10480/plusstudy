@@ -111,6 +111,12 @@ window.onload = function () {
 		});
 
 	document.getElementById('submitBtn').addEventListener("click", function () {
+		event.preventDefault();
 		ritchTextHtmlArea.value = editArea.innerHTML;
+		selectedForm = $('#SeminarIndexForm') || false;
+		if (selectedForm)
+			selectedForm.submit();
+		else
+			$('form').submit();
 	});
 }

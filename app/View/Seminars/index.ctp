@@ -15,11 +15,6 @@
 <script>
 	$(function(){
 		$('.select select').easySelectBox();
-
-		$('.btnSubmit').click(function(event) {
-			event.preventDefault();
-			$('#SeminarIndexForm').submit();
-		});
 	});
 </script>
 
