@@ -8,7 +8,6 @@
 		), null, array('inline' => false));
 ?>
 
-
 <script>
 	$(function () {
 		$('.btnSubmit').click(function(event) {
