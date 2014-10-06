@@ -3,6 +3,7 @@
 <br>
 
 <?php echo $this->Form->hidden('seminar_id', array('value' => $seminar['Seminar']['id'], 'id' => 'seminar_id')); ?>
+<?php echo $this->Form->hidden('teach_me_id', array('value' => $seminar['TeachMe']['id'], 'id' => 'teach_me_id')); ?>
 
 <p>この勉強会に参加してみて良かったですか？</p>
 <p><?php echo '勉強会名：' . $seminar['Seminar']['name']; ?>
@@ -34,6 +35,21 @@ $(function () {
 					$('#gjcnt').text(cnt);
 					// GJボタンを削除
 					$('button#gj').remove();
+				} else {
+					return;
+				}
+		}, "json");
+	});
+
+	// 解決ボタンがクリックされたら
+	$('button#resolve').click(function(e) {
+		// ajax通信
+		$.post('/plusstudy/Seminars/resolve', {
+				teach_me_id: $('input#teach_me_id').val()
+			}, function(res) {
+				if(res.result == true) {
+					// 解決ボタンを削除
+					$('button#resolve').remove();
 				} else {
 					return;
 				}

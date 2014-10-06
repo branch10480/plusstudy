@@ -14,9 +14,8 @@ class SeminarsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'MyAuth');
-	public $uses = array('Account', 'Seminar', 'Question', 'Participant', 'SeminarImage');
 
-
+	public $uses = array('Account', 'Seminar', 'Question', 'Participant', 'SeminarImage', 'MeToo', 'TeachMe');
 
 
 /**
@@ -750,7 +749,9 @@ class SeminarsController extends AppController {
 				// Participantsにデータ登録
 				$param = array(
 					'seminar_id' => $id,
-					'account_id' => $this->Session->read('Auth.id'));
+					'account_id' => $this->Session->read('Auth.id'),
+					'feedbacked' => 0
+					);
 				$this->Participant->create(false);
 				$this->Participant->save($param);
 
@@ -826,9 +827,11 @@ class SeminarsController extends AppController {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
 
-		// participantsを削除
-		$this->Participant->id = $this->Session->read('participant')['Participant']['id'];
-		$this->Participant->delete();
+		// participantsのfeedbackedフラグを立てる
+		$param = array('feedbacked' => 1);
+		$conditions = array('Participant.id' => $this->Session->read('participant')['Participant']['id']);
+		$this->Participant->updateAll($param, $conditions);
+		//$this->Participant->delete();
 
 		// 勉強会情報を取得
 		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $this->Session->read('participant')['Seminar']['id']));
@@ -866,7 +869,6 @@ class SeminarsController extends AppController {
 
 			// GJを加算
 			$param = array('gj' => $seminar['Seminar']['gj'] + 1);
-			$this->Seminar->id = $seminar['Seminar']['id'];
 			$conditions = $options['conditions'];
 
 			if($this->Seminar->updateAll($param, $conditions)) {
@@ -874,6 +876,48 @@ class SeminarsController extends AppController {
 			} else {
 				$response = array('result' => false);
 			}
+
+			// 結果を返す
+			$this->header('Content-Type: application/json');
+			echo json_encode($response);
+			exit();
+		}
+	}
+
+/**
+ * resolve method
+ * ajaxでme_toosを削除
+ * @return void
+ */
+	public function resolve() {
+		// 直接アクセスの場合はTOPへリダイレクト
+		if($this->request->is('get')) {
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+		// Ajax処理
+		if($this->request->is('ajax')) {
+
+			// me_toosを削除
+			$options = array('conditions' => array(
+				'MeToo.teach_me_id' => $this->request->data['teach_me_id'], 'MeToo.account_id' => $this->Session->read('Auth.id')));
+			$metoo = $this->MeToo->find('first', $options);
+
+			$this->MeToo->id = $metoo['MeToo']['id'];
+			$this->MeToo->delete();
+
+			// me_toosが0件になったらニーズを削除
+			$options = array(
+				'conditions' => array(
+					'MeToo.teach_me_id' => $this->request->data['teach_me_id'],
+				));
+			$metoos = $this->MeToo->find('first', $options);
+			if(count($metoos) === 0) {
+				$this->TeachMe->id = $this->request->data['teach_me_id'];
+				$this->TeachMe->delete();
+			}
+
+			// 結果を返す
+			$response = array('result' => true);
 			$this->header('Content-Type: application/json');
 			echo json_encode($response);
 			exit();

@@ -132,7 +132,8 @@ class AccountsController extends AppController {
 		// 参加申請している勉強会を取得
 		$options = array(
 			'conditions' => array(
-					'Participant.account_id' => $this->Session->read('Auth.id')
+					'Participant.account_id' => $this->Session->read('Auth.id'),
+					'Participant.feedbacked' => 0
 				)
 		);
 		$participants = $this->Participant->find('all', $options);
