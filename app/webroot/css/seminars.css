@@ -16,6 +16,9 @@ h2,h3,h4,p,ul,li,dt,dd {
 	padding: 0;
 	border: 0;
 }
+li {
+	list-style: none;
+}
 .hidden {
 	display: none;
 }
@@ -62,6 +65,76 @@ section .wrapper dl dd .btnArea > a:first-child {
 	padding-bottom: 20px;
 	max-width: 400px;
 	max-height: 400px;
+}
+#rsvLimit {
+	width: 558px;
+}
+#rsvLimit li {
+	float: left;
+	display: block;
+	height: 50px;
+	width: 84px;
+}
+#rsvLimit li:first-child {
+	margin-right: 30px;
+	width: 306px;
+}
+#SeminarReservationLimitD {
+	width: 284px;
+}
+#rsvLimit {
+	padding-bottom: 20px;
+}
+#rsvLimit .colon,
+#startToEnd .colon,
+#rsvLimit .tilde,
+#startToEnd .tilde {
+	width: 54px;
+	text-align: center;
+}
+#startToEnd .tilde {
+	padding-top: 4px;
+	width: 84px;
+}
+#rsvLimit .colon p,
+#startToEnd .colon p,
+#rsvLimit .tilde p,
+#startToEnd .tilde p {
+	padding-top: 6px;
+	font-size: 24px;
+	color: #56acc1;
+}
+.easy-select-box {
+	height: 28px;
+	width: 64px;
+	font-size: 24px;
+	color: #4cbdce;
+	padding: 10px 9px;
+}
+.richeditor .easy-select-box {
+	padding: 0;
+}
+.richeditor .esb-dropdown {
+	font-size: 14px;
+}
+.date {
+	padding: 9px 10px;
+}
+.timeTitle {
+	width: 612px;
+}
+.timeTitle > div {
+	float: left;
+	width: 306px;
+}
+#startToEnd {
+	width: 528px;
+}
+#startToEnd li {
+	float: left;
+}
+#startToEnd .tilde {
+
 }
 
 
