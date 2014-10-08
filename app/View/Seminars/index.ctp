@@ -76,49 +76,71 @@
 			<dt>開催日</dt>
 			<dd><?php echo $this->Form->text('Seminar.date', array('data-beatpicker' => 'true', 'class' => 'date')); ?></dd>
 			<dd class="errMsg"><?php echo $eStartDate; ?></dd>
-			<dt>開始時間</dt>
-			<dd>
-			<?php echo $this->Form->input('Seminar.startH', array(
+			<dt>予約締め切り日時</dt>
+			<dd class="cf">
+			<ul id="rsvLimit" class="cf">
+				<li>
+					<?php echo $this->Form->text('Seminar.reservation_limit_d', array('data-beatpicker' => 'true', 'class' => 'date')); ?>
+				</li>
+				<li>
+					<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
 					'type' => 'select',
 					'options' => $hArray,
 					'label' => '',
-					'class' => 'select',
-			)); ?>時
-			<?php echo $this->Form->input('Seminar.startM', array(
+					)); ?>
+				</li>
+				<li class="colon"><p>:</p></li>
+				<li>
+					<?php echo $this->Form->input('Seminar.reservation_limit_m', array(
 					'type' => 'select',
 					'options' => $minArray,
 					'label' => '',
-					'class' => 'select',
-			)); ?>分
+			)); ?>
+				</li>
+			</ul>
 			</dd>
-			<dt>終了時間</dt>
+			<dt class="cf timeTitle">
+				<div>開始時間</div>
+				<div>終了時間</div>
+			</dt>
 			<dd>
-			<?php echo $this->Form->input('Seminar.endH', array(
-					'type' => 'select',
-					'options' => $hArray,
-					'label' => '',
-					'class' => 'select',
-			)); ?>時
-			<?php echo $this->Form->input('Seminar.endM', array(
-					'type' => 'select',
-					'options' => $minArray,
-					'label' => '',
-					'class' => 'select',
-			)); ?>分
-			</dd>
-			<dt>予約締切日時</dt>
-			<dd>
-			<?php echo $this->Form->text('Seminar.reservation_limit_d', array('data-beatpicker' => 'true', 'class' => 'date')); ?>
-			<?php echo $this->Form->input('Seminar.reservation_limit_h', array(
-					'type' => 'select',
-					'options' => $hArray,
-					'label' => '',
-			)); ?>時
-			<?php echo $this->Form->input('Seminar.reservation_limit_m', array(
-					'type' => 'select',
-					'options' => $minArray,
-					'label' => '',
-			)); ?>分
+				<ul id="startToEnd" class="cf">
+					<li>
+						<?php echo $this->Form->input('Seminar.startH', array(
+							'type' => 'select',
+							'options' => $hArray,
+							'label' => '',
+							'class' => 'select',
+						)); ?>
+					</li>
+					<li class="colon"><p>:</p></li>
+					<li>
+						<?php echo $this->Form->input('Seminar.startM', array(
+							'type' => 'select',
+							'options' => $minArray,
+							'label' => '',
+							'class' => 'select',
+						)); ?>
+					</li>
+					<li class="tilde"><p>〜</p></li>
+					<li>
+						<?php echo $this->Form->input('Seminar.endH', array(
+							'type' => 'select',
+							'options' => $hArray,
+							'label' => '',
+							'class' => 'select',
+						)); ?>
+					</li>
+					<li class="colon"><p>:</p></li>
+					<li>
+						<?php echo $this->Form->input('Seminar.endM', array(
+							'type' => 'select',
+							'options' => $minArray,
+							'label' => '',
+							'class' => 'select',
+						)); ?>
+					</li>
+				</ul>
 			</dd>
 			<dd class="errMsg"><?php echo $eRsvLimitDate; ?></dd>
 			<dt>セミナー詳細</dt>
