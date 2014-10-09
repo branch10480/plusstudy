@@ -20,4 +20,15 @@
 		<p class="errMsg"><?php echo $eContent; ?></p>
 	</fieldset>
 
-<?php echo $this->Form->end(__('確認画面へ')); ?>
+<?php echo $this->Form->end(); ?>
+
+<div class="btnArea"><a href="#" class="btnSubmit" id="submitBtn"><img src="<?php echo IMG_PATH; ?>next_round_btn.png" alt="" width="222" height="54"></a></div>
+
+<script>
+$(function(){
+	$('.btnSubmit').click(function(event){
+		event.preventDefault();
+		$('form').submit();
+	});
+});
+</script>
