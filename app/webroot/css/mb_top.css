@@ -1,0 +1,106 @@
+@charset 'UTF-8';
+
+
+/*---------------------------------
+
+# Universal
+
+----------------------------------*/
+ul,li,h2,h3,p {
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+
+
+/* Universal
+----------------------------------------------------------------------*/
+#container {
+   font-size: 20px;
+   color: #656565;
+}
+#container h2 {
+   font-size: 24px;
+}
+#container section {
+   padding: 80px 0 0;
+}
+h2 {
+   margin-bottom: 60px;
+   text-align: center;
+}
+.hidden {
+   display: none;
+}
+#needsArea {
+   overflow: hidden;
+   width: 1008px;
+   margin-left: -30px;
+}
+#needsArea ul {
+   width: 1008px;
+   margin-left: -20px;
+}
+#needsArea li {
+   float: left;
+   width: 474px;
+   margin-bottom: 20px;
+   margin-left: 30px;
+   padding: 14px 0;
+   background: #fff;
+}
+#needsArea a {
+   text-decoration: none;
+   color: #656565;
+}
+#needsArea .right a {
+   display: block;
+   width: 140px;
+   height: 32px;
+}
+#needsArea a img {
+   vertical-align: bottom;
+}
+#needsArea a:hover {
+   text-decoration: underline;
+}
+#needsArea span {
+   padding-left: 0;
+}
+.needsWrapper {
+   width: 474px;
+}
+.needsWrapper > div {
+   float: left;
+}
+.needsWrapper .left {
+   overflow: hidden;
+   width: 233px;
+   padding: 4px 0 0 20px;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+.needsWrapper .middle {
+   width: 63px;
+   padding: 5px 10px 0 0;
+   text-align: right;
+   color: #48b2c2;
+}
+.needsWrapper .right {
+   width: 140px;
+   padding-top: 2px;
+}
+section .wrapper {
+   overflow: hidden;
+   width: 978px;
+   margin: 0 auto;
+}
+.seminarsArea {
+   padding-bottom: 80px;
+}
+.card {
+   margin: 0 auto 30px auto;
+}
+.thumb {
+   overflow: hidden;
+}

@@ -5,7 +5,7 @@
 		), array('inline' => false));
 	$this->Html->css(array(
 		'seminar_card.css',
-		'top.css',
+		'mb_top.css',
 		), null, array('inline' => false));
 ?>
 
