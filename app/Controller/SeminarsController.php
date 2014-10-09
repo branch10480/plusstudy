@@ -308,7 +308,14 @@ class SeminarsController extends AppController {
 
 
 
-		if (($this->referer() === ROOT_URL . 'Seminars' || $this->referer() === ROOT_URL . 'Seminars/') && $this->request->is('post')) {
+		if (
+				($this->referer() === ROOT_URL . 'Seminars' ||
+					$this->referer() === ROOT_URL . 'Seminars/' ||
+					$this->referer() === ROOT_URL . 'Seminars/' . $this->action ||
+					$this->referer() === ROOT_URL . 'Seminars/' . $this->action . '/'
+				)
+				&& $this->request->is('post')
+			) {
 			// 自分自身から送信
 
 			// $fileUrlArr = array();
