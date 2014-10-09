@@ -1,16 +1,19 @@
 @charset 'UTF-8';
 
 
+
 /*---------------------------------
 
-# Fieldset
+# NeedscreateFieldset
 # Article
 
 ----------------------------------*/
 
 
 
-/* Fieldset
+
+
+/* NeedscreateFieldset
 ----------------------------------------------------------------------*/
 .text, textarea {
     -webkit-box-sizing: border-box;
@@ -43,8 +46,7 @@ textarea {
 }
 
 
-.text:focus,
-.textarea:focus {
+.text:focus, .textarea:focus {
     outline: 0;
     box-shadow: 0 0 0 0 aqua;
 }
@@ -65,7 +67,20 @@ textarea {
 
 
 .errMsg {
+    margin: 5px 0 5px 0;
+    padding: 0;
     color: #fd4001;
+}
+
+
+#submitBtn {
+    display: inline-block;
+}
+
+
+.confirmBtn {
+    width: 100%;
+    margin: 0 auto 5px auto;
 }
 
 
