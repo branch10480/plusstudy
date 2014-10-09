@@ -20,13 +20,13 @@
 
 <article>
 	<ul id="nav" class="tab topTab cf">
-		<li class="active">参加者募集中の勉強会</li>
-		<li>求められている勉強会</li>
+		<li class="active"><h2>参加者募集中の勉強会</h2></li>
+		<li><h2>求められている勉強会</h2></li>
 	</ul>
 
 
 	<section class="panel show">
-		<h2><img src="<?php echo IMG_PATH; ?>seminarllist_h.png" alt="参加者募集中の勉強会" width="306" height="109"><span class="hidden">参加者募集中の勉強会</span></h2>
+		<div class="tabArArea tabL"><?php echo $this->Html->image(MB_IMG_PATH . 'tab_on_ar.png', array("alt" => "タブar")); ?></div>
 
 		<div class="seminarsArea cf">
 			<?php if(count($seminars) === 0): ?>
@@ -110,7 +110,7 @@
 
 
 	<section class="panel">
-		<h2><img src="<?php echo IMG_PATH; ?>needs_h.png" alt="今求められている勉強会" width="306" height="109"><span class="hidden">今求められている勉強会</span></h2>
+		<div class="tabArArea tabR"><?php echo $this->Html->image(MB_IMG_PATH . 'tab_on_ar.png', array("alt" => "タブar")); ?></div>
 		<?php if(count($teachmes) === 0): ?>
 			<p><?php echo '今求められている勉強会はありません'; ?></p>
 		<?php endif; ?>
