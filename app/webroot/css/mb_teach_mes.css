@@ -1,0 +1,163 @@
+@charset 'UTF-8';
+
+
+/*---------------------------------
+
+# Fieldset
+# Article
+
+----------------------------------*/
+
+
+
+/* Fieldset
+----------------------------------------------------------------------*/
+.text, textarea {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 93.75%;
+    margin: 0 auto;
+    padding: 10px;
+    font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #8a8a8a;
+    border: solid 1px #3e99a7;
+    border-radius: 5px;
+
+    -webkit-appearance: none;
+}
+
+
+.text {
+    height: 44px;
+    line-height: 1;
+}
+
+
+textarea {
+    height: 176px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+
+.text:focus,
+.textarea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0 aqua;
+}
+
+
+/*for Webkit*/
+::-webkit-input-placeholder {
+    line-height: 1.5;
+    color: #ccc;
+}
+
+
+/*for Firefox*/
+:-moz-placeholder {
+    line-height: 1.5;
+    color: #ccc;
+}
+
+
+.errMsg {
+    color: #fd4001;
+}
+
+
+
+
+
+
+
+/* Article
+----------------------------------------------------------------------*/
+article {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 93.75%;
+    margin: 0 auto;
+    padding: 15px 15px 30px;
+    background: #fff;
+}
+
+
+#register {
+    padding: 40px 15px 40px;
+}
+
+
+.needsH {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    color: #656565;
+}
+
+
+.needsD {
+    margin: 10px 0 0 0;
+    font-size: 12px;
+    line-height: 1;
+    color: #656565;
+}
+
+
+hr {
+    margin: 0;
+    border: solid .5px #cec6c3;
+}
+
+
+.btnArea {
+    width: 93.4375%;
+    margin-top: 15px;
+    margin-left: 3.28125%;
+}
+
+
+.needsHalfBtn {
+    float: left;
+    width: 48.3277592%;
+}
+
+
+.btnArea a:first-child img {
+    margin-right: 3.3444816%;
+}
+
+
+.register_h {
+    font-size: 20px;
+    text-align: center;
+    color: #ffb425;
+}
+
+
+.doCenter {
+    text-align: center;
+}
+
+
+.doCenter a {
+    display: block;
+    line-height: 0;
+}
+
+
+.hrefneedsdetailsBtn {
+    width: 93.4375%;
+    margin: 15px auto 10px auto;
+}
+
+
+.backtopBtn {
+    width: 45.15625%;
+    margin: 0 auto;
+}

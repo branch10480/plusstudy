@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 
 /*---------------------------------
@@ -14,54 +14,54 @@
 /* Universal
 ----------------------------------------------------------------------*/
 html,body {
-	min-width: 390px;
-	min-height: 480px;
-	width: 100%;
-	height: 100%;
-	background: #fff;
-	letter-spacing: 0.02em;
-	font-size: 12px;
-	font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
-	line-height: 1.4;
+    width: 100%;
+    min-width: 390px;
+    height: 100%;
+    min-height: 480px;
+    font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: .02em;
+    background: #fff;
 }
 
 
 #wrap {
-	position: relative;
-	margin: 0 auto;
-	min-height: 100%;
-	height:auto !important; /*IE6対策*/
-	height: 100%; /*IE6対策*/
+    position: relative;
+    height: auto !important; /*IE6対策*/
+    height: 100%; /*IE6対策*/
+    min-height: 100%;
+    margin: 0 auto;
 }
 
 
-#container{
-	overflow: hidden;
-	height: auto;
+#container {
+    overflow: hidden;
+    height: auto;
 }
 
 
-.plot{
-	margin: 0 auto;
-	width: 978px;
+.plot {
+    width: 978px;
+    margin: 0 auto;
 }
 
 
-p{
-	margin: 0;
-	padding: 0;
-	line-height: 1;
+p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
 }
 
 
-a{
-	margin: 0;
-	padding: 0;
+a {
+    margin: 0;
+    padding: 0;
 }
 
 
-img{
-	border: none;
+img {
+    border: none;
 }
 
 
@@ -70,121 +70,125 @@ img{
 
 /* Content
 ----------------------------------------------------------------------*/
-#content{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -200px 0 0 -160px;
-	width: 306px;
+#content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 306px;
+    margin: -200px 0 0 -160px;
 }
 
 
-.logo{
-	margin-bottom: 20px;
-	width: 306px;
+.logo {
+    width: 306px;
+    margin-bottom: 20px;
 }
 
 
-fieldset{
-	margin: 0;
-	padding: 0;
-	border: none;
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 
-.mail{
-	margin-bottom: 6px;
-	color: #45acbb;
-	font-size: 16px;
+.mail {
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #45acbb;
 }
 
 
-.pass{
-	margin-bottom: 6px;
-	color: #45acbb;
-	font-size: 16px;
+.pass {
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #45acbb;
 }
 
 
-.mailTextbox{
-	margin: 0 0 20px 0;
-	padding: 0 10px;
-	width: 284px;
-	height: 30px;
-	border: #45acbb solid 1px;
-	font-size: 16px;
+.mailTextbox {
+    width: 284px;
+    height: 30px;
+    margin: 0 0 20px 0;
+    padding: 0 10px;
+    font-size: 16px;
+    border: #45acbb solid 1px;
+    border-radius: 0;
+
+    -webkit-appearance: none;
 }
 
 
-.passTextbox{
-	margin: 0 0 6px 0;
-	padding: 0 10px;
-	width: 284px;
-	height: 30px;
-	border: #45acbb solid 1px;
-	font-size: 16px;
-	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+.passTextbox {
+    width: 284px;
+    height: 30px;
+    margin: 0 0 6px 0;
+    padding: 0 10px;
+    font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+    font-size: 16px;
+    border: #45acbb solid 1px;
+    border-radius: 0;
+
+    -webkit-appearance: none;
 }
 
 
-.mailTextbox:focus{
-	outline: 0;
-	box-shadow: 0px 0px 0pt 0pt aqua;
+.mailTextbox:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0 aqua;
 }
 
 
-.passTextbox:focus{
-	outline: 0;
-	box-shadow: 0px 0px 0pt 0pt aqua;
+.passTextbox:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0 aqua;
 }
 
 
-.loginBtn{
-	display: blcok;
-	float: left;
-	margin: 00;
-	width: 138px;
-	height: 32px;
-	border: none;
-	background: url(../img/login_btn.png);
-	-webkit-background-size: 100%;
-	background-size: 100%;
+.loginBtn {
+    display: blcok;
+    float: left;
+    width: 138px;
+    height: 32px;
+    margin: 00;
+    border: none;
+    background: url(../img/login_btn.png);
+    -webkit-background-size: 100%;
+            background-size: 100%;
 }
 
 
-.createAccountBtn{
-	float: left;
-	margin: 0 0 0 30px;
-	width: 138px;
-	height: 32px;
+.createAccountBtn {
+    float: left;
+    width: 138px;
+    height: 32px;
+    margin: 0 0 0 30px;
 }
 
 
-#noLogin{
-	display: inline-block;
-	margin: 20px 0 0 0;
-	padding: 0;
-	border-right: solid 1px #fff;
-	color: #45acbb;
-	text-decoration: none;
-	font-size:1pt;
-	font-size: 12px;
-	line-height: 1;
-}#noLogin:hover{
-	text-decoration: underline;
+#noLogin {
+    display: inline-block;
+    margin: 20px 0 0 0;
+    padding: 0;
+    font-size: 1pt;
+    font-size: 12px;
+    text-decoration: none;
+    line-height: 1;
+    color: #45acbb;
+    border-right: solid 1px #fff;
+}#noLogin:hover {
+    text-decoration: underline;
 }
 
 
-img.ar{
-	padding: 0 2px 1px 0;
-	width: 6px;
+img.ar {
+    width: 6px;
+    padding: 0 2px 1px 0;
 }
 
 
-.errMsg{
-	height: 12px;
-	margin-bottom: 6px;
-	color: #fd4001;
+.errMsg {
+    height: 12px;
+    margin-bottom: 6px;
+    color: #fd4001;
 }
-
-
