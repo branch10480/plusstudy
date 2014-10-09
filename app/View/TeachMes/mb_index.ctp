@@ -22,7 +22,7 @@
 
 <?php echo $this->Form->end(); ?>
 
-<div class="btnArea"><a href="#" class="btnSubmit" id="submitBtn"><img src="<?php echo MB_IMG_PATH; ?>needscreateconfirm_btn.png" alt="登録確認へ" class="confirmBtn" ></a></div>
+<div class="btnArea2"><a href="#" class="btnSubmit" id="submitBtn"><img src="<?php echo MB_IMG_PATH; ?>needscreateconfirm_btn.png" alt="登録確認へ" class="confirmBtn" ></a></div>
 <div class="doCenter">
 	<?php echo $this->Html->image(MB_IMG_PATH . 'backtop_btn.png', array("alt" => "トップへ戻る", "class" => "backtopBtn", 'url' => array('controller' => 'Accounts', 'action' => 'index'))); ?>
 </div>
