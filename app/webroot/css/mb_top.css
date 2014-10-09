@@ -4,103 +4,142 @@
 /*---------------------------------
 
 # Universal
+# Tab
+# Section
 
 ----------------------------------*/
-ul,li,h2,h3,p {
-   margin: 0;
-   padding: 0;
-   border: 0;
-}
+
+
+
 
 
 /* Universal
 ----------------------------------------------------------------------*/
+ul,li,h2,h3,p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+
+
+
+
+
+/* Tab
+----------------------------------------------------------------------*/
+.panel {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+
+ul.topTab {
+    text-align: center;
+    color: #bbb;
+}
+
+
+ul.topTab li {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    height: 44px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 40px;
+    letter-spacing: 0;
+    background: #fff;
+}
+
+
+ul.topTab li.active {
+    color: #eba621;
+}
+
+
+
+
+
+
+/* Section
+----------------------------------------------------------------------*/
 #container {
-   font-size: 20px;
-   color: #656565;
+    font-size: 20px;
+    color: #656565;
 }
 #container h2 {
-   font-size: 24px;
+    font-size: 24px;
 }
 #container section {
-   padding: 80px 0 0;
+    padding: 40px 0 0;
 }
 h2 {
-   margin-bottom: 60px;
-   text-align: center;
+    margin-bottom: 60px;
+    text-align: center;
 }
 .hidden {
-   display: none;
+    display: none;
 }
 #needsArea {
-   overflow: hidden;
-   width: 1008px;
-   margin-left: -30px;
+    overflow: hidden;
 }
-#needsArea ul {
-   width: 1008px;
-   margin-left: -20px;
-}
+
+
+
 #needsArea li {
-   float: left;
-   width: 474px;
-   margin-bottom: 20px;
-   margin-left: 30px;
-   padding: 14px 0;
-   background: #fff;
+    width: 306px;
+    height: 38px;
+    margin: 0 auto 20px auto;
+    padding: 14px 0;
+    background: #fff;
 }
 #needsArea a {
-   text-decoration: none;
-   color: #656565;
+    text-decoration: none;
+    color: #656565;
 }
-#needsArea .right a {
-   display: block;
-   width: 140px;
-   height: 32px;
-}
-#needsArea a img {
-   vertical-align: bottom;
-}
+
 #needsArea a:hover {
-   text-decoration: underline;
+    text-decoration: underline;
 }
 #needsArea span {
-   padding-left: 0;
+    padding-left: 0;
 }
 .needsWrapper {
-   width: 474px;
+    width: 400px;
 }
 .needsWrapper > div {
-   float: left;
+    float: left;
 }
 .needsWrapper .left {
-   overflow: hidden;
-   width: 233px;
-   padding: 4px 0 0 20px;
-   white-space: nowrap;
-   text-overflow: ellipsis;
+    overflow: hidden;
+    width: 233px;
+    padding: 4px 0 0 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .needsWrapper .middle {
-   width: 63px;
-   padding: 5px 10px 0 0;
-   text-align: right;
-   color: #48b2c2;
+    padding: 5px 20px 0 0;
+    text-align: right;
+    color: #48b2c2;
 }
 .needsWrapper .right {
-   width: 140px;
-   padding-top: 2px;
+    width: 140px;
+    padding-top: 2px;
 }
 section .wrapper {
-   overflow: hidden;
-   width: 978px;
-   margin: 0 auto;
+    overflow: hidden;
+    margin: 0 auto;
 }
 .seminarsArea {
-   padding-bottom: 80px;
+    padding-bottom: 80px;
 }
 .card {
-   margin: 0 auto 30px auto;
+    margin: 0 auto 30px auto;
 }
 .thumb {
-   overflow: hidden;
+    overflow: hidden;
 }
