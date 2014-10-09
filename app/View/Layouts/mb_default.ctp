@@ -31,7 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->css(array(
 			// 'cake.generic',
 			'normalize',
-			'common',
+			'mb_common',
 			));
 		echo $this->Html->script(array(
 			'jquery-1.11.1.min.js',
@@ -46,11 +46,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
 </head>
 <body>
-	モバイル
 	<div id="wrap">
-		<?php echo $this->element('header'); ?>
+		<?php echo $this->element('mb_header'); ?>
 
 		<div id="container">
 			<?php echo $this->Session->flash(); ?>
@@ -58,7 +58,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 		</div>
 
-		<?php echo $this->element('footer'); ?>
+		<?php //echo $this->element('footer'); ?>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
 </body>
