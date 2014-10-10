@@ -16,9 +16,9 @@
 /* Universal
 ----------------------------------------------------------------------*/
 ul,li,h2,h3,p {
-    margin: 0;
-    padding: 0;
-    border: 0;
+   margin: 0;
+   padding: 0;
+   border: 0;
 }
 
 
@@ -30,64 +30,64 @@ ul,li,h2,h3,p {
 /* Tab
 ----------------------------------------------------------------------*/
 .panel {
-    display: none;
+   display: none;
 }
 
 
 .show {
-    display: block;
+   display: block;
 }
 
 
 ul.topTab {
-    text-align: center;
-    color: #bbb;
+   text-align: center;
+   color: #bbb;
 }
 
 
 ul.topTab li {
-    display: inline-block;
-    float: left;
-    width: 50%;
-    height: 44px;
-    line-height: 40px;
-    background: #fff;
+   display: inline-block;
+   float: left;
+   width: 50%;
+   height: 44px;
+   line-height: 40px;
+   background: #fff;
 }
 
 
 ul.topTab li.active {
-    color: #eba621;
+   color: #eba621;
 }
 
 
 .topTab li h2 {
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0;
+   font-size: 14px;
+   font-weight: bold;
+   letter-spacing: 0;
 }
 
 
 .tabArArea {
-    width: 50%;
-    margin-bottom: 10px;
-    padding: 0;
-    text-align: center;
-    line-height: 0;
+   width: 50%;
+   margin-bottom: 10px;
+   padding: 0;
+   text-align: center;
+   line-height: 0;
 }
 
 
 .tabL {
-    padding-right: 50%;
+   padding-right: 50%;
 }
 
 
 .tabR {
-    padding-left: 50%;
+   padding-left: 50%;
 }
 
 
 .tabArArea img {
-    width: 18.75%;
+   width: 18.75%;
 }
 
 
@@ -98,99 +98,99 @@ ul.topTab li.active {
 /* Section
 ----------------------------------------------------------------------*/
 #container {
-    font-size: 20px;
-    color: #656565;
+   font-size: 20px;
+   color: #656565;
 }
 
 
 #container section {
-    padding: 0 0 0;
+   padding: 0 0 0;
 }
 
 
 .hidden {
-    display: none;
+   display: none;
 }
 
 
 #needsArea {
-    overflow: hidden;
+   overflow: hidden;
 }
 
 
 #needsArea li {
-    width: 306px;
-    height: 38px;
-    margin: 0 auto 20px auto;
-    padding: 14px 0;
-    background: #fff;
+   width: 306px;
+   height: 38px;
+   margin: 0 auto 20px auto;
+   padding: 14px 0;
+   background: #fff;
 }
 
 
 #needsArea a {
-    text-decoration: none;
-    color: #656565;
+   text-decoration: none;
+   color: #656565;
 }
 
 
 #needsArea a:hover {
-    text-decoration: underline;
+   text-decoration: underline;
 }
 
 
 #needsArea span {
-    padding-left: 0;
+   padding-left: 0;
 }
 
 
 .needsWrapper {
-    width: 400px;
+   width: 400px;
 }
 
 
 .needsWrapper > div {
-    float: left;
+   float: left;
 }
 
 
 .needsWrapper .left {
-    overflow: hidden;
-    width: 233px;
-    padding: 4px 0 0 20px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+   overflow: hidden;
+   width: 233px;
+   padding: 4px 0 0 20px;
+   white-space: nowrap;
+   text-overflow: ellipsis;
 }
 
 
 .needsWrapper .middle {
-    padding: 5px 20px 0 0;
-    text-align: right;
-    color: #48b2c2;
+   padding: 5px 20px 0 0;
+   text-align: right;
+   color: #48b2c2;
 }
 
 
 .needsWrapper .right {
-    width: 140px;
-    padding-top: 2px;
+   width: 140px;
+   padding-top: 2px;
 }
 
 
 section .wrapper {
-    overflow: hidden;
-    margin: 0 auto;
+   overflow: hidden;
+   margin: 0 auto;
 }
 
 
 .seminarsArea {
-    padding-bottom: 80px;
+   padding-bottom: 20px;
 }
 
 
 .card {
-    margin: 0 auto 30px auto;
+   margin: 0 auto 30px auto;
 }
 
 
 .thumb {
-    overflow: hidden;
+   overflow: hidden;
 }
