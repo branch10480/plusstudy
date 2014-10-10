@@ -407,7 +407,7 @@ class SeminarsController extends AppController {
 
 		$minArray = array();
 		for ($i=0; $i<60; $i+=5) {
-			$minArray[] = $i;
+			$minArray[$i] = $i;
 		}
 
 		$hArray = array();

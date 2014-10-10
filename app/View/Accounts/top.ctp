@@ -105,7 +105,7 @@
 								<dt>主催者</dt>
 								<dd class="hostname"><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?></dd>
 								<dt>開催日時</dt>
-								<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingM . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
+								<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingH . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
 							</dl>
 						</li>
 					</ul>
