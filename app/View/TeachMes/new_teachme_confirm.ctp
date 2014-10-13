@@ -1,13 +1,28 @@
+<?php
+	// このページ限定のCSS,JS
+	// $this->Html->script(array(
+	// 	), array('inline' => false));
+	$this->Html->css(array(
+		'teach_mes',
+		), null, array('inline' => false));
+?>
 
-<h1>登録内容の確認</h1>
-<p>以下の内容で登録します、よろしいですか？</p>
 
-<p>ニーズタイトル<p>
-<p><?php echo $title ?></p>
-<p>内容</p>
-<p><?php echo $content ?></p>
-
-<div>
-<?php echo $this->Html->link(__('戻る'), array('action' => 'index')); ?>
-<?php echo $this->Html->link(__('登録する'), array('action' => 'register')); ?>
+<div class=" plot header_img">
+	<img src="<?php echo IMG_PATH . 'needscreateconfirm_h.png'; ?>" width="306" height="109" alt="">
 </div>
+
+<div class="plot">
+	<div class="teach_mes_contents confirm_contents">
+		<h2><?php echo $title ?></h2>
+		<p><?php echo $content ?></p>
+	</div>
+
+	<div class="teach_mes_contents confirm_links">
+		<a href="/plusstudy/TeachMes"><img src="<?php echo IMG_PATH . 'cancel_btn.png'; ?>" width="138" height="54" alt="" class="confirm_cancel_img"></a>
+		<a href="/plusstudy/TeachMes/register"><img src="<?php echo IMG_PATH . 'needscreate_btn.png'; ?>" width="168" height="54" alt=""></a>
+	</div>	
+	
+</div>
+
+

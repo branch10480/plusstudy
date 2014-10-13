@@ -17,26 +17,35 @@
 	});
 </script>
 
-
-<section>
-	<h2><img src="<?php echo IMG_PATH; ?>needsdetails_h.png" alt="教えて欲しいこと詳細" width="306" height="109"><span class="hidden">教えて欲しいこと詳細</span></h2>
-	<section>
+<div class="header_img">
+	<img src="<?php echo IMG_PATH; ?>needsdetails_h.png" alt="教えて欲しいこと詳細" width="306" height="109">	
+</div>
+<div class="plot">
+	<div class="detail_contents_top">
 		<h3><?php echo $teachme['TeachMe']['title'] ?></h3>
 		<p><?php echo nl2br($teachme['TeachMe']['content']); ?></p>
-		<p class="metooNum"><?php echo count($teachme['MeToo']) . '人 の方がこの内容を教えて欲しいと言っています。' ?></p>
-	</section>
-	<div class="btnArea cf">
-		<a href="<?php echo ROOT_URL . 'Seminars/index/'; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容に合った勉強会を作成する" width="306" height="54"></a>
-		<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH; ?>needsdetailsmetoo_btn.png" alt="私も教えて欲しい！" width="222" height="54"></a>
+	</div>	
+	<div class="detail_contents_bottom cf">
+		<div class="metoo_num">
+			<p>教えて欲しい人数  <span><?php echo count($teachme['MeToo']);?></span> 人</p>
+		</div>
+		<div class="metoo_btn">
+			<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH; ?>teachme.png" alt="私も教えて欲しい！" width="143.5" height="18"></a>
+		</div>
 	</div>
+	<div class="detail_links">
+		<a href="<?php echo ROOT_URL ; ?>"><img src="<?php echo IMG_PATH . 'backtop_btn.png'; ?>" width="138" height="54" alt="トップに戻る"></a>
+		<a href="<?php echo ROOT_URL . 'Seminars/index/'; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容に合った勉強会を作成する" width="306" height="54"></a>
+	</div>
+</div>
+
 
 	<?php echo $this->Form->create('MeToo', array('class' => 'hidden')); ?>
 
 		<?php if($alreadyMetoo === false): ?>
 			<?php echo $this->Form->submit('教えて欲しい！', array('name' => 'metoo', 'id' => "clickBtn")); ?>
 			<?php else : ?>
-			<?php echo $this->Form->submit('教えて欲しい！を取り消す', array(
-				'name' => 'cancel', 'id' => "clickBtn")); ?>
+			<?php echo $this->Form->submit('教えて欲しい！を取り消す', array('name' => 'cancel', 'id' => "clickBtn")); ?>
 		<?php endif; ?>
 	<?php echo $this->Form->end(); ?>
-</section>
+
