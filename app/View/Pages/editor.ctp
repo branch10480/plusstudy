@@ -14,7 +14,8 @@
 		font-size: 14px;
 		width: 620px;
 		height: 295px;
-		overflow: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	img {
 		display: block;
