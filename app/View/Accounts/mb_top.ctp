@@ -65,7 +65,7 @@
 			?>
 
 			<a class="card<?php echo ' ' . $cardClass; ?>" href="<?php echo ROOT_URL . 'Seminars/details?id=' . $seminar['Seminar']['id']; ?>">
-				<h3>デザイン・レイアウト勉強会</h3>
+				<h3><?php echo $seminar['Seminar']['name']; ?></h3>
 
 				<div class="cf">
 					<?php if (!empty($seminar['Account']['img_ext'])) { ?>

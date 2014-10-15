@@ -87,8 +87,8 @@ dl,dt,dd,ul,li,h3,h4,p {
     display: block;
     overflow: hidden;
     min-width: 280px;
-    min-height: 21px;
-    padding: 8px 8px 8px 8px;
+    min-height: 20px;
+    padding: 10px 8px 7px 8px;
     font-size: 17px;
     letter-spacing: .03em;
     text-overflow: ellipsis;
