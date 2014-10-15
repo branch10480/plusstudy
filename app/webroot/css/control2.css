@@ -168,20 +168,10 @@
 }
 #editArea {
 	background: #fff;
-	height: 295px;
-	padding: 10px;
-	color: #777;
-	font-size: 14px;
-	overflow: auto;
+	height: 315px;
 }
 #editArea:focus {
 	outline: none;
-}
-#editArea img {
-	display: block;
-	max-width: 400px;
-	max-height: 400px;
-	margin: 40px auto;
 }
 .richeditor li.labelLi {
 	border: solid 1px #3e99a7;

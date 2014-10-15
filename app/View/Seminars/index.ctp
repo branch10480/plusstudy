@@ -164,7 +164,7 @@
 							)); ?>
 						</li>
 						<li class="labelLi"><label>フォント色</label></li>
-						<li>
+						<li class='selectFontColor'>
 							<?php echo $this->Form->input('fontColor', array(
 								'type' => 'select',
 								'label' => false,
@@ -174,9 +174,10 @@
 						</li>
 						<li class="insertImg"><a href="#" id="insertImg">画像を挿入</a></li>
 					</ul>
-					<div id="editArea" contenteditable="true"><?php echo $dsc; ?></div>
+					<div id="editArea"><iframe id="editIF" src="<?php echo ROOT_URL . 'Pages/display/editor/'; ?>" frameborder="0" width="640" height="315"></iframe></div>
 				</div>
-				<?php echo $this->Form->hidden('Seminar.description'); ?>
+				<?php echo $this->Form->hidden('Seminar.description', array('value' => $dsc)); ?>
+
 			</dd>
 		</dl>
 		<?php echo $this->Form->end(); ?>

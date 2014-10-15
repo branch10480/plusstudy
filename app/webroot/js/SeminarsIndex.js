@@ -160,7 +160,7 @@ function selectImg(event) {
 			// リッチエディタに画像挿入処理
 			var newImg = document.createElement('img');
 			newImg.src = event.target.src;
-			document.getElementById('editArea').appendChild(newImg);
+			document.getElementById('editIF').contentDocument.body.appendChild(newImg);
 			$.closeModalWin();
 			break;
 

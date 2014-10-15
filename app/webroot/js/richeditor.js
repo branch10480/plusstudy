@@ -41,29 +41,41 @@ function checkSelectionText() {
 
 //コンテンツのロードが完了したら
 window.onload = function () {
-	var editArea = $id("editArea");
+
+
+	// インラインフレーム内の要素を取得、保持
+	var ifElm = $id('editIF');
+	ifDoc = ifElm.contentDocument;
+	console.log(ifDoc);
+
+	var editArea = ifDoc.body;
 	var ritchTextHtmlArea = $id("SeminarDescription");
+
+
+	ifDoc.body.innerHTML = ritchTextHtmlArea.value;
+
 
 	//innerText を設定するためのメソッドを追加
 	setAlter_innerText(editArea);
 	setAlter_innerText(ritchTextHtmlArea);
 
 
+	var tcnt = 0;
 	//フォントサイズを指定するドロップダウンリストのイベントハンドラ
-	$id("SeminarFontsize")
-		.addEventListener("change", function () {
-			if (checkSelectionText()) {
-				document.execCommand('fontSize', false, this.value);
-			}
+	$('.selectFontSize .esb-item')
+		.click(function () {
+			ifDoc.execCommand('fontSize', false, $(this).html());
+			ifDoc.body.focus();
+		});
+	//フォントサイズを指定するドロップダウンリストのイベントハンドラ
+	$('.selectFontColor .esb-item')
+		.click(function () {
+			setTimeout(function(){
+			ifDoc.execCommand('ForeColor', false, $('#SeminarFontColor').val());
+				}, 200);
+			ifDoc.body.focus();
 		});
 
-	//フォントカラーを指定するドロップダウンリストのイベントハンドラ
-	$id("SeminarFontColor")
-		.addEventListener("change", function () {
-			if (checkSelectionText()) {
-				document.execCommand('ForeColor', false, this.value);
-			}
-		});
 
 	// //リンクを生成するボタンのイベントハンドラ
 	// $id("mkLinkButton")
@@ -87,27 +99,24 @@ window.onload = function () {
 	$id("bold")
 		.addEventListener("click", function (event) {
 			event.preventDefault();
-			if (checkSelectionText()) {
-				document.execCommand("bold", false);
-			}
+			ifDoc.execCommand("bold", false);
+			ifDoc.body.focus();
 		});
 
 	//[下線] ボタン
 	$id("underline")
 		.addEventListener("click", function (event) {
 			event.preventDefault();
-			if (checkSelectionText()) {
-				document.execCommand("underline", false);
-			}
+			ifDoc.execCommand("underline", false);
+			ifDoc.body.focus();
 		});
 
 	//[イタリック] ボタン
 	$id("italic")
 		.addEventListener("click", function (event) {
 			event.preventDefault();
-			if (checkSelectionText()) {
-				document.execCommand("italic", false);
-			}
+			ifDoc.execCommand("italic", false);
+			ifDoc.body.focus();
 		});
 
 	document.getElementById('submitBtn').addEventListener("click", function () {
