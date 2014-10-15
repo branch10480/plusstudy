@@ -5,7 +5,7 @@
 		'mbLogin',
 		), array('inline' => false));
 	$this->Html->css(array(
-		'seminar_card.css',
+		'mb_seminar_card.css',
 		'mb_top.css',
 		), null, array('inline' => false));
 ?>
@@ -64,45 +64,33 @@
 
 			?>
 
-			<div class="card<?php echo ' ' . $cardClass; ?>">
-				<div class="top">
-					<ul class="cf">
+			<a class="card<?php echo ' ' . $cardClass; ?>" href="<?php echo ROOT_URL . 'Seminars/details?id=' . $seminar['Seminar']['id']; ?>">
+				<h3>デザイン・レイアウト勉強会</h3>
+
+				<div class="cf">
 					<?php if (!empty($seminar['Account']['img_ext'])) { ?>
-						<li class="thumb"><img src="<?php echo PROF_IMG_PATH . $seminar['Account']['id'] . '.' . $seminar['Account']['img_ext']; ?>" alt="<?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?>" width="<?php echo $seminar['Account']['img_w']; ?>" height="<?php echo $seminar['Account']['img_h']; ?>" /></li>
+						<figure class="thumb"><img src="<?php echo PROF_IMG_PATH . $seminar['Account']['id'] . '.' . $seminar['Account']['img_ext']; ?>" alt="<?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?>" /></figure>
 					<?php } else { ?>
-						<li class="thumb"><img src="<?php echo PROF_IMG_PATH; ?>no_image.gif" alt="<?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?>" width="200" height="200" /></li>
+						<figure class="thumb"><img src="<?php echo PROF_IMG_PATH; ?>no_image.gif" alt="<?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?>" /></figure>
 					<?php } ?>
-						<li>
-							<dl>
-								<dt>主催者</dt>
-								<dd class="hostname"><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?></dd>
-								<dt>開催日時</dt>
-								<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingM . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
+					<div class="cardDetails">
+						<dl class="opening cf">
+							<dt>開催日時</dt>
+							<dd><?php echo sprintf('%d', $openingMonth) . '/' . sprintf('%d', $openingDay) . ' ' . $openingM . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
+						</dl>
+						<div class="cf">
+							<dl class="patiNumPeo cf">
+								<dt>参加人数</dt>
+								<dd><?php echo count($seminar['Participant']); ?>/<?php echo $seminar['Seminar']['upper_limit']; ?></dd>
 							</dl>
-						</li>
-					</ul>
+							<dl class="deadLine cf">
+								<dt>募集締切</dt>
+								<dd><?php echo sprintf('%d', $limitMonth) . '/' . sprintf('%d', $limitDay); ?></dd>
+							</dl>
+						</div>
+					</div>
 				</div>
-				<div class="middle">
-					<h3><?php echo $seminar['Seminar']['name']; ?></h3>
-				</div>
-				<div class="bottom">
-					<ul class="cf">
-						<li>
-							<h4>参加人数</h4>
-							<p><?php echo count($seminar['Participant']); ?></p>
-						</li>
-						<li>
-							<h4>募集人数</h4>
-							<p><?php echo $seminar['Seminar']['upper_limit']; ?></p>
-						</li>
-						<li>
-							<h4>募集締切</h4>
-							<p class="limitDate"><?php echo sprintf('%d', $limitMonth) . ' / ' . sprintf('%d', $limitDay); ?></p>
-						</li>
-					</ul>
-					<div class="btnArea"><a href="<?php echo ROOT_URL . 'Seminars/details?id=' . $seminar['Seminar']['id']; ?>"><img src="<?php echo IMG_PATH; ?>seminar_description_btn.png" width="120" height="59" alt="詳細へ"></a></div>
-				</div>
-			</div>
+			</a>
 			<?php endforeach; ?>
 		</div>
 	</section>

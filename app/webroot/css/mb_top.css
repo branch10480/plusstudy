@@ -186,11 +186,6 @@ section .wrapper {
 }
 
 
-.card {
-   margin: 0 auto 30px auto;
-}
-
-
 .thumb {
    overflow: hidden;
 }
