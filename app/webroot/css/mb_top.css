@@ -21,7 +21,11 @@ ul,li,h2,h3,p {
     border: 0;
 }
 
-
+.none {
+    padding-top: 10px;
+    text-align: center;
+    color: #f5f5f5;
+}
 
 
 

@@ -19,7 +19,7 @@
 <section>
 	<h2><img src="<?php echo IMG_PATH; ?>needs_h.png" alt="今求められている勉強会" width="306" height="109"><span class="hidden">今求められている勉強会</span></h2>
 	<?php if(count($teachmes) === 0): ?>
-		<p><?php echo '今求められている勉強会はありません'; ?></p>
+		<p class="none"><?php echo '今求められている勉強会はありません'; ?></p>
 	<?php endif; ?>
 
 	<div class="wrapper">
@@ -58,7 +58,7 @@
 	<div class="wrapper">
 		<div class="seminarsArea cf">
 			<?php if(count($seminars) === 0): ?>
-				<p><?php echo '現在予定されている勉強会はありません'; ?></p>
+				<p class="none"><?php echo '現在予定されている勉強会はありません'; ?></p>
 			<?php endif; ?>
 
 			<?php foreach($seminars as $seminar): ?>
