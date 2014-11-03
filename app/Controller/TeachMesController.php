@@ -197,8 +197,13 @@ class TeachMesController extends AppController {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
 
+		// 「私も教えて欲しい！」を押している人のリストを取得
+		$options = array('conditions' => array('MeToo.teach_me_id' => $id));
+		$metoos = $this->MeToo->find('all', $options);
+
 		// データをViewへ渡す
 		$this->set('teachme', $teachme);
+		$this->set('metoos', $metoos);
 
 		// タイトル設定
 		$this->set('title_for_layout', $teachme['TeachMe']['title']);

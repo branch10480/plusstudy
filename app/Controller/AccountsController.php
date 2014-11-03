@@ -127,7 +127,12 @@ class AccountsController extends AppController {
 		$this->set('teachmes', $this->TeachMe->find('all'));
 
 		// セミナー一覧を取得
-		$this->set('seminars', $this->Seminar->find('all'));
+		$options = array(
+			'conditions' => array(
+					'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
+				)
+		);
+		$this->set('seminars', $this->Seminar->find('all', $options));
 
 		// 参加申請している勉強会を取得
 		$options = array(

@@ -193,13 +193,27 @@ body{
 }
 .metoo_num p span{
     font-size: 20px;
+    position: relative;
+}
+p span.metoo_name {
+    display: none;
+    text-align: center;
+    width: 90px;
+    position: absolute;
+    bottom: 28px;
+    left: -28px;
+    background-color: #888888;
+    color: #eeeeee;
+}
+#name {
+    display: block;
+    font-size: 14px;
 }
 .metoo_btn{
     float: right;
     width: 143.5px;
     margin-top: 5px;
 }
-
 
 .detail_links{
     margin-top: 30px;
@@ -209,7 +223,7 @@ body{
 
 .detail_links a:first-child{
     margin-right: 30px;
-} 
+}
 
 
 

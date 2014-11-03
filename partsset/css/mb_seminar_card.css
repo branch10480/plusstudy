@@ -1,0 +1,215 @@
+@charset 'UTF-8';
+
+
+/*---------------------------------
+
+# Universal
+
+----------------------------------*/
+
+
+
+/* Seminar Card
+----------------------------------------------------------------------*/
+dl,dt,dd,ul,li,h3,h4,p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+.early h3 {
+    background: #fd865b;
+}
+
+
+.early .patiNumPeo {
+    background: #fd865b;
+}
+
+
+.early .deadLine {
+    background: #fd865b;
+}
+
+
+.mid h3 {
+    background: #f5cd26;
+}
+
+
+.mid .patiNumPeo {
+    background: #f5cd26;
+}
+
+
+.mid .deadLine {
+    background: #f5cd26;
+}
+
+
+.late h3 {
+    background: #20ccaa;
+}
+
+
+.late .patiNumPeo {
+    background: #20ccaa;
+}
+
+
+.late .deadLine {
+    background: #20ccaa;
+}
+
+
+.card {
+    display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 93.75%;
+    height: auto;
+    margin: 0 auto 0 auto;
+    margin-bottom: 7px;
+    padding: 2px;
+    font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+    text-decoration: none;
+    background: #fff;
+}
+
+
+.card:last-child {
+    margin-bottom: 0;
+}
+
+
+.card h3 {
+    display: block;
+    overflow: hidden;
+    min-width: 280px;
+    min-height: 20px;
+    padding: 10px 8px 7px 8px;
+    font-size: 17px;
+    letter-spacing: .03em;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+
+
+.card figure {
+    position: relative;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin: 8px 10px 8px 8px;
+    background: #cec6c3;
+}
+
+
+.card figure img {
+    width: 100%;
+    height: auto;
+}
+
+
+.cardDetails {
+    float: left;
+    min-width: 228px;
+    height: 50px;
+    margin: 8px 0 0 0;
+}
+
+
+.cardDetails dl dt {
+    float: left;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+.cardDetails dl dd {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.opening {
+    display: block;
+    height: 23px;
+    margin-top: 5px;
+    line-height: 1;
+    color: #ada6a4;
+}
+
+
+.opening dt {
+    float: left;
+    height: 22px;
+    padding: 1px 10px 0 0;
+}
+
+
+.opening dd {
+    height: 23px;
+}
+
+
+.patiNumPeo {
+    display: block;
+    float: left;
+    width: 110px;
+    height: 18px;
+    margin-right: 7px;
+    padding-top: 4px;
+    line-height: 1;
+    color: #fff;
+    -webkit-border-radius: 3px; /* Safari,Google Chrome用 */
+       -moz-border-radius: 3px; /* Firefox用 */
+            border-radius: 3px;     /* CSS3草案 */
+}
+
+
+.patiNumPeo dt {
+    padding: 1px 2px 0 5px;
+}
+
+
+.patiNumPeo dd {
+    float: right;
+    overflow: hidden;
+    max-width: 49px;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+}
+
+
+.deadLine {
+    display: block;
+    float: left;
+    width: 110px;
+    height: 18px;
+    padding-top: 4px;
+    line-height: 1;
+    color: #fff;
+    -webkit-border-radius: 3px; /* Safari,Google Chrome用 */
+       -moz-border-radius: 3px; /* Firefox用 */
+            border-radius: 3px;     /* CSS3草案 */
+}
+
+
+.deadLine dt {
+    display: block;
+    padding: 1px 2px 0 5px;
+}
+
+
+.deadLine dd {
+    display: block;
+    float: right;
+    overflow: hidden;
+    max-width: 49px;
+    height: 18px;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+}
