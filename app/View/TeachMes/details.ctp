@@ -35,7 +35,7 @@
 	<div class="detail_contents_bottom cf">
 		<div class="metoo_num">
 			<p>教えて欲しい人数
-				<a href="#" id="num_hover">
+				<u id="num_hover">
 				<span><?php echo count($metoos);?>
 					<span class="metoo_name">
 						<?php foreach($metoos as $metoo): ?>
@@ -43,7 +43,7 @@
 						<?php endforeach; ?>
 					</span>
 				</span> 人
-				</a>
+				</u>
 			</p>
 		</div>
 		<div class="metoo_btn">
