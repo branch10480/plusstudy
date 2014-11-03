@@ -521,8 +521,10 @@ class SeminarsController extends AppController {
 		$rsvLim = implode(':', $rsvLim);
 		$rsvLim = $rsvLimDate . ' ' . $rsvLim;
 
-		// セミナー画像
-		$seminarImgId = 1;
+		// セミナー画像の整形処理
+		$seminarImgId = str_replace(SMN_IMG_PATH, '', $rcvData['seminar_img_id']);
+		$seminarImgId = str_replace(substr($seminarImgId, -4), '', $seminarImgId);
+
 
 		$data = array(
 				'Seminar' => array(
