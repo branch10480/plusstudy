@@ -139,13 +139,14 @@ section .wrapper dl dd .btnArea > a:first-child {
 
 
 
-/* New Seminar Confirm
+/* New Seminar Confirm & Details
 ----------------------------------------------------------------------*/
 #newSmnConfirm {
 	color: #656565;
 	font-size: 16px;
 }
-#newSmnConfirm .wrapper {
+#newSmnConfirm .wrapper,
+#seminarQ .wrapper {
 	width: 978px;
 }
 #newSmnConfirm h3 {
@@ -160,6 +161,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 	width: 100%;
 	height: 200px;
 	overflow: hidden;
+	margin-top: -60px;
 }
 #newSmnConfirm #coverArea img {
 	width: 100%;
@@ -185,7 +187,6 @@ section .wrapper dl dd .btnArea > a:first-child {
 	width: 222px;
 	padding: 40px;
 	border: 2px solid #4cbdce;
-}
 }
 #newSmnConfirmbtnArea {
 	text-align: center;
@@ -215,13 +216,16 @@ section .wrapper dl dd .btnArea > a:first-child {
 	margin: 0;
 }
 #newSmnConfirm dt {
-	padding-bottom: 10px;
+	padding: 20px 0 0;
 	font-size: 18px;
 	color: #656565;
 	line-height: 1;
 }
+#newSmnConfirm dt:first-child {
+	padding: 0;
+}
 #newSmnConfirm dd {
-	padding-bottom: 20px;
+	padding-top: 10px;
 	font-size: 22px;
 	color: #4cbdce;
 }
@@ -232,6 +236,37 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 #newSmnConfirm dd p {
 	padding-bottom: 10px;
+}
+#ButtonDetailsForm {
+	padding: 30px 0 0;
+}
+#seminarQ {
+	padding: 0;
+}
+#seminarQ li {
+	width: 978px;
+	position: relative;
+	padding: 30px 0;
+	border-top: 1px solid #4cbdce;
+	font-size: 24px;
+	color: #656565;
+}
+#seminarQ li:first-child {
+	border-top: none;
+}
+#seminarQ li a {
+	color: #656565;
+	text-decoration: none;
+}
+#seminarQ li a:hover {
+	text-decoration: underline;
+}
+#seminarQ li span {
+	position: absolute;
+	right: 0px;
+	top: 35px;
+	font-size: 18px;
+	color: #3e99a7;
 }
 
 

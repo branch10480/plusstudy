@@ -645,7 +645,7 @@ class SeminarsController extends AppController {
 		if($this->request->is('post')) {
 
 			// 参加ボタンが押された時
-			if(isset($this->request->data['join'])) {
+			if(isset($this->request->data['Button']['join'])) {
 				// セッション作成
 				$this->Session->write('joinSmn.id', $id);
 				// 参加ページへリダイレクト
@@ -653,7 +653,7 @@ class SeminarsController extends AppController {
 			}
 
 			// キャンセルボタンが押された時
-			if(isset($this->request->data['cancel'])) {
+			if(isset($this->request->data['Button']['cancel'])) {
 				// セッション作成
 				$this->Session->write('cancelSmn.id', $id);
 				// キャンセルページへリダイレクト
@@ -661,7 +661,7 @@ class SeminarsController extends AppController {
 			}
 
 			// 編集ボタンが押された時
-			if(isset($this->request->data['edit'])) {
+			if(isset($this->request->data['Button']['edit'])) {
 				//-- ここに編集処理を書く --
 			}
 
@@ -707,7 +707,8 @@ class SeminarsController extends AppController {
 		$this->set(array(
 				'eTitle' => $eTitle,
 				'eContent' => $eContent,
-				'userType' => $userType
+				'userType' => $userType,
+				'smnID' => $id,
 				));
 
 
