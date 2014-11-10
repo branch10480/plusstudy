@@ -130,16 +130,15 @@
 
 <?php if($userType !== 'Manager'): ?>
 	<?php echo $this->Form->create('Question'); ?>
-	<div>
-		<p><b>質問投稿フォーム</b></p>
-		<p>質問タイトル</p>
-		<p><?php echo $this->Form->text('title'); ?></p>
-		<p class="errMsg"><?php echo $eTitle ?></p>
-		<p>内容</p>
-		<p><?php echo $this->Form->textarea('content'); ?></p>
-		<p class="errMsg"><?php echo $eContent ?></p>
-		<?php echo $this->Form->submit('質問を投稿する', array(
-			'name' => 'question')); ?>
+	<ul>
+		<li><?php echo $this->Form->text('title'); ?></li>
+		<?php echo '<li class="errMsg" id="eQTitle">' . $eTitle . '</li>'; ?>
+		<li><?php echo $this->Form->textarea('content'); ?></li>
+		<?php echo '<li class="errMsg" id="eQContent">' . $eContent . '</li>' ?>
+	</ul>
+	<div class="btnArea">
+	<a id="qSubmitBtn" href="#"><img src="<?php echo IMG_PATH . 'seminarqcontribution_btn.png' ?>" alt="質問を投稿する" width="222" height="54"></a>
+		<?php // echo $this->Form->submit('質問を投稿する', array('name' => 'question')); ?>
 	</div>
 	<?php echo $this->Form->end(); ?>
 <?php endif; ?>

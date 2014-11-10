@@ -668,7 +668,7 @@ class SeminarsController extends AppController {
 			}
 
 			// 質問投稿ボタンが押された時
-			if(isset($this->request->data['question'])) {
+			if(isset($this->request->data['Question'])) {
 				//--バリデーションチェック--
 				$validateResult = true;
 				// タイトル
