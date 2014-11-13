@@ -6,6 +6,7 @@
 		), array('inline' => false));
 	$this->Html->css(array(
 		'seminars',
+		'control2',
 		), null, array('inline' => false));
 ?>
 
@@ -131,7 +132,7 @@
 <?php if($userType !== 'Manager'): ?>
 	<?php echo $this->Form->create('Question'); ?>
 	<ul>
-		<li><?php echo $this->Form->text('title'); ?></li>
+		<li><?php echo $this->Form->text('title', array('class' => 'text')); ?></li>
 		<?php echo '<li class="errMsg" id="eQTitle">' . $eTitle . '</li>'; ?>
 		<li><?php echo $this->Form->textarea('content'); ?></li>
 		<?php echo '<li class="errMsg" id="eQContent">' . $eContent . '</li>' ?>
