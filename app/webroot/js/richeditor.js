@@ -122,7 +122,8 @@ window.onload = function () {
 	document.getElementById('submitBtn').addEventListener("click", function () {
 		event.preventDefault();
 		ritchTextHtmlArea.value = editArea.innerHTML;
-		selectedForm = $('#SeminarIndexForm') || false;
+		var selectedForm = $('#SeminarIndexForm').length === 0 ? null : $('#SeminarIndexForm');
+		if (selectedForm === null) selectedForm = $('#SeminarEditForm') || false;
 		if (selectedForm)
 			selectedForm.submit();
 		else

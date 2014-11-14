@@ -88,7 +88,7 @@
 						break;
 
 					case 'Join':
-						echo $this->Html->link($this->HTML->image('cancel_btn.png', array('width' => '138', 'height' => '54')), array('action' => 'register'), array('escape' => false, 'class' => 'btnSubmitJoinCancelEdit'));
+						echo $this->Html->link($this->HTML->image('pcansel_btn.png', array('width' => '222', 'height' => '54')), array('action' => 'register'), array('escape' => false, 'class' => 'btnSubmitJoinCancelEdit'));
 						echo $this->Form->input('cancel', array('type' => 'hidden', 'value' => 'cancel'));
 						break;
 

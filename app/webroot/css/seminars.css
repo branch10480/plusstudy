@@ -44,6 +44,12 @@ dt {
 	text-align: center;
 	padding: 60px 0;
 }
+.btnArea a {
+	margin-left: 30px;
+}
+.btnArea a:first-child {
+	margin-left: 0;
+}
 section .wrapper dl .btnArea {
 	width: 390px;
 	padding: 0;

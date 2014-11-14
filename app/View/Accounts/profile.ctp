@@ -4,70 +4,83 @@
 	// $this->Html->css('pieChart', null, array('inline' => false));
 ?>
 <input id="accountId" type="hidden" value="<?php echo $this->Session->read('Auth.id'); ?>" />
+
+<section class="cf">
+	<h2><?php echo $this->Html->image('profile_h.png', array('width' => '306', 'height' => '109')); ?></h2>
+	<div class="left">
+		<form action="<?php echo ROOT_URL . 'Accounts/uploadProfImg/'; ?>" method="post" id="ImgUpForm">
+			<img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" />
+
+			<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
+			<input id="profile_img" enctype="multipart/form-data" name="up_img" type="file"><input id="delProfImg" type="button" value="画像を削除">
+			<?php endif; ?>
+		</form>
+	</div>
+	<div class="center">
+		<h3>
+			<ruby>
+				<?php echo $account['Account']['last_name']; ?><rt><?php echo $account['Account']['last_ruby']; ?></rt>
+				 <?php echo $account['Account']['first_name']; ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
+			</ruby>
+		</h3>
+		<ul>
+			<li>学科 : <?php echo $account['Account']['subject']; ?></li>
+			<li>学年 : <?php echo $account['Account']['grade'] . '年生'; ?></li>
+			<li>メールアドレス : <?php echo $account['Account']['pub_mailaddress']; ?></li>
+		</ul>
+		<table>
+			<tr>
+				<th>スキル</th>
+				<td><?php echo $account['Account']['skill']; ?></td>
+			</tr>
+			<tr>
+				<th>資格</th>
+				<td><?php echo $account['Account']['licenses']; ?></td>
+			</tr>
+			<tr>
+				<th>PR文</th>
+				<td><?php echo $account['Account']['description']; ?></td>
+			</tr>
+		</table>
+	</div>
+	<div class="right">
+		<?php echo $this->Html->link('プロフィールを編集する', array('controller' => 'Accounts', 'action' => 'edit'), array('id' => 'editBtn')); ?>
+		<?php if (!empty($account['Account']['facebook'])) { ?>
+			<a href="<?php echo $account['Account']['facebook']; ?>"><?php echo $this->Html->image('facebook.png', array('width' => '54', 'height' => '54')); ?></a>
+		<?php } ?>
+		<?php if (!empty($account['Account']['twitter'])) { ?>
+			<a href="<?php echo $account['Account']['twitter']; ?>"><?php echo $this->Html->image('twitter.png', array('width' => '54', 'height' => '54')); ?></a>
+		<?php } ?>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div>
-	<h2><?php echo __('マイページ'); ?></h2>
-
-	<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
-	<?php echo $this->Html->link('プロフィールを編集する', array('controller' => 'Accounts', 'action' => 'edit')); ?>
-	<?php endif; ?>
-
-	<br>
-	<p><b>プロフィール画像</b></p>
-	<form action="<?php echo ROOT_URL . 'Accounts/uploadProfImg/'; ?>" method="post" id="ImgUpForm">
-	<p>
-	<img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" />
-
-	<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
-	<input id="profile_img" enctype="multipart/form-data" name="up_img" type="file"><input id="delProfImg" type="button" value="画像を削除">
-	<?php endif; ?>
-
-	</p>
-	</form>
-	<br>
-
-	<p><b>名前</b></p>
-	<p><?php echo $account['Account']['last_ruby'] . ' ' .
-				  $account['Account']['first_ruby']; ?></p>
-	<p><?php echo $account['Account']['last_name'] . ' ' .
-				  $account['Account']['first_name']; ?></p>
-	<br>
-
-	<p><b>自己紹介</b></p>
-	<p><?php echo $account['Account']['description']; ?></p>
-	<br>
-
-	<p><b>コース</b></p>
-	<p><?php echo $account['Account']['course'] . '年制課程'; ?></p>
-	<br>
-
-	<p><b>学年</b></p>
-	<p><?php echo $account['Account']['grade'] . '年生'; ?></p>
-	<br>
-
-	<p><b>学科</b></p>
-	<p><?php echo $account['Account']['subject']; ?></p>
-	<br>
-
-	<p><b>資格</b></p>
-	<p><?php echo $account['Account']['licenses']; ?></p>
-	<br>
-
-	<p><b>スキル</b></p>
-	<p><?php echo $account['Account']['skill']; ?></p>
-	<br>
-
-	<p><b>Facebook</b></p>
-	<p><?php echo $account['Account']['facebook']; ?></p>
-	<br>
-
-	<p><b>twitter</b></p>
-	<p><?php echo $account['Account']['twitter']; ?></p>
-	<br>
-
-	<p><b>公開メールアドレス</b></p>
-	<p><?php echo $account['Account']['pub_mailaddress']; ?></p>
-	<br>
-</div>
 
 
 <div>
