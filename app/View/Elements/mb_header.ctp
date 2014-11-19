@@ -21,14 +21,14 @@
 	$(function () {
 		$('#menu').click(function(event){
 			event.preventDefault();
-			$('.menu').css('display', 'block');
+			$('.menu').css('top', '44px');
 			$('#menu').css('display', 'none');
 			$('#menu_on').css('display', 'block');
 		});
 
 		$('#menu_on').click(function(event){
 			event.preventDefault();
-			$('.menu').css('display', 'none');
+			$('.menu').css('top', '-136px');
 			$('#menu').css('display', 'block');
 			$('#menu_on').css('display', 'none');
 		});
