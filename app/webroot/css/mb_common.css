@@ -90,9 +90,6 @@ header {
 }
 
 
-
-
-
 #logo {
    display: inline;
    float: left;
@@ -112,15 +109,36 @@ header {
 
 
 #menu {
-   float: right;
-   height: 22px;
-   margin: 11px 15px 0 0;
+   position: absolute;
+   display: block;
+   right: 0px;
+   height: 44px;
 }
 
+#menu_on {
+   position: absolute;
+   display: none;
+   right: 0px;
+   height: 44px;
+}
 
+.menu {
+   position: absolute;
+   display: none;
+   top: 44px;
+   z-index: 999;
+}
 
+.menu a {
+   display: block;
+   line-height: 0;
+}
 
-
+.menu img {
+   width: 100%;
+   border-bottom: solid 1px #FFCF86;
+   margin: 0;
+}
 
 
 
