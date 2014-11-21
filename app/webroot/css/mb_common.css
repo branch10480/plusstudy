@@ -90,14 +90,16 @@ header {
 }
 
 
-
-
-
 #logo {
+   position: absolute;
    display: inline;
    float: left;
+   height: 44px;
+   width: 100%;
    margin: 0;
    padding: 0;
+   background-color : #FFFFFF;
+   z-index: 998;
 }
 
 
@@ -112,15 +114,39 @@ header {
 
 
 #menu {
-   float: right;
-   height: 22px;
-   margin: 11px 15px 0 0;
+   position: absolute;
+   display: block;
+   right: 0px;
+   height: 44px;
+   z-index: 999;
 }
 
+#menu_on {
+   position: absolute;
+   display: none;
+   right: 0px;
+   height: 44px;
+   z-index: 999;
+}
 
+.menu {
+   position: absolute;
+   display: block;
+   top: -136px;
+   z-index: 997;
+   transition: all 0.5s ease 0.0s;
+}
 
+.menu a {
+   display: block;
+   line-height: 0;
+}
 
-
+.menu img {
+   width: 100%;
+   border-bottom: solid 1px #FFCF86;
+   margin: 0;
+}
 
 
 
