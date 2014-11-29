@@ -10,7 +10,7 @@
 
 /* Control
 ----------------------------------------------------------------------*/
-.text, .email, .date {
+.text, .email, .date, textarea {
 	border: solid 1px #3e99a7;
 	font-size: 18px;
 	padding: 10px;
@@ -193,4 +193,7 @@
 .richeditor li.insertImg {
 	width: 88px;
 	text-align: center;
+}
+textarea {
+	height: 198px;
 }

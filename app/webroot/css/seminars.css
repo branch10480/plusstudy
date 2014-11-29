@@ -44,6 +44,12 @@ dt {
 	text-align: center;
 	padding: 60px 0;
 }
+.btnArea a {
+	margin-left: 30px;
+}
+.btnArea a:first-child {
+	margin-left: 0;
+}
 section .wrapper dl .btnArea {
 	width: 390px;
 	padding: 0;
@@ -267,6 +273,34 @@ section .wrapper dl dd .btnArea > a:first-child {
 	top: 35px;
 	font-size: 18px;
 	color: #3e99a7;
+}
+#QuestionDetailsForm ul {
+	width: 558px;
+	margin: 0 auto;
+	padding: 40px 0 0;
+}
+#QuestionDetailsForm li {
+	margin-top: 20px;
+}
+#QuestionDetailsForm li:first-child {
+	margin-top: 0;
+}
+#QuestionDetailsForm textarea {
+	width: 536px
+}
+#QuestionDetailsForm .btnArea {
+	width: 558px;
+	text-align: left;
+	margin: 20px auto 70px;
+	padding: 0;
+}
+#QuestionDetailsForm .errMsg {
+	margin: 5px 0 15px;
+	padding: 0;
+}
+#QuestionDetailsForm input,
+#QuestionDetailsForm textarea {
+	font-weight: bold;
 }
 
 

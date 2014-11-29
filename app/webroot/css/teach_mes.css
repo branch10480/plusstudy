@@ -27,28 +27,27 @@ h2, h3, p, ul, li {
 
 
 
-body{
+body {
     width: 100%;
 }
 
 
 .plot {
-   width     : 978px;
-   margin    : 0 auto;
+    width: 978px;
+    margin: 0 auto;
 }
 
 
 
-.header_img{
+.header_img {
     margin-top: 80px;
     text-align: center;
 }
 
 
-.teach_mes_contents{
-    margin-top: 60px;
-    margin-left: 168px;
+.teach_mes_contents {
     width: 642px;
+    margin: 60px 0 60px 168px;
 }
 
 
@@ -57,33 +56,38 @@ body{
 ----------------------------------------------------------------------*/
 
 
-.index_title{
-    height: calc(60px - 20px);
+.index_title {
     width: calc(474px - 20px);
+    height: calc(60px - 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 18px;
+    line-height: 1.4;
+    border: 1px solid #3e99a7;
     -webkit-border-radius: 5px;
             border-radius: 5px;
-    border: 1px solid #3e99a7;
-    font-size: 18px;
-    padding: 10px;
 }
 
 
-.index_textarea{
-    margin-top: 20px;
+.index_textarea {
     width: calc(642px - 20px);
     height: calc(250px - 20px);
+    margin-top: 10px;
+    padding: 15px 10px 15px 10px;
+    font-size: 18px;
+    line-height: 1.4;
+    border: 1px solid #3e99a7;
     -webkit-border-radius: 5px;
             border-radius: 5px;
-    border: 1px solid #3e99a7;
-    font-size: 18px;
-    padding: 10px;
 }
 
-.index_err{
-    color: red;
+.index_err {
+    margin: 5px 0 5px 0;
+    padding: 0;
+    color: #fd4001;
 }
 
-.index_submit_img{
+.index_submit_img {
     margin-top: 20px;
 }
 
@@ -96,29 +100,31 @@ body{
 /*  NewTeachmeConfirm
 ----------------------------------------------------------------------*/
 
-.confirm_contents{
-    background-color: #FFF;
-    min-height: calc(200px - 60px);
+.confirm_contents {
     width: calc(642px - 60px);
+    min-height: calc(200px - 60px);
+    margin: 60px 0 0 168px;
     padding: 30px;
+    background-color: #fff;
 }
 
 
-.confirm_contents h2{
-    font-weight: normal;
+.confirm_contents h2 {
     font-size: 34px;
+    font-weight: normal;
 }
-.confirm_contents p{
+.confirm_contents p {
     margin-top: 30px;
     font-size: 14px;
 }
 
-.confirm_links{
-    margin-top: 30px;
+.confirm_links {
+    width: 642px;
+    margin: 30px 0 60px 168px;
 }
 
 
-.confirm_cancel_img{
+.confirm_cancel_img {
     margin-right: 30px;
 }
 
@@ -128,26 +134,26 @@ body{
 /*  NewTeachmeConplete
 ----------------------------------------------------------------------*/
 
-.complete_contents{
-    background-color: #FFF;
-    text-align: center;
+.complete_contents {
     height: calc(200px - 80px);
     margin-top: 60px;
     padding-top: 80px;
+    text-align: center;
+    background-color: #fff;
 }
 
-.complete_contents h2{
-    color: #f6a429;
+.complete_contents h2 {
     margin: 0;
     font-size: 32px;
+    color: #f6a429;
 }
 
 
 
-.complete_links{
-    margin-top: 30px;
-    margin-left: 252px;
+.complete_links {
     width: clac(978px - 252px);
+    margin-top: 30px;
+    margin: 30px 0 60px 252px;
 }
 
 
@@ -158,70 +164,75 @@ body{
 ----------------------------------------------------------------------*/
 
 
-.detail_contents_top{
-    background-color: #FFF;
+.detail_contents_top {
+    width: calc(642px - 60px);
     min-height: calc(180px - 60px);
     margin-top: 60px;
     margin-left: 168px;
-    width: calc(642px - 60px);
     padding: 30px;
+    background-color: #fff;
 }
 
-.detail_contents_top h3{
-    font-weight: normal;
+.detail_contents_top h3 {
     font-size: 34px;
+    font-weight: normal;
 }
-.detail_contents_top p{
+.detail_contents_top p {
     margin-top: 30px;
     font-size: 14px;
 }
-.detail_contents_bottom{
-    background-color: #f8f8f8;
-    height: calc(45px - 20px);
-    border-top: 1px solid #c8b9be;
-    margin-left: 168px;
+.detail_contents_bottom {
     width: calc(642px - 60px);
+    height: calc(45px - 20px);
+    margin-left: 168px;
     padding: 10px 30px;
+    border-top: 1px solid #c8b9be;
+    background-color: #f8f8f8;
 }
-.metoo_num{
+.metoo_num {
     float: left;
-    color: #a5969b;
     width: 222px;
+    color: #a5969b;
 }
-.metoo_num p{
-    font-size: 16px;
+.metoo_num p {
+    font-size: 14px;
 }
-.metoo_num p span{
-    font-size: 20px;
+.metoo_num p span {
     position: relative;
+    margin-left: 4px;
+    font-size: 20px;
 }
+
+#num_hover {
+    text-decoration: none;
+}
+
 p span.metoo_name {
-    display: none;
-    text-align: center;
-    width: 90px;
     position: absolute;
     bottom: 28px;
     left: -28px;
-    background-color: #888888;
-    color: #eeeeee;
+    display: none;
+    width: 90px;
+    text-align: center;
+    color: #eee;
+    background-color: #888;
 }
 #name {
     display: block;
     font-size: 14px;
 }
-.metoo_btn{
+.metoo_btn {
     float: right;
     width: 143.5px;
     margin-top: 5px;
 }
 
-.detail_links{
-    margin-top: 30px;
-    margin-left: 168px;
+.detail_links {
     width: 642px;
+    margin: 30px 0 60px 168px;
 }
 
-.detail_links a:first-child{
+.detail_links a:first-child {
     margin-right: 30px;
 }
 
@@ -275,14 +286,3 @@ p span.metoo_name {
     height: 59px;
     margin-left: 0;
 }
-
-
-
-
-
-
-
-
-
-
-

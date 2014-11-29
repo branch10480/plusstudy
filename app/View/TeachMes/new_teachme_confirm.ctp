@@ -13,16 +13,16 @@
 </div>
 
 <div class="plot">
-	<div class="teach_mes_contents confirm_contents">
+	<div class="confirm_contents">
 		<h2><?php echo $title ?></h2>
 		<p><?php echo $content ?></p>
 	</div>
 
-	<div class="teach_mes_contents confirm_links">
+	<div class="confirm_links">
 		<a href="/plusstudy/TeachMes"><img src="<?php echo IMG_PATH . 'cancel_btn.png'; ?>" width="138" height="54" alt="" class="confirm_cancel_img"></a>
 		<a href="/plusstudy/TeachMes/register"><img src="<?php echo IMG_PATH . 'needscreate_btn.png'; ?>" width="168" height="54" alt=""></a>
-	</div>	
-	
+	</div>
+
 </div>
 
 

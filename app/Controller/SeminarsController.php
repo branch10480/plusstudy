@@ -98,8 +98,15 @@ class SeminarsController extends AppController {
 			$rsvLimitM = 0;
 			$dsc = $this->request->data['Seminar']['description'];
 			$smnImgId = $this->request->data['Seminar']['seminar_img_id'];
-			$smnImgInfo = $this->SeminarImage->find('first', array('conditions' => array('SeminarImage.id' => $smnImgId)));
-			$smnImgExt = $smnImgInfo['SeminarImage']['ext'];
+			if ($smnImgId) {
+				// セミナー画像の整形処理
+				$smnImgId = str_replace(SMN_IMG_PATH, '', $smnImgId);
+				$smnImgId = str_replace(substr($smnImgId, -4), '', $smnImgId);
+				$smnImgInfo = $this->SeminarImage->find('first', array('conditions' => array('SeminarImage.id' => $smnImgId)));
+				$smnImgExt = $smnImgInfo['SeminarImage']['ext'];
+			} else {
+				$smnImgId = '';
+			}
 
 			// --- バリデーションチェック ---
 			// 勉強会名
@@ -212,12 +219,15 @@ class SeminarsController extends AppController {
 			$smnImgId = $result['Seminar']['seminar_image_id'];
 			$smnImgExt = $result['SeminarImage']['ext'];
 
+			// 説明文
+			$dsc = $result['Seminar']['description'];
+
 		}
 
 
 		$minArray = array();
 		for ($i=0; $i<60; $i+=5) {
-			$minArray[] = $i;
+			$minArray[$i] = $i;
 		}
 
 		$hArray = array();
@@ -261,6 +271,7 @@ class SeminarsController extends AppController {
 				'smnImgId' => $smnImgId,
 				'smnImgExt' => $smnImgExt,
 				'accId' => $this->Session->read('Auth.id'),
+				'smnId' => $seminar_id,
 			));
 	}
 
@@ -521,8 +532,10 @@ class SeminarsController extends AppController {
 		$rsvLim = implode(':', $rsvLim);
 		$rsvLim = $rsvLimDate . ' ' . $rsvLim;
 
-		// セミナー画像
-		$seminarImgId = 1;
+		// セミナー画像の整形処理
+		$seminarImgId = str_replace(SMN_IMG_PATH, '', $rcvData['seminar_img_id']);
+		$seminarImgId = str_replace(substr($seminarImgId, -4), '', $seminarImgId);
+
 
 		$data = array(
 				'Seminar' => array(
@@ -575,6 +588,10 @@ class SeminarsController extends AppController {
 
 		// セミナー画像
 		$seminarImgId = $rcvData['seminar_img_id'];
+		// セミナー画像の整形処理
+		$seminarImgId = str_replace(SMN_IMG_PATH, '', $seminarImgId);
+		$seminarImgId = str_replace(substr($seminarImgId, -4), '', $seminarImgId);
+
 
 		$data = array(
 			'Seminar.seminar_image_id' => +$seminarImgId,
@@ -666,7 +683,7 @@ class SeminarsController extends AppController {
 			}
 
 			// 質問投稿ボタンが押された時
-			if(isset($this->request->data['question'])) {
+			if(isset($this->request->data['Question'])) {
 				//--バリデーションチェック--
 				$validateResult = true;
 				// タイトル

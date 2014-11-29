@@ -58,7 +58,7 @@
 	<div class="wrapper">
 		<div class="seminarsArea cf">
 			<?php if(count($seminars) === 0): ?>
-				<p class="none"><?php echo '現在予定されている勉強会はありません'; ?></p>
+				<p class="noneS"><?php echo '現在予定されている勉強会はありません'; ?></p>
 			<?php endif; ?>
 
 			<?php foreach($seminars as $seminar): ?>
