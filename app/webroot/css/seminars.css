@@ -329,11 +329,107 @@ section .wrapper dl dd .btnArea > a:first-child {
 	width: 138px;
 }
 
+/* Questions
+----------------------------------------------------------------------*/
+
+.header_img {
+    text-align: center;
+}
+
+.whiteWrapper {
+	width: 100%;
+	margin-bottom: 40px;
+	padding: 70px 0px 40px 0px;
+	background-color: #fff;
+}
+
+#questionTitle {
+	position: relative;
+	width: 978px;
+	margin: 0 auto;
+}
+
+#backSeminarDetails {
+	position: relative;
+	width: 978px;
+	margin: 0 auto;
+}
+
+#backSeminarDetails img {
+	position: absolute;
+	right: 0;
+	bottom: -32px;
+	width: 222px;
+	height: 50px;
+}
+
+#questionTitle h3 {
+	width: 978px;
+	padding: 0px;
+	text-align: left;
+}
+
+#questionTitle h3 > span {
+	font-size: 18px;
+	text-align: left;
+	padding: 14px 17px 11px 17px;
+	color: #fff;
+	background-color: #ffb425;
+}
+
+#questionTitle h4 {
+	font-size: 26px;
+	font-weight: normal;
+	color: #656565;
+	margin-top: 42px;
+	margin-bottom: 24px;
+}
+
+.commenterName {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 18px;
+	color: #3e99a7;
+}
+
+.masterName {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 18px;
+	color: #ffa700;
+}
+
+.timeStamp {
+	font-size: 18px;
+	color: #656565;
+}
+
+.questionContent {
+	font-size: 16px;
+	margin-top: 12px;
+	margin-bottom: 24px;
+	padding-bottom: 24px;
+	border-bottom: solid 1px #4cbdce;
+	color: #656565;
+}
+
+#comment {
+	width: 978px;
+	margin: 0 auto;
+}
+
+#commentForm {
+	width: 978px;
+	margin: 0 auto;
+}
+
+#commentBtn {
+	margin-top: 18px;
+	margin-bottom: 20px;
+}
 
 
-
-
-
-
-
-
+#backSeminarDetails {
+	width: 978px;
+	margin: 0 auto;
+}

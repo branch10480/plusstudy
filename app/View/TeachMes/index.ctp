@@ -27,9 +27,9 @@
 		<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH . 'needscreateconfirm_btn.png'; ?>" width="138" height="54" alt="" class="index_submit_img"></a>
 	</div>
 
-	
-	
+
+
 </div>
 
 
-	
+
