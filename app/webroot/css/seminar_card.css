@@ -122,13 +122,16 @@ li {
 .seminarsArea .late p {
 	color: #20ccaa;
 }
-.early h4 {
+.early h4,
+.early p {
 	color: #fd865b;
 }
-.mid h4 {
+.mid h4,
+.mid p {
 	color: #f5d23f;
 }
-.late h4 {
+.late h4,
+.late p {
 	color: #20ccaa;
 }
 .card .limitDate {

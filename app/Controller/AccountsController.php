@@ -189,9 +189,11 @@ class AccountsController extends AppController {
 		$this->set('title_for_layout', 'プロフィール - ' . $account['Account']['last_name'] . $account['Account']['first_name']);
 
 		// その人が主催している勉強会の情報を取得する
+		$today = date('Y-m-d');
 		$options = array(
 			'conditions' => array(
-					'Seminar.account_id' => $id
+					'Seminar.account_id' => $id,
+					'Seminar.start >=' => $today,
 				)
 		);
 		$this->set('myseminars', $this->Seminar->find('all', $options));
@@ -199,7 +201,8 @@ class AccountsController extends AppController {
 		// その人が参加予定の勉強会のIDを取得する
 		$options = array(
 			'conditions' => array(
-					'Participant.account_id' => $id
+					'Participant.account_id' => $id,
+					'Seminar.start >=' => $today,
 				)
 		);
 		$participants = $this->Participant->find('all', $options);

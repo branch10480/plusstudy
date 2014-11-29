@@ -24,6 +24,10 @@ alterProfImgName = (function() {
 $(function () {
 
 	//----- 画像アップロード -----
+	$('#profImgSelc').click(function(event) {
+		event.preventDefault();
+		$('#profile_img').click();
+	});
 	$('#profile_img').change(function(event) {
 		$('#ImgUpForm').submit();
 	});
@@ -86,6 +90,9 @@ $(function () {
 
 $(window).load(function() {
 	ImgOpt.setImgId('#profileImg');
+	ImgOpt.optimize();
+
+	ImgOpt.setImgId('.thumb img');
 	ImgOpt.optimize();
 });
 
