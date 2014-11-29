@@ -6,12 +6,118 @@
 # Universal
 
 ----------------------------------*/
+body {
+	font-size: 20px;
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style
+	: none;
+}
+img {
+	vertical-align: bottom;
+}
 
 
 
 /* Universal
 ----------------------------------------------------------------------*/
-
+h2 {
+	text-align: center;
+	margin: 0;
+	padding: 80px 0 60px;
+	background: #4cbdce;
+	margin-bottom: 60px;
+}
+h3 {
+	color: #656565;
+	font-weight: bold;
+}
+h3 ruby {
+	font-size: 48px;
+}
+h3 rt {
+	font-size: 18px;
+}
+section {
+	background: #fff;
+	padding: 0 0 60px;
+}
+.wrapper {
+	width: 978px;
+	margin: 0 auto;
+}
+.left, .center, .right {
+	float: left;
+}
+.left {
+	width: 222px;
+	height: 222px;
+	overflow: hidden;
+}
+.center {
+	width: 558px;
+	margin-left: 30px;
+}
+.right {
+	width: 168px;
+}
+.right .social {
+	width: 168px;
+}
+.right .social a {
+	float: right;
+	margin-left: 30px;
+}
+.center ul {
+	margin-top: 30px;
+}
+.center li {
+	color: #45acbb;
+	padding-top: 8px;
+}
+table {
+	width: 978px;
+	margin: 40px auto 0;
+}
+tr {
+	border-bottom: 1px solid #45acbb;
+}
+tr:first-child {
+	border-top: 1px solid #45acbb;
+}
+th, td {
+	text-align: left;
+	color: #45acbb;
+}
+th {
+	width: 168px;
+	border-right: 1px solid #45acbb;
+	font-weight: bold;
+	padding: 20px 40px;
+}
+td {
+	padding: 20px;
+}
+#editBtn {
+	display: block;
+	width: 168px;
+	height: 48px;
+	color: #fff;
+	background: #ffb425;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 120px;
+}
+#ImgUpForm {
+	width: 222px;
+	height: 222px;
+}
 
 
 

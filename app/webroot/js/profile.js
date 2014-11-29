@@ -84,6 +84,11 @@ $(function () {
 
 });
 
+$(window).load(function() {
+	ImgOpt.setImgId('#profileImg');
+	ImgOpt.optimize();
+});
+
 
 
 //*****************************************************************************
