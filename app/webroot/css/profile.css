@@ -6,12 +6,194 @@
 # Universal
 
 ----------------------------------*/
+body {
+	font-size: 20px;
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style
+	: none;
+}
+img {
+	vertical-align: bottom;
+}
+.hidden {
+	display: none;
+}
 
 
 
 /* Universal
 ----------------------------------------------------------------------*/
-
+h2 {
+	text-align: center;
+	margin: 0;
+	padding: 80px 0 60px;
+	background: #4cbdce;
+	margin-bottom: 60px;
+}
+h3 {
+	color: #656565;
+	font-weight: bold;
+}
+h3 ruby {
+	font-size: 48px;
+}
+h3 rt {
+	font-size: 18px;
+}
+section {
+	background: #fff;
+	padding: 0 0 154px;
+}
+section.second {
+	background: #4cbdce;
+	position: relative;
+}
+section.third {
+	background: #267581;
+	position: relative;
+	padding: 0 0 60px;
+}
+section .wrapper {
+	width: 978px;
+	margin: 0 auto;
+}
+.wrapper {
+	width: 978px;
+	margin: 0 auto;
+}
+.left, .center, .right {
+	float: left;
+}
+.left {
+	width: 222px;
+	height: 222px;
+}
+.center {
+	width: 558px;
+	margin-left: 30px;
+}
+.right {
+	width: 168px;
+}
+.right .social {
+	width: 168px;
+}
+.right .social a {
+	float: right;
+	margin-left: 30px;
+}
+.center ul {
+	margin-top: 30px;
+}
+.center li {
+	color: #45acbb;
+	padding-top: 8px;
+}
+table {
+	width: 978px;
+	margin: 40px auto 0;
+}
+tr {
+	border-bottom: 1px solid #45acbb;
+}
+tr:first-child {
+	border-top: 1px solid #45acbb;
+}
+th, td {
+	text-align: left;
+	color: #45acbb;
+}
+th {
+	width: 168px;
+	border-right: 1px solid #45acbb;
+	font-weight: bold;
+	padding: 20px 40px;
+}
+td {
+	padding: 20px;
+}
+#editBtn {
+	display: block;
+	width: 168px;
+	height: 48px;
+	color: #fff;
+	background: #ffb425;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 120px;
+}
+#ImgUpForm {
+	width: 222px;
+	height: 222px;
+	overflow: hidden;
+	position: relative;
+}
+#ImgUpForm > * {
+	position: absolute;
+}
+#ImgUpForm .menu {
+	bottom: 0;
+	left: 0;
+}
+#ImgUpForm ul {
+	width: 222px;
+}
+#ImgUpForm li {
+	width: 110px;
+	height: 40px;
+	float: left;
+	background: rgba(0,0,0,0.7);
+	overflow: hidden;
+	border-left: solid 1px #333;
+}
+#ImgUpForm li:first-child {
+	border-right: solid 1px #555;
+	border-left: none;
+}
+#ImgUpForm li a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 12px;
+	display: block;
+	width: 111px;
+	text-align: center;
+	height: 100%;
+	padding-top: 10px;
+}
+#ImgUpForm li a:hover {
+	opacity: 0.75;
+}
+.card {
+	float: left;
+	margin: 30px 0 0 30px;
+}
+.seminarsArea {
+	width: 1008px;
+	margin: -30px 0 0 -30px;
+	padding: 74px 0 0;
+}
+.second h2,
+.third h2 {
+	position: absolute;
+	background: none;
+	text-align: center;
+	width: 100%;
+	top: -65px;
+	left: 0px;
+	margin: 0;
+	padding: 0
+}
+.seminarsArea > p {
+	padding: 0 30px;
+	color: #fff;
+}
 
 
 

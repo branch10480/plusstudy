@@ -119,7 +119,7 @@ window.onload = function () {
 			ifDoc.body.focus();
 		});
 
-	document.getElementById('submitBtn').addEventListener("click", function () {
+	document.getElementById('submitBtn').addEventListener("click", function (event) {
 		event.preventDefault();
 		ritchTextHtmlArea.value = editArea.innerHTML;
 		var selectedForm = $('#SeminarIndexForm').length === 0 ? null : $('#SeminarIndexForm');
