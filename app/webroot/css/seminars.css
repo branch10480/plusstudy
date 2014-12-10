@@ -243,6 +243,9 @@ section .wrapper dl dd .btnArea > a:first-child {
 #newSmnConfirm dd p {
 	padding-bottom: 10px;
 }
+#newSmnConfirm article {
+	word-wrap: break-word;
+}
 #ButtonDetailsForm {
 	padding: 30px 0 0;
 }
