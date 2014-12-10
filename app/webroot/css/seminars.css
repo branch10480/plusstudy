@@ -336,6 +336,20 @@ section .wrapper dl dd .btnArea > a:first-child {
     text-align: center;
 }
 
+#backSeminarDetails {
+	position: relative;
+	width: 978px;
+	margin: 0 auto;
+}
+
+#backSeminarDetails img {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 222px;
+	height: 50px;
+}
+
 .whiteWrapper {
 	width: 100%;
 	margin-bottom: 40px;
@@ -347,20 +361,6 @@ section .wrapper dl dd .btnArea > a:first-child {
 	position: relative;
 	width: 978px;
 	margin: 0 auto;
-}
-
-#backSeminarDetails {
-	position: relative;
-	width: 978px;
-	margin: 0 auto;
-}
-
-#backSeminarDetails img {
-	position: absolute;
-	right: 0;
-	bottom: -32px;
-	width: 222px;
-	height: 50px;
 }
 
 #questionTitle h3 {
@@ -428,8 +428,5 @@ section .wrapper dl dd .btnArea > a:first-child {
 	margin-bottom: 20px;
 }
 
-
-#backSeminarDetails {
-	width: 978px;
-	margin: 0 auto;
-}
+/* Feedback
+----------------------------------------------------------------------*/

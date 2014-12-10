@@ -148,7 +148,7 @@ class AccountsController extends AppController {
 		$dt->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 		$today = $dt->format('Y-m-d');
 		foreach($participants as $participant) {
-			if(strtotime($participant['Seminar']['end']) < strtotime($today)) {
+			if(strtotime($participant['Seminar']['end']) > strtotime($today)) {
 				// セッション作成
 				$this->Session->write('participant', $participant);
 

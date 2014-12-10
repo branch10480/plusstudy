@@ -11,21 +11,22 @@
 
 <div class="header_img">
 	<h2><img src="<?php echo IMG_PATH; ?>questions_h.png" alt="セミナーに対する質問" width="306" height="109"></h2>
+	<div id="backSeminarDetails">
+		<?php echo $this->Html->image(IMG_PATH . 'seminarback_btn.png', array("alt" => "勉強会詳細へ戻る", 'url' => array('controller' => 'Seminars', 'action' => 'details', '?' => array('id' => $question['Seminar']['id'])))); ?>
+	</div>
 </div>
 
 <div class="whiteWrapper">
 	<div id="questionTitle">
-		<div id="backSeminarDetails">
-			<?php echo $this->Html->image(IMG_PATH . 'seminarback_btn.png', array("alt" => "勉強会詳細へ戻る", 'url' => array('controller' => 'Seminars', 'action' => 'details', '?' => array('id' => $question['Seminar']['id'])))); ?>
-		</div>
-
 		<h3><span><?php echo $question['Seminar']['name'] ?></span></h3>
 
 		<?php echo $this->Form->hidden('creator_id', array('value' => $question['Seminar']['account_id'], 'id' => 'creator_id')); ?>
 		<?php echo $this->Form->hidden('comment_cnt', array('value' =>  count($comments) ,'id' => 'comment_cnt')); ?>
 
 		<h4>Ｑ.<?php echo $question['Question']['title']; ?></h4>
-		<p class="commenterName" style="display: inline;"><?php echo $question['Account']['last_name'] . $question['Account']['first_name']; ?></p><p class="timeStamp" style="display: inline;"><?php echo $question['Question']['timestamp']; ?></p>
+		<p class="commenterName" style="display: inline;"><?php echo $question['Account']['last_name'] . $question['Account']['first_name']; ?></p>
+
+		<p class="timeStamp" style="display: inline;"><?php echo $question['Question']['timestamp']; ?></p>
 		<p class="questionContent" style="display: block;"><?php echo $question['Question']['content']; ?></p>
 	</div><!-- #questionTitle -->
 
