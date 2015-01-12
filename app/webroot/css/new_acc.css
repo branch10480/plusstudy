@@ -42,7 +42,9 @@ img{
 body{
 	background-color:#FFF;
 }
-
+ul{
+-webkit-padding-start: 0px;
+}
 li{
 	list-style: none;
 }
@@ -58,59 +60,92 @@ p{
 
 
 
-/* Universal
+/* start_new_acc
 ----------------------------------------------------------------------*/
-.container{
+.container_title{
 	padding-left: 250px;
+	padding-right: 250px;
 }
 
 .title{
-	margin: 60px 0 0 85px;
-	width: 306px;
-	height: 109px;
+	margin: 60px auto 0 auto;
+	width: calc(306px*0.6);
+	height: calc(109px*0.6);
 	
 }
 .new_acc_header{
-	width: 306px;
-	height: 109px;
+	width: calc(306px*0.6);
+	height: calc(109px*0.6);
 	
 }
 
 
 .pankuzu{
-	margin: 40px auto 0 auto ;
-	width:550px;
+	margin: 20px auto 0 auto ;
+	width:412px;
 }
 
-.navi_1,.navi_2,.navi_3,.navi_4,.navi_5{
+.navi_1{
 	float: left;
-	margin-left: -16px;
-	width: 118px;
-	height: 88px;
+	width: calc(118px*0.8);
+	height: calc(88px*0.8);
+}
+.navi_2,.navi_3,.navi_4,.navi_5{
+	float: left;
+	margin-left: -15px;
+	width: calc(118px*0.8);
+	height: calc(88px*0.8);
+}
+.container_body{
+	width: 978px;
+	text-align: center;
+	/*margin: 0 auto;*/
 }
 
 .start_new_acc_title{
-	margin: 120px 0 60px 0;
-	font-size:22pt;
+	margin: 80px auto 60px auto;
+	font-size:17pt;
+	letter-spacing: 1px;
+	width: 474px;
+	text-align: left;
+	padding-left: 60px;
+}
+
+.new_acc_p{
+	text-align: left;
+	font-weight: bold;
+	width: 474px;
+	margin: 0 auto;
+	padding-left: 60px;
 }
 
 .email_title{
 	color:#4cbdce;
 	float: left;
-	font-size: 16pt;
+	font-size: 14pt;
+	/*font-weight: bold;*/
+	margin-top: 5px;
 }
 .email_form{
 	float: left;
-	margin: 0 0 0 20px;
+	margin: 0 0 0 30px;
+}
+.new_acc_email{
+	width: 260px;
+	height: 28px;
+	border: 1px solid #45acbb;
+	margin-right: 20px;
 }
 
 .email_input{
-	margin-top: 60px;
+	margin: 60px auto 0 auto;
+	width: 474px;
+	padding-left: 60px;
 }
 
 .longin_mail_btn{
 	display: inline-block;
-	margin: 0 0 200px 55px;
+	margin: 55px 0 200px 0px;
 }
 
 .img_back_login{
@@ -123,6 +158,66 @@ p{
 	width: 168px;
 	height: 38px;
 }
+
+
+
+
+/* send_mail
+----------------------------------------------------------------------*/
+
+.mail_new_acc_title{
+	margin: 80px auto 60px auto;
+	font-size:17pt;
+	letter-spacing: 1px;
+}
+
+.mail_acc_p{
+	text-align: left;
+	font-weight: bold;
+	width: 474px;
+	margin: 0 auto;
+	padding-left: 100px;
+}
+
+
+
+/* account_entry
+----------------------------------------------------------------------*/
+.entry_dl{
+	text-align: left;
+}
+
+.entry_dl dt{
+	float: left;
+	border-top: 1px solid #45acbb;
+	width: 300px;
+	padding: 20px 0 20px 40px;
+}
+.entry_dl dd{
+	border-top: 1px solid #45acbb;
+	border-left: 1px solid #45acbb;
+	padding: 20px 0 20px 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
