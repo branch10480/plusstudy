@@ -1,0 +1,477 @@
+@charset "UTF-8";
+
+
+/*---------------------------------
+
+# Universal
+
+----------------------------------*/
+
+
+
+/* Universal
+----------------------------------------------------------------------*/
+h2,h3,h4,p,ul,li,dt,dd {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+li {
+	list-style: none;
+}
+.hidden {
+	display: none;
+}
+h2 {
+	text-align: center;
+	padding: 80px 0 60px;
+}
+section {
+	background: #fff;
+	padding: 60px 0;
+}
+section .wrapper {
+	width: 642px;
+	margin: 0 auto;
+}
+dt {
+	color: #3e99a7;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.btnArea {
+	text-align: center;
+	padding: 60px 0;
+}
+.btnArea a {
+	margin-left: 30px;
+}
+.btnArea a:first-child {
+	margin-left: 0;
+}
+section .wrapper dl .btnArea {
+	width: 390px;
+	padding: 0;
+	padding-bottom: 20px;
+}
+section .wrapper dl .btnArea > a {
+	display: block;
+	height: 59px;
+	width: 138px;
+	float: left;
+	margin-left: 30px;
+}
+section .wrapper dl dd .btnArea > a:first-child {
+	float: left;
+	margin-left: 0;
+	width: 222px;
+}
+.newSmnInputCover img {
+	padding-bottom: 20px;
+	max-width: 400px;
+	max-height: 400px;
+}
+#rsvLimit {
+	width: 558px;
+}
+#rsvLimit li {
+	float: left;
+	display: block;
+	height: 50px;
+	width: 84px;
+}
+#rsvLimit li:first-child {
+	margin-right: 30px;
+	width: 306px;
+}
+#SeminarReservationLimitD {
+	width: 284px;
+}
+#rsvLimit {
+	padding-bottom: 20px;
+}
+#rsvLimit .colon,
+#startToEnd .colon,
+#rsvLimit .tilde,
+#startToEnd .tilde {
+	width: 54px;
+	text-align: center;
+}
+#startToEnd .tilde {
+	padding-top: 4px;
+	width: 84px;
+}
+#rsvLimit .colon p,
+#startToEnd .colon p,
+#rsvLimit .tilde p,
+#startToEnd .tilde p {
+	padding-top: 6px;
+	font-size: 24px;
+	color: #56acc1;
+}
+.easy-select-box {
+	height: 28px;
+	width: 64px;
+	font-size: 24px;
+	color: #4cbdce;
+	padding: 10px 9px;
+}
+.richeditor .easy-select-box {
+	padding: 0;
+}
+.richeditor .esb-dropdown {
+	font-size: 14px;
+}
+.date {
+	padding: 9px 10px;
+}
+.timeTitle {
+	width: 612px;
+}
+.timeTitle > div {
+	float: left;
+	width: 306px;
+}
+#startToEnd {
+	width: 528px;
+}
+#startToEnd li {
+	float: left;
+}
+#startToEnd .tilde {
+
+}
+
+
+
+/* New Seminar Confirm & Details
+----------------------------------------------------------------------*/
+#newSmnConfirm {
+	color: #656565;
+	font-size: 16px;
+}
+#newSmnConfirm .wrapper,
+#seminarQ .wrapper {
+	width: 978px;
+}
+#newSmnConfirm h3 {
+	font-size: 36px;
+	border-bottom: 1px solid #4cbdce;
+	padding: 40px 0;
+}
+#newSmnConfirm h4 {
+	padding: 20px 0;
+}
+#newSmnConfirm #coverArea {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	margin-top: -60px;
+}
+#newSmnConfirm #coverArea img {
+	width: 100%;
+}
+#newSmnConfirm .cf {
+	width: 978px;
+}
+#newSmnConfirm article {
+	width: 642px;
+	float: left;
+}
+#newSmnConfirm article img {
+	display: block;
+	max-width: 474px;
+	max-height: 400px;
+	margin: 40px auto;
+}
+#newSmnConfirm aside {
+	float: left;
+	margin-left: 30px;
+}
+#newSmnConfirm aside > div {
+	width: 222px;
+	padding: 40px;
+	border: 2px solid #4cbdce;
+}
+#newSmnConfirmbtnArea {
+	text-align: center;
+}
+#newSmnConfirmbtnArea a {
+	display: block;
+	width: 222px;
+	height: 54px;
+	float: left;
+	margin-left: 30px;
+}
+#newSmnConfirmbtnArea {
+	width: 474px;
+	margin: 0 auto;
+}
+#newSmnConfirmbtnArea a:first-child {
+	display: block;
+	width: 222px;
+	height: 54px;
+	float: left;
+	margin-left: 0;
+}
+#newSmnConfirm h4 {
+	font-size: 18px;
+}
+#newSmnConfirm dl {
+	margin: 0;
+}
+#newSmnConfirm dt {
+	padding: 20px 0 0;
+	font-size: 18px;
+	color: #656565;
+	line-height: 1;
+}
+#newSmnConfirm dt:first-child {
+	padding: 0;
+}
+#newSmnConfirm dd {
+	padding-top: 10px;
+	font-size: 22px;
+	color: #4cbdce;
+}
+#newSmnConfirm .profImg {
+	width: 140px;
+	height: 140px;
+	overflow: hidden;
+}
+#newSmnConfirm dd p {
+	padding-bottom: 10px;
+}
+#newSmnConfirm article {
+	word-wrap: break-word;
+}
+#ButtonDetailsForm {
+	padding: 30px 0 0;
+}
+#seminarQ {
+	padding: 0;
+}
+#seminarQ li {
+	width: 978px;
+	position: relative;
+	padding: 30px 0;
+	border-top: 1px solid #4cbdce;
+	font-size: 24px;
+	color: #656565;
+}
+#seminarQ li:first-child {
+	border-top: none;
+}
+#seminarQ li a {
+	color: #656565;
+	text-decoration: none;
+}
+#seminarQ li a:hover {
+	text-decoration: underline;
+}
+#seminarQ li span {
+	position: absolute;
+	right: 0px;
+	top: 35px;
+	font-size: 18px;
+	color: #3e99a7;
+}
+#QuestionDetailsForm ul {
+	width: 558px;
+	margin: 0 auto;
+	padding: 40px 0 0;
+}
+#QuestionDetailsForm li {
+	margin-top: 20px;
+}
+#QuestionDetailsForm li:first-child {
+	margin-top: 0;
+}
+#QuestionDetailsForm textarea {
+	width: 536px
+}
+#QuestionDetailsForm .btnArea {
+	width: 558px;
+	text-align: left;
+	margin: 20px auto 70px;
+	padding: 0;
+}
+#QuestionDetailsForm .errMsg {
+	margin: 5px 0 15px;
+	padding: 0;
+}
+#QuestionDetailsForm input,
+#QuestionDetailsForm textarea {
+	font-weight: bold;
+}
+
+
+
+/* New Seminar Register
+----------------------------------------------------------------------*/
+#newSmnRegister p {
+	color: #ffb425;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+.newSmnRegisterBtnArea {
+	width: 474px;
+	margin: 60px auto;
+}
+.newSmnRegisterBtnArea a {
+	display: block;
+	margin-left: 30px;
+	width: 306px;
+	height: 54px;
+	float: left;
+}
+.newSmnRegisterBtnArea a:first-child {
+	margin-left: 0;
+	width: 138px;
+}
+
+/* Questions
+----------------------------------------------------------------------*/
+
+.header_img {
+    text-align: center;
+}
+
+#backSeminarDetails {
+	position: relative;
+	width: 978px;
+	margin: 0 auto;
+}
+
+#backSeminarDetails img {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 222px;
+	height: 50px;
+}
+
+.questionWrapper {
+	width: 100%;
+	margin-bottom: 40px;
+	padding: 70px 0px 40px 0px;
+	background-color: #fff;
+}
+
+#questionTitle {
+	position: relative;
+	width: 978px;
+	margin: 0 auto;
+}
+
+#questionTitle h3 {
+	width: 978px;
+	padding: 0px;
+	text-align: left;
+}
+
+#questionTitle h3 > span {
+	font-size: 18px;
+	text-align: left;
+	padding: 14px 17px 11px 17px;
+	color: #fff;
+	background-color: #ffb425;
+}
+
+#questionTitle h4 {
+	font-size: 26px;
+	font-weight: normal;
+	color: #656565;
+	margin-top: 42px;
+	margin-bottom: 24px;
+}
+
+.commenterName {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 18px;
+	color: #3e99a7;
+}
+
+.masterName {
+	font-size: 18px;
+	font-weight: bold;
+	margin-right: 18px;
+	color: #ffa700;
+}
+
+.timeStamp {
+	font-size: 18px;
+	color: #656565;
+}
+
+.questionContent {
+	font-size: 16px;
+	margin-top: 12px;
+	margin-bottom: 24px;
+	padding-bottom: 24px;
+	border-bottom: solid 1px #4cbdce;
+	color: #656565;
+}
+
+#comment {
+	width: 978px;
+	margin: 0 auto;
+}
+
+#commentForm {
+	width: 978px;
+	margin: 0 auto;
+}
+
+#commentBtn {
+	margin-top: 18px;
+	margin-bottom: 20px;
+}
+
+/* Feedback
+----------------------------------------------------------------------*/
+
+.feedbackWrapper {
+	width: 100%;
+	margin-bottom: 40px;
+	padding: 50px 0px 60px 0px;
+	background-color: #fff;
+}
+
+.feedbackWrapper .inner {
+	width: 810px;
+	margin: 0 auto;
+}
+
+#feedbackTitle h3 {
+	color: #656565;
+	font-size: 30px;
+}
+
+.feedbackTextWrapper {
+	margin-bottom: 20px;
+	color: #4cbdce;
+	font-size: 18px;
+}
+
+#feedbackGood {
+	margin-top: 45px;
+	margin-bottom: 40px;
+}
+
+#goodBtn {
+	height: 40px;
+}
+
+#solutionBtn {
+	height: 40px;
+}
+
+#feedbackEnd {
+	width: 810px;
+	margin: 0 auto;
+}
+
