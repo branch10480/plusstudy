@@ -1,3 +1,4 @@
+
 <dl>
 	<dt>登録用メールアドレス（非公開）</dt>
 	<dd><?php echo $acc['mailaddress']; ?></dd>
