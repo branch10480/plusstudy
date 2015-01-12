@@ -3,9 +3,9 @@ function showComment(res) {
 	// 投稿者名(開催者と同じなら色を変える)
 	var p;
 	if(res.comment.account_id === $('input#creator_id').val()) {
-		p = $('<p class="masterName" style="display:inline">').text(res.account.last_name+res.account.first_name).css('margin-right', '20px');
+		p = $('<p class="masterName" style="display:inline">').text(res.account.last_name+res.account.first_name).css('margin-right', '6px');
 	} else {
-		p = $('<p class="commenterName" style="display:inline">').text(res.account.last_name+res.account.first_name).css('margin-right', '20px');
+		p = $('<p class="commenterName" style="display:inline">').text(res.account.last_name+res.account.first_name).css('margin-right', '6px');
 	}
 	p.fadeIn(800);
 	$('div#comment').append(p);

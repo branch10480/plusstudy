@@ -4,21 +4,18 @@
 		'questions',
 		), array('inline' => false));
 	$this->Html->css(array(
-		'control3',
+		'mb_control3',
 		'mb_seminars',
 		), null, array('inline' => false));
 ?>
 
 <div class="header_img">
-	<h2><img src="<?php echo IMG_PATH; ?>questions_h.png" alt="セミナーに対する質問" width="306" height="109"></h2>
-	<div id="backSeminarDetails">
-		<?php echo $this->Html->image(IMG_PATH . 'seminarback_btn.png', array("alt" => "勉強会詳細へ戻る", 'url' => array('controller' => 'Seminars', 'action' => 'details', '?' => array('id' => $question['Seminar']['id'])))); ?>
-	</div>
+	<h2><img src="<?php echo MB_IMG_PATH; ?>questions_h.png" alt="セミナーに対する質問" width="153" height="55"></h2>
 </div>
 
 <div class="questionWrapper">
 	<div id="questionTitle">
-		<h3><span><?php echo $question['Seminar']['name'] ?></span></h3>
+		<h3><?php echo $question['Seminar']['name'] ?></h3>
 
 		<?php echo $this->Form->hidden('creator_id', array('value' => $question['Seminar']['account_id'], 'id' => 'creator_id')); ?>
 		<?php echo $this->Form->hidden('comment_cnt', array('value' =>  count($comments) ,'id' => 'comment_cnt')); ?>
@@ -51,7 +48,7 @@
 		<?php echo $this->Form->hidden('question_id', array('value' => $question['Question']['id'], 'id' => 'question_id')); ?>
 		<?php echo $this->Form->textarea('content', array('id' => 'content', 'placeholder' => 'コメント書き込み欄*')); ?>
 		<div id="commentBtn">
-			<a href="#" id='add'><?php echo $this->Html->image('comment_btn.png', array('width' => '222', 'height' => '54')) ?></a>
+			<a href="#" id='add'><?php echo $this->Html->image('mb_img/comment_btn.png', array('width' => '299', 'height' => '46')) ?></a>
 		</div>
 
 	<?php echo $this->Form->end(); ?>

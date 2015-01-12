@@ -338,97 +338,86 @@ section .wrapper dl dd .btnArea > a:first-child {
 .header_img {
     text-align: center;
 }
-
-#backSeminarDetails {
-	position: relative;
-	width: 978px;
-	margin: 0 auto;
-}
-
-#backSeminarDetails img {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 222px;
-	height: 50px;
+.header_img h2 {
+	padding-top: 30px;
+	padding-bottom: 15px;
 }
 
 .questionWrapper {
 	width: 100%;
-	margin-bottom: 40px;
-	padding: 70px 0px 40px 0px;
+	margin-bottom: 14px;
+	padding: 15px 0px 10px 0px;
 	background-color: #fff;
 }
 
 #questionTitle {
 	position: relative;
-	width: 978px;
-	margin: 0 auto;
+	margin: 0 10px;
 }
 
 #questionTitle h3 {
-	width: 978px;
-	padding: 0px;
+	font-size: 12px;
+	height: 20px;
+	padding: 5px 8px 0px 8px;
 	text-align: left;
-}
-
-#questionTitle h3 > span {
-	font-size: 18px;
-	text-align: left;
-	padding: 14px 17px 11px 17px;
 	color: #fff;
 	background-color: #ffb425;
 }
 
 #questionTitle h4 {
-	font-size: 26px;
-	font-weight: normal;
+	font-size: 15px;
+	font-weight: bold;
 	color: #656565;
-	margin-top: 42px;
-	margin-bottom: 24px;
+	margin-top: 15px;
+	margin-bottom: 12px;
 }
 
 .commenterName {
-	font-size: 18px;
+	font-size: 12px;
 	font-weight: bold;
-	margin-right: 18px;
+	margin-right: 6px;
 	color: #3e99a7;
 }
 
 .masterName {
-	font-size: 18px;
+	font-size: 12px;
 	font-weight: bold;
-	margin-right: 18px;
+	margin-right: 6px;
 	color: #ffa700;
 }
 
 .timeStamp {
-	font-size: 18px;
+	font-size: 12px;
+	font-weight: lighter;
 	color: #656565;
 }
 
 .questionContent {
-	font-size: 16px;
-	margin-top: 12px;
-	margin-bottom: 24px;
-	padding-bottom: 24px;
-	border-bottom: solid 1px #4cbdce;
+	font-size: 12px;
+	margin-top: 5px;
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+	line-height: 18px;
+	border-bottom: solid 0.5px #4cbdce;
 	color: #656565;
 }
 
 #comment {
-	width: 978px;
-	margin: 0 auto;
+	margin: 0 10px;
 }
 
 #commentForm {
-	width: 978px;
+	width: 299px;
 	margin: 0 auto;
 }
 
+#content {
+	width: 289px;
+}
+
 #commentBtn {
-	margin-top: 18px;
-	margin-bottom: 20px;
+	width: 299px;
+	margin: 10px auto;
 }
 
 /* Feedback
