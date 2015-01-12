@@ -129,7 +129,7 @@ class AccountsController extends AppController {
 		// セミナー一覧を取得
 		$options = array(
 			'conditions' => array(
-					'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
+					//'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
 				)
 		);
 		$this->set('seminars', $this->Seminar->find('all', $options));

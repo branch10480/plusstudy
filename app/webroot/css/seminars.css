@@ -339,7 +339,21 @@ section .wrapper dl dd .btnArea > a:first-child {
     text-align: center;
 }
 
-.whiteWrapper {
+#backSeminarDetails {
+	position: relative;
+	width: 978px;
+	margin: 0 auto;
+}
+
+#backSeminarDetails img {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 222px;
+	height: 50px;
+}
+
+.questionWrapper {
 	width: 100%;
 	margin-bottom: 40px;
 	padding: 70px 0px 40px 0px;
@@ -350,20 +364,6 @@ section .wrapper dl dd .btnArea > a:first-child {
 	position: relative;
 	width: 978px;
 	margin: 0 auto;
-}
-
-#backSeminarDetails {
-	position: relative;
-	width: 978px;
-	margin: 0 auto;
-}
-
-#backSeminarDetails img {
-	position: absolute;
-	right: 0;
-	bottom: -32px;
-	width: 222px;
-	height: 50px;
 }
 
 #questionTitle h3 {
@@ -431,8 +431,47 @@ section .wrapper dl dd .btnArea > a:first-child {
 	margin-bottom: 20px;
 }
 
+/* Feedback
+----------------------------------------------------------------------*/
 
-#backSeminarDetails {
-	width: 978px;
+.feedbackWrapper {
+	width: 100%;
+	margin-bottom: 40px;
+	padding: 50px 0px 60px 0px;
+	background-color: #fff;
+}
+
+.feedbackWrapper .inner {
+	width: 810px;
 	margin: 0 auto;
 }
+
+#feedbackTitle h3 {
+	color: #656565;
+	font-size: 30px;
+}
+
+.feedbackTextWrapper {
+	margin-bottom: 20px;
+	color: #4cbdce;
+	font-size: 18px;
+}
+
+#feedbackGood {
+	margin-top: 45px;
+	margin-bottom: 40px;
+}
+
+#goodBtn {
+	height: 40px;
+}
+
+#solutionBtn {
+	height: 40px;
+}
+
+#feedbackEnd {
+	width: 810px;
+	margin: 0 auto;
+}
+
