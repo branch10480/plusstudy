@@ -847,25 +847,29 @@ class SeminarsController extends AppController {
  * @return void
  */
 	public function feedback() {
+		// ボタンが押された時の処理
+		if($this->request->is('post')) {
+			// participantsのfeedbackedフラグを立てる
+			$param = array('feedbacked' => 1);
+			$conditions = array('Participant.id' => $this->Session->read('participant')['Participant']['id']);
+			$this->Participant->updateAll($param, $conditions);
+
+			// セッション削除
+			$this->Session->delete('participant');
+
+			// トップページへリダイレクト
+			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+		}
+
 		// セッションが無い場合はTOPへリダイレクト
 		if(!$this->Session->check('participant')) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
 
-		// participantsのfeedbackedフラグを立てる
-		$param = array('feedbacked' => 1);
-		$conditions = array('Participant.id' => $this->Session->read('participant')['Participant']['id']);
-		$this->Participant->updateAll($param, $conditions);
-		//$this->Participant->delete();
-
 		// 勉強会情報を取得
 		$options = array('conditions' => array('Seminar.' . $this->Seminar->primaryKey => $this->Session->read('participant')['Seminar']['id']));
 		$seminar = $this->Seminar->find('first', $options);
 		$this->set('seminar', $seminar);
-
-		// セッション削除
-		$this->Session->delete('participant');
-
 
 		//----- モバイルブラウザか判断 -----
 		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {

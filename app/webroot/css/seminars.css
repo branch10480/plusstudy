@@ -353,7 +353,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 	height: 50px;
 }
 
-.whiteWrapper {
+.questionWrapper {
 	width: 100%;
 	margin-bottom: 40px;
 	padding: 70px 0px 40px 0px;
@@ -433,3 +433,45 @@ section .wrapper dl dd .btnArea > a:first-child {
 
 /* Feedback
 ----------------------------------------------------------------------*/
+
+.feedbackWrapper {
+	width: 100%;
+	margin-bottom: 40px;
+	padding: 50px 0px 60px 0px;
+	background-color: #fff;
+}
+
+.feedbackWrapper .inner {
+	width: 810px;
+	margin: 0 auto;
+}
+
+#feedbackTitle h3 {
+	color: #656565;
+	font-size: 30px;
+}
+
+.feedbackTextWrapper {
+	margin-bottom: 20px;
+	color: #4cbdce;
+	font-size: 18px;
+}
+
+#feedbackGood {
+	margin-top: 45px;
+	margin-bottom: 40px;
+}
+
+#goodBtn {
+	height: 40px;
+}
+
+#solutionBtn {
+	height: 40px;
+}
+
+#feedbackEnd {
+	width: 810px;
+	margin: 0 auto;
+}
+

@@ -129,7 +129,7 @@ class AccountsController extends AppController {
 		// セミナー一覧を取得
 		$options = array(
 			'conditions' => array(
-					'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
+					//'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
 				)
 		);
 		$this->set('seminars', $this->Seminar->find('all', $options));
@@ -148,7 +148,7 @@ class AccountsController extends AppController {
 		$dt->setTimeZone(new DateTimeZone('Asia/Tokyo'));
 		$today = $dt->format('Y-m-d');
 		foreach($participants as $participant) {
-			if(strtotime($participant['Seminar']['end']) > strtotime($today)) {
+			if(strtotime($participant['Seminar']['end']) < strtotime($today)) {
 				// セッション作成
 				$this->Session->write('participant', $participant);
 

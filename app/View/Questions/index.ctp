@@ -16,7 +16,7 @@
 	</div>
 </div>
 
-<div class="whiteWrapper">
+<div class="questionWrapper">
 	<div id="questionTitle">
 		<h3><span><?php echo $question['Seminar']['name'] ?></span></h3>
 
