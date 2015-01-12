@@ -11,7 +11,7 @@
 /* Control
 ----------------------------------------------------------------------*/
 .text, textarea {
-	padding: 5px;
+	padding: 10px;
 	border: solid 1px #3e99a7;
 	font-size: 24px;
 	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;

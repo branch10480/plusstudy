@@ -407,12 +407,11 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 #commentForm {
-	width: 299px;
-	margin: 0 auto;
+	margin: 0 10px;
 }
 
 #content {
-	width: 289px;
+	width: 93.75%;
 }
 
 #commentBtn {
