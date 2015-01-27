@@ -6,17 +6,45 @@ jQuery.setModalWin = (function () {
 		var devWidth = window.innerWidth;
 		var devHeight = window.innerHeight;
 		var modalWin = $('.modal');
+		var conArea = $('.modal .wrapper');
+		var bgArea = $('.modal .bg');
+		var topMargin = 80;
 		var init = function () {
 			modalWin.css({
 				'position': 'fixed',
 				'top': 0,
 				'left': 0,
-				'background': '#ddd',
+				'background': 'rgba(20, 50, 54, 0.8)',
 				'width': devWidth,
 				'height': devHeight,
 				'z-index': 100,
 			}).hide();
-		}
+			conArea.css({
+					'top': topMargin + 'px',
+					'left': (devWidth - conArea.width()) / 2 + 'px',
+				});
+		};
+
+
+		/*-- Windowのリサイズ時の位置調整 --*/
+		$(window).load(function() {
+			$(window).resize(function(event) {
+				devWidth = window.innerWidth;
+				devHeight = window.innerHeight;
+				conArea.css({
+					'top': topMargin + 'px',
+					'left': (devWidth - conArea.width()) / 2 + 'px',
+				});
+				modalWin.css({
+					'width': devWidth,
+					'height': devHeight,
+				});
+				bgArea.css({
+					'width': devWidth,
+					'height': devHeight,
+				});
+			});
+		});
 
 		// setting
 		var fadeInTime = 300;
