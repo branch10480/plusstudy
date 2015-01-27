@@ -63,7 +63,7 @@ $(function () {
 
 		//--- メンバ ---
 		var page = 1;
-		var dispNo = 2;					// 1ページに表示する数
+		var dispNo = 4;					// 1ページに表示する数
 		var data = null;
 		var maxPage = 1;
 		var myImgs = null;

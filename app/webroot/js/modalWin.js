@@ -2,6 +2,7 @@
 
 jQuery.setModalWin = (function () {
 	return function ( idOrClass ) {
+
 		var args = arguments;
 		var devWidth = window.innerWidth;
 		var devHeight = window.innerHeight;
@@ -9,6 +10,10 @@ jQuery.setModalWin = (function () {
 		var conArea = $('.modal .wrapper');
 		var bgArea = $('.modal .bg');
 		var topMargin = 80;
+		var fadeInTime = 300;
+		var fadeOutTime = 50;
+
+
 		var init = function () {
 			modalWin.css({
 				'position': 'fixed',
@@ -46,9 +51,6 @@ jQuery.setModalWin = (function () {
 			});
 		});
 
-		// setting
-		var fadeInTime = 300;
-		var fadeOutTime = 200;
 
 		// ---------------------------------------------------------
 

@@ -58,8 +58,13 @@ img{
 }
 
 
+.modal {
+	color: #fff;
+}
+
+
 .modal > .wrapper {
-	width: 757px;
+	width: 758px;
 	position: absolute;
 	z-index: 10;
 }
@@ -75,11 +80,66 @@ img{
 }
 
 
-.modal li {
+.modal h3 {
+	font-size: 20px;
+}
+
+
+.modal #storage {
+	font-size: 24px;
+}
+
+
+.modal #myImgs {
+	margin-top: -7px;
+}
+
+
+.modal #myImgs li {
+	position: relative;
 	display: block;
 	width: 342px;
 	height: 160px;
 	overflow: hidden;
+	float: left;
+	padding-right: 37px;
+	margin-top: 37px;
+}
+
+
+.modal #myImgs li a {
+	position: absolute;
+	z-index: 101;
+	right: 0;
+	top: 0;
+}
+
+
+.modal #pagingNav {
+	margin-top: 30px;
+}
+
+
+.modal #pagingNav > li {
+	float: left;
+	margin-right: 10px;
+}
+
+
+.modal #pagingNav a,
+.modal #pagingNav {
+	color: #fff;
+	font-size: 18px;
+}
+
+
+.modal #pagingNav {
+	font-size: 22px;
+}
+
+
+.modal #pagingNav a {
+	text-decoration: none;
 }
 
 
