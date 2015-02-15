@@ -67,18 +67,6 @@ p {
     color: #fd5812;
 }
 
-<<<<<<< HEAD
-.title{
-	margin: 60px auto 0 auto;
-	width: calc(306px*0.6);
-	height: calc(109px*0.6);
-
-}
-.new_acc_header{
-	width: calc(306px*0.6);
-	height: calc(109px*0.6);
-
-=======
 
 .container_title {
     padding-right: 250px;
@@ -93,7 +81,6 @@ p {
 .new_acc_header {
     width: calc(306px*.6);
     height: calc(109px*.6);
->>>>>>> fukushima/develop
 }
 
 

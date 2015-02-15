@@ -219,6 +219,14 @@ img{
 
 
 
+.modal .modalWinCloseBtn {
+	position: absolute;
+	right: 0;
+	top: 60px;
+}
+
+
+
 
 
 /* Header

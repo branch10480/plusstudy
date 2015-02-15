@@ -25,6 +25,7 @@
 	<div class="wrapper">
 		<form method="post" action="<?php echo ROOT_URL . 'SeminarImages/uploadImg/'; ?>" name="imgUpForm" id="imgUpForm">
 			<h3>現在の使用容量</h3>
+			<a class="modalWinCloseBtn" href="#"><?php echo $this->Html->image('batsu.svg', array('width' => '25', 'height' => '25')) ?></a>
 			<p id="storage">0MB / 50MB</p>
 			<ul id="myImgs" class="cf">
 				<li><img onclick="selectImg(event)" src="http://amd.c.yimg.jp/im_siggf_VHByhUvs8k8G4G3_o44w---x150-y101-q90/amd/20140812-00000032-xinhua-000-0-thumb.jpg"></li>
