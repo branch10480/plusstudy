@@ -324,7 +324,7 @@ span.confirm {
     height: 50px;
     margin: 30px auto 180px auto;
     border: none;
-    background: url(../img/next_btn.png) no-repeat;
+    background: url(../img/confirm_btn.png) no-repeat;
     -webkit-background-size: 100%;
             background-size: 100%;
 }
