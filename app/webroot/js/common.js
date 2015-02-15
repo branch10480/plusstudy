@@ -55,3 +55,17 @@ function ajax_submit(form_, callbacks_) {
 		}
 	});
 }
+$(function () {
+	// 連打防止
+	var resetTimer = null;
+	$.cookie('searchFlag', 'true');
+	$('a').not('rh').click(function(event) {
+		if ($.cookie('searchFlag') === 'false') {
+			event.preventDefault();
+			alert('連打は禁止されています。');
+			resetTimer = setTimeout($.cookie('searchFlag', 'true'), 300);
+		} else {
+			$.cookie('searchFlag', 'false');
+		}
+	});
+});

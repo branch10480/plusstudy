@@ -35,6 +35,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			));
 		echo $this->Html->script(array(
 			'jquery-1.11.1.min.js',
+			'jquery.cookie.js',
 			'sprintf.js',
 			'common',
 			'modalWin.js',
