@@ -36,23 +36,25 @@
 			<dl class="entry_dl cf">
 				<dt>メールアドレス（非公開）</dt>
 				<dd><?php echo $this->Form->text('mailaddress', array('readonly' => 'true', 'class' => 'ma')); ?></dd>
-				<dt id="nameDt">氏名※</dt>
-				<dd><div class="name cf"><div class="fl"><span class="lastName">(姓)</span><?php echo $this->Form->text('last_name', array( 'class' => 'text')); ?></div><div class="fl"><span class="firstName">(名)</span><?php echo $this->Form->text('first_name', array( 'class' => 'text')); ?></div><br /><?php echo $msgName; ?></div><div class="kana cf"><div class="fl"><span class="lastName">(セイ)</span><?php echo $this->Form->text('last_ruby', array( 'class' => 'text')); ?></div><div class="fl"><span class="firstName">(メイ)</span><?php echo $this->Form->text('first_ruby', array( 'class' => 'text')); ?><br /></div><? echo $msgNameKana; ?></div></dd>
-				<dt>コース</dt>
+				<dt id="nameDt">氏名 ※</dt>
+				<dd><span class="errorMsg"><?php echo $msgName; ?></span><div class="name cf"><div class="fl"><span class="lastName">(姓)</span><?php echo $this->Form->text('last_name', array( 'class' => 'text')); ?></div><div class="fl"><span class="firstName">(名)</span><?php echo $this->Form->text('first_name', array( 'class' => 'text')); ?></div><br /></div><span class="errorMsg"><? echo $msgNameKana; ?></span><div class="kana cf"><div class="fl"><span class="lastName">(セイ)</span><?php echo $this->Form->text('last_ruby', array( 'class' => 'text')); ?></div><div class="fl"><span class="firstName">(メイ)</span><?php echo $this->Form->text('first_ruby', array( 'class' => 'text')); ?><br /></div></div></dd>
+				<dt>パスワード ※</dt>
+				<dd><?php echo $this->Form->password('passwd', array( 'class' => 'text')); ?><span class="errorMsg2"><?php echo $msgPasswd; ?></span></dd>
+				<dt>パスワード(確認) ※</dt>
+				<dd><input type="password" id="confirm" class="text" name="confirm" /></dd>
+				<dt>コース ※</dt>
 				<dd><?php echo $this->Form->select('course', array(
 					'2' => '2年制課程',
 					'4' => '4年制課程',
-				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><br /><? echo $msgCourse; ?></dd>
-				<dt>パスワード</dt>
-				<dd><?php echo $this->Form->password('passwd', array( 'class' => 'text')); ?><span class="confirm">確認</span><input type="password" id="confirm" class="text" name="confirm" /><br /><?php echo $msgPasswd; ?></dd>
-				<dt>学年</dt>
+				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><span class="errorMsg2"><? echo $msgCourse; ?></span></dd>
+				<dt>学年 ※</dt>
 				<dd><?php echo $this->Form->select('grade', array(
 					'1' => '1年',
 					'2' => '2年',
 					'3' => '3年',
 					'4' => '4年',
-				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><br /><? echo $msgGrade; ?></dd>
-				<dt>学科</dt>
+				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><span class="errorMsg2"><? echo $msgGrade; ?></span></dd>
+				<dt>学科 ※</dt>
 				<dd><?php echo $this->Form->select('subject', array(
 					'1' => '高度情報処理学科',
 					'2' => 'WEB開発学科',
@@ -64,7 +66,7 @@
 					'8' => 'ミュージック学科',
 					'9' => '先端ロボット開発学科',
 					'10' => 'カーデザイン学科',
-				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><br /><? echo $msgSubject; ?></dd>
+					), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><span class="errorMsg2"><? echo $msgSubject; ?></span></dd>
 				<dt>資格</dt>
 				<dd><?php echo $this->Form->text('licenses', array( 'class' => 'text')); ?></dd>
 				<dt>スキル</dt>
