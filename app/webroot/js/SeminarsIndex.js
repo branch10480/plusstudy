@@ -207,13 +207,17 @@ function optim() {
 }
 
 function delSmnImg(event) {
+
 	event.preventDefault();
+
+	var fileName = $(event.target).parent().parent().find('input').val();
 	// alert($(event.target).parent().find('input').val());
 	if (!window.confirm('この写真を削除します。よろしいですか？')) return;
 
 	//----- 削除処理 -----
+	alert(fileName);
 	$.ajax({
-		url: WEB_ROOT + 'SeminarImages/delSmnImgs/' + $(event.target).parent().find('input').val(),
+		url: WEB_ROOT + 'SeminarImages/delSmnImgs/' + fileName,
 		type: 'POST',
 		dataType: 'json',
 	})
@@ -222,6 +226,14 @@ function delSmnImg(event) {
 
 		// 画像データの再取得&表示
 		getSmnImgs();
+
+		// 削除する画像が選択状態のときはこれを解除
+		var txt = $('#coverImg img').attr('src') + '';
+		var arr = txt.split('/');
+		if (arr[arr.length - 1] === fileName) {
+			$('#SeminarSeminarImgId').val('');
+			$('#coverImg').html('');
+		}
 
 	})
 	.fail(function() {
