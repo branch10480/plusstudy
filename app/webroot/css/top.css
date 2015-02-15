@@ -65,6 +65,7 @@ h2 {
     overflow: hidden;
     width: 1008px;
     margin-left: -30px;
+    font-size: 14px;
 }
 
 
@@ -112,7 +113,7 @@ h2 {
 
 .needsWrapper .left {
     overflow: hidden;
-    width: 154px;
+    width: 176px;
     padding-top: 18px;
     padding-left: 20px;
     white-space: nowrap;
@@ -121,9 +122,9 @@ h2 {
 
 
 .needsWrapper .right {
-    width: 84px;
+    width: 92px;
     background: #ffb425 url("../img/bg_needslist.png") bottom left no-repeat;
-    padding: 18px 18px 14px 30px;
+    padding: 18px 18px 14px 0;
     color: #fff;
     text-align: right;
 }
