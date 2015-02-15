@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+/*---------------------------------
+
+# Control
+----------------------------------*/
+
+
+
+/* Control
+----------------------------------------------------------------------*/
+.text, textarea {
+	width: 93.75%;
+	padding: 10px;
+	border: solid 1px #3e99a7;
+	font-size: 24px;
+	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+	border-radius: 5px;
+	color: #8a8a8a;
+	font-weight: bold;
+}
+.text {
+	height: 30px;
+	font-size: 14px;
+}
+textarea {
+	border-radius: 5px;
+	font-size: 14px;
+	height: 175px;
+}
+#QuestionDetailsForm {
+	font-size: 14px;
+}
+.text:focus,
+.textarea:focus {
+	outline: 0;
+	box-shadow: 0px 0px 0pt 0pt aqua;
+}

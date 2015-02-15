@@ -71,12 +71,12 @@ p{
 	margin: 60px auto 0 auto;
 	width: calc(306px*0.6);
 	height: calc(109px*0.6);
-	
+
 }
 .new_acc_header{
 	width: calc(306px*0.6);
 	height: calc(109px*0.6);
-	
+
 }
 
 
@@ -200,9 +200,9 @@ p{
 }
 
 
-
-
-
+#mailaddress {
+	border: none;
+}
 
 
 

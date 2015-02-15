@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.29, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
 --
 -- Host: localhost    Database: plusstudy
 -- ------------------------------------------------------
--- Server version 5.5.29
+-- Server version	5.5.34-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -45,7 +45,7 @@ CREATE TABLE `accounts` (
   `img_w` int(11) DEFAULT '0',
   `img_h` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,7 +54,7 @@ CREATE TABLE `accounts` (
 
 LOCK TABLES `accounts` WRITE;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (1,'masaya@gmail.com','masaya','稲垣','匡哉','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp',460,460),(2,'masaya2@gmail.com','masaya2','稲垣','匡哉２','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp',0,0),(3,'taka@gmail.com','taka','福島','孝明','フクシマ','タカアキ','4',4,'WEB開発学科','0','01','さーーーーーーーーーーーーーーーーーーーーーーーーーーっぷ！！！','色彩検定2級','お笑い','2014-08-11 00:00:00','taka','taka','taka@yahoo.co.jp',244,175);
+INSERT INTO `accounts` VALUES (1,'masaya@gmail.com','masaya','稲垣','匡哉','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp',0,0),(2,'masaya2@gmail.com','masaya2','稲垣','匡哉２','イナガキ','マサヤ','4',3,'ゲーム学科','0','jpg','フォー！','スペシャリスト','奇声','2014-08-11 00:00:00','masaya','なし','masaya@yahoo.co.jp',0,0),(3,'taka@gmail.com','taka','福島','孝明','フクシマ','タカアキ','4',4,'WEB開発学科','0','jpg','ファー！','色彩検定2級','お笑い','2014-08-11 00:00:00','taka','taka','taka@yahoo.co.jp',1500,1500);
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `comments` (
   `account_id` int(11) DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (170,3,'あああああああああ',3,'2014-09-19 14:33:39'),(171,3,'死ねええええええええ',3,'2014-09-19 14:33:44'),(172,3,'あああああああああああ',3,'2014-09-19 14:33:52'),(173,3,'おおおおおおおお',2,'2014-09-19 14:33:59'),(174,3,'付き合ってください\n',3,'2014-09-19 14:34:18'),(175,3,'断る by 北折',2,'2014-09-19 14:34:33'),(176,3,'マックスバリュいこう',3,'2014-09-19 14:35:06'),(177,3,'いいでしょう',2,'2014-09-19 14:35:33'),(178,3,'あああああああ',2,'2014-09-19 14:36:07'),(179,3,'\n\n\n；',2,'2014-09-19 14:36:24'),(180,3,'あ\nあ\nあ\nあ\nあ\n',2,'2014-09-19 14:36:33'),(181,3,'ああああああ',2,'2014-09-19 15:59:47'),(182,3,'ああああああああ',3,'2014-09-19 15:59:54'),(183,3,'ああ',2,'2014-09-19 15:59:57'),(184,3,'お',3,'2014-09-19 16:00:06'),(185,3,'あ',2,'2014-09-19 16:00:10'),(186,3,'あ',3,'2014-09-19 16:00:29'),(187,3,'あ',2,'2014-09-19 16:00:32'),(188,4,'あああ',3,'2014-09-19 16:00:49'),(189,6,'aaaaaa',3,'2014-09-22 08:39:07'),(190,1,'aaaaaaaaaaa',1,'2014-09-23 02:37:28'),(191,1,'aaaaaaaaa',1,'2014-09-23 02:37:38'),(192,7,'aaaaaaaaaaaaa',1,'2014-09-23 02:37:53'),(193,7,'aaaaaaaaa',1,'2014-09-23 02:37:56'),(194,NULL,NULL,3,'2014-09-23 07:25:21'),(195,NULL,NULL,3,'2014-09-23 07:25:21'),(196,NULL,NULL,3,'2014-09-23 07:25:21'),(197,NULL,NULL,3,'2014-09-23 07:25:21');
+INSERT INTO `comments` VALUES (40,10,'あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ',3,'2014-12-08 14:06:58'),(41,12,'ああああああ',1,'2015-01-12 06:27:04'),(42,12,'いいいいいいい',1,'2015-01-12 06:27:19'),(43,13,'aaa\n',1,'2015-01-12 06:36:20'),(44,15,'aaaaaaa',1,'2015-01-12 07:42:07'),(45,15,'aaaa',1,'2015-01-12 07:44:53'),(46,15,'aaaaaa',1,'2015-01-12 08:34:14'),(47,15,'aaaa',1,'2015-01-12 08:34:20'),(48,15,'aaaa',1,'2015-01-12 08:36:00'),(49,15,'aaaaa',1,'2015-01-12 08:36:04'),(50,15,'aaaaaaa',1,'2015-01-12 08:36:10');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `me_toos` (
   `account_id` int(11) DEFAULT NULL,
   `resolved` char(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `me_toos` (
 
 LOCK TABLES `me_toos` WRITE;
 /*!40000 ALTER TABLE `me_toos` DISABLE KEYS */;
-INSERT INTO `me_toos` VALUES (1,NULL,1,'0'),(2,1,3,'0');
+INSERT INTO `me_toos` VALUES (30,15,3,'0'),(37,13,2,NULL),(38,16,2,NULL),(39,13,3,NULL),(40,16,3,NULL),(41,16,1,NULL),(42,17,1,'0'),(43,18,1,'0'),(44,19,1,'0'),(45,19,3,NULL),(46,20,3,'0');
 /*!40000 ALTER TABLE `me_toos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +147,7 @@ CREATE TABLE `newacc_tmps` (
   `passwd` varchar(100) DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +156,7 @@ CREATE TABLE `newacc_tmps` (
 
 LOCK TABLES `newacc_tmps` WRITE;
 /*!40000 ALTER TABLE `newacc_tmps` DISABLE KEYS */;
+INSERT INTO `newacc_tmps` VALUES (1,'aaaaa@.a.a','98587213','2014-10-04 05:07:46'),(2,'aaa@a.a.c','944477551','2015-01-12 08:57:49');
 /*!40000 ALTER TABLE `newacc_tmps` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +173,7 @@ CREATE TABLE `participants` (
   `account_id` int(11) DEFAULT NULL,
   `feedbacked` char(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +182,7 @@ CREATE TABLE `participants` (
 
 LOCK TABLES `participants` WRITE;
 /*!40000 ALTER TABLE `participants` DISABLE KEYS */;
-INSERT INTO `participants` VALUES (1,2,1,NULL),(4,2,3,NULL);
+INSERT INTO `participants` VALUES (31,1,3,'1'),(32,4,2,'1'),(33,4,1,'1'),(35,10,3,'1'),(36,8,1,'1'),(38,5,1,'1'),(40,19,1,'1'),(41,21,1,'0'),(42,22,2,'0'),(43,21,2,'0');
 /*!40000 ALTER TABLE `participants` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +201,7 @@ CREATE TABLE `questions` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `account_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +210,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,1,'あ！！','え？！！','2014-09-01 12:51:23',1),(2,1,'aaaaaaa','aaaaaaaa','0000-00-00 00:00:00',1),(3,1,'福島だよーん','あっはっはっは','0000-00-00 00:00:00',3),(4,1,'ああああああああ','ううううううううううう','0000-00-00 00:00:00',3),(5,1,'うほおおおおおおおお','あああああああああああああぁぁ','2014-09-05 10:52:03',3),(6,2,'aaaaa','aaaaaaa','2014-09-15 16:41:58',1),(7,2,'あああああああ','ああああああああああああああ','2014-09-16 14:16:35',1);
+INSERT INTO `questions` VALUES (8,1,'持ち物について','持ってくるものは何かありますか?','2014-10-05 15:24:09',3),(9,8,'a','aaa','2014-11-19 03:55:55',1),(10,9,'aaaaaaaaaaaa','aaaaaaaaa','2014-11-29 03:24:26',1),(11,10,'教えてええええええ','あああああああああああああああ','2014-11-29 06:47:12',3),(12,19,'あああ','あああ','2015-01-12 06:26:55',1),(13,19,'aaaa','aaaa','2015-01-12 06:35:46',1),(14,20,'あああああああああ','いいいいいいいいい','2015-01-12 07:20:33',3),(15,20,'あああああああああああああああああああああああああああああああああああああああああああああああああああああああああ','あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ','2015-01-12 07:40:26',3);
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +231,7 @@ CREATE TABLE `seminar_images` (
   `tmpid` int(11) DEFAULT '0',
   `size` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +240,7 @@ CREATE TABLE `seminar_images` (
 
 LOCK TABLES `seminar_images` WRITE;
 /*!40000 ALTER TABLE `seminar_images` DISABLE KEYS */;
-INSERT INTO `seminar_images` VALUES (1,2,'1番目','.jpg',1600,1200,0,71948),(2,2,'2番目','.jpg',1200,675,0,235746),(3,2,'3番目','.jpg',170,127,0,4168),(4,1,'4番目','.jpg',400,331,0,36157);
+INSERT INTO `seminar_images` VALUES (1,2,'1番目','.jpg',1600,1200,0,71948),(2,2,'2番目','.jpg',1200,675,0,235746),(3,2,'3番目','.jpg',170,127,0,4168),(4,1,'4番目','.jpg',400,331,0,36157),(5,NULL,NULL,NULL,NULL,NULL,1483769611,0),(6,3,'','.45',2068,1212,0,758425),(7,3,'','.45',1154,611,0,451112),(8,3,'','.45',1154,611,0,451112),(9,3,'','.jpeg',144,170,0,4199),(10,3,'','.jpeg',144,170,0,4199),(12,3,'','.jpeg',1000,170,0,20580),(13,3,'','.jpeg',1000,170,0,20580),(14,3,'','.jpeg',1000,170,0,20580),(15,3,'','.jpeg',1000,170,0,20580),(16,3,'','.jpeg',1000,170,0,20580),(18,3,'','.jpeg',1000,170,0,20580),(19,3,'','.png',1178,2760,0,91931);
 /*!40000 ALTER TABLE `seminar_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +265,7 @@ CREATE TABLE `seminars` (
   `description` text,
   `upper_limit` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +274,7 @@ CREATE TABLE `seminars` (
 
 LOCK TABLES `seminars` WRITE;
 /*!40000 ALTER TABLE `seminars` DISABLE KEYS */;
-INSERT INTO `seminars` VALUES (1,1,'Unity勉強会','2014-08-20 00:00:00','182教室',1,NULL,14,'2014-08-21 00:00:00','2014-08-22 00:00:00','簡単に3Dゲームが作れる！Unityを勉強しよう！',5),(2,3,'CakePHP勉強会','2014-08-20 00:00:00','182教室',3,NULL,0,'2014-10-21 00:00:00','2014-10-21 00:00:00','WebアプリケーションフレームワークのCakePHPを一緒に勉強しましょう！',5);
+INSERT INTO `seminars` VALUES (21,0,'Ruby on Rails勉強会','2015-02-19 00:00:00','HAL名古屋4Fホール',3,NULL,0,'2015-02-20 00:00:00','2015-02-20 00:00:00','Ruby on Rails',10),(22,0,'Unity2D入門','2015-02-27 00:00:00','HAL名古屋4Fホール',1,NULL,0,'2015-02-28 00:00:00','2015-02-28 00:00:00','Unity',20),(23,0,'CakePHP入門','2015-02-24 00:00:00','HAL名古屋4Fホール',1,NULL,0,'2015-02-25 10:00:00','2015-02-25 12:00:00','CakePHP',10);
 /*!40000 ALTER TABLE `seminars` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,7 +291,7 @@ CREATE TABLE `teach_mes` (
   `title` varchar(100) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +300,7 @@ CREATE TABLE `teach_mes` (
 
 LOCK TABLES `teach_mes` WRITE;
 /*!40000 ALTER TABLE `teach_mes` DISABLE KEYS */;
-INSERT INTO `teach_mes` VALUES (1,3,'aaaaaaaaaaa','aaaaaaaa');
+INSERT INTO `teach_mes` VALUES (13,1,'Androidアプリ開発','Androidアプリの作り方を教えて下さい!'),(16,3,'PHP入門','PHPを勉強しましょう！'),(17,1,'Python','知りたいです！！'),(18,1,'Unreal Engine 4','やってみたいです！！'),(19,1,'Swift','やってみたい！'),(20,3,'MySQL','教えて！');
 /*!40000 ALTER TABLE `teach_mes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -312,4 +313,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-04 20:14:53
+-- Dump completed on 2015-02-13 11:07:28
