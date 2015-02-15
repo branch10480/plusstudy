@@ -263,6 +263,12 @@ section .wrapper dl dd .btnArea > a:first-child {
 #seminarQ li:first-child {
 	border-top: none;
 }
+#seminarQ li p {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 800px;
+}
 #seminarQ li a {
 	color: #656565;
 	text-decoration: none;

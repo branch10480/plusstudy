@@ -153,157 +153,203 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 #newSmnConfirm .wrapper,
 #seminarQ .wrapper {
-	width: 978px;
+	width: 100%;
 }
 #newSmnConfirm h3 {
-	font-size: 36px;
-	border-bottom: 1px solid #4cbdce;
-	padding: 40px 0;
+	font-size: 18px;
+	border-bottom: 0.5px solid #cec6c3;
+	margin: 0 30px;
+	padding: 23px 0;
 }
 #newSmnConfirm h4 {
-	padding: 20px 0;
 }
 #newSmnConfirm #coverArea {
 	width: 100%;
-	height: 200px;
+	max-height: 140px;
 	overflow: hidden;
-	margin-top: -60px;
+	margin-top: -100px;
 }
 #newSmnConfirm #coverArea img {
 	width: 100%;
 }
 #newSmnConfirm .cf {
-	width: 978px;
+	margin: 0 30px;
+}
+#newSmnConfirm #prof {
+	width: 100%;
+	position: relative;
+}
+#newSmnConfirm #prof .profImg {
+	position: absolute;
+	float: right;
+	width: 60px;
+	height: 60px;
+	top: -40px;
+	margin-right: 30px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 2px #f6f6f6 solid;
+}
+#newSmnConfirm #prof p {
+	font-weight: bold;
+	position: absolute;
+	width: 100%;
+	font-size: 12px;
+	color: #656565;
+	text-align: right;
+	top: 50px;
+	right: 30px;
 }
 #newSmnConfirm article {
-	width: 642px;
-	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	margin-top: 8px;
+	line-height: 20px;
+	font-size: 12px;
+	word-wrap: break-word;
 }
 #newSmnConfirm article img {
 	display: block;
-	max-width: 474px;
-	max-height: 400px;
-	margin: 40px auto;
+	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+}
+#newSmnConfirm #date {
+	color: #fff;
+	width: 100%;
+	background: #fd865b;
+	margin-top: 30px;
+	height: 65px;
+}
+#newSmnConfirm #date h4 {
+	font-weight: bold;
+	text-align: center;
+	font-size: 12px;
+	padding-top: 12px;
+}
+#newSmnConfirm #date p {
+	font-weight: bold;
+	text-align: center;
+	font-size: 16px;
+	margin-top: 2px;
 }
 #newSmnConfirm aside {
-	float: left;
-	margin-left: 30px;
+	margin: 0 10px;
 }
-#newSmnConfirm aside > div {
-	width: 222px;
-	padding: 40px;
-	border: 2px solid #4cbdce;
-}
-#newSmnConfirmbtnArea {
+#newSmnConfirm aside > h4 {
+	margin-top: 20px;
 	text-align: center;
 }
-#newSmnConfirmbtnArea a {
-	display: block;
-	width: 222px;
-	height: 54px;
-	float: left;
-	margin-left: 30px;
+#newSmnConfirm aside > div {
 }
 #newSmnConfirmbtnArea {
-	width: 474px;
-	margin: 0 auto;
+}
+#newSmnConfirmbtnArea a {
+}
+#newSmnConfirmbtnArea {
 }
 #newSmnConfirmbtnArea a:first-child {
-	display: block;
-	width: 222px;
-	height: 54px;
-	float: left;
-	margin-left: 0;
 }
-#newSmnConfirm h4 {
-	font-size: 18px;
-}
+
 #newSmnConfirm dl {
-	margin: 0;
+	border-top: 0.5px #d6d6d9 solid;
+}
+#newSmnConfirm dl > div {
+	border-bottom: 0.5px #d6d6d9 solid;
+	height: 35px;
 }
 #newSmnConfirm dt {
-	padding: 20px 0 0;
-	font-size: 18px;
-	color: #656565;
-	line-height: 1;
+	margin-left: 10px;
+	font-weight: normal;
+	display: inline;
+	font-size: 12px;
+	line-height: 35px;
+	color: #838383;
 }
-#newSmnConfirm dt:first-child {
-	padding: 0;
+#newSmnConfirm dt span {
+	margin-left: 15px;
+	margin-right: 13px;
+	color: #aaaaaa;
+	font-size: 11px;
 }
 #newSmnConfirm dd {
-	padding-top: 10px;
-	font-size: 22px;
+	display: inline;
+	font-weight: normal;
+	line-height: 35px;
+	font-size: 12px;
 	color: #4cbdce;
+
 }
-#newSmnConfirm .profImg {
-	width: 140px;
-	height: 140px;
-	overflow: hidden;
-}
-#newSmnConfirm dd p {
-	padding-bottom: 10px;
+#newSmnConfirm .partbutton {
+	margin-top: 20px;
+	text-align: center;
 }
 #newSmnConfirm article {
-	word-wrap: break-word;
 }
 #ButtonDetailsForm {
-	padding: 30px 0 0;
 }
 #seminarQ {
-	padding: 0;
+	background: #4cbdce;
+	margin-top: -50px;
+}
+#seminarQ h2{
+	margin-top: -120px;
+}
+#seminarQ .wrapper {
+	margin-top: -50px;
 }
 #seminarQ li {
-	width: 978px;
 	position: relative;
-	padding: 30px 0;
-	border-top: 1px solid #4cbdce;
-	font-size: 24px;
-	color: #656565;
+	padding: 12px 0;
+	background: #fff;
+	margin-bottom: 10px;
 }
-#seminarQ li:first-child {
-	border-top: none;
+#seminarQ li h3 {
+	font-size: 12px;
+	color: #656565;
+	margin: 0 15px;
+	line-height: 20px
+}
+#seminarQ .noq {
+	text-align: center;
+	color: #333;
 }
 #seminarQ li a {
-	color: #656565;
-	text-decoration: none;
-}
-#seminarQ li a:hover {
-	text-decoration: underline;
-}
-#seminarQ li span {
 	position: absolute;
-	right: 0px;
-	top: 35px;
-	font-size: 18px;
-	color: #3e99a7;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+#seminarQ li p {
+	padding-top: 3px;
+	font-size: 12px;
+	color: #4cbdce;
+	margin: 0 15px;
+}
+#questionForm {
+	width: 100%;
+	margin-top: -50px;
+}
+#QuestionDetailsForm {
+	margin: 0 10px;
 }
 #QuestionDetailsForm ul {
-	width: 558px;
-	margin: 0 auto;
-	padding: 40px 0 0;
 }
 #QuestionDetailsForm li {
-	margin-top: 20px;
-}
-#QuestionDetailsForm li:first-child {
-	margin-top: 0;
+	margin-bottom: 5px;
 }
 #QuestionDetailsForm textarea {
-	width: 536px
 }
 #QuestionDetailsForm .btnArea {
-	width: 558px;
-	text-align: left;
-	margin: 20px auto 70px;
-	padding: 0;
+	margin-top: -55px;
 }
 #QuestionDetailsForm .errMsg {
-	margin: 5px 0 15px;
-	padding: 0;
 }
 #QuestionDetailsForm input,
 #QuestionDetailsForm textarea {
-	font-weight: bold;
 }
 
 

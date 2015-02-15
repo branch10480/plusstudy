@@ -118,11 +118,11 @@
 		<?php endif; ?>
 		<ul>
 		<?php foreach($seminar['Question'] as $question): ?>
-			<li>Q. <?php echo $this->Html->link($question['title'], array(
+			<li><p>Q.<?php echo $this->Html->link($question['title'], array(
 				'controller' => 'Questions' ,
 			 	'action' => 'index',
 			 	'?' => array('id' => $question['id'])
-			 	)); ?><span><?php echo str_replace('-', '/', $question['timestamp']); ?></span></li>
+			 	)); ?></p><span><?php echo str_replace('-', '/', $question['timestamp']); ?></span></li>
 		<?php endforeach; ?>
 		</ul>
 	</div>

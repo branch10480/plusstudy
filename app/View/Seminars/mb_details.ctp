@@ -6,7 +6,8 @@
 		), array('inline' => false));
 	$this->Html->css(array(
 		'mb_seminars',
-		'control2',
+		'mb_control2',
+
 		), null, array('inline' => false));
 ?>
 
@@ -17,8 +18,6 @@
 	});
 </script>
 
-
-<h2><img src="<?php echo IMG_PATH; ?>seminar_h.png" alt="勉強会作成確認" width="306" height="109"><span class="hidden">勉強会詳細</span></h2>
 <section id="newSmnConfirm">
 	<div class="wrapper">
 		<?php
@@ -28,56 +27,66 @@
 						<?php echo '<img src="' . SMN_IMG_PATH . $seminar['Seminar']['seminar_image_id'] . $seminar['SeminarImage']['ext'] . '" alt="">'; ?>
 			</div>
 		<?php } ?>
+		<div id="prof">
+			<div class="profImg">
+			<?php
+				if (!empty($seminar['Account']['img_ext'])) {
+					echo $this->HTML->image('profile/' . $seminar['Account']['id'] . '.' . $seminar['Account']['img_ext'], array('class' => 'optim'));
+				} else {
+					echo $this->HTML->image(PROF_IMG_PATH . 'no_image.gif', array('class' => 'optim'));
+				}
+			?>
+			</div>
+			<p><?php echo 'with ' . $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name'] ?></p>
+		</div>
 		<h3><?php echo $seminar['Seminar']['name'] ?></h3>
 		<div class="cf">
 			<article>
-			<h4>詳細</h4>
 				<?php echo $seminar['Seminar']['description'] ?>
 			</article>
-			<aside>
-			<h4>開催情報</h4>
-			<div>
-				<dl>
-					<dt>開催日時</dt>
-					<dd><?php
-						list($startDate, $startTime) = explode(' ', $seminar['Seminar']['start']);
-						list($date, $month, $day) = explode('-', $startDate);
-						list($startH, $startM) = explode(':', $startTime);
-						$endTime = explode(' ', $seminar['Seminar']['end'])[1];
-						list($endH, $endM) = explode(':', $endTime);
-						echo $date . '年' . $month . '月' . $day . '日<br />' . sprintf('%02d', $startH) . ':' . sprintf('%02d', $startM) . '〜' . sprintf('%02d', $endH) . ':' . sprintf('%02d', $endM);
-					?></dd>
-					<dt>開催場所</dt>
+		</div>
+	</div>
+	<div id="date">
+		<h4>開催日時</h4>
+		<p><?php
+			list($startDate, $startTime) = explode(' ', $seminar['Seminar']['start']);
+			list($date, $month, $day) = explode('-', $startDate);
+			list($startH, $startM) = explode(':', $startTime);
+			$endTime = explode(' ', $seminar['Seminar']['end'])[1];
+			list($endH, $endM) = explode(':', $endTime);
+			echo $date . '年' . $month . '月' . $day . '日 ' . sprintf('%02d', $startH) . ':' . sprintf('%02d', $startM) . '〜' . sprintf('%02d', $endH) . ':' . sprintf('%02d', $endM);
+		?></p>
+	</div>
+	<div class="wrapper">
+		<aside>
+		<h4><img src="<?php echo MB_IMG_PATH; ?>seminar_details_head.png" alt="詳細" width="60" height="24"></h4>
+		<div>
+			<dl>
+				<div>
+					<dt>開催場所<span>＞</span></dt>
 					<dd><?php echo $seminar['Seminar']['place'] ?></dd>
 					</dd>
-					<dt>募集人数</dt>
+				</div>
+				<div>
+					<dt>募集人数<span>＞</span></dt>
 					<dd>
 						<?php echo +$seminar['Seminar']['upper_limit'] === 0 ? '制限なし' : $seminar['Seminar']['upper_limit'] . '人まで'; ?>
 					</dd>
-					<dt>予約締切日時</dt>
+				</div>
+				<div>
+					<dt>予約締切<span>＞</span></dt>
 					<dd>
 					<?php
 						list($limitDate, $limitTime) = explode(' ', $seminar['Seminar']['reservation_limit']);
 						list($limitDate, $limitMonth, $limitDay) = explode('-', $limitDate);
 						list($limitH, $limitM) = explode(':', $limitTime);
-						echo $limitDate . '年' . $limitMonth . '月' . $limitDay . '日<br />' . sprintf('%02d', $limitH) . '時' . sprintf('%02d', $limitM) . '分';
+						echo $limitDate . '年' . $limitMonth . '月' . $limitDay . '日 ' . sprintf('%02d', $limitH) . '時' . sprintf('%02d', $limitM) . '分';
 					?>
 					</dd>
-					<dt>主催者</dt>
-					<dd>
-						<p><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name'] ?></p>
-						<div class="profImg">
-						<?php
-							if (!empty($seminar['Account']['img_ext'])) {
-								echo $this->HTML->image('profile/' . $seminar['Account']['id'] . '.' . $seminar['Account']['img_ext'], array('class' => 'optim'));
-							} else {
-								echo $this->HTML->image(PROF_IMG_PATH . 'no_image.gif', array('class' => 'optim'));
-							}
-						?>
-						</div>
-					</dd>
-				</dl>
-				<!-- 参加ボタン or 参加取り消しボタン or 編集ボタン -->
+				</div>
+			</dl>
+			<!-- 参加ボタン or 参加取り消しボタン or 編集ボタン -->
+			<div class="partbutton">
 				<?php echo $this->Form->create('Button'); ?>
 				<?php
 
@@ -93,7 +102,6 @@
 						break;
 
 					case 'Manager':
-						echo '<a href="' . ROOT_URL . 'Seminars/edit/' . $smnID . '">' . $this->HTML->image('thisseminarediting_btn.png', array('width' => '222', 'height' => '54')) . '</a>';
 						break;
 
 					default:
@@ -104,42 +112,46 @@
 				?>
 				<?php echo $this->Form->end(); ?>
 			</div>
-			</aside>
 		</div>
+		</aside>
 	</div>
 </section>
 
-
-<h2><img src="<?php echo IMG_PATH; ?>seminarq_h.png" alt="セミナーに対する質問" width="306" height="109"><span class="hidden">セミナーに対する質問</span></h2>
 <section id="seminarQ">
+	<h2><img src="<?php echo IMG_PATH; ?>seminarq_h.png" alt="セミナーに対する質問" width="153" height="54"><span class="hidden">セミナーに対する質問</span></h2>
 	<div class="wrapper">
 		<?php if(count($seminar['Question']) === 0): ?>
-			<p><?php echo 'この勉強会に対する質問はありません'; ?></p>
+			<p class="noq"><?php echo 'この勉強会に対する質問はありません'; ?></p>
 		<?php endif; ?>
 		<ul>
 		<?php foreach($seminar['Question'] as $question): ?>
-			<li>Q. <?php echo $this->Html->link($question['title'], array(
+			<li>
+				<?php echo $this->Html->link('', array(
 				'controller' => 'Questions' ,
 			 	'action' => 'index',
 			 	'?' => array('id' => $question['id'])
-			 	)); ?><span><?php echo str_replace('-', '/', $question['timestamp']); ?></span></li>
+			 	)); ?>
+				<h3><?php echo $question['title']; ?></h3>
+				<p><?php echo str_replace('-', '/', $question['timestamp']); ?></p>
+			</li>
 		<?php endforeach; ?>
 		</ul>
 	</div>
 </section>
 
-
-<?php if($userType !== 'Manager'): ?>
-	<?php echo $this->Form->create('Question'); ?>
-	<ul>
-		<li><?php echo $this->Form->text('title', array('class' => 'text')); ?></li>
-		<?php echo '<li class="errMsg" id="eQTitle">' . $eTitle . '</li>'; ?>
-		<li><?php echo $this->Form->textarea('content'); ?></li>
-		<?php echo '<li class="errMsg" id="eQContent">' . $eContent . '</li>' ?>
-	</ul>
-	<div class="btnArea">
-	<a id="qSubmitBtn" href="#"><img src="<?php echo IMG_PATH . 'seminarqcontribution_btn.png' ?>" alt="質問を投稿する" width="222" height="54"></a>
-		<?php // echo $this->Form->submit('質問を投稿する', array('name' => 'question')); ?>
-	</div>
-	<?php echo $this->Form->end(); ?>
-<?php endif; ?>
+<div id="questionForm">
+	<?php if($userType !== 'Manager'): ?>
+		<?php echo $this->Form->create('Question'); ?>
+		<ul>
+			<li><?php echo $this->Form->text('title', array('class' => 'text')); ?></li>
+			<?php echo '<li class="errMsg" id="eQTitle">' . $eTitle . '</li>'; ?>
+			<li><?php echo $this->Form->textarea('content'); ?></li>
+			<?php echo '<li class="errMsg" id="eQContent">' . $eContent . '</li>' ?>
+		</ul>
+		<div class="btnArea">
+		<a id="qSubmitBtn" href="#"><img src="<?php echo MB_IMG_PATH . 'seminar_q_contbtn.png' ?>" alt="質問を投稿する" width="299" height="46"></a>
+			<?php // echo $this->Form->submit('質問を投稿する', array('name' => 'question')); ?>
+		</div>
+		<?php echo $this->Form->end(); ?>
+	<?php endif; ?>
+</div>
