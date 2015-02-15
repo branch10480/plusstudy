@@ -1,7 +1,21 @@
+<?php
+	// このページ限定のCSS,JS
+	$this->Html->script(array(
+		'easyselectbox.min',
+		), array('inline' => false));
+	$this->Html->css(array(
+		'control1'
+		), null, array('inline' => false));
+?>
+<script>
+	$(function(){
+		$('.select').easySelectBox();
+	});
+</script>
 <div class="plot">
 	<div class="container_title">
 		<div class="title">
-			<img class="new_acc_header" src="<?php echo IMG_PATH . 'accountregist_h.png'; ?>" alt="アカウント登録">	
+			<img class="new_acc_header" src="<?php echo IMG_PATH . 'accountregist_h.png'; ?>" alt="アカウント登録">
 		</div>
 	</div>
 	<div class="pankuzu cf">
@@ -14,48 +28,57 @@
 		</ul>
 	</div>
 
-	<div class="container_body">
-		<h1 class="mail_new_acc_title">※は必須項目になります。</h1>
+	<div class="container_body2">
+		<h1 class="mail_new_acc_title">※ は必須項目になります。</h1>
 
 
 			<?php echo $this->Form->create('Account'); ?>
 			<dl class="entry_dl cf">
-				<dt>登録用メールアドレス（非公開）</dt>
-				<dd><?php echo $this->Form->text('mailaddress', array('readonly' => 'true')); ?></dd>
-				<dt>氏名</dt>
-				<dd>姓 <?php echo $this->Form->text('last_name'); ?> 名<?php echo $this->Form->text('first_name'); ?><br /><?php echo $msgName; ?></dd>
-				<dt>氏名（カナ）</dt>
-				<dd>セイ <?php echo $this->Form->text('last_ruby'); ?> メイ<?php echo $this->Form->text('first_ruby'); ?><br /><? echo $msgNameKana; ?></dd>
+				<dt>メールアドレス（非公開）</dt>
+				<dd><?php echo $this->Form->text('mailaddress', array('readonly' => 'true', 'class' => 'ma')); ?></dd>
+				<dt id="nameDt">氏名※</dt>
+				<dd><div class="name cf"><div class="fl"><span class="lastName">(姓)</span><?php echo $this->Form->text('last_name', array( 'class' => 'text')); ?></div><div class="fl"><span class="firstName">(名)</span><?php echo $this->Form->text('first_name', array( 'class' => 'text')); ?></div><br /><?php echo $msgName; ?></div><div class="kana cf"><div class="fl"><span class="lastName">(セイ)</span><?php echo $this->Form->text('last_ruby', array( 'class' => 'text')); ?></div><div class="fl"><span class="firstName">(メイ)</span><?php echo $this->Form->text('first_ruby', array( 'class' => 'text')); ?><br /></div><? echo $msgNameKana; ?></div></dd>
 				<dt>コース</dt>
 				<dd><?php echo $this->Form->select('course', array(
 					'2' => '2年制課程',
 					'4' => '4年制課程',
-				), array('empty' => '--- 選択してください ---')); ?><br /><? echo $msgCourse; ?></dd>
+				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><br /><? echo $msgCourse; ?></dd>
 				<dt>パスワード</dt>
-				<dd><?php echo $this->Form->password('passwd'); ?></dd>
-				<dd><input type="password" id="confirm" name="confirm" />←確認<br /><?php echo $msgPasswd; ?></dd>
+				<dd><?php echo $this->Form->password('passwd', array( 'class' => 'text')); ?><span class="confirm">確認</span><input type="password" id="confirm" class="text" name="confirm" /><br /><?php echo $msgPasswd; ?></dd>
 				<dt>学年</dt>
-				<dd><?php echo $this->Form->text('grade'); ?><br /><? echo $msgGrade; ?></dd>
+				<dd><?php echo $this->Form->select('grade', array(
+					'1' => '1年',
+					'2' => '2年',
+					'3' => '3年',
+					'4' => '4年',
+				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><br /><? echo $msgGrade; ?></dd>
 				<dt>学科</dt>
-				<dd><?php echo $this->Form->text('subject'); ?> 学科<br /><? echo $msgSubject; ?></dd>
+				<dd><?php echo $this->Form->select('subject', array(
+					'1' => '高度情報処理学科',
+					'2' => 'WEB開発学科',
+					'3' => 'ゲーム企画学科',
+					'4' => 'ゲーム制作学科',
+					'5' => 'ゲームデザイン学科',
+					'6' => 'CG映像アニメーション学科',
+					'7' => 'CGグラフィックデザイン学科',
+					'8' => 'ミュージック学科',
+					'9' => '先端ロボット開発学科',
+					'10' => 'カーデザイン学科',
+				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><br /><? echo $msgSubject; ?></dd>
 				<dt>資格</dt>
-				<dd><?php echo $this->Form->text('licenses'); ?></dd>
+				<dd><?php echo $this->Form->text('licenses', array( 'class' => 'text')); ?></dd>
 				<dt>スキル</dt>
-				<dd><?php echo $this->Form->text('skill'); ?></dd>
+				<dd><?php echo $this->Form->text('skill', array( 'class' => 'text')); ?></dd>
 				<dt>facebook</dt>
-				<dd><?php echo $this->Form->text('facebook'); ?></dd>
+				<dd><?php echo $this->Form->text('facebook', array( 'class' => 'text')); ?></dd>
 				<dt>twitter</dt>
-				<dd><?php echo $this->Form->text('twitter'); ?></dd>
+				<dd><?php echo $this->Form->text('twitter', array( 'class' => 'text')); ?></dd>
 				<dt>メールアドレス（公開用）</dt>
-				<dd><?php echo $this->Form->text('pub_mailaddress'); ?></dd>
-				<dt>自己PR（200字以内）</dt>
-				<dd><?php echo $this->Form->textarea('description'); ?><br /><? echo $msgPR; ?></dd>
+				<dd><?php echo $this->Form->text('pub_mailaddress', array( 'class' => 'text')); ?></dd>
+				<dt class="last">自己PR（200字以内）</dt>
+				<dd class="last"><?php echo $this->Form->textarea('description', array( 'class' => 'pr')); ?><br /><? echo $msgPR; ?></dd>
 			</dl>
-			<?php echo $this->Form->end('確認へ'); ?>
-
-		<div class="longin_mail_btn">
-			<a href="Acconts/index" ><img class="img_back_login" src="<?php echo IMG_PATH . 'backlogin_btn.png'; ?>" alt="ログイン画面に戻る"></a>
-		</div>
+			<?php echo $this->Form->submit('', array( 'class' => 'btn')); ?>
 	</div>
 </div>
 

@@ -11,7 +11,7 @@
 <div class="plot">
 	<div class="container_title">
 		<div class="title">
-			<img class="new_acc_header" src="<?php echo IMG_PATH . 'accountregist_h.png'; ?>" alt="アカウント登録">	
+			<img class="new_acc_header" src="<?php echo IMG_PATH . 'accountregist_h.png'; ?>" alt="アカウント登録">
 		</div>
 	</div>
 	<div class="pankuzu cf">
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 
-		<p><?php echo $msg ?></p><!-- ←どこにだす？ -->
+		<p class="error"><?php echo $msg ?></p><!-- ←どこにだす？ -->
 		<div class="longin_mail_btn">
 			<a href="Acconts/index" ><img class="img_back_login" src="<?php echo IMG_PATH . 'backlogin_btn.png'; ?>" alt="ログイン画面に戻る"></a>
 			<a href="#" class="btnSubmit"><img class="img_check_mail" src="<?php echo IMG_PATH . 'mailconfirm_btn.png'; ?>" alt="確認メール送信"></a>
