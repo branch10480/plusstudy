@@ -29,6 +29,7 @@ html,body {
 	position: relative;
 	margin: 0 auto;
 	min-height: 100%;
+	width: 100%;
 	height:auto !important; /*IE6対策*/
 	height: 100%; /*IE6対策*/
 }
@@ -64,9 +65,11 @@ img{
 
 
 .modal > .wrapper {
-	width: 758px;
+	width: 776px;
 	position: absolute;
 	z-index: 10;
+	overflow-y: auto;
+	max-height: 90%;
 }
 
 
@@ -102,15 +105,15 @@ img{
 	height: 160px;
 	overflow: hidden;
 	float: left;
-	padding-right: 37px;
-	margin-top: 37px;
+	padding-right: 46px;
+	margin-top: 46px;
 }
 
 
 .modal #myImgs li a {
 	position: absolute;
 	z-index: 101;
-	right: 0;
+	right: 20px;
 	top: 0;
 }
 
@@ -135,11 +138,83 @@ img{
 
 .modal #pagingNav {
 	font-size: 22px;
+	border-bottom: 3px solid #adb7b9;
+	padding-bottom: 19px;
 }
 
 
 .modal #pagingNav a {
 	text-decoration: none;
+}
+
+
+
+.modal #fileselect_btns {
+	position: relative;
+	height: 34px;
+}
+
+
+
+.modal #fileselect_btns dt {
+	position: absolute;
+	height: 34px;
+	margin: 0;
+}
+
+
+
+.modal #fileselect_btns dt img:hover {
+	cursor: pointer;
+}
+
+
+
+.modal #fileselect_btns dt span {
+	font-size: 14px;
+	color: #fff;
+	padding-left: 10px;
+	margin: 0;
+}
+
+
+
+.modal #fileselect_btns dt span,
+.modal #fileselect_imgbtn {
+	vertical-align: middle;
+}
+
+
+
+.modal #fileselect_btns dd {
+	display: none;
+}
+
+
+
+.modal #upload_btns {
+	position: relative;
+	height: 44px;
+}
+
+
+
+.modal #upload_btns dt {
+	position: absolute;
+	height: 44px;
+	margin: 0;
+}
+
+
+
+.modal #upload_btns dt img:hover {
+	cursor: pointer;
+}
+
+
+
+.modal #upload_btns dd {
+	display: none;
 }
 
 

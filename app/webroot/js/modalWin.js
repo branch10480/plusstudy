@@ -9,7 +9,7 @@ jQuery.setModalWin = (function () {
 		var modalWin = $('.modal');
 		var conArea = $('.modal .wrapper');
 		var bgArea = $('.modal .bg');
-		var topMargin = 80;
+		var topMargin = 60;
 		var fadeInTime = 300;
 		var fadeOutTime = 50;
 
@@ -25,7 +25,8 @@ jQuery.setModalWin = (function () {
 				'z-index': 100,
 			}).hide();
 			conArea.css({
-					'top': topMargin + 'px',
+					// 'top': topMargin + 'px',
+					'padding-top': topMargin + 'px',
 					'left': (devWidth - conArea.width()) / 2 + 'px',
 				});
 		};
@@ -37,7 +38,7 @@ jQuery.setModalWin = (function () {
 				devWidth = window.innerWidth;
 				devHeight = window.innerHeight;
 				conArea.css({
-					'top': topMargin + 'px',
+					// 'top': topMargin + 'px',
 					'left': (devWidth - conArea.width()) / 2 + 'px',
 				});
 				modalWin.css({

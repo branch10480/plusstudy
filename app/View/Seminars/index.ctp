@@ -36,11 +36,22 @@
 				<li class="info">1/1</li>
 				<li><a class="nxt" href="">次へ &raquo;</a></li>
 			</ul>
-			<?php echo $this->Form->file('imgFile', array(
-				'enctype' => 'multipart/form-data',
-				'name' => 'up_img',
-				)); ?>
-			<?php echo $this->Form->submit('画像をアップロードする'); ?>
+			<dl id="fileselect_btns">
+				<dt><?php echo $this->Html->image("fileselect_btn.png", array('width' => '140', 'height' => '34', 'id' => 'fileselect_imgbtn', 'onclick' => 'drive_fileselect_btn()')); ?><span>選択されていません</span></dt>
+				<dd>
+					<?php echo $this->Form->file('imgFile', array(
+						'enctype' => 'multipart/form-data',
+						'name' => 'up_img',
+						'onchange' => 'update_imginfo(event)',
+					)); ?>
+				</dd>
+			</dl>
+			<dl id="upload_btns">
+				<dt><?php echo $this->Html->image("upload.png", array('width' => '180', 'height' => '44', 'id' => 'upload_imgbtn', 'onclick' => 'drive_uploadbtn()')); ?></dt>
+				<dd>
+					<?php echo $this->Form->submit('画像をアップロードする'); ?>
+				</dd>
+			</dl>
 		</form>
 	</div>
 </div>

@@ -105,7 +105,7 @@ $(function () {
 			for (dataNo = (page-1)*dispNo; dataNo<data.length; dataNo++) {
 				dispCnt++;
 				if (dispCnt > dispNo) break;
-				outStr += '<li><a class="delBtn" onclick="delSmnImg(event)" href="#">×</a><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /><input type="hidden" value="' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" /></li>';
+				outStr += '<li><a class="delBtn" onclick="delSmnImg(event)" href="#"><img src="' + WEB_ROOT + 'img/batsu.svg" width="16" height="16"></a><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /><input type="hidden" value="' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" /></li>';
 			}
 
 			// 画像出力
@@ -141,6 +141,17 @@ $(function () {
 // Declaration Area
 //
 //*****************************************************************************
+function drive_uploadbtn() {
+	$('#imgUpForm').submit();
+}
+function drive_fileselect_btn() {
+	$('#imgFile').click();
+}
+function update_imginfo(event) {
+	var regrex = /\\|\\/;
+	var arr = $(event.target).val().split(regrex);
+	$('#fileselect_btns dt span').text(arr[arr.length - 1]);
+}
 function selectImg(event) {
 	switch (window.selectImgType) {
 		case 0:
@@ -196,6 +207,7 @@ function optim() {
 }
 
 function delSmnImg(event) {
+	event.preventDefault();
 	// alert($(event.target).parent().find('input').val());
 	if (!window.confirm('この写真を削除します。よろしいですか？')) return;
 

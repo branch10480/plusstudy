@@ -50,33 +50,28 @@ function getImgOpt() {
 				});
 
 
+				if ((pW - pH)*(imgW - imgH) > 0) {
+					// 縦横比が親と子で同じ方が大きい場合
 
-				if (imgW === imgH) {
-
-					/*** 画像が正方形の場合 ***/
-
-					// 表示領域の縦横比を調べる
-					if (pW === pH) {
+					if (pH/pW < imgH/imgW) {
 						newW = pW;
-						newH = pH;
-					} else if (pW > pH) {
-						newW = pW;
-						newH = imgH * pW / imgW;
-						newTop = -Math.floor((newH - pH) / 2);
+						newH = imgH * pW/imgW;
 					} else {
+						newH = pH;
+						newW = imgW * pH/imgH
+					}
+				} else {
+					// 縦横比が親と子で違う方が大きくなる場合
+
+					if (imgW > imgH) {
 						newW = imgW * pH / imgH;
 						newH = pH;
 						newLeft = -Math.floor((newW - pW) / 2);
+					} else {
+						newW = pW;
+						newH = imgH * pW / imgW;
+						newTop = -Math.floor((newH - pH) / 2);
 					}
-					/*** 画像が長方形の場合 ***/
-				} else if (imgW > imgH) {
-					newW = imgW * pH / imgH;
-					newH = pH;
-					newLeft = -Math.floor((newW - pW) / 2);
-				} else {
-					newW = pW;
-					newH = imgH * pW / imgW;
-					newTop = -Math.floor((newH - pH) / 2);
 				}
 
 
