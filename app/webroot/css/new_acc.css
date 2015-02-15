@@ -281,11 +281,12 @@ dt.last {
 }
 
 .name {
-    margin: 10px 0 20px 0;
+    margin: 10px 0 12px 0;
 }
 
 .kana {
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
+    padding-top: 8px;
 }
 
 .firstName {
@@ -303,9 +304,6 @@ dt.last {
     margin-right: 20px;
 }
 
-#AccountPasswd {
-    margin-right: 20px;
-}
 
 span.confirm {
     margin-right: 10px;
@@ -327,4 +325,15 @@ span.confirm {
     background: url(../img/confirm_btn.png) no-repeat;
     -webkit-background-size: 100%;
             background-size: 100%;
+}
+
+.errorMsg{
+    color: #fd5812;
+    font-size: 12px;
+}
+
+.errorMsg2{
+    color: #fd5812;
+    font-size: 12px;
+    margin-left: 20px;
 }
