@@ -312,7 +312,8 @@ section .wrapper dl dd .btnArea > a:first-child {
 	line-height: 20px
 }
 #seminarQ .noq {
-	text-align: center
+	text-align: center;
+	color: #333;
 }
 #seminarQ li a {
 	position: absolute;
