@@ -34,11 +34,8 @@
 							'?' => array('id' => $teachme['TeachMe']['id'])
 							)); ?>
 					</div>
-					<div class="middle">
-						<?php echo count($teachme['MeToo']) . '人' ?>
-					</div>
 					<div class="right">
-						<a href="#"><img src="<?php echo IMG_PATH ?>metoo.png" alt="私も教えて欲しい" width="140" height="32"></a>
+						<?php echo count($teachme['MeToo']) . '人' ?>
 					</div>
 				</div>
 			</li>

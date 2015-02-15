@@ -76,10 +76,9 @@ h2 {
 
 #needsArea li {
     float: left;
-    width: 474px;
+    width: 306px;
     margin-bottom: 20px;
     margin-left: 30px;
-    padding: 14px 0;
     background: #fff;
 }
 
@@ -87,13 +86,6 @@ h2 {
 #needsArea a {
     text-decoration: none;
     color: #656565;
-}
-
-
-#needsArea .right a {
-    display: block;
-    width: 140px;
-    height: 32px;
 }
 
 
@@ -114,29 +106,26 @@ h2 {
 
 .needsWrapper > div {
     float: left;
+    font-weight: bold;
 }
 
 
 .needsWrapper .left {
     overflow: hidden;
-    width: 233px;
-    padding: 4px 0 0 20px;
+    width: 154px;
+    padding-top: 18px;
+    padding-left: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 
-.needsWrapper .middle {
-    width: 63px;
-    padding: 5px 10px 0 0;
-    text-align: right;
-    color: #48b2c2;
-}
-
-
 .needsWrapper .right {
-    width: 140px;
-    padding-top: 2px;
+    width: 84px;
+    background: #ffb425 url("../img/bg_needslist.png") bottom left no-repeat;
+    padding: 18px 18px 14px 30px;
+    color: #fff;
+    text-align: right;
 }
 
 
