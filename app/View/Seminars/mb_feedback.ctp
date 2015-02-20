@@ -11,7 +11,7 @@
 ?>
 
 <div class="header_img">
-	<h2><img src="<?php echo IMG_PATH; ?>questions_h.png" alt="勉強会フィードバック" width="306" height="109"></h2>
+	<h2><img src="<?php echo IMG_PATH; ?>feedback_h.png" alt="勉強会フィードバック" width="306" height="109"></h2>
 </div>
 
 <?php echo $this->Form->hidden('seminar_id', array('value' => $seminar['Seminar']['id'], 'id' => 'seminar_id')); ?>
@@ -24,7 +24,7 @@
 		</div>
 		<div id="feedbackGood">
 			<div class="feedbackTextWrapper">
-				<h4>参加したセミナーは良かったですか？</h4>
+				<h4>参加した勉強会は良かったですか？</h4>
 			</div>
 			<!--<p id='gjcnt'><?php //echo $seminar['Seminar']['gj']; ?></p>-->
 			<div id="goodBtn">

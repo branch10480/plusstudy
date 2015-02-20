@@ -57,6 +57,7 @@ function ajax_submit(form_, callbacks_) {
 }
 $(function () {
 	// 連打防止
+	/*
 	var resetTimer = null;
 	$.cookie('searchFlag', 'true');
 	$('a').not('rh').click(function(event) {
@@ -68,4 +69,5 @@ $(function () {
 			$.cookie('searchFlag', 'false');
 		}
 	});
+	*/
 });
