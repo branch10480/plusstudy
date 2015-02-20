@@ -355,8 +355,8 @@ section .wrapper dl dd .btnArea > a:first-child {
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	width: 222px;
-	height: 50px;
+	width: 200px;
+	height: 40px;
 }
 
 .questionWrapper {
@@ -481,3 +481,51 @@ section .wrapper dl dd .btnArea > a:first-child {
 	margin: 0 auto;
 }
 
+/* join & cancel
+----------------------------------------------------------------------*/
+
+#PartSmnConfirm .wrapper {
+	background: #fff;
+}
+
+#PartSmnConfirm .wrapper .inner {
+	width: 810px;
+	margin: 0 auto;
+}
+
+#PartSmnConfirm p.msg {
+	padding-top: 60px;
+	font-size: 24px;
+	color: #656565;
+}
+
+#PartSmnConfirm h3 {
+	margin-top: 10px;
+	padding-bottom: 15px;
+	font-size: 36px;
+	color: #656565;
+	border-bottom: 1px #4cbdce solid;
+}
+
+#PartSmnConfirm dl {
+	margin-top: 40px;
+}
+
+#PartSmnConfirm dt {
+	font-weight: bold;
+	margin-top: 25px;
+	font-size: 18px;
+	margin-bottom: 0px;
+	line-height: 5px;
+	color: #656565;
+}
+
+#PartSmnConfirm dd {
+	font-size: 22px;
+	color: #4cbdce;
+}
+
+#PartSmnConfirm .btnarea {
+	padding-bottom: 50px;
+	margin-bottom: 50px;
+}

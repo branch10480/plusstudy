@@ -770,7 +770,9 @@ class SeminarsController extends AppController {
 		if($this->request->is('post')) {
 
 			// 参加ボタンが押された時
+			/*
 			if(isset($this->request->data['join'])) {
+			*/
 				// Participantsにデータ登録
 				$param = array(
 					'seminar_id' => $id,
@@ -785,7 +787,9 @@ class SeminarsController extends AppController {
 
 				// 詳細ページへリダイレクト
 				return $this->redirect(array('action' => 'details', '?' => array('id' => $id)));
+			/*
 			}
+			*/
 		}
 	}
 
@@ -823,7 +827,9 @@ class SeminarsController extends AppController {
 		if($this->request->is('post')) {
 
 			// キャンセルボタンが押された時
+			/*
 			if(isset($this->request->data['cancel'])) {
+			*/
 				// Participantsのレコード削除
 				$param = array(
 					'seminar_id' => $id,
@@ -837,7 +843,9 @@ class SeminarsController extends AppController {
 
 				// 詳細ページへリダイレクト
 				return $this->redirect(array('action' => 'details', '?' => array('id' => $id)));
+			/*
 			}
+			*/
 		}
 	}
 

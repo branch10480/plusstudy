@@ -1,31 +1,61 @@
-<div>
-	<p><b>この勉強会に参加しますか？</b></p>
-	<p><?php echo $seminar['Seminar']['name'] ?></p>
-	<br>
+<?php
+	// このページ限定のCSS,JS
+	$this->Html->script(array(
+		'AnchorSubmit',
+		), array('inline' => false));
+	$this->Html->css(array(
+		'seminars',
+		), null, array('inline' => false));
+?>
 
-	<p><b>開催場所</b></p>
-	<p><?php echo $seminar['Seminar']['place'] ?></p>
+<div id="PartSmnConfirm">
+	<h2><img src="<?php echo IMG_PATH; ?>seminarparticipation_h.png" alt="勉強会参加確認" width="306" height="109"></h2>
+	<div class="wrapper">
+		<div class="inner">
+			<p class="msg">この勉強会に参加しますか？</p>
+			<h3><?php echo $seminar['Seminar']['name'] ?></h3>
 
-	<p><b>参加人数</b></p>
-	<p><?php echo count($seminar['Participant']) . '/' . $seminar['Seminar']['upper_limit'];?></p>
+			<dl>
+				<dt>開催日時</dt>
+				<dd><?php
+						list($startDate, $startTime) = explode(' ', $seminar['Seminar']['start']);
+						list($date, $month, $day) = explode('-', $startDate);
+						list($startH, $startM) = explode(':', $startTime);
+						$endTime = explode(' ', $seminar['Seminar']['end'])[1];
+						list($endH, $endM) = explode(':', $endTime);
+						echo $date . '年' . $month . '月' . $day . '日 ' . sprintf('%02d', $startH) . ':' . sprintf('%02d', $startM) . '〜' . sprintf('%02d', $endH) . ':' . sprintf('%02d', $endM);
+					?>
+				</dd>
 
-	<p><b>開催日付</b></p>
-	<p><?php echo $seminar['Seminar']['start'] . '〜' . $seminar['Seminar']['end']; ?></p>
+				<dt>開催場所</dt>
+				<dd><?php echo $seminar['Seminar']['place'] ?></dd>
 
-	<p><b>予約締切日時</b></p>
-	<p><?php echo $seminar['Seminar']['reservation_limit'] ?></p>
-</div>
-<br>
+				<dt>参加人数 / 募集人数</dt>
+				<dd><?php echo count($seminar['Participant']) . '人 / ' . $seminar['Seminar']['upper_limit'] . '人';?></dd>
 
-
-<?php echo $this->Form->create('Button'); ?>
-<div>
-	<?php echo $this->Html->link('戻る', array(
-		'controller' => 'Seminars' ,
-	 	'action' => 'details',
-	 	'?' => array('id' => $seminar['Seminar']['id'])
-	 	)); ?>
-	<?php echo $this->Form->submit('参加する', array('name' => 'join')); ?>
-</div>
-<?php echo $this->Form->end(); ?>
-<hr>
+				<dt>予約締め切り日時</dt>
+				<dd>
+					<?php
+						list($limitDate, $limitTime) = explode(' ', $seminar['Seminar']['reservation_limit']);
+						list($limitDate, $limitMonth, $limitDay) = explode('-', $limitDate);
+						list($limitH, $limitM) = explode(':', $limitTime);
+						echo $limitDate . '年' . $limitMonth . '月' . $limitDay . '日 ' . sprintf('%02d', $limitH) . ':' . sprintf('%02d', $limitM);
+					?>
+				</dd>
+			</dl>
+			<?php echo $this->Form->create('Button'); ?>
+			<!--<div>
+				<?php echo $this->Html->link('戻る', array(
+					'controller' => 'Seminars' ,
+				 	'action' => 'details',
+				 	'?' => array('id' => $seminar['Seminar']['id'])
+				 	)); ?>
+				<?php echo $this->Form->submit('参加する', array('name' => 'join')); ?>
+			</div>-->
+			<?php echo $this->Form->end(__('')); ?>
+			<div class="btnarea">
+				<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH . 'lastparticipates_btn.png'; ?>" width="222" height="54" alt="参加する"></a>
+			</div>
+		</div><!-- .inner -->
+	</div><!-- .wrapper -->
+</div><!-- #PartSmnConfirm -->

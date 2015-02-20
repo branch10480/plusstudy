@@ -60,7 +60,7 @@
 						list($limitDate, $limitTime) = explode(' ', $seminar['Seminar']['reservation_limit']);
 						list($limitDate, $limitMonth, $limitDay) = explode('-', $limitDate);
 						list($limitH, $limitM) = explode(':', $limitTime);
-						echo $limitDate . '年' . $limitMonth . '月' . $limitDay . '日<br />' . sprintf('%02d', $limitH) . '時' . sprintf('%02d', $limitM) . '分';
+						echo $limitDate . '年' . $limitMonth . '月' . $limitDay . '日<br />' . sprintf('%02d', $limitH) . ':' . sprintf('%02d', $limitM);
 					?>
 					</dd>
 					<dt>主催者</dt>
