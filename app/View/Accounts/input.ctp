@@ -78,7 +78,7 @@
 				<dt>メールアドレス（公開用）</dt>
 				<dd><?php echo $this->Form->text('pub_mailaddress', array( 'class' => 'text')); ?></dd>
 				<dt class="last">自己PR（200字以内）</dt>
-				<dd class="last"><?php echo $this->Form->textarea('description', array( 'class' => 'pr')); ?><br /><? echo $msgPR; ?></dd>
+				<dd class="last cf"><?php echo $this->Form->textarea('description', array( 'class' => 'pr')); ?><br /><span class="errorMsg3"><? echo $msgPR; ?></span></dd>
 			</dl>
 			<?php echo $this->Form->submit('', array( 'class' => 'btn')); ?>
 	</div>
