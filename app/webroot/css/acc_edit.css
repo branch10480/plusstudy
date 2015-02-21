@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+#profile_edit_h {
+	margin: 0;
+	padding: 80px 0;
+	background: #4cbdce;
+}
+#profile_edit_h .title {
+	margin: 0 auto;
+}
+#profile_edit_btnArea {
+	background: #4cbdce;
+	padding: 40px 0;
+	text-align: center;
+}
+.btn {
+	display: none;
+}
+#profile_edit_btnArea .submitBtn {
+	margin-left: 20px;
+}
