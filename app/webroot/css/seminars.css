@@ -150,7 +150,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 #newSmnConfirm {
 	color: #656565;
 	font-size: 16px;
-	margin-top: 2px;
+	margin-top: 190px;
 }
 #newSmnConfirm .wrapper,
 #seminarQ .wrapper {
@@ -168,7 +168,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 	width: 100%;
 	height: 300px;
 	overflow: hidden;
-	margin-top: -60px;
+	margin-top: -210px;
 	background: #eee;
 	border: none;
 }
@@ -198,7 +198,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 #newSmnConfirm aside > div {
 	width: 222px;
 	padding: 40px;
-	border: 2px solid #4cbdce;
+	border: 1px solid #4cbdce;
 }
 #newSmnConfirmbtnArea {
 	text-align: center;
