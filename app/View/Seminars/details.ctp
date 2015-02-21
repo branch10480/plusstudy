@@ -65,7 +65,7 @@
 					</dd>
 					<dt>主催者</dt>
 					<dd>
-						<p><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name'] ?></p>
+						<p><?php echo htmlspecialchars($seminar['Account']['last_name']) . ' ' . htmlspecialchars($seminar['Account']['first_name']); ?></p>
 						<div class="profImg">
 						<?php
 							if (!empty($seminar['Account']['img_ext'])) {

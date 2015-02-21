@@ -100,7 +100,7 @@
 						<li>
 							<dl>
 								<dt>主催者</dt>
-								<dd class="hostname"><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?></dd>
+								<dd class="hostname"><?php echo htmlspecialchars($seminar['Account']['last_name']) . ' ' . htmlspecialchars($seminar['Account']['first_name']); ?></dd>
 								<dt>開催日時</dt>
 								<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingH . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
 							</dl>
@@ -108,7 +108,7 @@
 					</ul>
 				</div>
 				<div class="middle">
-					<h3><?php echo $seminar['Seminar']['name']; ?></h3>
+					<h3><?php echo htmlspecialchars($seminar['Seminar']['name']); ?></h3>
 				</div>
 				<div class="bottom">
 					<ul class="cf">

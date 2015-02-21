@@ -29,8 +29,8 @@
 </div>
 <div class="plot">
 	<div class="detail_contents_top">
-		<h3><?php echo $teachme['TeachMe']['title'] ?></h3>
-		<p><?php echo nl2br($teachme['TeachMe']['content']); ?></p>
+		<h3><?php echo htmlspecialchars($teachme['TeachMe']['title']); ?></h3>
+		<p><?php echo nl2br(htmlspecialchars($teachme['TeachMe']['content'])); ?></p>
 	</div>
 	<div class="detail_contents_bottom cf">
 		<div class="metoo_num">
@@ -39,7 +39,7 @@
 				<span><?php echo count($metoos);?>
 					<span class="metoo_name">
 						<?php foreach($metoos as $metoo): ?>
-							<span id="name"><?php echo $metoo['Account']['last_name'] . $metoo['Account']['first_name']; ?></span>
+							<span id="name"><?php echo htmlspecialchars($metoo['Account']['last_name']) . htmlspecialchars($metoo['Account']['first_name']); ?></span>
 						<?php endforeach; ?>
 					</span>
 				</span> 人

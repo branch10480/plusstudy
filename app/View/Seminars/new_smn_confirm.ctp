@@ -25,7 +25,7 @@
 					echo '<img src="' . $smnImgId . '" alt="">';
 			?>
 		</div>
-		<h3><?php echo $smnName; ?></h3>
+		<h3><?php echo htmlspecialchars($smnName); ?></h3>
 		<div class="cf">
 			<article>
 			<h4>詳細</h4>
@@ -41,7 +41,7 @@
 						echo $date . '年' . $month . '月' . $day . '日<br />' . sprintf('%02d', $startH) . ':' . sprintf('%02d', $startM) . '〜' . sprintf('%02d', $endH) . ':' . sprintf('%02d', $endM);
 					?></dd>
 					<dt>開催場所</dt>
-					<dd><?php echo $place; ?></dd>
+					<dd><?php echo htmlspecialchars($place); ?></dd>
 					</dd>
 					<dt>募集人数</dt>
 					<dd>
@@ -56,7 +56,7 @@
 					</dd>
 					<dt>主催者</dt>
 					<dd>
-						<p><?php echo $hostUser['last_name'] . ' ' . $hostUser['first_name'] ?></p>
+						<p><?php echo htmlspecialchars($hostUser['last_name']) . ' ' . htmlspecialchars($hostUser['first_name']); ?></p>
 						<div class="profImg">
 							<?php echo $this->HTML->image('profile/' . $hostUser['id'] . '.' . $hostUser['img_ext'], array('class' => 'optim')); ?>
 						</div>

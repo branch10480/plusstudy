@@ -14,8 +14,8 @@
 
 <div class="plot">
 	<div class="confirm_contents">
-		<h2><?php echo $title ?></h2>
-		<p><?php echo $content ?></p>
+		<h2><?php echo htmlspecialchars($title); ?></h2>
+		<p><?php echo htmlspecialchars($content); ?></p>
 	</div>
 
 	<div class="confirm_links">

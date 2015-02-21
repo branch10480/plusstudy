@@ -37,14 +37,14 @@
 		<div class="center">
 			<h3>
 				<ruby>
-					<?php echo $account['Account']['last_name']; ?><rt><?php echo $account['Account']['last_ruby']; ?></rt>
-					 <?php echo $account['Account']['first_name']; ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
+					<?php echo htmlspecialchars($account['Account']['last_name']); ?><rt><?php echo $account['Account']['last_ruby']; ?></rt>
+					 <?php echo htmlspecialchars($account['Account']['first_name']); ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
 				</ruby>
 			</h3>
 			<ul>
 				<li>学科 : <?php echo $account['Account']['subject']; ?></li>
 				<li>学年 : <?php echo $account['Account']['grade'] . '年生'; ?></li>
-				<li>メールアドレス : <?php echo $account['Account']['pub_mailaddress']; ?></li>
+				<li>メールアドレス : <?php echo htmlspecialchars($account['Account']['pub_mailaddress']); ?></li>
 			</ul>
 		</div>
 		<div class="right">
@@ -65,15 +65,15 @@
 	<table>
 		<tr>
 			<th>スキル</th>
-			<td><?php echo $account['Account']['skill']; ?></td>
+			<td><?php echo htmlspecialchars($account['Account']['skill']); ?></td>
 		</tr>
 		<tr>
 			<th>資格</th>
-			<td><?php echo $account['Account']['licenses']; ?></td>
+			<td><?php echo htmlspecialchars($account['Account']['licenses']); ?></td>
 		</tr>
 		<tr>
 			<th>PR文</th>
-			<td><?php echo $account['Account']['description']; ?></td>
+			<td><?php echo htmlspecialchars($account['Account']['description']); ?></td>
 		</tr>
 	</table>
 </section>
@@ -132,7 +132,7 @@
 						<li>
 							<dl>
 								<dt>主催者</dt>
-								<dd class="hostname"><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?></dd>
+								<dd class="hostname"><?php echo htmlspecialchars($seminar['Account']['last_name']) . ' ' . htmlspecialchars($seminar['Account']['first_name']); ?></dd>
 								<dt>開催日時</dt>
 								<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingH . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
 							</dl>
@@ -140,7 +140,7 @@
 					</ul>
 				</div>
 				<div class="middle">
-					<h3><?php echo $seminar['Seminar']['name']; ?></h3>
+					<h3><?php echo htmlspecialchars($seminar['Seminar']['name']); ?></h3>
 				</div>
 				<div class="bottom">
 					<ul class="cf">
@@ -219,7 +219,7 @@
 						<li>
 							<dl>
 								<dt>主催者</dt>
-								<dd class="hostname"><?php echo $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name']; ?></dd>
+								<dd class="hostname"><?php echo htmlspecialchars($seminar['Account']['last_name']) . ' ' . htmlspecialchars($seminar['Account']['first_name']); ?></dd>
 								<dt>開催日時</dt>
 								<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingH . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
 							</dl>
@@ -227,7 +227,7 @@
 					</ul>
 				</div>
 				<div class="middle">
-					<h3><?php echo $seminar['Seminar']['name']; ?></h3>
+					<h3><?php echo htmlspecialchars($seminar['Seminar']['name']); ?></h3>
 				</div>
 				<div class="bottom">
 					<ul class="cf">
