@@ -60,6 +60,7 @@
 <section>
 	<div class="wrapper">
 		<?php echo $this->Form->create('Seminar'); ?>
+		<?php echo $this->Form->hidden('teach_me_id', array('value' => ($teachme == null) ? null : $teachme['TeachMe']['id']));  ?>
 		<?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
 		<dl>
 			<dt>セミナーカバー画像</dt>
@@ -70,6 +71,9 @@
 				</div>
 			</dd>
 			<dd id="coverImg" class="newSmnInputCover"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
+			<dt>タグ付けされている教えて欲しいこと</dt>
+			<dd><?php echo ($teachme == null) ? 'なし' : $teachme['TeachMe']['title']; ?></dd>
+			<dd><?php echo ($teachme == null) ? '' : $teachme['TeachMe']['content']; ?></dd><br />
 			<dt>セミナー名称</dt>
 			<dd><?php echo $this->Form->text('Seminar.name', array('class' => 'text')); ?></dd>
 			<dd class="errMsg"><?php echo $eSmnName; ?></dd>
