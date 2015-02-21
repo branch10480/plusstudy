@@ -157,7 +157,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 #newSmnConfirm h3 {
 	font-size: 18px;
-	border-bottom: 0.5px solid #cec6c3;
+	border-bottom: 1px solid #cec6c3;
 	margin: 0 30px;
 	padding: 23px 0;
 }
@@ -253,10 +253,10 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 #newSmnConfirm dl {
-	border-top: 0.5px #d6d6d9 solid;
+	border-top: 1px #d6d6d9 solid;
 }
 #newSmnConfirm dl > div {
-	border-bottom: 0.5px #d6d6d9 solid;
+	border-bottom: 1px #d6d6d9 solid;
 	height: 35px;
 }
 #newSmnConfirm dt {
@@ -444,7 +444,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 	margin-bottom: 12px;
 	padding-bottom: 12px;
 	line-height: 18px;
-	border-bottom: solid 0.5px #4cbdce;
+	border-bottom: solid 1px #4cbdce;
 	color: #656565;
 }
 
@@ -538,7 +538,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 	padding-bottom: 10px;
 	font-size: 15px;
 	color: #656565;
-	border-bottom: 0.5px #4cbdce solid;
+	border-bottom: 1px #4cbdce solid;
 }
 
 #PartSmnConfirm dl {
