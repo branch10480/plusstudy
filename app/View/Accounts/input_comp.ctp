@@ -17,6 +17,6 @@
 	<div class="container_body_complete">
 		<h2>アカウント登録が完了しました！</h2>
 		<p>さっそく、ログインしてplusStudyを使ってみよう！</p>
-		<a href="#"><img class="goLogin" src="<?php echo IMG_PATH . 'gologin_btn.png'; ?>" alt="ログイン画面へ"></a>
+		<?php echo $this->Html->link($this->Html->image('gologin_btn.png', array('class' => 'goLogin', 'alt' => 'ログイン画面へ')), array('action' => 'index'), array('escape' => false)); ?>
 	</div>
 </div>
