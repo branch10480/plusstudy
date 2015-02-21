@@ -215,7 +215,6 @@ function delSmnImg(event) {
 	if (!window.confirm('この写真を削除します。よろしいですか？')) return;
 
 	//----- 削除処理 -----
-	alert(fileName);
 	$.ajax({
 		url: WEB_ROOT + 'SeminarImages/delSmnImgs/' + fileName,
 		type: 'POST',
@@ -227,14 +226,22 @@ function delSmnImg(event) {
 		// 画像データの再取得&表示
 		getSmnImgs();
 
-		// 削除する画像が選択状態のときはこれを解除
+		//-- 削除する画像が選択状態のときはこれを解除 --
 		var txt = $('#coverImg img').attr('src') + '';
 		var arr = txt.split('/');
 		if (arr[arr.length - 1] === fileName) {
+			// カバー画像
 			$('#SeminarSeminarImgId').val('');
 			$('#coverImg').html('');
 		}
-
+		// リッチエディタ
+		txt = WEB_ROOT + 'img/seminar/' + fileName;
+		$($('#editIF')[0].contentDocument.body).find('img').each(function () {
+			console.log(($(this).attr('src')));
+			if ($(this).attr('src') == txt) {
+				$(this).replaceWith('');
+			}
+		});
 	})
 	.fail(function() {
 		console.log("error");
