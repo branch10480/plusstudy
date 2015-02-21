@@ -465,46 +465,60 @@ section .wrapper dl dd .btnArea > a:first-child {
 	margin: 10px auto;
 }
 
-/* Feedback
+/* join & cancel
 ----------------------------------------------------------------------*/
 
-.feedbackWrapper {
-	margin: 0px 10px;
-	margin-bottom: 15px;
-	padding: 20px 0px 10px 0px;
-	background-color: #fff;
+#PartSmnConfirm .wrapper {
+	background: #fff;
 }
 
-.feedbackWrapper .inner {
+#PartSmnConfirm h2 {
+	margin: 0 auto;
+	margin-top: 10px;
+	padding: 15px 0;
+}
+
+#PartSmnConfirm .wrapper .inner {
 	margin: 0 15px;
 }
 
-#feedbackTitle h3 {
-	color: #656565;
-	font-size: 17px;
-}
-
-.feedbackTextWrapper {
-	margin-bottom: 10px;
-	color: #4cbdce;
+#PartSmnConfirm p.msg {
+	padding-top: 20px;
 	font-size: 12px;
+	font-weight: bold;
+	color: #656565;
 }
 
-#feedbackGood {
-	margin-top: 25px;
-	margin-bottom: 10px;
+#PartSmnConfirm h3 {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	font-size: 15px;
+	color: #656565;
+	border-bottom: 0.5px #4cbdce solid;
 }
 
-#goodBtn {
-	height: 40px;
+#PartSmnConfirm dl {
+	margin-top: 20px;
 }
 
-#solutionBtn {
-	height: 40px;
+#PartSmnConfirm dt {
+	font-weight: bold;
+	margin-top: 18px;
+	font-size: 12px;
+	margin-bottom: 0px;
+	line-height: 0px;
+	color: #656565;
 }
 
-#feedbackEnd {
-	width: 299px;
-	margin: 0 auto;
+#PartSmnConfirm dd {
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 14px;
+	color: #4cbdce;
 }
 
+#PartSmnConfirm .btnarea {
+	width: 220px;
+	padding-bottom: 15px;
+	margin: 20px auto;
+}
