@@ -469,31 +469,30 @@ section .wrapper dl dd .btnArea > a:first-child {
 ----------------------------------------------------------------------*/
 
 .feedbackWrapper {
-	width: 100%;
-	margin-bottom: 40px;
-	padding: 50px 0px 60px 0px;
+	margin: 0px 10px;
+	margin-bottom: 15px;
+	padding: 20px 0px 10px 0px;
 	background-color: #fff;
 }
 
 .feedbackWrapper .inner {
-	width: 810px;
-	margin: 0 auto;
+	margin: 0 15px;
 }
 
 #feedbackTitle h3 {
 	color: #656565;
-	font-size: 30px;
+	font-size: 17px;
 }
 
 .feedbackTextWrapper {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	color: #4cbdce;
-	font-size: 18px;
+	font-size: 12px;
 }
 
 #feedbackGood {
-	margin-top: 45px;
-	margin-bottom: 40px;
+	margin-top: 25px;
+	margin-bottom: 10px;
 }
 
 #goodBtn {
@@ -505,7 +504,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 #feedbackEnd {
-	width: 810px;
+	width: 299px;
 	margin: 0 auto;
 }
 
