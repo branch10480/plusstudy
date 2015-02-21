@@ -157,7 +157,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 #newSmnConfirm h3 {
 	font-size: 18px;
-	border-bottom: 0.5px solid #cec6c3;
+	border-bottom: 1px solid #cec6c3;
 	margin: 0 30px;
 	padding: 23px 0;
 }
@@ -253,10 +253,10 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 #newSmnConfirm dl {
-	border-top: 0.5px #d6d6d9 solid;
+	border-top: 1px #d6d6d9 solid;
 }
 #newSmnConfirm dl > div {
-	border-bottom: 0.5px #d6d6d9 solid;
+	border-bottom: 1px #d6d6d9 solid;
 	height: 35px;
 }
 #newSmnConfirm dt {
@@ -444,7 +444,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 	margin-bottom: 12px;
 	padding-bottom: 12px;
 	line-height: 18px;
-	border-bottom: solid 0.5px #4cbdce;
+	border-bottom: solid 1px #4cbdce;
 	color: #656565;
 }
 
@@ -469,31 +469,30 @@ section .wrapper dl dd .btnArea > a:first-child {
 ----------------------------------------------------------------------*/
 
 .feedbackWrapper {
-	width: 100%;
-	margin-bottom: 40px;
-	padding: 50px 0px 60px 0px;
+	margin: 0px 10px;
+	margin-bottom: 15px;
+	padding: 20px 0px 10px 0px;
 	background-color: #fff;
 }
 
 .feedbackWrapper .inner {
-	width: 810px;
-	margin: 0 auto;
+	margin: 0 15px;
 }
 
 #feedbackTitle h3 {
 	color: #656565;
-	font-size: 30px;
+	font-size: 17px;
 }
 
 .feedbackTextWrapper {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	color: #4cbdce;
-	font-size: 18px;
+	font-size: 12px;
 }
 
 #feedbackGood {
-	margin-top: 45px;
-	margin-bottom: 40px;
+	margin-top: 25px;
+	margin-bottom: 10px;
 }
 
 #goodBtn {
@@ -505,7 +504,65 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 #feedbackEnd {
-	width: 810px;
+	width: 299px;
 	margin: 0 auto;
 }
 
+
+/* join & cancel
+----------------------------------------------------------------------*/
+
+#PartSmnConfirm .wrapper {
+	background: #fff;
+}
+
+#PartSmnConfirm h2 {
+	margin: 0 auto;
+	margin-top: 10px;
+	padding: 15px 0;
+}
+
+#PartSmnConfirm .wrapper .inner {
+	margin: 0 15px;
+}
+
+#PartSmnConfirm p.msg {
+	padding-top: 20px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #656565;
+}
+
+#PartSmnConfirm h3 {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	font-size: 15px;
+	color: #656565;
+	border-bottom: 1px #4cbdce solid;
+}
+
+#PartSmnConfirm dl {
+	margin-top: 20px;
+}
+
+#PartSmnConfirm dt {
+	font-weight: bold;
+	margin-top: 18px;
+	font-size: 12px;
+	margin-bottom: 0px;
+	line-height: 0px;
+	color: #656565;
+}
+
+#PartSmnConfirm dd {
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 14px;
+	color: #4cbdce;
+}
+
+#PartSmnConfirm .btnarea {
+	width: 220px;
+	padding-bottom: 15px;
+	margin: 20px auto;
+}

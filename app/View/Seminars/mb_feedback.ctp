@@ -11,7 +11,7 @@
 ?>
 
 <div class="header_img">
-	<h2><img src="<?php echo IMG_PATH; ?>feedback_h.png" alt="勉強会フィードバック" width="306" height="109"></h2>
+	<h2><img src="<?php echo MB_IMG_PATH; ?>feedback_h.png" alt="勉強会フィードバック" width="153" height="55"></h2>
 </div>
 
 <?php echo $this->Form->hidden('seminar_id', array('value' => $seminar['Seminar']['id'], 'id' => 'seminar_id')); ?>
@@ -28,7 +28,7 @@
 			</div>
 			<!--<p id='gjcnt'><?php //echo $seminar['Seminar']['gj']; ?></p>-->
 			<div id="goodBtn">
-				<a href="#" id='gj'><?php echo $this->Html->image('good_btn.png', array('width' => '138', 'height' => '40')) ?></a>
+				<a href="#" id='gj'><?php echo $this->Html->image('mb_img/good_btn.png', array('width' => '103', 'height' => '30')) ?></a>
 			</div>
 		</div>
 
@@ -40,7 +40,7 @@
 				<h4><?php echo 'あなたの教えて欲しいこと「' . $seminar['TeachMe']['title'] . '」は解決しましたか？'; ?></h4>
 			</div>
 			<div id="solutionBtn">
-				<a href="#" id='solution'><?php echo $this->Html->image('solution_btn.png', array('width' => '138', 'height' => '40')) ?></a>
+				<a href="#" id='solution'><?php echo $this->Html->image('mb_img/solution_btn.png', array('width' => '103', 'height' => '30')) ?></a>
 			</div>
 		</div>
 	</div>
@@ -49,5 +49,5 @@
 <div id="feedbackEnd">
 	<?php echo $this->Form->create('Feedback'); ?>
 	<?php echo $this->Form->end(__('')); ?>
-	<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH . 'feedbackend_btn.png'; ?>" width="222" height="54" alt="フィードバック終了"></a>
+	<a href="#" class="btnSubmit"><img src="<?php echo MB_IMG_PATH . 'feedbackend_btn.png'; ?>" width="299" height="46" alt="フィードバック終了"></a>
 </div>
