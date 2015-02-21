@@ -287,6 +287,12 @@ class SeminarsController extends AppController {
 
 		$this->set('title_for_layout', '新規勉強会登録');
 
+		// 指定されたIDを元にニーズ情報を取得
+		$teachme = null;
+		if(isset($this->params['url']['needs'])) {
+			$options = array('conditions' => array('TeachMe.' . $this->TeachMe->primaryKey => $this->params['url']['needs']));
+			$teachme = $this->TeachMe->find('first', $options);
+		}
 
 		$fileUrlArr = array();
 		$smnName = '';
@@ -317,14 +323,8 @@ class SeminarsController extends AppController {
 		$eRsvLimitM = '';
 		$eDsc = '';
 
-
-
 		if (
-				($this->referer() === ROOT_URL . 'Seminars' ||
-					$this->referer() === ROOT_URL . 'Seminars/' ||
-					$this->referer() === ROOT_URL . 'Seminars/' . $this->action ||
-					$this->referer() === ROOT_URL . 'Seminars/' . $this->action . '/'
-				)
+				preg_match('|^' . ROOT_URL . 'Seminars|', $this->referer())
 				&& $this->request->is('post')
 			) {
 			// 自分自身から送信
@@ -345,7 +345,6 @@ class SeminarsController extends AppController {
 			$rsvLimitM = 0;
 			$dsc = $this->request->data['Seminar']['description'];
 			$smnImgId = $this->request->data['Seminar']['seminar_img_id'];
-
 			// --- バリデーションチェック ---
 			// 勉強会名
 			if ($smnName === '') {
@@ -461,6 +460,7 @@ class SeminarsController extends AppController {
 				'dsc' => $dsc,
 				'smnImgId' => $smnImgId,
 				'accId' => $this->Session->read('Auth.id'),
+				'teachme' => $teachme,
 			));
 	}
 
@@ -495,6 +495,7 @@ class SeminarsController extends AppController {
 				'rsvLimitM' => $newSmn['reservation_limit_m'],
 				'dsc' => $newSmn['description'],
 				'smnImgId' => $newSmn['seminar_img_id'],
+				'taechmeid' => $newSmn['teach_me_id'],
 			));
 
 		// ログインユーザの情報を首都区
@@ -548,6 +549,7 @@ class SeminarsController extends AppController {
 						'start' => $start,
 						'end' => $end,
 						'description' => $rcvData['description'],
+						'teach_me_id' => $rcvData['teach_me_id'],
 					),
 			);
 

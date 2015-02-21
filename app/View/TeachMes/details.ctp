@@ -52,10 +52,9 @@
 	</div>
 	<div class="detail_links">
 		<a href="<?php echo ROOT_URL ; ?>"><img src="<?php echo IMG_PATH . 'backtop_btn.png'; ?>" width="138" height="54" alt="トップに戻る"></a>
-		<a href="<?php echo ROOT_URL . 'Seminars/index/'; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容に合った勉強会を作成する" width="306" height="54"></a>
+		<a href="<?php echo ROOT_URL . 'Seminars?needs=' . $teachme['TeachMe']['id']; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容に合った勉強会を作成する" width="306" height="54"></a>
 	</div>
 </div>
-
 
 	<?php echo $this->Form->create('MeToo', array('class' => 'hidden')); ?>
 
