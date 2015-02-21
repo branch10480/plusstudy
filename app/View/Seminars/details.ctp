@@ -18,7 +18,7 @@
 </script>
 
 
-<h2><img src="<?php echo IMG_PATH; ?>seminar_h.png" alt="勉強会作成確認" width="306" height="109"><span class="hidden">勉強会詳細</span></h2>
+<!-- <h2><img src="<?php echo IMG_PATH; ?>seminar_h.png" alt="勉強会作成確認" width="306" height="109"><span class="hidden">勉強会詳細</span></h2> -->
 <section id="newSmnConfirm">
 	<div class="wrapper">
 		<?php
