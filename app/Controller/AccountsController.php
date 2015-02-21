@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Sanitize', 'Utility');
 /**
  * Accounts Controller
  *
@@ -129,7 +130,7 @@ class AccountsController extends AppController {
 		// セミナー一覧を取得
 		$options = array(
 			'conditions' => array(
-					//'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
+					'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
 				)
 		);
 		$this->set('seminars', $this->Seminar->find('all', $options));
@@ -501,8 +502,8 @@ class AccountsController extends AppController {
 			//----- 成功 -----
 
 			// 仮登録レコード削除
-			$query = "DELETE FROM newacc_tmps WHERE passwd = " . $this->Session->read('NewAcc1Pass');
-			$query .= " AND mailaddress = '" . $this->Session->read('NewAcc.mailaddress') ."'";
+			$query = "DELETE FROM newacc_tmps WHERE passwd = '" . $this->Session->read('NewAcc1Pass') . "'";
+			$query .= " AND mailaddress = '" . Sanitize::escape($this->Session->read('NewAcc.mailaddress')) ."'";
 			$this->NewaccTmp->query($query);
 
 			// 新規アカウント登録セッション削除

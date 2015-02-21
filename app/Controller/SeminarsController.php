@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Sanitize', 'Utility');
 /**
  * Seminars Controller
  *
@@ -595,14 +596,14 @@ class SeminarsController extends AppController {
 
 		$data = array(
 			'Seminar.seminar_image_id' => +$seminarImgId,
-			'Seminar.name' => "'" . $rcvData['name'] . "'",
-			'Seminar.reservation_limit' => "'" . $rsvLim . "'",
-			'Seminar.place' => "'" . $rcvData['place'] . "'",
+			'Seminar.name' => "'" . Sanitize::escape($rcvData['name']) . "'",
+			'Seminar.reservation_limit' => "'" . Sanitize::escape($rsvLim) . "'",
+			'Seminar.place' => "'" . Sanitize::escape($rcvData['place']) . "'",
 			'Seminar.account_id' => +$this->Session->read('Auth.id'),
 			'Seminar.upper_limit' => +$rcvData['upper_limit'],
 			'Seminar.start' => "'" . $start . "'",
 			'Seminar.end' => "'" . $end . "'",
-			'Seminar.description' => "'" . $rcvData['description'] . "'",
+			'Seminar.description' => "'" . Sanitize::escape($rcvData['description']) . "'",
 			);
 		$conditions = array('Seminar.id' => $id);
 		// 勉強会登録処理
