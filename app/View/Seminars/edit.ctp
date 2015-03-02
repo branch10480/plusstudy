@@ -4,7 +4,7 @@
 		'richeditor',
 		'BeatPicker',
 		'easyselectbox.min',
-		'SeminarsIndex',
+		'SeminarsEdit',
 		), array('inline' => false));
 	$this->Html->css(array(
 		'BeatPicker',

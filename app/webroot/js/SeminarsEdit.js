@@ -1,4 +1,4 @@
-// SeminarsEdit.js
+// SeminarsIndex.js
 
 //*****************************************************************************
 //
@@ -7,8 +7,17 @@
 //*****************************************************************************
 $(function () {
 
-	// リッチエディタhiddenフィールドから編集エリアへ値の反映
-	$('#editArea').html($('#SeminarDescription').val());
+	// セミナー画像IDを hiddenフィールドに格納
+	if ($('#coverImg').html() !== '') {
+		var smnSrc = $('#coverImg img').attr('src');
+		var arr = smnSrc.split('/');
+		var fileName = arr[arr.length -1];
+		var arr = fileName.split('.');
+		var smnId = arr[arr.length - 2];
+		alert(smnId);
+		$('#SeminarSeminarImgId').val(fileName);
+	}
+
 	//----- セミナー画像一覧取得 -----
 	getSmnImgs();
 
@@ -65,7 +74,7 @@ $(function () {
 
 		//--- メンバ ---
 		var page = 1;
-		var dispNo = 2;					// 1ページに表示する数
+		var dispNo = 4;					// 1ページに表示する数
 		var data = null;
 		var maxPage = 1;
 		var myImgs = null;
@@ -107,7 +116,7 @@ $(function () {
 			for (dataNo = (page-1)*dispNo; dataNo<data.length; dataNo++) {
 				dispCnt++;
 				if (dispCnt > dispNo) break;
-				outStr += '<li><a class="delBtn" onclick="delSmnImg(event)" href="#">×</a><img name="' + data[dataNo]['SeminarImage']['id'] + '" class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /><input type="hidden" value="' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" /></li>';
+				outStr += '<li><a class="delBtn" onclick="delSmnImg(event)" href="#"><img src="' + WEB_ROOT + 'img/batsu.svg" width="16" height="16"></a><img class="smnImg" onload="optim();" onclick="selectImg(event)" src="' + WEB_ROOT + 'img/seminar/' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" alt="' + data[dataNo]['SeminarImage']['description'] + '" width="' + data[dataNo]['SeminarImage']['width'] + '" height="' + data[dataNo]['SeminarImage']['height'] + '" /><input type="hidden" value="' + data[dataNo]['SeminarImage']['id'] + data[dataNo]['SeminarImage']['ext'] + '" /></li>';
 			}
 
 			// 画像出力
@@ -143,6 +152,17 @@ $(function () {
 // Declaration Area
 //
 //*****************************************************************************
+function drive_uploadbtn() {
+	$('#imgUpForm').submit();
+}
+function drive_fileselect_btn() {
+	$('#imgFile').click();
+}
+function update_imginfo(event) {
+	var regrex = /\\|\\/;
+	var arr = $(event.target).val().split(regrex);
+	$('#fileselect_btns dt span').text(arr[arr.length - 1]);
+}
 function selectImg(event) {
 	switch (window.selectImgType) {
 		case 0:
@@ -155,7 +175,6 @@ function selectImg(event) {
 			// coverImgDispArea.appendChild(coverImg);
 			$('#coverImg').html('').append(coverImg);
 			$('#SeminarSeminarImgId').val(event.target.src);
-			$('#SeminarSeminarImgId').val($(event.target).attr('name'));
 			$.closeModalWin();
 			break;
 
@@ -163,7 +182,7 @@ function selectImg(event) {
 			// リッチエディタに画像挿入処理
 			var newImg = document.createElement('img');
 			newImg.src = event.target.src;
-			document.getElementById('editArea').appendChild(newImg);
+			document.getElementById('editIF').contentDocument.body.appendChild(newImg);
 			$.closeModalWin();
 			break;
 
@@ -199,12 +218,16 @@ function optim() {
 }
 
 function delSmnImg(event) {
+
+	event.preventDefault();
+
+	var fileName = $(event.target).parent().parent().find('input').val();
 	// alert($(event.target).parent().find('input').val());
 	if (!window.confirm('この写真を削除します。よろしいですか？')) return;
 
 	//----- 削除処理 -----
 	$.ajax({
-		url: WEB_ROOT + 'SeminarImages/delSmnImgs/' + $(event.target).parent().find('input').val(),
+		url: WEB_ROOT + 'SeminarImages/delSmnImgs/' + fileName,
 		type: 'POST',
 		dataType: 'json',
 	})
@@ -214,6 +237,22 @@ function delSmnImg(event) {
 		// 画像データの再取得&表示
 		getSmnImgs();
 
+		//-- 削除する画像が選択状態のときはこれを解除 --
+		var txt = $('#coverImg img').attr('src') + '';
+		var arr = txt.split('/');
+		if (arr[arr.length - 1] === fileName) {
+			// カバー画像
+			$('#SeminarSeminarImgId').val('');
+			$('#coverImg').html('');
+		}
+		// リッチエディタ
+		txt = WEB_ROOT + 'img/seminar/' + fileName;
+		$($('#editIF')[0].contentDocument.body).find('img').each(function () {
+			console.log(($(this).attr('src')));
+			if ($(this).attr('src') == txt) {
+				$(this).replaceWith('');
+			}
+		});
 	})
 	.fail(function() {
 		console.log("error");
