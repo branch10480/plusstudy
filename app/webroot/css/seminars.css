@@ -1,9 +1,14 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 
 /*---------------------------------
 
 # Universal
+# New Seminar Confirm & Details
+# New Seminar Register
+# Questions
+# Feedback
+# join & cancel
 
 ----------------------------------*/
 
@@ -12,336 +17,337 @@
 /* Universal
 ----------------------------------------------------------------------*/
 h2,h3,h4,p,ul,li,dt,dd {
-	margin: 0;
-	padding: 0;
-	border: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 li {
-	list-style: none;
+    list-style: none;
 }
 .hidden {
-	display: none;
+    display: none;
 }
 h2 {
-	text-align: center;
-	padding: 80px 0 60px;
+    padding: 80px 0 60px;
+    text-align: center;
 }
 section {
-	background: #fff;
-	padding: 60px 0;
+    padding: 60px 0;
+    background: #fff;
 }
 section .wrapper {
-	width: 642px;
-	margin: 0 auto;
+    width: 642px;
+    margin: 0 auto;
 }
 dt {
-	color: #3e99a7;
-	font-size: 18px;
-	font-weight: bold;
-	padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 6px;
+    color: #3e99a7;
 }
 .btnArea {
-	text-align: center;
-	padding: 60px 0;
+    padding: 60px 0;
+    text-align: center;
 }
 .btnArea a {
-	margin-left: 30px;
+    margin-left: 30px;
 }
 .btnArea a:first-child {
-	margin-left: 0;
+    margin-left: 0;
 }
 section .wrapper dl .btnArea {
-	width: 390px;
-	padding: 0;
-	padding-bottom: 20px;
+    width: 390px;
+    padding: 0;
+    padding-bottom: 20px;
 }
 section .wrapper dl .btnArea > a {
-	display: block;
-	height: 59px;
-	width: 138px;
-	float: left;
-	margin-left: 30px;
+    display: block;
+    float: left;
+    width: 138px;
+    height: 40px;
+    margin-left: 30px;
 }
 section .wrapper dl dd .btnArea > a:first-child {
-	float: left;
-	margin-left: 0;
-	width: 222px;
+    float: left;
+    width: 168px;
+    margin-left: 0;
 }
 .newSmnInputCover img {
-	padding-bottom: 20px;
-	max-width: 400px;
-	max-height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    padding-bottom: 20px;
 }
 #rsvLimit {
-	width: 558px;
+    width: 558px;
 }
 #rsvLimit li {
-	float: left;
-	display: block;
-	height: 50px;
-	width: 84px;
+    display: block;
+    float: left;
+    width: 84px;
+    height: 50px;
 }
 #rsvLimit li:first-child {
-	margin-right: 30px;
-	width: 306px;
+    width: 306px;
+    margin-right: 30px;
 }
 #SeminarReservationLimitD {
-	width: 284px;
+    width: 284px;
 }
 #rsvLimit {
-	padding-bottom: 20px;
+    padding-bottom: 20px;
 }
-#rsvLimit .colon,
-#startToEnd .colon,
-#rsvLimit .tilde,
-#startToEnd .tilde {
-	width: 54px;
-	text-align: center;
+#rsvLimit .colon,#startToEnd .colon,#rsvLimit .tilde,#startToEnd .tilde {
+    width: 54px;
+    text-align: center;
 }
 #startToEnd .tilde {
-	padding-top: 4px;
-	width: 84px;
+    width: 84px;
+    padding-top: 4px;
 }
-#rsvLimit .colon p,
-#startToEnd .colon p,
-#rsvLimit .tilde p,
-#startToEnd .tilde p {
-	padding-top: 6px;
-	font-size: 24px;
-	color: #56acc1;
+#rsvLimit .colon p,#startToEnd .colon p,#rsvLimit .tilde p,#startToEnd .tilde p {
+    font-size: 24px;
+    padding-top: 6px;
+    color: #56acc1;
 }
 .easy-select-box {
-	height: 28px;
-	width: 64px;
-	font-size: 24px;
-	color: #4cbdce;
-	padding: 10px 9px;
+    font-size: 24px;
+    width: 64px;
+    height: 18px;
+    padding: 10px 9px;
+    color: #4cbdce;
 }
 .richeditor .easy-select-box {
-	padding: 0;
+    padding: 0;
 }
 .richeditor .esb-dropdown {
-	font-size: 14px;
+    font-size: 14px;
 }
 .date {
-	padding: 9px 10px;
+    padding: 9px 10px;
 }
 .timeTitle {
-	width: 612px;
+    width: 612px;
 }
 .timeTitle > div {
-	float: left;
-	width: 306px;
+    float: left;
+    width: 306px;
 }
 #startToEnd {
-	width: 528px;
+    width: 528px;
 }
 #startToEnd li {
-	float: left;
+    float: left;
 }
-#startToEnd .tilde {
 
-}
 
 
 
 /* New Seminar Confirm & Details
 ----------------------------------------------------------------------*/
 #newSmnConfirm {
-	color: #656565;
-	font-size: 16px;
-	margin-top: 190px;
+    font-size: 16px;
+    margin-top: 190px;
+    color: #656565;
 }
-#newSmnConfirm .wrapper,
-#seminarQ .wrapper {
-	width: 978px;
+#newSmnConfirm .wrapper,#seminarQ .wrapper {
+    width: 978px;
 }
 #newSmnConfirm h3 {
-	font-size: 36px;
-	border-bottom: 1px solid #4cbdce;
-	padding: 40px 0;
+    font-size: 36px;
+    padding: 40px 0;
+    border-bottom: 1px solid #4cbdce;
 }
 #newSmnConfirm h4 {
-	padding: 20px 0;
+    padding: 20px 0;
 }
 #newSmnConfirm #coverArea {
-	width: 100%;
-	height: 300px;
-	overflow: hidden;
-	margin-top: -210px;
-	background: #eee;
-	border: none;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    margin-top: -210px;
+    border: none;
+    background: #eee;
 }
 #newSmnConfirm #coverArea img {
-	border: none;
-	width: 100%;
-	border:none;
-
+    width: 100%;
+    border: none;
+    border: none;
 }
 #newSmnConfirm .cf {
-	width: 978px;
+    width: 978px;
 }
 #newSmnConfirm article {
-	width: 642px;
-	float: left;
+    float: left;
+    width: 642px;
 }
 #newSmnConfirm article img {
-	display: block;
-	max-width: 474px;
-	max-height: 400px;
-	margin: 40px auto;
+    display: block;
+    max-width: 474px;
+    max-height: 400px;
+    margin: 40px auto;
 }
 #newSmnConfirm aside {
-	float: left;
-	margin-left: 30px;
+    float: left;
+    margin-left: 30px;
 }
 #newSmnConfirm aside > div {
-	width: 222px;
-	padding: 40px;
-	border: 1px solid #4cbdce;
+    width: 222px;
+    padding: 40px;
+    border: 1px solid #4cbdce;
 }
 #newSmnConfirmbtnArea {
-	text-align: center;
+    text-align: center;
 }
 #newSmnConfirmbtnArea a {
-	display: block;
-	width: 222px;
-	height: 54px;
-	float: left;
-	margin-left: 30px;
+    display: block;
+    float: left;
+    width: 222px;
+    height: 54px;
+    margin-left: 30px;
 }
 #newSmnConfirmbtnArea {
-	width: 474px;
-	margin: 0 auto;
+    width: 474px;
+    margin: 0 auto;
 }
 #newSmnConfirmbtnArea a:first-child {
-	display: block;
-	width: 222px;
-	height: 54px;
-	float: left;
-	margin-left: 0;
+    display: block;
+    float: left;
+    width: 222px;
+    height: 54px;
+    margin-left: 0;
 }
 #newSmnConfirm h4 {
-	font-size: 18px;
+    font-size: 18px;
 }
 #newSmnConfirm dl {
-	margin: 0;
+    margin: 0;
 }
 #newSmnConfirm dt {
-	padding: 20px 0 0;
-	font-size: 18px;
-	color: #656565;
-	line-height: 1;
+    font-size: 18px;
+    line-height: 1;
+    padding: 20px 0 0;
+    color: #656565;
 }
 #newSmnConfirm dt:first-child {
-	padding: 0;
+    padding: 0;
 }
 #newSmnConfirm dd {
-	padding-top: 10px;
-	font-size: 22px;
-	color: #4cbdce;
+    font-size: 22px;
+    padding-top: 10px;
+    color: #4cbdce;
 }
 #newSmnConfirm .profImg {
-	width: 140px;
-	height: 140px;
-	overflow: hidden;
+    overflow: hidden;
+    width: 140px;
+    height: 140px;
 }
 #newSmnConfirm dd p {
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 #newSmnConfirm article {
-	word-wrap: break-word;
+    word-wrap: break-word;
 }
 #ButtonDetailsForm {
-	padding: 30px 0 0;
+    padding: 30px 0 0;
+}
+#seminarQArea{
+	padding-bottom: 60px;
+	margin: 0;
 }
 #seminarQ {
-	padding: 0;
+    padding: 0;
 }
 #seminarQ li {
-	width: 978px;
-	position: relative;
-	padding: 30px 0;
-	border-top: 1px solid #4cbdce;
-	font-size: 24px;
-	color: #656565;
+    font-size: 24px;
+    position: relative;
+    width: 978px;
+    padding: 30px 0;
+    color: #656565;
+    border-top: 1px solid #4cbdce;
 }
 #seminarQ li:first-child {
-	border-top: none;
+    border-top: none;
 }
 #seminarQ li p {
-	display: inline-block;
-	*display: inline;
-	*zoom: 1;
-	width: 800px;
+    display: inline-block;
+    width: 800px;
+
+    *display: inline;
+    *zoom: 1;
 }
 #seminarQ li a {
-	color: #656565;
-	text-decoration: none;
+    text-decoration: none;
+    color: #656565;
 }
 #seminarQ li a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 #seminarQ li span {
-	position: absolute;
-	right: 0px;
-	top: 35px;
-	font-size: 18px;
-	color: #3e99a7;
+    font-size: 18px;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    color: #3e99a7;
 }
 #QuestionDetailsForm ul {
-	width: 558px;
-	margin: 0 auto;
-	padding: 40px 0 0;
+    width: 558px;
+    margin: 0 auto;
+    padding: 40px 0 0;
 }
 #QuestionDetailsForm li {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 #QuestionDetailsForm li:first-child {
-	margin-top: 0;
+    margin-top: 0;
 }
 #QuestionDetailsForm textarea {
-	width: 536px
+    width: 536px;
 }
 #QuestionDetailsForm .btnArea {
-	width: 558px;
-	text-align: left;
-	margin: 20px auto 70px;
-	padding: 0;
+    width: 558px;
+    margin: 20px auto 70px;
+    padding: 0;
+    text-align: left;
 }
 #QuestionDetailsForm .errMsg {
-	margin: 5px 0 15px;
-	padding: 0;
+    margin: 5px 0 15px;
+    padding: 0;
 }
-#QuestionDetailsForm input,
-#QuestionDetailsForm textarea {
-	font-weight: bold;
+#QuestionDetailsForm input,#QuestionDetailsForm textarea {
+    font-weight: bold;
 }
 
+.qnone {
+    font-size: 22px;
+    font-weight: 550;
+    padding: 25px 0 20px 0;
+    text-align: center;
+    color: #ffb425;
+}
 
 
 /* New Seminar Register
 ----------------------------------------------------------------------*/
 #newSmnRegister p {
-	color: #ffb425;
-	font-size: 32px;
-	font-weight: bold;
-	text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffb425;
 }
 .newSmnRegisterBtnArea {
-	width: 474px;
-	margin: 60px auto;
+    width: 474px;
+    margin: 60px auto;
 }
 .newSmnRegisterBtnArea a {
-	display: block;
-	margin-left: 30px;
-	width: 306px;
-	height: 54px;
-	float: left;
+    display: block;
+    float: left;
+    width: 306px;
+    height: 54px;
+    margin-left: 30px;
 }
 .newSmnRegisterBtnArea a:first-child {
-	margin-left: 0;
-	width: 138px;
+    width: 138px;
+    margin-left: 0;
 }
 
 /* Questions
@@ -352,186 +358,186 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 #backSeminarDetails {
-	position: relative;
-	width: 978px;
-	margin: 0 auto;
+    position: relative;
+    width: 978px;
+    margin: 0 auto;
 }
 
 #backSeminarDetails img {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 200px;
-	height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 40px;
 }
 
 .questionWrapper {
-	width: 100%;
-	margin-bottom: 40px;
-	padding: 70px 0px 40px 0px;
-	background-color: #fff;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 70px 0 40px 0;
+    background-color: #fff;
 }
 
 #questionTitle {
-	position: relative;
-	width: 978px;
-	margin: 0 auto;
+    position: relative;
+    width: 978px;
+    margin: 0 auto;
 }
 
 #questionTitle h3 {
-	width: 978px;
-	padding: 0px;
-	text-align: left;
+    width: 978px;
+    padding: 0;
+    text-align: left;
 }
 
 #questionTitle h3 > span {
-	font-size: 18px;
-	text-align: left;
-	padding: 14px 17px 11px 17px;
-	color: #fff;
-	background-color: #ffb425;
+    font-size: 18px;
+    padding: 14px 17px 11px 17px;
+    text-align: left;
+    color: #fff;
+    background-color: #ffb425;
 }
 
 #questionTitle h4 {
-	font-size: 26px;
-	font-weight: normal;
-	color: #656565;
-	margin-top: 42px;
-	margin-bottom: 24px;
+    font-size: 26px;
+    font-weight: normal;
+    margin-top: 42px;
+    margin-bottom: 24px;
+    color: #656565;
 }
 
 .commenterName {
-	font-size: 18px;
-	font-weight: bold;
-	margin-right: 18px;
-	color: #3e99a7;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 18px;
+    color: #3e99a7;
 }
 
 .masterName {
-	font-size: 18px;
-	font-weight: bold;
-	margin-right: 18px;
-	color: #ffa700;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 18px;
+    color: #ffa700;
 }
 
 .timeStamp {
-	font-size: 18px;
-	color: #656565;
+    font-size: 18px;
+    color: #656565;
 }
 
 .questionContent {
-	font-size: 16px;
-	margin-top: 12px;
-	margin-bottom: 24px;
-	padding-bottom: 24px;
-	border-bottom: solid 1px #4cbdce;
-	color: #656565;
+    font-size: 16px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    color: #656565;
+    border-bottom: solid 1px #4cbdce;
 }
 
 #comment {
-	width: 978px;
-	margin: 0 auto;
+    width: 978px;
+    margin: 0 auto;
 }
 
 #commentForm {
-	width: 978px;
-	margin: 0 auto;
+    width: 978px;
+    margin: 0 auto;
 }
 
 #commentBtn {
-	margin-top: 18px;
-	margin-bottom: 20px;
+    margin-top: 18px;
+    margin-bottom: 20px;
 }
 
 /* Feedback
 ----------------------------------------------------------------------*/
 
 .feedbackWrapper {
-	width: 100%;
-	margin-bottom: 40px;
-	padding: 50px 0px 60px 0px;
-	background-color: #fff;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 50px 0 60px 0;
+    background-color: #fff;
 }
 
 .feedbackWrapper .inner {
-	width: 810px;
-	margin: 0 auto;
+    width: 810px;
+    margin: 0 auto;
 }
 
 #feedbackTitle h3 {
-	color: #656565;
-	font-size: 30px;
+    font-size: 30px;
+    color: #656565;
 }
 
 .feedbackTextWrapper {
-	margin-bottom: 20px;
-	color: #4cbdce;
-	font-size: 18px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #4cbdce;
 }
 
 #feedbackGood {
-	margin-top: 45px;
-	margin-bottom: 40px;
+    margin-top: 45px;
+    margin-bottom: 40px;
 }
 
 #goodBtn {
-	height: 40px;
+    height: 40px;
 }
 
 #solutionBtn {
-	height: 40px;
+    height: 40px;
 }
 
 #feedbackEnd {
-	width: 810px;
-	margin: 0 auto;
+    width: 810px;
+    margin: 0 auto;
 }
 
 /* join & cancel
 ----------------------------------------------------------------------*/
 
 #PartSmnConfirm .wrapper {
-	background: #fff;
+    background: #fff;
 }
 
 #PartSmnConfirm .wrapper .inner {
-	width: 810px;
-	margin: 0 auto;
+    width: 810px;
+    margin: 0 auto;
 }
 
 #PartSmnConfirm p.msg {
-	padding-top: 60px;
-	font-size: 24px;
-	color: #656565;
+    font-size: 24px;
+    padding-top: 60px;
+    color: #656565;
 }
 
 #PartSmnConfirm h3 {
-	margin-top: 10px;
-	padding-bottom: 15px;
-	font-size: 36px;
-	color: #656565;
-	border-bottom: 1px #4cbdce solid;
+    font-size: 36px;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    color: #656565;
+    border-bottom: 1px #4cbdce solid;
 }
 
 #PartSmnConfirm dl {
-	margin-top: 40px;
+    margin-top: 40px;
 }
 
 #PartSmnConfirm dt {
-	font-weight: bold;
-	margin-top: 25px;
-	font-size: 18px;
-	margin-bottom: 0px;
-	line-height: 5px;
-	color: #656565;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 5px;
+    margin-top: 25px;
+    margin-bottom: 0;
+    color: #656565;
 }
 
 #PartSmnConfirm dd {
-	font-size: 22px;
-	color: #4cbdce;
+    font-size: 22px;
+    color: #4cbdce;
 }
 
 #PartSmnConfirm .btnarea {
-	padding-bottom: 50px;
-	margin-bottom: 50px;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
 }

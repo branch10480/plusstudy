@@ -66,8 +66,8 @@
 			<dt>セミナーカバー画像</dt>
 			<dd>
 				<div class="btnArea cf">
-					<a href="#" id="selectImgsBtn"><img src="<?php echo IMG_PATH; ?>seminarcoverimgselect_btn.png" alt="セミナーカバー画像を選ぶ" width="222" height="54"></a>
-					<a href="#" id="smnImgReset"><img src="<?php echo IMG_PATH; ?>seminarcoverimgreset_btn.png" alt="画像をリセット" width="138" height="54"></a>
+					<a href="#" id="selectImgsBtn"><img src="<?php echo IMG_PATH; ?>seminarcoverimgselect_btn.png" alt="セミナーカバー画像を選ぶ" width="168" height="44"></a>
+					<a href="#" id="smnImgReset"><img src="<?php echo IMG_PATH; ?>seminarcoverimgreset_btn.png" alt="画像をリセット" width="138" height="44"></a>
 				</div>
 			</dd>
 			<dd id="coverImg" class="newSmnInputCover"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
