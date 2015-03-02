@@ -68,12 +68,12 @@
 				<div class="btnArea cf">
 					<a href="#" id="selectImgsBtn"><img src="<?php echo IMG_PATH; ?>seminarcoverimgselect_btn.png" alt="セミナーカバー画像を選ぶ" width="222" height="54"></a>
 					<a href="#" id="smnImgReset"><img src="<?php echo IMG_PATH; ?>seminarcoverimgreset_btn.png" alt="画像をリセット" width="138" height="54"></a>
-				</div>
+				</div>タグ
 			</dd>
 			<dd id="coverImg" class="newSmnInputCover"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
 			<dt>タグ付けされている教えて欲しいこと</dt>
-			<dd><?php echo ($teachme == null) ? 'なし' : $teachme['TeachMe']['title']; ?></dd>
-			<dd><?php echo ($teachme == null) ? '' : $teachme['TeachMe']['content']; ?></dd><br />
+			<dd><?php echo ($teachme == null) ? 'なし' : h($teachme['TeachMe']['title']); ?></dd>
+			<dd><?php echo ($teachme == null) ? '' : h($teachme['TeachMe']['content']); ?></dd><br />
 			<dt>セミナー名称</dt>
 			<dd><?php echo $this->Form->text('Seminar.name', array('class' => 'text')); ?></dd>
 			<dd class="errMsg"><?php echo $eSmnName; ?></dd>
