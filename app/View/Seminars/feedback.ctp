@@ -35,7 +35,7 @@
 		<div id="feedbackSolution">
 			<?php //他の勉強会によってニーズが解決している場合もあるので、
 			      //対象のニーズが存在するかどうかのチェックも必要
-			      if($seminar['Seminar']['teach_me_id'] !== null): ?>
+			      if($seminar['Seminar']['teach_me_id'] !== null && isset($seminar['TeachMe']['id'])): ?>
 			<div class="feedbackTextWrapper">
 				<h4><?php echo 'あなたの教えて欲しいこと「' . $seminar['TeachMe']['title'] . '」は解決しましたか？'; ?></h4>
 			</div>
