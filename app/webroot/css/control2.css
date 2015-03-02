@@ -14,8 +14,8 @@
 	border: solid 1px #3e99a7;
 	font-size: 18px;
 	padding: 10px;
-	width: 452px;
-	height: 30px;
+	width: 368px;
+	height: 20px;
 	font-family: 'Lucida grande','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
 	border-radius: 5px;
 	color: #777;
@@ -62,8 +62,8 @@
 	background-size: 7px 16px;
 	color:#4cbdce;
 	padding:5px;
-	height:18px;
-	line-height:18px;
+	height:8px;
+	line-height:13px;
 	cursor: default;
 }
 .easy-select-box:hover .esb-displayer{
@@ -99,7 +99,7 @@
   border-radius: 5px;
   color: #0C2245;
   font-size: 14px;
-  height: 30px;
+  height: 20px;
   line-height: 30px;
   text-align: left;
   text-indent: 5px;
@@ -145,6 +145,7 @@
 	color: #fff;
 	font-weight: bold;
 	font-size: 12px;
+	line-height: 20px;
 }
 .richeditor .selectFontSize,
 .richeditor .selectFontSize .esb-displayer {

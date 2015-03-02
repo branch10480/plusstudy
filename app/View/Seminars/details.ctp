@@ -111,10 +111,11 @@
 
 
 <h2><img src="<?php echo IMG_PATH; ?>seminarq_h.png" alt="セミナーに対する質問" width="306" height="109"><span class="hidden">セミナーに対する質問</span></h2>
+<div id="seminarQArea">
 <section id="seminarQ">
 	<div class="wrapper">
 		<?php if(count($seminar['Question']) === 0): ?>
-			<p><?php echo 'この勉強会に対する質問はありません'; ?></p>
+			<p class="qnone"><?php echo 'この勉強会に対する質問はありません'; ?></p>
 		<?php endif; ?>
 		<ul>
 		<?php foreach($seminar['Question'] as $question): ?>
@@ -143,3 +144,4 @@
 	</div>
 	<?php echo $this->Form->end(); ?>
 <?php endif; ?>
+</div>
