@@ -106,7 +106,7 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 #rsvLimit .colon p,#startToEnd .colon p,#rsvLimit .tilde p,#startToEnd .tilde p {
     font-size: 24px;
-    padding-top: 6px;
+    padding-top: 4px;
     color: #56acc1;
 }
 .easy-select-box {
