@@ -219,6 +219,12 @@ class AccountsController extends AppController {
 			$partseminars[] = $this->Seminar->find('first', $options);
 		}
 		$this->set('partseminars', $partseminars);
+
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			$this->layout = 'mb_default';
+			return $this->render('mb_' . $this->action);
+		}
 	}
 
 
