@@ -35,13 +35,14 @@
 		<div id="feedbackSolution">
 			<?php //他の勉強会によってニーズが解決している場合もあるので、
 			      //対象のニーズが存在するかどうかのチェックも必要
-			      //if($seminar['Seminar']['teach_me_id'] !== NULL): ?>
+			      if($seminar['Seminar']['teach_me_id'] !== null): ?>
 			<div class="feedbackTextWrapper">
 				<h4><?php echo 'あなたの教えて欲しいこと「' . $seminar['TeachMe']['title'] . '」は解決しましたか？'; ?></h4>
 			</div>
 			<div id="solutionBtn">
 				<a href="#" id='solution'><?php echo $this->Html->image('solution_btn.png', array('width' => '138', 'height' => '40')) ?></a>
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>
