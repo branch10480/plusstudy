@@ -55,18 +55,7 @@
 					'4' => '4年',
 				), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><span class="errorMsg2"><? echo $msgGrade; ?></span></dd>
 				<dt>学科 ※</dt>
-				<dd><?php echo $this->Form->select('subject', array(
-					'1' => '高度情報処理学科',
-					'2' => 'WEB開発学科',
-					'3' => 'ゲーム企画学科',
-					'4' => 'ゲーム制作学科',
-					'5' => 'ゲームデザイン学科',
-					'6' => 'CG映像アニメーション学科',
-					'7' => 'CGグラフィックデザイン学科',
-					'8' => 'ミュージック学科',
-					'9' => '先端ロボット開発学科',
-					'10' => 'カーデザイン学科',
-					), array('empty' => '--- 選択してください ---', 'class' => 'select')); ?><span class="errorMsg2"><? echo $msgSubject; ?></span></dd>
+				<dd><?php echo $this->Form->text('subject', array( 'class' => 'text')); ?><span class="errorMsg2"><? echo $msgSubject; ?></span></dd>
 				<dt>資格</dt>
 				<dd><?php echo $this->Form->text('licenses', array( 'class' => 'text')); ?></dd>
 				<dt>スキル</dt>

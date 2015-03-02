@@ -499,7 +499,7 @@ class SeminarsController extends AppController {
 				'taechmeid' => $newSmn['teach_me_id'],
 			));
 
-		// ログインユーザの情報を首都区
+		// ログインユーザの情報を取得
 		$result = $this->Account->find('first', array(
 				'conditions' => array(
 						'Account.id' => $this->Session->read('Auth.id'),
@@ -559,6 +559,7 @@ class SeminarsController extends AppController {
 
 		// 登録完了後、新規勉強会登録用のセッション削除
 		$this->Session->delete('newSmn');
+		$this->set('newSmn_id', $this->Seminar->getLastInsertID());
 	}
 
 

@@ -38,7 +38,9 @@
 			<h3>
 				<ruby>
 					<?php echo htmlspecialchars($account['Account']['last_name']); ?><rt><?php echo $account['Account']['last_ruby']; ?></rt>
-					 <?php echo htmlspecialchars($account['Account']['first_name']); ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
+				</ruby>
+				<ruby>
+					<?php echo htmlspecialchars($account['Account']['first_name']); ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
 				</ruby>
 			</h3>
 			<ul>

@@ -41,9 +41,14 @@ h3 {
 }
 h3 ruby {
 	font-size: 48px;
+	padding-left: 0.3em;
+}
+h3 ruby:first-child {
+	padding-left: 0;
 }
 h3 rt {
 	font-size: 18px;
+	padding-bottom: 10px;
 }
 section {
 	background: #fff;
