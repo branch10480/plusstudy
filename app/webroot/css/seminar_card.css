@@ -68,6 +68,10 @@ li {
 }
 .card dd.hostname {
 	font-size: 18px;
+	width: 124px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .card li {
 	float: left;
