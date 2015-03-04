@@ -17,67 +17,60 @@
 <section class="first">
 	<h2><?php echo $this->Html->image('profile_h.png', array('width' => '306', 'height' => '109')); ?></h2>
 	<div class="wrapper cf">
-		<div class="left">
-			<form action="<?php echo ROOT_URL . 'Accounts/uploadProfImg/'; ?>" method="post" id="ImgUpForm">
-				<img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" />
+		<div id="profileMain" class="cf">
+			<div class="left">
+				<form action="<?php echo ROOT_URL . 'Accounts/uploadProfImg/'; ?>" method="post" id="ImgUpForm">
+					<img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" />
 
+					<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
+						<div class="menu">
+							<ul>
+								<li><a href="#" id="profImgSelc">画像を変更する</a></li>
+								<li><a href="#" id="delProfImg">画像を削除</a></li>
+							</ul>
+						</div>
+						<div class="hidden">
+							<input id="profile_img" enctype="multipart/form-data" name="up_img" type="file">
+						</div>
+					<?php endif; ?>
+				</form>
+			</div>
+			<div class="center">
+				<h3>
+					<ruby>
+						<?php echo htmlspecialchars($account['Account']['last_name']); ?><rt><?php echo $account['Account']['last_ruby']; ?></rt>
+					</ruby>
+					<ruby>
+						<?php echo htmlspecialchars($account['Account']['first_name']); ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
+					</ruby>
+				</h3>
+			</div>
+			<div class="right">
 				<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
-					<div class="menu">
-						<ul>
-							<li><a href="#" id="profImgSelc">画像を変更する</a></li>
-							<li><a href="#" id="delProfImg">画像を削除</a></li>
-						</ul>
-					</div>
-					<div class="hidden">
-						<input id="profile_img" enctype="multipart/form-data" name="up_img" type="file">
-					</div>
+					<?php echo $this->Html->link($this->Html->image('profileedit_btn.png', array('width' => '168', 'height' => '48')), array('controller' => 'Accounts', 'action' => 'edit'), array('id' => 'editBtn', 'escape' => false)); ?>
 				<?php endif; ?>
-			</form>
-		</div>
-		<div class="center">
-			<h3>
-				<ruby>
-					<?php echo htmlspecialchars($account['Account']['last_name']); ?><rt><?php echo $account['Account']['last_ruby']; ?></rt>
-				</ruby>
-				<ruby>
-					<?php echo htmlspecialchars($account['Account']['first_name']); ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
-				</ruby>
-			</h3>
-			<ul>
-				<li>学科 : <?php echo $account['Account']['subject']; ?></li>
-				<li>学年 : <?php echo $account['Account']['grade'] . '年生'; ?></li>
-				<li>メールアドレス : <?php echo htmlspecialchars($account['Account']['pub_mailaddress']); ?></li>
-			</ul>
-		</div>
-		<div class="right">
-			<?php if($this->Session->read('Auth.id') == $this->params['url']['id']): ?>
-				<?php echo $this->Html->link($this->Html->image('profileedit_btn.png', array('width' => '168', 'height' => '48')), array('controller' => 'Accounts', 'action' => 'edit'), array('id' => 'editBtn', 'escape' => false)); ?>
-			<?php endif; ?>
 
-			<div class="social cf">
-				<?php if (!empty($account['Account']['facebook'])) { ?>
-					<a href="<?php echo $account['Account']['facebook']; ?>"><?php echo $this->Html->image('facebook.png', array('width' => '54', 'height' => '54')); ?></a>
-				<?php } ?>
-				<?php if (!empty($account['Account']['twitter'])) { ?>
-					<a href="<?php echo $account['Account']['twitter']; ?>"><?php echo $this->Html->image('twitter.png', array('width' => '54', 'height' => '54')); ?></a>
-				<?php } ?>
+				<div class="social cf">
+					<?php if (!empty($account['Account']['twitter'])) { ?>
+						<a href="<?php echo $account['Account']['twitter']; ?>"><?php echo $this->Html->image('twitter.png', array('width' => '54', 'height' => '54')); ?></a>
+					<?php } ?>
+					<?php if (!empty($account['Account']['facebook'])) { ?>
+						<a href="<?php echo $account['Account']['facebook']; ?>"><?php echo $this->Html->image('facebook.png', array('width' => '54', 'height' => '54')); ?></a>
+					<?php } ?>
+				</div>
 			</div>
 		</div>
 	</div>
-	<table>
-		<tr>
-			<th>スキル</th>
-			<td><?php echo htmlspecialchars($account['Account']['skill']); ?></td>
-		</tr>
-		<tr>
-			<th>資格</th>
-			<td><?php echo htmlspecialchars($account['Account']['licenses']); ?></td>
-		</tr>
-		<tr>
-			<th>PR文</th>
-			<td><?php echo htmlspecialchars($account['Account']['description']); ?></td>
-		</tr>
-	</table>
+	<div class="plot">
+		<ul id="profileDetails">
+			<li><span class="itemName">学科</span>:<span class="itemDetails"><?php echo $account['Account']['subject']; ?></span></li>
+			<li><span class="itemName">学年</span>:<span class="itemDetails"><?php echo $account['Account']['grade'] . '年生'; ?></span></li>
+			<li><span class="itemName">メールアドレス</span>:<span class="itemDetails"><?php echo htmlspecialchars($account['Account']['pub_mailaddress']); ?></span></li>
+			<li><span class="itemName">スキル</span>:<span class="itemDetails"><?php echo htmlspecialchars($account['Account']['skill']); ?></span></li>
+			<li><span class="itemName">資格</span>:<span class="itemDetails"><?php echo htmlspecialchars($account['Account']['licenses']); ?></span></li>
+			<li><?php echo htmlspecialchars($account['Account']['description']); ?></li>
+		</ul>
+	</div>
 </section>
 
 
