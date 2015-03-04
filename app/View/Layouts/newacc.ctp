@@ -46,7 +46,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body>
+<body id="layout_newacc">
 	<div id="container">
 
 		<div id="content">

@@ -23,6 +23,21 @@ body {
 
 
 
+#container {
+    background: #4cbdce;
+}
+#layout_newacc #container {
+    background: #fff;
+}
+
+
+
+#container form {
+    background: #fff;
+}
+
+
+
 .plot {
     width: 978px;
     margin: 0 auto;
@@ -188,7 +203,14 @@ p {
 
 .mail_new_acc_title {
     font-size: 18px;
-    margin: 60px auto 40px auto;
+    padding-top: 60px;
+    margin: 0 auto 40px auto;
+    letter-spacing: .04em;
+}
+.mail_new_acc_title {
+    font-size: 18px;
+    padding-top: 60px;
+    margin: 0 auto 40px auto;
     letter-spacing: .04em;
 }
 
