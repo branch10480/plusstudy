@@ -59,6 +59,15 @@
 <h2><img src="<?php echo IMG_PATH; ?>seminarcreate_h.png" alt="勉強会作成" width="306" height="109"><span class="hidden">勉強会作成</span></h2>
 <section>
 	<div class="wrapper">
+		<?php if($teachme !== null): ?>
+		<div class="teachmetag cf">
+			<img src="<?php echo IMG_PATH; ?>tag_ico.png" alt="">
+			<h4>
+				<?php echo h($teachme['TeachMe']['title']); ?>
+			</h4>
+		</div>
+		<?php endif; ?>
+
 		<?php echo $this->Form->create('Seminar'); ?>
 		<?php echo $this->Form->hidden('teach_me_id', array('value' => ($teachme == null) ? null : $teachme['TeachMe']['id']));  ?>
 		<?php echo $this->Form->hidden('Seminar.seminar_img_id'); ?>
@@ -71,9 +80,6 @@
 				</div>
 			</dd>
 			<dd id="coverImg" class="newSmnInputCover"><?php if ($smnImgId !== '') echo $smnImgId = '' ? '' : '<img src="'.$smnImgId.'" alt="" />'; ?></dd>
-			<dt>タグ付けされている教えて欲しいこと</dt>
-			<dd><?php echo ($teachme == null) ? 'なし' : h($teachme['TeachMe']['title']); ?></dd>
-			<dd><?php echo ($teachme == null) ? '' : h($teachme['TeachMe']['content']); ?></dd><br />
 			<dt>セミナー名称</dt>
 			<dd><?php echo $this->Form->text('Seminar.name', array('class' => 'text')); ?></dd>
 			<dd class="errMsg"><?php echo $eSmnName; ?></dd>
