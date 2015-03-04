@@ -47,12 +47,16 @@
 			</p>
 		</div>
 		<div class="metoo_btn">
-			<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH; ?>teachme.png" alt="私も教えて欲しい！" width="143.5" height="18"></a>
+			<?php if($alreadyMetoo === false): ?>
+				<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH; ?>teachme.png" alt="私も教えて欲しい！" width="143.5" height="18"></a>
+			<?php else: ?>
+				<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH; ?>teachmecansel.png" alt="教えて欲しいを取り消す" width="174.5" height="16"></a>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div class="detail_links">
 		<a href="<?php echo ROOT_URL ; ?>"><img src="<?php echo IMG_PATH . 'backtop_btn.png'; ?>" width="138" height="54" alt="トップに戻る"></a>
-		<a href="<?php echo ROOT_URL . 'Seminars?needs=' . $teachme['TeachMe']['id']; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容に合った勉強会を作成する" width="306" height="54"></a>
+		<a href="<?php echo ROOT_URL . 'Seminars?needs=' . $teachme['TeachMe']['id']; ?>"><img src="<?php echo IMG_PATH; ?>needscreateseminar_btn.png" alt="この内容の勉強会を作成する" width="306" height="54"></a>
 	</div>
 </div>
 
