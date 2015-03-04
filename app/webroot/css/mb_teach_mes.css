@@ -180,6 +180,72 @@ hr {
 
 
 .backtopBtn {
-    width: 45.15625%;
+    width: 93.4375%;
     margin: 0 auto;
+}
+
+/*  TeachmeDetails
+----------------------------------------------------------------------*/
+.header_img {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.plot {
+    margin: 0 10px;
+    margin-bottom: 15px;
+}
+
+.detail_contents_top {
+    min-height: 110px;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #fff;
+}
+
+.detail_contents_top h3 {
+    margin: 0;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-weight: normal;
+    border-bottom: 1px #cec6c3 solid;
+}
+.detail_contents_top p {
+    font-size: 12px;
+    margin-top: 10px;
+}
+.detail_contents_bottom {
+    padding: 5px 15px;
+    border-top: 1px solid #c8b9be;
+    background-color: #f8f8f8;
+}
+.metoo_num {
+    font-weight: bold;
+    float: left;
+    width: 140px;
+    color: #a5969b;
+    padding: 2px 0;
+}
+.metoo_num p {
+    margin: 0;
+    font-size: 12px;
+}
+.metoo_num p > span {
+    font-size: 16px;
+    margin-left: 2px;
+}
+
+#num_hover {
+    text-decoration: none;
+}
+
+.metoo_btn {
+    float: right;
+    margin-top: 5.5px;
+    padding: 2px 0;
+}
+
+.hidden {
+    display: none;
 }

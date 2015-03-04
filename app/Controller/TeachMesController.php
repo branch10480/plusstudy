@@ -262,5 +262,10 @@ class TeachMesController extends AppController {
 								'?' => array('id' => $id)));
 			}
 		}
+		//----- モバイルブラウザか判断 -----
+		if ((strpos( env('HTTP_USER_AGENT'), 'Phone')) || (strpos( env('HTTP_USER_AGENT'), 'Android'))) {
+			$this->layout = 'mb_default';
+			return $this->render('mb_' . $this->action);
+		}
 	}
 }
