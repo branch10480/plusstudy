@@ -100,7 +100,7 @@
 						<li>
 							<dl>
 								<dt>主催者</dt>
-								<dd class="hostname"><?php echo htmlspecialchars($seminar['Account']['last_name']) . ' ' . htmlspecialchars($seminar['Account']['first_name']); ?></dd>
+								<dd class="hostname"><?php echo $this->Html->link(h($seminar['Account']['last_name']) . ' ' . h($seminar['Account']['first_name']), array('action' => 'profile', '?' => array('id' => $seminar['Account']['id'])), array('escape' => false)); ?></dd>
 								<dt>開催日時</dt>
 								<dd><?php echo sprintf('%d', $openingMonth) . ' / ' . sprintf('%d', $openingDay) . ' ' . $openingH . ':' . $openingM . ' ~ ' . $closingH . ':' , $closingM ?></dd>
 							</dl>

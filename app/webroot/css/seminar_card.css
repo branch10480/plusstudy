@@ -73,6 +73,13 @@ li {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+.card dd.hostname a {
+	text-decoration: none;
+	color: #fff;
+}
+.card dd.hostname a:hover {
+	text-decoration: underline;
+}
 .card li {
 	float: left;
 }
