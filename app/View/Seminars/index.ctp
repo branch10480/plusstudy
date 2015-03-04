@@ -178,6 +178,7 @@
 								'label' => false,
 								'options' => $fontsizeArray,
 								'class' => 'select',
+								'selected' => '3',
 							)); ?>
 						</li>
 						<li class="labelLi"><label>フォント色</label></li>
