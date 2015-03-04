@@ -976,4 +976,63 @@ class SeminarsController extends AppController {
 			exit();
 		}
 	}
+
+/**
+ * suspendConfirm method
+ * 勉強会中止確認
+ * @return void
+ */
+	public function suspendConfirm() {
+
+		$msg = '';
+		$smnId = '';
+		if (isset($this->request->data['Seminar'])) {
+			// バリデーション
+
+			$result = $this->Seminar->suspendCfValidate($this->request->data);
+			if ($result['result']) {
+				$this->redirect(array('action' => 'suspend'));
+				exit();
+
+			} else {
+
+				$msg = $result['msg'];
+				$smnId = $this->request->data['Seminar']['id'];
+			}
+			$result = $this->request->data;
+
+		} else if ($this->request->is('get')) {
+			// 初めてこのページに来たとき
+
+			$smnId = $this->request->query['id'];
+			if (!$smnId) {
+				$this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+			}
+
+			// 中止にする権限があるのか判断
+			$userId = $this->Session->read('Auth.id');
+			$result = $this->Seminar->find('first', array('conditions' => array(
+				'Seminar.id' => $smnId,
+				)));
+			if ($result['Account']['id'] != $userId) {
+				// 不正アクセスの場合
+				$this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
+			}
+		}
+
+		$this->request->data = $result;
+		$this->set('smnId', $smnId);
+		$this->set('msg', $msg);
+	}
+/**
+ * details method
+ * 勉強会中止処理
+ * @return void
+ */
+	public function suspend() {
+		// 勉強会を中止する処理
+		if ($this->request->is('Post')) {
+			die('成功');
+		}
+	}
 }

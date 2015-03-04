@@ -77,4 +77,32 @@ class Seminar extends AppModel {
 		)
 	);
 
+
+	/**
+	 *  Method Name
+	 *
+	 * @return  format
+	 */
+	public function suspendCfValidate( $data = null ) {
+
+		if ($data == null) return false;
+
+		$dsc = $data['Seminar']['suspend_dsc'];
+		$msg = '';
+		$bl = false;
+		if ($dsc == '') {
+			$msg = '※ 必ず参加者へのメッセージを入力してください';
+		} else if (strlen($dsc) < 100) {
+			$msg = '※ メッセージは100字以上お書きください';
+		} else {
+			$bl = true;
+		}
+
+		return array(
+			'result' => $bl,
+			'msg' => $msg
+			);
+
+	}
+
 }

@@ -38,3 +38,6 @@ textarea {
 	outline: 0;
 	box-shadow: 0px 0px 0pt 0pt aqua;
 }
+.errMsg {
+	color: red;
+}
