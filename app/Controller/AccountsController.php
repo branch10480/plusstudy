@@ -412,7 +412,7 @@ class AccountsController extends AppController {
 				$msgGrade = '学年が入力されていません';
 				$validFlg = false;
 
-			} else if (+$this->request->data['Account']['grade'] === 0) {
+			} else if (+$this->request->data['Account']['grade'] === 0 || !$this->Account->gradeValidate($this->request->data)) {
 
 				$msgGrade = '正しい学年を入力してください';
 				$validFlg = false;
@@ -581,7 +581,7 @@ class AccountsController extends AppController {
 				$msgGrade = '学年が入力されていません';
 				$validFlg = false;
 
-			} else if (+$this->request->data['Account']['grade'] === 0) {
+			} else if (+$this->request->data['Account']['grade'] === 0 || !$this->Account->gradeValidate($this->request->data)) {
 
 				$msgGrade = '正しい学年を入力してください';
 				$validFlg = false;

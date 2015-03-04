@@ -115,4 +115,26 @@ class Account extends AppModel {
 		)
 	);
 
+
+	/**
+	 * gradeValidate method
+	 *
+	 * @return  boolean
+	 */
+	public function gradeValidate( $data = null ) {
+
+		if ($data == null) return false;
+		// debug($data);
+		if (!isset($data['Account']['course'])) return false;
+		if (!isset($data['Account']['grade'])) return false;
+
+		$retVal = true;
+
+		if ($data['Account']['course'] == 2 && $data['Account']['grade'] > 2) {
+			$retVal = false;
+		}
+
+		return $retVal;
+	}
+
 }
