@@ -236,6 +236,13 @@ section .wrapper dl dd .btnArea > a:first-child {
     padding-top: 10px;
     color: #4cbdce;
 }
+#newSmnConfirm dd a {
+    color: #4cbdce;
+    text-decoration: none;
+}
+#newSmnConfirm dd a:hover {
+    text-decoration: underline;
+}
 #newSmnConfirm .profImg {
     overflow: hidden;
     width: 140px;

@@ -65,7 +65,7 @@
 					</dd>
 					<dt>主催者</dt>
 					<dd>
-						<p><?php echo htmlspecialchars($seminar['Account']['last_name']) . ' ' . htmlspecialchars($seminar['Account']['first_name']); ?></p>
+						<p><?php echo $this->Html->link(htmlspecialchars($seminar['Account']['last_name']) . ' ' . htmlspecialchars($seminar['Account']['first_name']), array('controller' => 'Accounts', 'action' => 'profile', '?' => array('id' => $seminar['Account']['id'])), array('escape' => false)); ?></p>
 						<div class="profImg">
 						<?php
 							if (!empty($seminar['Account']['img_ext'])) {
