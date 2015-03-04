@@ -17,7 +17,7 @@
 	<div class="teach_mes_contents">
 		<?php echo $this->Form->create('TeachMe'); ?>
 
-		<?php echo $this->Form->text('title', array('type' => 'text', 'class' => 'index_title', 'placeholder' => '教えてほしいこと*')); ?>
+		<?php echo $this->Form->text('title', array('type' => 'text', 'class' => 'index_title', 'placeholder' => '教えて欲しいこと*')); ?>
 		<p class="errMsg index_err"><?php echo $eTitle; ?></p>
 
 		<?php echo $this->Form->textarea('content', array('type' => 'text', 'class' => 'index_textarea', 'placeholder' => '詳しい内容*')); ?>

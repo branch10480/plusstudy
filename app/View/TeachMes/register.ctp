@@ -12,7 +12,7 @@
 	<img src="<?php echo IMG_PATH . 'needscreatecomplete_h.png'; ?>" width="306" height="109" alt="">
 </div>
 
-<div class="plot complete_contents">
+<div class="complete_contents">
 	<h2>あなたの教えて欲しいことが登録されました</h2>
 </div>
 
