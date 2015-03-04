@@ -621,7 +621,7 @@ class AccountsController extends AppController {
 				$this->Account->save($this->request->data);
 
 				//--- 遷移 ---
-				// $this->redirect(array('action' => 'profile'));
+				$this->redirect(array('action' => 'profile', '?' => array('id' => $this->Session->read('Auth.id'))));
 			}
 		} else {
 			$result = $this->Account->find('first', array(
