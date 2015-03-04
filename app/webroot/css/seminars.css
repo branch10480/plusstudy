@@ -68,7 +68,7 @@ section .wrapper {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: calc(100% - 50px);
+    max-width: calc(642px - 50px);
 }
 dt {
     font-size: 16px;
