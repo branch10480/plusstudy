@@ -28,11 +28,11 @@
 						<?php echo '<img src="' . SMN_IMG_PATH . $seminar['Seminar']['seminar_image_id'] . $seminar['SeminarImage']['ext'] . '" alt="">'; ?>
 			</div>
 		<?php } ?>
-		<h3><?php echo $seminar['Seminar']['name'] ?></h3>
+		<h3><?php echo h($seminar['Seminar']['name']); ?></h3>
 		<div class="cf">
 			<article>
 			<h4>詳細</h4>
-				<?php echo $seminar['Seminar']['description'] ?>
+				<?php echo $seminar['Seminar']['description']; ?>
 			</article>
 			<aside>
 			<h4>開催情報</h4>
@@ -48,7 +48,7 @@
 						echo $date . '年' . $month . '月' . $day . '日<br />' . sprintf('%02d', $startH) . ':' . sprintf('%02d', $startM) . '〜' . sprintf('%02d', $endH) . ':' . sprintf('%02d', $endM);
 					?></dd>
 					<dt>開催場所</dt>
-					<dd><?php echo $seminar['Seminar']['place'] ?></dd>
+					<dd><?php echo h($seminar['Seminar']['place']); ?></dd>
 					</dd>
 					<dt>募集人数</dt>
 					<dd>

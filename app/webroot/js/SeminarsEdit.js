@@ -14,7 +14,6 @@ $(function () {
 		var fileName = arr[arr.length -1];
 		var arr = fileName.split('.');
 		var smnId = arr[arr.length - 2];
-		alert(smnId);
 		$('#SeminarSeminarImgId').val(fileName);
 	}
 
@@ -222,7 +221,6 @@ function delSmnImg(event) {
 	event.preventDefault();
 
 	var fileName = $(event.target).parent().parent().find('input').val();
-	// alert($(event.target).parent().find('input').val());
 	if (!window.confirm('この写真を削除します。よろしいですか？')) return;
 
 	//----- 削除処理 -----
