@@ -15,15 +15,12 @@
 
 <div class="plot">
 	<div class="teach_mes_contents">
-		<?php echo $this->Form->create('Seminar'); ?>
-		<?php echo $this->Form->hidden('id'); ?>
-		<?php echo $this->Form->text('name', array('class' => 'text', 'readonly' => 'readonly')) . 'の勉強会中止について'; ?>
-		<?php echo $this->Form->textarea('suspend_dsc', array('type' => 'text', 'class' => 'index_textarea', 'placeholder' => '* 勉強会中止の理由をお書きください（参加者に送信されます。）')); ?>
-		<p class="errMsg"><?php echo $msg; ?></p>
-		<?php echo $this->Form->end(); ?>
+		<p>以下の内容で参加者にはメッセージを送ります。<br>よろしいですか？</p>
+		<h3><?php echo $data['Seminar']['name'] . ' について'; ?></h3>
+		<p><?php echo $data['Seminar']['suspend_dsc']; ?></p>
 
-	<?php echo $this->Html->link('戻る', array('action' => 'details', '?' => array('id' => $smnId))); ?>
-		<a href="#" class="btnSubmit"><img src="<?php echo IMG_PATH . 'needscreateconfirm_btn.png'; ?>" width="138" height="54" alt="" class="index_submit_img"></a>
+	<?php echo $this->Html->link('戻る', array('action' => 'suspendInput')); ?>
+	<?php echo $this->Html->link($this->Html->image('needscreateconfirm_btn.png', array('width' => 138, 'height' => 54)), array('action' => 'suspend'), array('escape' => false)); ?>
 	</div>
 
 

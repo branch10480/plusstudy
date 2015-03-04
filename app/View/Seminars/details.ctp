@@ -94,7 +94,7 @@
 
 					case 'Manager':
 						echo '<a href="' . ROOT_URL . 'Seminars/edit/' . $smnID . '">' . $this->HTML->image('thisseminarediting_btn.png', array('width' => '222', 'height' => '54')) . '</a>';
-						echo $this->Html->link('勉強会を中止する', array('action' => 'suspendConfirm', '?' => array('id' => $seminar['Seminar']['id'])));
+						echo $this->Html->link('勉強会を中止する', array('action' => 'suspendInput', '?' => array('id' => $seminar['Seminar']['id'])));
 						break;
 
 					default:

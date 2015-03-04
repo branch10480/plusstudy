@@ -130,7 +130,8 @@ class AccountsController extends AppController {
 		// セミナー一覧を取得
 		$options = array(
 			'conditions' => array(
-					'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now'))
+					'Seminar.reservation_limit >' => date('Y-m-d H:i:s', strtotime('now')),
+					'Seminar.suspended' => 0,
 				)
 		);
 		$this->set('seminars', $this->Seminar->find('all', $options));
@@ -195,6 +196,7 @@ class AccountsController extends AppController {
 			'conditions' => array(
 					'Seminar.account_id' => $id,
 					'Seminar.start >=' => $today,
+					'Seminar.suspended' => 0,
 				)
 		);
 		$this->set('myseminars', $this->Seminar->find('all', $options));
@@ -204,6 +206,7 @@ class AccountsController extends AppController {
 			'conditions' => array(
 					'Participant.account_id' => $id,
 					'Seminar.start >=' => $today,
+					'Seminar.suspended' => 0,
 				)
 		);
 		$participants = $this->Participant->find('all', $options);
