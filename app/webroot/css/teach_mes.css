@@ -13,7 +13,7 @@
 
 /* Universal
 ----------------------------------------------------------------------*/
-h2, h3, p, ul, li {
+h2,h3,p,ul,li {
     margin: 0;
     padding: 0;
     border: 0;
@@ -46,8 +46,8 @@ body {
 
 
 .teach_mes_contents {
-    width: 642px;
-    margin: 60px 0 40px 168px;
+    width: 542px;
+    margin: 60px auto 40px auto;
 }
 
 
@@ -57,12 +57,13 @@ body {
 
 
 .index_title {
-    width: calc(474px - 20px);
-    height: calc(60px - 20px);
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
+    box-sizing: border-box;
+    width: calc(444px - 20px);
+    height: 45px;
+    margin-bottom: 2px;
+    padding: 13px 10px 10px;
     border: 1px solid #3e99a7;
     -webkit-border-radius: 5px;
             border-radius: 5px;
@@ -70,12 +71,12 @@ body {
 
 
 .index_textarea {
-    width: calc(642px - 20px);
-    height: calc(250px - 20px);
+    font-size: 16px;
+    line-height: 1.4;
+    width: calc(562px - 20px);
+    height: calc(220px - 20px);
     margin-top: 10px;
     padding: 15px 10px 15px 10px;
-    font-size: 18px;
-    line-height: 1.4;
     border: 1px solid #3e99a7;
     -webkit-border-radius: 5px;
             border-radius: 5px;
@@ -101,9 +102,9 @@ body {
 ----------------------------------------------------------------------*/
 
 .confirm_contents {
-    width: calc(642px - 60px);
+    width: calc(542px - 60px);
     min-height: calc(200px - 60px);
-    margin: 60px 0 0 168px;
+    margin: 60px auto 0 auto;
     padding: 30px;
     background-color: #fff;
 }
@@ -113,14 +114,15 @@ body {
     font-size: 34px;
     font-weight: normal;
 }
+
 .confirm_contents p {
-    margin-top: 30px;
     font-size: 14px;
+    margin-top: 20px;
 }
 
 .confirm_links {
-    width: 642px;
-    margin: 30px 0 60px 168px;
+    width: 542px;
+    margin: 30px auto 60px auto;
 }
 
 
@@ -143,17 +145,16 @@ body {
 }
 
 .complete_contents h2 {
-    margin: 0;
     font-size: 32px;
+    margin: 0;
     color: #f6a429;
 }
 
 
 
 .complete_links {
-    width: clac(978px - 252px);
-    margin-top: 30px;
-    margin: 30px 0 60px 252px;
+    margin: 40px auto 60px auto;
+    text-align: center;
 }
 
 
@@ -178,8 +179,8 @@ body {
     font-weight: normal;
 }
 .detail_contents_top p {
-    margin-top: 30px;
     font-size: 14px;
+    margin-top: 30px;
 }
 .detail_contents_bottom {
     width: calc(642px - 60px);
@@ -198,9 +199,9 @@ body {
     font-size: 14px;
 }
 .metoo_num p span {
+    font-size: 20px;
     position: relative;
     margin-left: 4px;
-    font-size: 20px;
 }
 
 #num_hover {
@@ -218,8 +219,8 @@ p span.metoo_name {
     background-color: #888;
 }
 #name {
-    display: block;
     font-size: 14px;
+    display: block;
 }
 .metoo_btn {
     float: right;
@@ -258,8 +259,8 @@ p span.metoo_name {
 
 
 .metooNum {
-    margin-top: 30px;
     font-weight: bold;
+    margin-top: 30px;
     text-align: right;
     color: #4cbdce;
 }

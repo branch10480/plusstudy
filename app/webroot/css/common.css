@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 
 /*---------------------------------
@@ -14,284 +14,285 @@
 /* Universal
 ----------------------------------------------------------------------*/
 html,body {
-	min-width: 978px;
-	width: 100%;
-	height: 100%;
-	background: #4cbdce;
-	letter-spacing: 0.02em;
-	font-size: 12px;
-	font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
-	line-height: 1.4;
+    font-family: Helvetica,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    width: 100%;
+    min-width: 978px;
+    height: 100%;
+    letter-spacing: .02em;
+    background: #4cbdce;
 }
 
 
 #wrap {
-	position: relative;
-	margin: 0 auto;
-	min-height: 100%;
-	width: 100%;
-	height:auto !important; /*IE6対策*/
-	height: 100%; /*IE6対策*/
+    position: relative;
+    width: 100%;
+    height: auto !important; /*IE6対策*/
+    height: 100%; /*IE6対策*/
+    min-height: 100%;
+    margin: 0 auto;
 }
 
 
-#container{
-	overflow: hidden;
-	padding-bottom: 305px;
-	height: auto;
+#container {
+    overflow: hidden;
+    height: auto;
+    padding-bottom: 305px;
 }
 
 
-.plot{
-	margin: 0 auto;
-	width: 978px;
+.plot {
+    width: 978px;
+    margin: 0 auto;
 }
 
 
-a{
-	margin: 0;
-	padding: 0;
+a {
+    margin: 0;
+    padding: 0;
 }
 
 
-img{
-	border: none;
+img {
+    border: none;
 }
 
 
 .modal {
-	color: #fff;
+    color: #fff;
 }
 
 
 .modal > .wrapper {
-	width: 776px;
-	position: absolute;
-	z-index: 10;
-	overflow-y: auto;
-	max-height: 90%;
+    position: absolute;
+    z-index: 10;
+    overflow-y: auto;
+    width: 776px;
+    max-height: 90%;
 }
 
 
 .modal .bg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 2;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 
 .modal h3 {
-	font-size: 20px;
-	font-weight: 100;
+    font-size: 20px;
+    font-weight: 100;
 }
 
 
 .modal #storage {
-	font-size: 24px;
+    font-size: 24px;
 }
 
 
 .modal #myImgs {
-	margin-top: -7px;
+    margin-top: -7px;
 }
 
 
 .modal #myImgs li {
-	position: relative;
-	display: block;
-	width: 342px;
-	height: 160px;
-	overflow: hidden;
-	float: left;
-	padding-right: 46px;
-	margin-top: 46px;
+    position: relative;
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 342px;
+    height: 160px;
+    margin-top: 46px;
+    padding-right: 46px;
 }
 
 
 .modal #myImgs li a {
-	position: absolute;
-	z-index: 101;
-	right: 20px;
-	top: 0;
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    right: 20px;
 }
 
 
 .modal #pagingNav {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 
 .modal #pagingNav > li {
-	float: left;
-	margin-right: 10px;
+    float: left;
+    margin-right: 10px;
 }
 
 
-.modal #pagingNav a,
-.modal #pagingNav {
-	color: #fff;
-	font-size: 18px;
+.modal #pagingNav a,.modal #pagingNav {
+    font-size: 18px;
+    color: #fff;
 }
 
 
 .modal #pagingNav {
-	font-size: 22px;
-	border-bottom: 3px solid #adb7b9;
-	padding-bottom: 19px;
+    font-size: 22px;
+    padding-bottom: 19px;
+    border-bottom: 3px solid #adb7b9;
 }
 
 
 .modal #pagingNav a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 
 
 .modal #fileselect_btns {
-	position: relative;
-	height: 34px;
+    position: relative;
+    height: 34px;
 }
 
 
 
 .modal #fileselect_btns dt {
-	position: absolute;
-	height: 34px;
-	margin: 0;
+    position: absolute;
+    height: 34px;
+    margin: 0;
 }
 
 
 
 .modal #fileselect_btns dt img:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 
 
 .modal #fileselect_btns dt span {
-	font-size: 14px;
-	color: #fff;
-	padding-left: 10px;
-	margin: 0;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 10px;
+    color: #fff;
 }
 
 
 
-.modal #fileselect_btns dt span,
-.modal #fileselect_imgbtn {
-	vertical-align: middle;
+.modal #fileselect_btns dt span,.modal #fileselect_imgbtn {
+    vertical-align: middle;
 }
 
 
 
 .modal #fileselect_btns dd {
-	display: none;
+    display: none;
 }
 
 
 
 .modal #upload_btns {
-	position: relative;
-	height: 44px;
+    position: relative;
+    height: 44px;
 }
 
 
 
 .modal #upload_btns dt {
-	position: absolute;
-	height: 44px;
-	margin: 0;
+    position: absolute;
+    height: 44px;
+    margin: 0;
 }
 
 
 
 .modal #upload_btns dt img:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 
 
 .modal #upload_btns dd {
-	display: none;
+    display: none;
 }
 
 
 
 .modal .modalWinCloseBtn {
-	position: absolute;
-	right: 0;
-	top: 60px;
+    position: absolute;
+    top: 60px;
+    right: 0;
 }
 
 
+article,section,div,span,h1,h2,h3,h4,h5,h6,p {
+    word-wrap: break-word;
+}
 
 
 
 /* Header
 ----------------------------------------------------------------------*/
-header{
-	display: block;
-	width: 100%;
-	height: 110px;
-	background: #fff;
+header {
+    display: block;
+    width: 100%;
+    height: 110px;
+    background: #fff;
 }
 
 
-#headerContent{
-	padding:30px 0 0 0;
-	height: 80px;
+#headerContent {
+    height: 80px;
+    padding: 30px 0 0 0;
 }
 
 
-#logo{
-	display: inline;
-	float: left;
-	margin: 0;
-	padding: 0;
+#logo {
+    display: inline;
+    float: left;
+    margin: 0;
+    padding: 0;
 }
 
 
-#logo img{
-	margin: 0;
-	padding: 0;
-	width: 222px;
+#logo img {
+    width: 222px;
+    margin: 0;
+    padding: 0;
 }
 
 
-#hNav{
-	float: right;
+#hNav {
+    float: right;
 }
 
 
-#hNav ul{
-	margin: 0;
+#hNav ul {
+    margin: 0;
 }
 
 
-#hNav ul li{
-	float: left;
-	margin-left:30px;
-	list-style: none;
+#hNav ul li {
+    float: left;
+    margin-left: 30px;
+    list-style: none;
 }
 
 
-#hNav ul  li a:hover{
-	opacity: 0.7;
+#hNav ul  li a:hover {
+    opacity: .7;
 }
 
 
-.hNavst1 img{
-	width: 138px;
-	height:54px;
+.hNavst1 img {
+    width: 138px;
+    height: 54px;
 }
 
 
-.hNavst2 img{
-	width: 54px;
-	height: 54px;
+.hNavst2 img {
+    width: 54px;
+    height: 54px;
 }
 
 
@@ -300,99 +301,91 @@ header{
 
 /* Footer
 ----------------------------------------------------------------------*/
-footer{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 275px;
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 275px;
 }
 
 
-#pagetopArArea{
-	height: 35px;
+#pagetopArArea {
+    height: 35px;
 }
 
 
-#pagetopArArea a{
-	display: inline-block;
-	float: right;
-	width: 50px;
-	height: 35px;
+#pagetopArArea a {
+    display: inline-block;
+    float: right;
+    width: 50px;
+    height: 35px;
 }
 
 
-#pagetopAr{
-	width: 50px;
+#pagetopAr {
+    width: 50px;
 }
 
 
-#footerContent{
-	padding-top: 60px;
-	width: 100%;
-	height: 180px;
-	background: #fff;
+#footerContent {
+    width: 100%;
+    height: 180px;
+    padding-top: 60px;
+    background: #fff;
 }
 
 
-#flogo{
-	width: 222px;
+#flogo {
+    width: 222px;
 }
 
 
-#fNav{
-	float: right;
-	margin: 10px 0 0 0;
-	padding: 0;
-	height: 10px;
-	font-size: 9.72px;
+#fNav {
+    font-size: 9.72px;
+    float: right;
+    height: 10px;
+    margin: 10px 0 0 0;
+    padding: 0;
 }
 
 
-#fNav li{
-	float: left;
-	height: 10px;
-	list-style: none;
-	line-height: 1;
+#fNav li {
+    line-height: 1;
+    float: left;
+    height: 10px;
+    list-style: none;
 }
 
 
-#fNav li a{
-	display: inline-block;
-	padding: 0 12px;
-	height: 6px;
-	border-right: solid 1px #45acbb;
-	color: #45acbb;
-	text-decoration: none;
-	line-height: 0.6;
-}#fNav li a:hover{
-	text-decoration: underline;
+#fNav li a {
+    line-height: .6;
+    display: inline-block;
+    height: 6px;
+    padding: 0 12px;
+    text-decoration: none;
+    color: #45acbb;
+    border-right: solid 1px #45acbb;
+}#fNav li a:hover {
+    text-decoration: underline;
 }
 
 
-#fNav li:first-child a{
-	padding-left: 0;
+#fNav li:first-child a {
+    padding-left: 0;
 }
 
 
-#fNav li:last-child a{
-	padding-right: 0;
-	border: none;
+#fNav li:last-child a {
+    padding-right: 0;
+    border: none;
 }
 
 
-#copyright{
-	margin-top: 40px;
+#copyright {
+    margin-top: 40px;
 }
 
 
-#copyright img{
-	height: 12px;
+#copyright img {
+    height: 12px;
 }
-
-
-
-
-
-
-
-
