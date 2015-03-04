@@ -22,7 +22,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $title_for_layout; ?>
+		<?php echo SITE_NAME; ?>
 	</title>
 	<script src="<?php echo ROOT_URL.'Configs/'; ?>"></script>
 	<?php
