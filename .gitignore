@@ -9,6 +9,8 @@
 /dist
 /tags
 /app/webroot/img/seminar
+/app/Config/const.php
+/.htpasswd
 *.mo
 
 # IDE and editor specific files #
