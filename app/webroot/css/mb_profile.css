@@ -7,7 +7,7 @@
 
 ----------------------------------*/
 body {
-	font-size: 10px;
+	font-size: 12px;
 }
 ul, li {
 	margin: 0;
@@ -70,18 +70,27 @@ section.third {
 .profimg {
 	width: 60px;
 	height: 60px;
-	margin-bottom: 16px;
 }
 #profileImg {
 	width: 60px;
 	height: 60px;
 }
-.left .social a {
+.social{
+	float: right;
+	margin-top: 35px;
+}
+.social a {
 	float: left;
 	margin-right: 10px;
 }
+.social a:last-child{
+	margin-right: 0;
+}
 .right {
 	float: left;
+}
+.right h3{
+	margin-top: 8px;
 }
 .right ul {
 	margin-top: 8px;
@@ -90,30 +99,50 @@ section.third {
 	color: #45acbb;
 	padding-top: 4px;
 }
-table {
-	margin: 20px 15px;
+#profileDetailsArea{
+	width: 100%;
+	padding: 15px 15px;
+	box-sizing: border-box;
+	overflow: hidden;
 }
-tr {
+table#profileDetails{
+	width: 100%;
+	display: block;
+}
+
+table#profileDetails tbody{
+	width: 100%;
+	display: block;
+}
+table#profileDetails tr {
+	display: block;
+	width: 100%;
 	border-bottom: 1px solid #45acbb;
+	position: relative;
+	overflow: hidden;
 }
-tr:first-child {
+table#profileDetails tr:first-child {
 	border-top: 1px solid #45acbb;
 }
-th, td {
+table#profileDetails th, table#profileDetails td {
 	text-align: left;
 	color: #45acbb;
 }
-th {
+table#profileDetails th {
 	display: block;
 	font-weight: bold;
 	width: 40px;
-	padding: 8px 10px;
+	padding: 8px 12px 8px 10px;
+	border-right: 1px solid #45acbb;
+	height: 100%;
+	position: absolute;
 }
-td {
-	border-left: 1px solid #45acbb;
-	padding: 8px 0;
-	padding-left: 10px;
+table#profileDetails td {
+	display: block;
+	padding: 8px 8px 8px 71px;
 	width: 100%;
+	box-sizing: border-box;
+	word-wrap: break-word;
 }
 
 .seminarsArea {
@@ -134,6 +163,12 @@ td {
 }
 
 
+.none{
+	color: #fff;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 16px;
+}
 
 
 
