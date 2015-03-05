@@ -21,14 +21,6 @@
 			<div class="profimg">
 				<img id="profileImg" src="<?php echo $account['Account']['img_ext'] === null ? NO_IMG_URL : PROF_IMG_PATH . $account['Account']['id'] . '.' . $account['Account']['img_ext'] ; ?>" alt="<?php echo $account['Account']['last_name'] . $account['Account']['first_name']; ?>" />
 			</div>
-			<div class="social cf">
-				<?php if (!empty($account['Account']['facebook'])) { ?>
-					<a href="<?php echo $account['Account']['facebook']; ?>"><?php echo $this->Html->image(MB_IMG_PATH . 'facebook.png', array('width' => '25', 'height' => '25')); ?></a>
-				<?php } ?>
-				<?php if (!empty($account['Account']['twitter'])) { ?>
-					<a href="<?php echo $account['Account']['twitter']; ?>"><?php echo $this->Html->image(MB_IMG_PATH . 'twitter.png', array('width' => '25', 'height' => '25')); ?></a>
-				<?php } ?>
-			</div>
 		</div>
 		<div class="right">
 			<h3>
@@ -37,27 +29,44 @@
 					 <?php echo htmlspecialchars($account['Account']['first_name']); ?><rt><?php echo $account['Account']['first_ruby']; ?></rt>
 				</ruby>
 			</h3>
-			<ul>
-				<li>学科 : <?php echo $account['Account']['subject']; ?></li>
-				<li>学年 : <?php echo $account['Account']['grade'] . '年生'; ?></li>
-				<li>メールアドレス : <?php echo htmlspecialchars($account['Account']['pub_mailaddress']); ?></li>
-			</ul>
+		</div>
+		<div class="social cf">
+			<?php if (!empty($account['Account']['facebook'])) { ?>
+				<a href="<?php echo $account['Account']['facebook']; ?>"><?php echo $this->Html->image(MB_IMG_PATH . 'facebook.png', array('width' => '25', 'height' => '25')); ?></a>
+			<?php } ?>
+			<?php if (!empty($account['Account']['twitter'])) { ?>
+				<a href="<?php echo $account['Account']['twitter']; ?>"><?php echo $this->Html->image(MB_IMG_PATH . 'twitter.png', array('width' => '25', 'height' => '25')); ?></a>
+			<?php } ?>
 		</div>
 	</div>
-	<table>
-		<tr>
-			<th>スキル</th>
-			<td><?php echo htmlspecialchars($account['Account']['skill']); ?></td>
-		</tr>
-		<tr>
-			<th>資格</th>
-			<td><?php echo htmlspecialchars($account['Account']['licenses']); ?></td>
-		</tr>
-		<tr>
-			<th>PR文</th>
-			<td><?php echo htmlspecialchars($account['Account']['description']); ?></td>
-		</tr>
-	</table>
+	<div id="profileDetailsArea">
+		<table id="profileDetails">
+			<tr class="cf">
+				<th>学科</th>
+				<td><?php echo $account['Account']['subject']; ?></td>
+			</tr>
+			<tr class="cf">
+				<th>学年</th>
+				<td><?php echo $account['Account']['grade'] . '年生'; ?></td>
+			</tr>
+			<tr class="cf">
+				<th>メール</th>
+				<td><?php echo htmlspecialchars($account['Account']['pub_mailaddress']); ?></td>
+			</tr>
+			<tr class="cf">
+				<th>スキル</th>
+				<td><?php echo htmlspecialchars($account['Account']['skill']); ?></td>
+			</tr>
+			<tr class="cf">
+				<th>資格</th>
+				<td><?php echo htmlspecialchars($account['Account']['licenses']); ?></td>
+			</tr>
+			<tr class="cf">
+				<th>PR文</th>
+				<td><?php echo htmlspecialchars($account['Account']['description']); ?></td>
+			</tr>
+		</table>
+	</div>
 </section>
 
 
@@ -69,7 +78,7 @@
 	<div class="wrapper">
 		<div class="seminarsArea cf">
 			<?php if(count($myseminars) === 0): ?>
-				<p><?php echo '現在主催している勉強会はありません'; ?></p>
+				<p class="none"><?php echo '現在主催している勉強会はありません'; ?></p>
 			<?php endif; ?>
 
 			<?php foreach($myseminars as $seminar): ?>
@@ -144,7 +153,7 @@
 	<div class="wrapper">
 		<div class="seminarsArea cf">
 			<?php if(count($partseminars) === 0): ?>
-			<p><?php echo '参加予定の勉強会はありません'; ?></p>
+			<p class="none"><?php echo '参加予定の勉強会はありません'; ?></p>
 			<?php endif; ?>
 
 			<?php foreach($partseminars as $seminar): ?>
