@@ -54,7 +54,7 @@
 			<?php
 
 			if (count($seminar['Participant']) === 0) {
-				echo $this->Html->link($this->Html->image('backsd_btn.png', array('class' => 'bsd' , 'width' => 140, 'height' => 54)), array('action' => 'detail', '?' => array('id' => $seminar['Seminar']['id'])), array('escape' => false));
+				echo $this->Html->link($this->Html->image('backsd_btn.png', array('class' => 'bsd' , 'width' => 140, 'height' => 54)), array('action' => 'details', '?' => array('id' => $seminar['Seminar']['id'])), array('escape' => false));
 			} else {
 				echo $this->Html->link($this->Html->image('backsdelete_btn.png', array('class' => 'bsd' , 'width' => 140, 'height' => 54)), array('action' => 'suspendInput'), array('escape' => false));
 			}
