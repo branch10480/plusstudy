@@ -27,6 +27,16 @@
 		</div>
 		<h3><?php echo htmlspecialchars($smnName); ?></h3>
 		<div class="cf">
+			<?php if(isset($teachme['TeachMe']['title'])): ?>
+			<div class="wrapper" style="top:-365px;">
+				<div class="teachmetag cf">
+					<img src="<?php echo IMG_PATH; ?>tag_ico.png" alt="">
+					<h5>
+						<?php echo h($teachme['TeachMe']['title']); ?>
+					</h5>
+				</div>
+			</div>
+			<?php endif; ?>
 			<article>
 			<h4>詳細</h4>
 				<?php echo $dsc; ?>

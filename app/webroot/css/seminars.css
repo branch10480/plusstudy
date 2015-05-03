@@ -52,7 +52,7 @@ section .wrapper {
     float: left;
     z-index: 2;
 }
-.teachmetag h4 {
+.teachmetag h4, .teachmetag h5 {
     position: relative;
     margin-top: 5px;
     line-height: 30px;
@@ -69,7 +69,14 @@ section .wrapper {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: calc(642px - 50px);
+    max-width: 345px;
+}
+.teachmetag a {
+    color: #fff;
+    text-decoration: none;
+}
+.teachmetag a:hover {
+    text-decoration: underline;
 }
 dt {
     font-size: 16px;
