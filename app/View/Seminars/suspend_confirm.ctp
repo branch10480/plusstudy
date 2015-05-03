@@ -15,7 +15,7 @@
 
 <div id="sdel" class="sdelcf">
 		<div class="plot">
-		<p class="msg">下記の勉強会を中止して、参加者にメッセージを送信します。よろしいですか？</p>
+		<p class="msg">下記の勉強会を中止して、参加者にメッセージを送信します。よろしいですか？<br>（参加者がいない場合は送信されません）</p>
 		<h3><?php echo $seminar['Seminar']['name'] ?></h3>
 
 		<dl>
@@ -48,7 +48,7 @@
 		</dl>
 
 		<span class="stopreason">中止の理由(参加者へ送信されます。)</span>
-		<p class="stopreasonContent"><?php echo $data['Seminar']['suspend_dsc']; ?></p>
+		<p class="stopreasonContent"><?php echo $data['Seminar']['suspend_dsc'] == null ? '※ 参加者がいないため、必要ありません。（メールも送信されません）':$data['Seminar']['suspend_dsc']; ?></p>
 
 		<div id="btnArea">
 			<?php
