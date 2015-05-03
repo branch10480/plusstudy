@@ -16,7 +16,7 @@ class AccountsController extends AppController {
  * @var array
  */
 	public $uses = array('Account', 'Seminar', 'Participant', 'TeachMe', 'NewaccTmp');
-	public $components = array('Paginator', 'MyAuth', 'RequestHandler');
+	public $components = array('Paginator', 'MyAuth', 'RequestHandler', 'ProfImage');
 
 /**
  * beforeFilter method
@@ -106,25 +106,9 @@ class AccountsController extends AppController {
 	public function top() {
 		// ページタイトル設定
 		$this->set('title_for_layout', 'PlusStudy');
-		$msg = '';
-		if($this->request->is('post')) {
-			// ログアウト
-			$this->Session->delete('Auth');
-			return $this->redirect(array('action' => 'index'));
-		}
 
-		if($this->Session->check('Auth')) {
-			// セッションのIDを元にデータを取得する
-			$options = array(
-				'conditions' => array(
-						'Account.' . $this->Account->primaryKey => $this->Session->read('Auth.id')
-					)
-			);
-			$account = $this->Account->find('first', $options);
-			$msg = 'こんにちは、' . $account['Account']['last_name'] . $account['Account']['first_name'] . 'さん！';
-		}
-
-		$this->set("msg", $msg);
+		// セッション内のプロフィール画像情報更新処理
+		$this->Session->write('Auth.profImg', $this->ProfImage->getProfImage($this));
 
 		// ニーズ一覧を取得
 		$this->set('teachmes', $this->TeachMe->find('all'));
@@ -175,6 +159,9 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function profile() {
+
+		// セッション内のプロフィール画像情報更新処理
+		$this->Session->write('Auth.profImg', $this->ProfImage->getProfImage($this));
 
 		// 指定されたIDを元にアカウント情報を取得
 		$id = $this->params['url']['id'];
