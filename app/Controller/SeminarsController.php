@@ -786,6 +786,29 @@ class SeminarsController extends AppController {
 				$this->Participant->create(false);
 				$this->Participant->save($param);
 
+				$this->set(array(
+					'sem_name' => $seminar['Seminar']['name'],
+					'host' => $seminar['Account']['name'],
+					'date' => $seminar['Seminar']['start'],
+					'place' => $seminar['Seminar']['place'],
+				));
+
+				//*******************************
+				// 参加申請完了メール送
+				//*******************************
+				$email = new CakeEmail('sakura');
+				$email->to($this->Session->read('NewAcc.mailaddress'));
+				$email->subject('勉強会参加登録完了のおしらせ');
+				$email->emailFormat('text');
+				$email->template('participated');
+				$email->viewVars(compact(
+					'sem_name',
+					'host',
+					'date',
+					'place',
+				));
+				$email->send();
+
 				// セッション削除
 				$this->Session->delete('joinSmn');
 
