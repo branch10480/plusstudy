@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
+App::uses( 'CakeEmail', 'Network/Email');
 /**
  * Accounts Controller
  *
@@ -33,14 +34,6 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function index() {
-
-		//*******************************
-		// メール送信テスト
-		//*******************************
-		$email = new CakeEmail('gmail');
-		$email->to('toshiharu.imaeda@gmail.com');
-		$email->subject('【重要】メール送信テスト');
-		$email->send('メール本文');
 
 		// ログインページ用のテンプレートを指定
 		$this->layout = 'login';
@@ -323,6 +316,17 @@ class AccountsController extends AppController {
 		$this->set(array(
 			'url' => $url,
 		));
+
+		//*******************************
+		// メール送信
+		//*******************************
+		$email = new CakeEmail('sakura');
+		$email->to($this->Session->read('NewAcc.mailaddress'));
+		$email->subject('【重要】会員登録の受付完了');
+		$email->emailFormat('text');
+		$email->template('newacc_01');
+		$email->viewVars(compact('url'));
+		$email->send();
 
 	}
 
