@@ -37,9 +37,9 @@
 				}
 			?>
 			</div>
-			<p><?php echo 'with ' . $seminar['Account']['last_name'] . ' ' . $seminar['Account']['first_name'] ?></p>
+			<p><?php echo 'with ' . h($seminar['Account']['last_name']) . ' ' . h($seminar['Account']['first_name']) ?></p>
 		</div>
-		<h3><?php echo $seminar['Seminar']['name'] ?></h3>
+		<h3><?php echo h($seminar['Seminar']['name']); ?></h3>
 		<div class="cf">
 			<article>
 				<?php echo $seminar['Seminar']['description'] ?>
@@ -64,7 +64,7 @@
 			<dl>
 				<div>
 					<dt>開催場所<span>＞</span></dt>
-					<dd><?php echo $seminar['Seminar']['place'] ?></dd>
+					<dd><?php echo h($seminar['Seminar']['place']); ?></dd>
 					</dd>
 				</div>
 				<div>
@@ -131,7 +131,7 @@
 			 	'action' => 'index',
 			 	'?' => array('id' => $question['id'])
 			 	)); ?>
-				<h3><?php echo $question['title']; ?></h3>
+				<h3><?php echo h($question['title']); ?></h3>
 				<p><?php echo str_replace('-', '/', $question['timestamp']); ?></p>
 			</li>
 		<?php endforeach; ?>

@@ -13,7 +13,7 @@
 	<div class="wrapper">
 		<div class="inner">
 			<p class="msg">この勉強会に参加しますか？</p>
-			<h3><?php echo $seminar['Seminar']['name'] ?></h3>
+			<h3><?php echo h($seminar['Seminar']['name']); ?></h3>
 
 			<dl>
 				<dt>開催日時</dt>
@@ -28,7 +28,7 @@
 				</dd>
 
 				<dt>開催場所</dt>
-				<dd><?php echo $seminar['Seminar']['place'] ?></dd>
+				<dd><?php echo h($seminar['Seminar']['place']); ?></dd>
 
 				<dt>参加人数 / 募集人数</dt>
 				<dd><?php echo count($seminar['Participant']) . '人 / ' . $seminar['Seminar']['upper_limit'] . '人';?></dd>
