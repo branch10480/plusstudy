@@ -11,9 +11,9 @@
 <h2 class="pageH"><?php echo $this->Html->image(MB_IMG_PATH . 'needscreateconfirm_h.png', array("alt" => "教えて欲しいこと登録確認")); ?></h2>
 
 <article>
-	<h3 class="needsH"><?php echo $title ?></h3>
+	<h3 class="needsH"><?php echo h($title); ?></h3>
 	<hr>
-	<p class="needsD"><?php echo $content ?></p>
+	<p class="needsD"><?php echo h($content); ?></p>
 </article>
 
 <div class="cf btnArea">

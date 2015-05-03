@@ -27,7 +27,7 @@ class CommentsController extends AppController {
 		}
 
 		// ajaxテンプレート化
-		$this->layout = "ajax";
+		//$this->layout = "ajax";
 
 		// 直接アクセスの場合はTOPへリダイレクト
 		if($this->request->is('get')) {
@@ -74,7 +74,7 @@ class CommentsController extends AppController {
 		}
 
 		// ajaxテンプレート化
-		$this->layout = "ajax";
+		//$this->layout = "ajax";
 
 		// Ajax処理
 		if($this->request->is('ajax')) {

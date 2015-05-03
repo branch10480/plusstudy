@@ -11,6 +11,7 @@
 /app/webroot/img/seminar
 /app/Config/const.php
 /.htpasswd
+/.htaccess
 *.mo
 
 # IDE and editor specific files #
