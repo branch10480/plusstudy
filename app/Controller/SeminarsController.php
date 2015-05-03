@@ -1095,7 +1095,7 @@ class SeminarsController extends AppController {
 		$this->Seminar->save($data);
 
 		// 参加者メールアドレスを取得
-		var $participants = $this->Participant->find('all', array(
+		$participants = $this->Participant->find('all', array(
 			'conditions' => array(
 				'Participant.seminar_id' => $this->Session->read('suspend')['Seminar']['id']
 			),
