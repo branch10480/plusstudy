@@ -21,18 +21,33 @@
 <!-- <h2><img src="<?php echo IMG_PATH; ?>seminar_h.png" alt="勉強会作成確認" width="306" height="109"><span class="hidden">勉強会詳細</span></h2> -->
 <section id="newSmnConfirm">
 	<div class="wrapper">
-		<?php
-			if (!empty($seminar['Seminar']['seminar_image_id'])) {
-		?>
 			<div id="coverArea">
+				<?php
+			if (!empty($seminar['Seminar']['seminar_image_id'])) {
+				?>
 						<?php echo '<img src="' . SMN_IMG_PATH . $seminar['Seminar']['seminar_image_id'] . $seminar['SeminarImage']['ext'] . '" alt="">'; ?>
+			<?php } ?>
 			</div>
-		<?php } ?>
+
 		<h3><?php echo h($seminar['Seminar']['name']); ?></h3>
 		<div class="cf">
+			<?php if(isset($seminar['TeachMe']['title'])): ?>
+			<div class="wrapper" style="top:-365px;">
+				<div class="teachmetag cf">
+					<img src="<?php echo IMG_PATH; ?>tag_ico.png" alt="">
+					<h5>
+						<?php echo $this->Html->link($seminar['TeachMe']['title'], array(
+							'controller' => 'TeachMes' ,
+							'action' => 'details',
+							'?' => array('id' => $seminar['TeachMe']['id'])
+							)); ?>
+					</h5>
+				</div>
+			</div>
+			<?php endif; ?>
 			<article>
 			<h4>詳細</h4>
-				<?php echo $seminar['Seminar']['description']; ?>
+			<?php echo $seminar['Seminar']['description']; ?>
 			</article>
 			<aside>
 			<h4>開催情報</h4>
