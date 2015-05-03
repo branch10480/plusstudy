@@ -59,6 +59,7 @@ class AccountsController extends AppController {
 				// セッションにIDを格納
 				$account = $this->Account->find('first', $options);
 				$this->Session->write('Auth.id', $account['Account']['id']);
+				$this->Session->write('Auth.email', $account['Account']['mailaddress']);
 				return $this->redirect(array('action' => 'top'));
 			}
 			else {

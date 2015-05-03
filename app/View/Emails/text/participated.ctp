@@ -17,15 +17,10 @@
 勉強会の参加申し込みを受け付けました。
 勉強会内容の詳細は下記の通りです。
 
-
----------------------------
-勉強会名：　<?php echo $sem_name; ?>
-主催者　：　<?php echo $host; ?>
-時間　　：　<?php echo $date; ?>
+勉強会名：　<?php echo $sem_name."\r\n"; ?>
+主催者　：　<?php echo $host."\r\n"; ?>
+時間　　：　<?php echo $date."\r\n"; ?>
 場所　　：　<?php echo $place; ?>
----------------------------
-
-
 
 
 <?php echo SIGNATURE; ?>
