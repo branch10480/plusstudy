@@ -1006,6 +1006,7 @@ class SeminarsController extends AppController {
 		$msg = '';
 		$smnId = '';
 		$data = null;
+
 		if (isset($this->request->data['Seminar'])) {
 
 			// セミナー情報取得
@@ -1059,6 +1060,13 @@ class SeminarsController extends AppController {
 
 			// データをViewへ渡す
 			$this->set('seminar', $data);
+		}
+
+		// 参加者がいなかった場合直接中止確認ページへ
+		if (count($data['Participant']) === 0) {
+			$this->Session->write('suspend', $data);
+			$this->redirect(array('action' => 'suspendConfirm'));
+			exit();
 		}
 
 		$this->request->data = $data;
