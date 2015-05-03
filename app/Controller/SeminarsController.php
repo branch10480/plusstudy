@@ -1108,22 +1108,24 @@ class SeminarsController extends AppController {
 		//*******************************
 		// 参加者への中止通知メール送信処理
 		//*******************************
-		$email = new CakeEmail('sakura');
-		$email->to($this->Session->read('Auth.email'));
-		$email->bbc($participantsEmails);
-		$email->subject('【重要】勉強会中止のおしらせ');
-		$email->emailFormat('text');
-		$email->template('suspended');
-		$email->viewVars(
-			array(
-				'sem_name' => $seminar['Seminar']['name'],
-				'host' => $seminar['Account']['last_name'] . $seminar['Account']['first_name'],
-				'date' => $seminar['Seminar']['start'],
-				'place' => $seminar['Seminar']['place'],
-				'suspend_dsc' => $seminar['Seminar']['suspend_dsc'],
-			)
-		);
-		$email->send();
+		if (count($participantsEmails) > 0) {
+			$email = new CakeEmail('sakura');
+			$email->to($this->Session->read('Auth.email'));
+			$email->bcc($participantsEmails);
+			$email->subject('【重要】勉強会中止のおしらせ');
+			$email->emailFormat('text');
+			$email->template('suspended');
+			$email->viewVars(
+				array(
+					'sem_name' => $seminar['Seminar']['name'],
+					'host' => $seminar['Account']['last_name'] . $seminar['Account']['first_name'],
+					'date' => $seminar['Seminar']['start'],
+					'place' => $seminar['Seminar']['place'],
+					'suspend_dsc' => $seminar['Seminar']['suspend_dsc'],
+				)
+			);
+			$email->send();
+		}
 
 		// 中止処理Session削除
 		$this->Session->delete('suspend');
