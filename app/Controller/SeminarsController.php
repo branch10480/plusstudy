@@ -1025,11 +1025,17 @@ class SeminarsController extends AppController {
 			}
 			$data = $this->request->data;
 
+			// データをViewへ渡す
+			$this->set('seminar', $data['Seminar']);
+
 		} else if ($this->Session->check('suspend')) {
 
 			// 戻る処理で戻ってきた場合
 			$data = $this->Session->read('suspend');
 			$this->Session->delete('suspend');
+
+			// データをViewへ渡す
+			$this->set('seminar', $data['Seminar']);
 
 		} else if ($this->request->is('get')) {
 			// 初めてこのページに来たとき
@@ -1049,6 +1055,9 @@ class SeminarsController extends AppController {
 				// 不正アクセスの場合
 				$this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 			}
+
+			// データをViewへ渡す
+			$this->set('seminar', $data);
 		}
 
 		$this->request->data = $data;
@@ -1064,6 +1073,9 @@ class SeminarsController extends AppController {
 	public function suspendConfirm() {
 		if (!$this->Session->check('suspend')) $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		$this->set('data', $this->Session->read('suspend'));
+
+		// データをViewへ渡す
+		$this->set('seminar', $this->Session->read('suspend')['Seminar']);
 	}
 
 	/**

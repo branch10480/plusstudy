@@ -9,6 +9,7 @@
 # Questions
 # Feedback
 # join & cancel
+# Delete
 
 ----------------------------------*/
 
@@ -579,3 +580,105 @@ section .wrapper dl dd .btnArea > a:first-child {
     margin-bottom: 50px;
     padding-bottom: 50px;
 }
+
+
+
+
+/* Delete
+----------------------------------------------------------------------*/
+.index_textarea{
+      font-size: 16px;
+      line-height: 1.4;
+      width: calc(562px - 20px);
+      height: calc(220px - 20px);
+      margin-top: 10px;
+      padding: 15px 10px 15px 10px;
+      border: 1px solid #4cbdce;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      resize: none;
+}
+
+.tsd{
+    margin-top: 10px;
+}
+
+.bsd{
+    margin-right: 20px;
+}
+
+#sdelh{
+    margin-bottom: 60px;
+    line-height: 0;
+}
+
+#sdel{
+    background: #fff;
+}
+
+#sdel .wrapper {
+    background: #fff;
+}
+
+#sdel .wrapper .inner {
+    width: 810px;
+    margin: 0 auto;
+}
+
+#sdel p.msg {
+    font-size: 24px;
+    padding-top: 60px;
+    color: #656565;
+}
+
+#sdel h3 {
+    font-size: 36px;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    color: #656565;
+    border-bottom: 1px #4cbdce solid;
+}
+
+#sdel dl {
+    margin-top: 40px;
+}
+
+#sdel dt {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 5px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    color: #656565;
+}
+
+#sdel dd {
+    font-size: 22px;
+    color: #4cbdce;
+}
+
+#sdel .btnarea {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+.stopreason{
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 5px;
+      margin-top: 40px;
+      margin-bottom: 6px;
+      color: #656565;
+      display: block;
+}
+
+
+#btnArea{
+    margin-top: 30px;
+    line-height: 0;
+    padding-bottom: 60px;
+}
+
+
+
+

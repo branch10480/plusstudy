@@ -63,11 +63,11 @@
 	</div>
 	<div class="plot">
 		<ul id="profileDetails">
-			<li><span class="itemName">学科</span>:<span class="itemDetails"><?php echo $account['Account']['subject']; ?></span></li>
-			<li><span class="itemName">学年</span>:<span class="itemDetails"><?php echo $account['Account']['grade'] . '年生'; ?></span></li>
-			<li><span class="itemName">メールアドレス</span>:<span class="itemDetails"><?php echo htmlspecialchars($account['Account']['pub_mailaddress']); ?></span></li>
-			<li><span class="itemName">スキル</span>:<span class="itemDetails"><?php echo htmlspecialchars($account['Account']['skill']); ?></span></li>
-			<li><span class="itemName">資格</span>:<span class="itemDetails"><?php echo htmlspecialchars($account['Account']['licenses']); ?></span></li>
+			<li><span class="itemName">学科</span><span class="itemCol">:</span><span class="itemDetails"><?php echo $account['Account']['subject']; ?></span></li>
+			<li><span class="itemName">学年</span><span class="itemCol">:</span><span class="itemDetails"><?php echo $account['Account']['grade'] . '年生'; ?></span></li>
+			<li><span class="itemName">メールアドレス</span><span class="itemCol">:</span><span class="itemDetails"><?php echo htmlspecialchars($account['Account']['pub_mailaddress']); ?></span></li>
+			<li><span class="itemName">スキル</span><span class="itemCol">:</span><span class="itemDetails"><?php echo htmlspecialchars($account['Account']['skill']); ?></span></li>
+			<li><span class="itemName">資格</span><span class="itemCol">:</span><span class="itemDetails"><?php echo htmlspecialchars($account['Account']['licenses']); ?></span></li>
 			<li><?php echo htmlspecialchars($account['Account']['description']); ?></li>
 		</ul>
 	</div>
