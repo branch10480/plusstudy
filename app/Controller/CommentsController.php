@@ -26,6 +26,9 @@ class CommentsController extends AppController {
 			exit();
 		}
 
+		// ajaxテンプレート化
+		$this->layout = "ajax";
+
 		// 直接アクセスの場合はTOPへリダイレクト
 		if($this->request->is('get')) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
@@ -69,6 +72,10 @@ class CommentsController extends AppController {
 		if($this->request->is('get')) {
 			return $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		}
+
+		// ajaxテンプレート化
+		$this->layout = "ajax";
+
 		// Ajax処理
 		if($this->request->is('ajax')) {
 			// 該当する質問のコメントを取得
