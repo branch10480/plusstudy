@@ -3,10 +3,3 @@ RewriteEngine on
 RewriteRule    ^$ app/webroot/    [L]
 RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
-DirectoryIndex index.html index.htm index.shtml index.php index.cgi
-AuthUserFile /home/plusstudy/www/.htpasswd
-AuthType Basic
-AuthName "Web access"
-Require valid-user
-Satisfy any
-Order allow,deny
