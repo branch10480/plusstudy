@@ -615,12 +615,19 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 #sdelh{
-    margin-bottom: 60px;
     line-height: 0;
 }
 
 #sdel{
     background: #fff;
+}
+
+.sdelin{
+    margin-bottom: 80px;
+}
+
+.sdelcf{
+    margin-bottom: 80px;
 }
 
 #sdel .wrapper {
@@ -680,6 +687,15 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 
+.stopreasonContent{
+    font-size: 22px;
+    color: #4cbdce;
+    display: block;
+    line-height: 1.6;
+    padding-top: 13px;
+}
+
+
 #btnArea{
     margin-top: 30px;
     line-height: 0;
@@ -687,5 +703,31 @@ section .wrapper dl dd .btnArea > a:first-child {
 }
 
 
+#sdelCAna{
+    color: #ffb425;
+    font-size: 32px;
+    margin: 0 auto 40px auto;
+    padding-top: 80px;
+    display: block;
+    text-align: center;
+    line-height: 1;
+    font-weight: bold;
+}
 
+
+#sdelCNote{
+    font-size: 18px;
+    color: #a8a8a8;
+    padding-bottom: 80px;
+    margin: 0 auto 0 auto;
+    display: block;
+    text-align: center;
+    line-height: 1;
+}
+
+
+#susendBacktopBtn{
+    text-align: center;
+    margin: 40px auto 80px auto;
+}
 
