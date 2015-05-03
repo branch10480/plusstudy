@@ -1,5 +1,5 @@
 <?php
-define('ROOT_URL', 'http://' . 'localhost:1024/plusstudy' . '/');
+define('ROOT_URL', 'http://' . env('HTTP_HOST') . '/');
 define('ROOT_PATH', env('HTTP_HOST') . '/');
 define('HOME_URL', ROOT_URL . '/home/top/');
 define('SITE_NAME', 'Plus Study');
