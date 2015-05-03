@@ -119,7 +119,16 @@ section .wrapper {
 	font-size: 18px;
 	color: #45acbb;
 	margin-bottom: 12px;
-	width: 602px;
+	width: 642px;
+	*zoom: 1;
+}
+#profileDetails li:after{
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
 
 #profileDetails li:nth-child(5){
@@ -133,9 +142,17 @@ section .wrapper {
 .itemName{
 	width: 155px;
 	display: inline-block;
+	float: left;
+}
+.itemCol {
+	display: inline-block;
+	float: left;
 }
 .itemDetails{
+	width: 460px;
 	margin-left: 16px;
+	display: inline-block;
+	float: left;
 }
 
 table {

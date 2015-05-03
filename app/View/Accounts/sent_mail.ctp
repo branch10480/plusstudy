@@ -28,17 +28,3 @@
 		</div>
 	</div>
 </div>
-
-
-
-<!-- あとで削除 -->
-<p><a href="<?php echo $url; ?>"><?php echo $url; ?></a></p>
-
-
-
-
-
-
-
-
-
