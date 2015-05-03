@@ -1008,25 +1008,26 @@ class SeminarsController extends AppController {
 		$data = null;
 		if (isset($this->request->data['Seminar'])) {
 
-			// バリデーション
-			$data = $this->Seminar->suspendCfValidate($this->request->data);
+			// セミナー情報取得
+			$data = $this->Seminar->find('first', array('conditions' => array('Seminar.id' => $this->request->data['Seminar']['id'])));
+			$data['Seminar']['suspend_dsc'] = $this->request->data['Seminar']['suspend_dsc'];
 
-			if ($data['result']) {
+			// バリデーション
+			$result = $this->Seminar->suspendCfValidate($this->request->data);
+
+			if ($result['result']) {
 
 				// 正常データだった場合
-				$this->Session->write('suspend', $this->request->data);
+
+				$this->Session->write('suspend', $data);
 				$this->redirect(array('action' => 'suspendConfirm'));
 				exit();
-
-			} else {
-
-				$msg = $data['msg'];
-				$smnId = $this->request->data['Seminar']['id'];
 			}
-			$data = $this->request->data;
 
-			// データをViewへ渡す
-			$this->set('seminar', $data['Seminar']);
+			// バリデーション失敗時
+			$msg = $result['msg'];
+
+			$this->set('seminar', $data);
 
 		} else if ($this->Session->check('suspend')) {
 
@@ -1035,7 +1036,7 @@ class SeminarsController extends AppController {
 			$this->Session->delete('suspend');
 
 			// データをViewへ渡す
-			$this->set('seminar', $data['Seminar']);
+			$this->set('seminar', $data);
 
 		} else if ($this->request->is('get')) {
 			// 初めてこのページに来たとき
@@ -1061,7 +1062,6 @@ class SeminarsController extends AppController {
 		}
 
 		$this->request->data = $data;
-		$this->set('smnId', $smnId);
 		$this->set('msg', $msg);
 	}
 
@@ -1075,7 +1075,7 @@ class SeminarsController extends AppController {
 		$this->set('data', $this->Session->read('suspend'));
 
 		// データをViewへ渡す
-		$this->set('seminar', $this->Session->read('suspend')['Seminar']);
+		$this->set('seminar', $this->Session->read('suspend'));
 	}
 
 	/**
