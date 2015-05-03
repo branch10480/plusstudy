@@ -40,7 +40,7 @@ h3 {
 	font-weight: bold;
 }
 h3 ruby {
-	font-size: 48px;
+	font-size: 46px;
 	padding-left: 0.3em;
 }
 h3 ruby:first-child {
@@ -49,6 +49,7 @@ h3 ruby:first-child {
 h3 rt {
 	font-size: 18px;
 	padding-bottom: 10px;
+	position: absolute;
 }
 section {
 	background: #fff;
@@ -72,8 +73,8 @@ section .wrapper {
 	margin: 0 auto;
 }
 #profileMain{
-	width: 810px;
-	float: right;
+	width: 978px;
+	float: left;
 }
 .left, .center {
 	float: left;
@@ -83,9 +84,9 @@ section .wrapper {
 	height: 168px;
 }
 .center {
-	width: 390px;
-	margin-left: 30px;
-	margin-top: 50px;
+	width: 602px;
+	margin-left: 40px;
+	margin-top: 54px;
 }
 .right {
 	width: 168px;
@@ -110,10 +111,12 @@ section .wrapper {
 	margin-top: 30px;
 	width: 810px;
 	margin-left: 168px;
+	box-sizing: border-box;
+	padding-left: 40px;
 }
 
 #profileDetails li{
-	font-size: 20px;
+	font-size: 18px;
 	color: #45acbb;
 	margin-bottom: 12px;
 	width: 642px;
