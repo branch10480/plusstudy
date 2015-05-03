@@ -34,6 +34,14 @@ class AccountsController extends AppController {
  */
 	public function index() {
 
+		//*******************************
+		// メール送信テスト
+		//*******************************
+		$email = new CakeEmail('gmail');
+		$email->to('toshiharu.imaeda@gmail.com');
+		$email->subject('【重要】メール送信テスト');
+		$email->send('メール本文');
+
 		// ログインページ用のテンプレートを指定
 		$this->layout = 'login';
 
