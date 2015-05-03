@@ -1006,11 +1006,17 @@ class SeminarsController extends AppController {
 			}
 			$data = $this->request->data;
 
+			// データをViewへ渡す
+			$this->set('seminar', $data['Seminar']);
+
 		} else if ($this->Session->check('suspend')) {
 
 			// 戻る処理で戻ってきた場合
 			$data = $this->Session->read('suspend');
 			$this->Session->delete('suspend');
+
+			// データをViewへ渡す
+			$this->set('seminar', $data['Seminar']);
 
 		} else if ($this->request->is('get')) {
 			// 初めてこのページに来たとき
