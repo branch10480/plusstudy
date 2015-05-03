@@ -60,6 +60,8 @@ class AccountsController extends AppController {
 				$account = $this->Account->find('first', $options);
 				$this->Session->write('Auth.id', $account['Account']['id']);
 				$this->Session->write('Auth.email', $account['Account']['mailaddress']);
+				$this->Session->write('Auth.first_name', $account['Account']['first_name']);
+				$this->Session->write('Auth.last_name', $account['Account']['last_name']);
 				return $this->redirect(array('action' => 'top'));
 			}
 			else {
