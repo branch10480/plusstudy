@@ -483,6 +483,13 @@ class SeminarsController extends AppController {
 		$newSmn = $this->Session->read('newSmn');
 		$newSmn = $newSmn['Seminar'];
 
+		// 指定されたIDを元にニーズ情報を取得
+		$teachme = null;
+		if(isset($newSmn['teach_me_id'])) {
+			$options = array('conditions' => array('TeachMe.' . $this->TeachMe->primaryKey => $newSmn['teach_me_id']));
+			$teachme = $this->TeachMe->find('first', $options);
+		}
+
 		$this->set(array(
 				'smnName' => $newSmn['name'],
 				'place' => $newSmn['place'],
@@ -498,6 +505,7 @@ class SeminarsController extends AppController {
 				'dsc' => $newSmn['description'],
 				'smnImgId' => $newSmn['seminar_img_id'],
 				'taechmeid' => $newSmn['teach_me_id'],
+				'teachme' => $teachme,
 			));
 
 		// ログインユーザの情報を取得
