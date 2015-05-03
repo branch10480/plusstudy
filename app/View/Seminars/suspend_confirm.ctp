@@ -51,7 +51,15 @@
 		<p class="stopreasonContent"><?php echo $data['Seminar']['suspend_dsc']; ?></p>
 
 		<div id="btnArea">
-			<?php echo $this->Html->link($this->Html->image('backsdelete_btn.png', array('class' => 'bsd' , 'width' => 140, 'height' => 54)), array('action' => 'suspendInput'), array('escape' => false)); ?>
+			<?php
+
+			if (count($seminar['Participant']) === 0) {
+				echo $this->Html->link($this->Html->image('backsd_btn.png', array('class' => 'bsd' , 'width' => 140, 'height' => 54)), array('action' => 'detail', ? => array('id' => $seminar['Seminar']['id'])), array('escape' => false));
+			} else {
+				echo $this->Html->link($this->Html->image('backsdelete_btn.png', array('class' => 'bsd' , 'width' => 140, 'height' => 54)), array('action' => 'suspendInput'), array('escape' => false));
+			}
+
+			?>
 			<?php echo $this->Html->link($this->Html->image('seminardelete_btn.png', array('width' => 222, 'height' => 54)), array('action' => 'suspend'), array('escape' => false)); ?>
 		</div>
 </div>
