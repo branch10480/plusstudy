@@ -1117,11 +1117,11 @@ class SeminarsController extends AppController {
 			$email->template('suspended');
 			$email->viewVars(
 				array(
-					'sem_name' => $seminar['Seminar']['name'],
-					'host' => $seminar['Account']['last_name'] . $seminar['Account']['first_name'],
-					'date' => $seminar['Seminar']['start'],
-					'place' => $seminar['Seminar']['place'],
-					'suspend_dsc' => $seminar['Seminar']['suspend_dsc'],
+					'sem_name' => $this->Session->read('suspend')['Seminar']['name'],
+					'host' => $this->Session->read('suspend')['Account']['last_name'] . $this->Session->read('suspend')['Account']['first_name'],
+					'date' => $this->Session->read('suspend')['Seminar']['start'],
+					'place' => $this->Session->read('suspend')['Seminar']['place'],
+					'suspend_dsc' => $this->Session->read('suspend')['Seminar']['suspend_dsc'],
 				)
 			);
 			$email->send();
