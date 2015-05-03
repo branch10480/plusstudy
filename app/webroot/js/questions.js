@@ -3,9 +3,9 @@ function showComment(res) {
 	// 投稿者名(開催者と同じなら色を変える)
 	var p;
 	if(res.comment.account_id === $('input#creator_id').val()) {
-		p = $('<p class="masterName" style="display:inline">').text(res.account.last_name+res.account.first_name).css('margin-right', '6px');
+		p = $('<p class="masterName" style="display:inline">').text(res.account.last_name+res.account.first_name);
 	} else {
-		p = $('<p class="commenterName" style="display:inline">').text(res.account.last_name+res.account.first_name).css('margin-right', '6px');
+		p = $('<p class="commenterName" style="display:inline">').text(res.account.last_name+res.account.first_name);
 	}
 	p.fadeIn(800);
 	$('div#comment').append(p);
@@ -24,7 +24,7 @@ function showComment(res) {
 // コメントが追加されていないか確認し、データを取得する
 function getComment() {
 	// ajax通信
-	$.post('/plusstudy/Comments/get', {
+	$.post(WEB_ROOT + 'Comments/get', {
 			cnt: $('input#comment_cnt').val(),
 			question_id: $('input#question_id').val()
 		}, function(res) {
@@ -65,7 +65,7 @@ $(function () {
 		$('p.errMsg').text('');
 
 		// ajax通信
-		$.post('/plusstudy/Comments/add', {
+		$.post(WEB_ROOT + 'Comments/add', {
 				content: $('textarea#content').val(),
 				question_id: $('input#question_id').val()
 			}, function(res) {
