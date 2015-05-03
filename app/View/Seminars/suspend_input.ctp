@@ -48,7 +48,7 @@
 		</dl>
 
 			<?php echo $this->Form->create('Seminar'); ?>
-			<?php echo $this->Form->hidden('id'); ?>
+			<?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
 			<span class="stopreason">中止の理由(参加者へ送信されます。)</span>
 			<?php echo $this->Form->textarea('suspend_dsc', array('type' => 'text', 'class' => 'index_textarea', 'placeholder' => '* 勉強会中止の理由をお書きください')); ?>
 			<p class="errMsg"><?php echo $msg; ?></p>
