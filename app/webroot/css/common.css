@@ -281,13 +281,14 @@ header {
 }
 
 
-#hNav ul  li a {
+#hNav ul li a {
     text-decoration: none;
     color: #f5ac25;
 }
 
 
 #hNav ul  li a:hover {
+    color: #fff;
 }
 
 
@@ -303,8 +304,8 @@ header {
 }
 
 
-.hNavst1:hover{
-    background: #f5f5f5;
+.hNavst1 a:hover{
+    background: #e1a32a;
 }
 
 
@@ -318,34 +319,34 @@ header {
 .hNavst2 a{
     padding-right: 20px;
     padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 13px;
+    display: block;
 }
 
 
 .hNavst2:hover {
-    background: #f5f5f5;
+    background: #e1a32a;
 }
 
 
 .hNavst2 img {
     width: 26px;
     height: 30px;
-    padding-top: 20px;
-    padding-bottom: 18px;
 }
 
 
 .hNavMyprof {
-    height: 68px;
-    padding-top: 14px;
     box-sizing: border-box;
-    background: #e1a32a;
-    padding-right: 20px;
-    padding-left: 20px;
+    background: #3C98A2;
 }
 
-
 .hNavMyprof a{
-    float: left;
+    padding-top: 14px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 54px;
+    display: block;
 }
 
 
@@ -353,6 +354,7 @@ header {
     width: 40px;
     height: 40px;
     margin-right: 20px;
+    float: left;
 }
 
 
