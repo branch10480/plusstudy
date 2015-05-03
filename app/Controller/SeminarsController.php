@@ -1101,7 +1101,7 @@ class SeminarsController extends AppController {
 			),
 		));
 		$participantsEmails = array();
-		for ($i=0; i<count($participants); $i++) {
+		for ($i=0; $i<count($participants); $i++) {
 			$participantsEmails[] = $participants['Account']['mailaddress'];
 		}
 
