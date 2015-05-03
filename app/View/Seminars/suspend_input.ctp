@@ -13,7 +13,7 @@
 	<img src="<?php echo IMG_PATH . 'seminardelete_h.png'; ?>" width="306" height="109" alt="">
 </h2>
 
-<div id="sdel">
+<div id="sdel" class="sdelin">
 	<div class="plot">
 		<p class="msg">この勉強会を中止しますか？</p>
 		<h3><?php echo $seminar['Seminar']['name'] ?></h3>

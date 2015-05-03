@@ -13,7 +13,7 @@
 	<img src="<?php echo IMG_PATH . 'seminardeleteparticipation_h.png'; ?>" width="306" height="109" alt="">
 </h2>
 
-<div id="sdel">
+<div id="sdel" class="sdelcf">
 		<div class="plot">
 		<p class="msg">下記の勉強会を中止して、参加者にメッセージを送信します。よろしいですか？</p>
 		<h3><?php echo $seminar['Seminar']['name'] ?></h3>
@@ -47,15 +47,13 @@
 			</dd>
 		</dl>
 
-		<div class="teach_mes_contents">
-			<span class="stopreason">中止の理由(参加者へ送信されます。)</span>
-			<p><?php echo $data['Seminar']['suspend_dsc']; ?></p>
+		<span class="stopreason">中止の理由(参加者へ送信されます。)</span>
+		<p class="stopreasonContent"><?php echo $data['Seminar']['suspend_dsc']; ?></p>
 
 		<div id="btnArea">
-			<?php echo $this->Html->link('戻る', array('action' => 'suspendInput')); ?>
+			<?php echo $this->Html->link($this->Html->image('backsdelete_btn.png', array('class' => 'bsd' , 'width' => 140, 'height' => 54)), array('action' => 'suspendInput'), array('escape' => false)); ?>
 			<?php echo $this->Html->link($this->Html->image('seminardelete_btn.png', array('width' => 222, 'height' => 54)), array('action' => 'suspend'), array('escape' => false)); ?>
 		</div>
-	</div>
 </div>
 
 
