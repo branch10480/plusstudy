@@ -1030,6 +1030,9 @@ class SeminarsController extends AppController {
 				// 不正アクセスの場合
 				$this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 			}
+
+			// データをViewへ渡す
+			$this->set('seminar', $data);
 		}
 
 		$this->request->data = $data;
@@ -1045,6 +1048,9 @@ class SeminarsController extends AppController {
 	public function suspendConfirm() {
 		if (!$this->Session->check('suspend')) $this->redirect(array('controller' => 'Accounts', 'action' => 'index'));
 		$this->set('data', $this->Session->read('suspend'));
+
+		// データをViewへ渡す
+		$this->set('seminar', $this->Session->read('suspend')['Seminar']);
 	}
 
 	/**
