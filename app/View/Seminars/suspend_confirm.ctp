@@ -15,7 +15,7 @@
 
 <div id="sdel" class="sdelcf">
 		<div class="plot">
-		<p class="msg">下記の勉強会を中止して、参加者にメッセージを送信します。よろしいですか？<br>（参加者がいない場合は送信されません）</p>
+		<p class="msg">下記の勉強会を中止して、参加者にメッセージを送信します。<br>よろしいですか？（参加者がいない場合は送信されません）</p>
 		<h3><?php echo $seminar['Seminar']['name'] ?></h3>
 
 		<dl>
