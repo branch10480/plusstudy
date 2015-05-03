@@ -1094,25 +1094,26 @@ class SeminarsController extends AppController {
 		$data['Seminar']['suspended'] = 1;
 		$this->Seminar->save($data);
 
-		// 中止処理Session削除
-		$this->Session->delete('suspend');
-
-
-
-
-
+		// 参加者メールアドレスを取得
+		var $participants = $this->Participant->find('all', array(
+			'conditions' => array(
+				'Participant.seminar_id' => $this->Session->read('suspend')['Seminar']['id']
+			),
+		));
+		$participantsEmails = array();
+		for ($i=0; i<count($participants); $i++) {
+			$participantsEmails[] = $participants['Account']['mailaddress'];
+		}
 
 		//*******************************
 		// 参加者への中止通知メール送信処理
 		//*******************************
 		$email = new CakeEmail('sakura');
 		$email->to($this->Session->read('Auth.email'));
-		// $email->bbc(array(
-
-		// ));
+		$email->bbc($participantsEmails);
 		$email->subject('【重要】勉強会中止のおしらせ');
 		$email->emailFormat('text');
-		$email->template('participated');
+		$email->template('suspended');
 		$email->viewVars(
 			array(
 				'sem_name' => $seminar['Seminar']['name'],
@@ -1124,11 +1125,7 @@ class SeminarsController extends AppController {
 		);
 		$email->send();
 
-
-
-
-
-
-
+		// 中止処理Session削除
+		$this->Session->delete('suspend');
 	}
 }
