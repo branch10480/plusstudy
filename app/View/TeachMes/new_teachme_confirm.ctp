@@ -19,8 +19,8 @@
 	</div>
 
 	<div class="confirm_links">
-		<a href="/plusstudy/TeachMes"><img src="<?php echo IMG_PATH . 'cancel_btn.png'; ?>" width="138" height="54" alt="" class="confirm_cancel_img"></a>
-		<a href="/plusstudy/TeachMes/register"><img src="<?php echo IMG_PATH . 'needscreate_btn.png'; ?>" width="168" height="54" alt=""></a>
+		<a href=<?php echo ROOT_URL . "TeachMes"; ?>><img src="<?php echo IMG_PATH . 'cancel_btn.png'; ?>" width="138" height="54" alt="" class="confirm_cancel_img"></a>
+		<a href=<?php echo ROOT_URL . "TeachMes/register";?>><img src="<?php echo IMG_PATH . 'needscreate_btn.png'; ?>" width="168" height="54" alt=""></a>
 	</div>
 
 </div>
