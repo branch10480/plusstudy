@@ -1,43 +1,22 @@
-CakePHP
-=======
 
-[![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
+Plus Study
+======================
+[![PlusStudy](https://github.com/MasayaInagaki/plusstudy/blob/develop/app/webroot/img/logo.png)](http://plusstudy.sakura.ne.jp/)
 
-CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.
-Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
+PlusStudyは、勉強会の参加者を募集するためのWEBアプリケーションです。
+フレームワークとして、CakePHPを使用しています。
+従来のサービスと異なる点として、「教えて欲しいこと」の登録機能があります。
+利用者は、開催して欲しい勉強会をリクエストし、「それだったら教えられる」という人が、勉強会を開催するという流れになります。
 
-Some Handy Links
-----------------
+このアプリケーションは、専門学校HAL名古屋の学生チームで制作を行っており、現在は制作の途中段階です。
+基本的には学内で運用することを前提に制作を行っています。
+今後セキュリティ面の強化、カスタマイズ性などを持たせることが出来れば、異なる環境で利用することも可能になるかと思います。
 
-[CakePHP](http://www.cakephp.org) - The rapid development PHP framework
+以上のことをご理解して頂いた上で、ソースコードの閲覧、ダウンロードは自由にして頂いて構いません。
+カスタマイズ等行ってご自身の環境で使用される場合は、制作チームへご一報いただけたらと思います。
 
-[CookBook](http://book.cakephp.org) - THE CakePHP user documentation; start learning here!
+またPlusStudy制作チームでは、新規メンバーを募集しています。
+プロジェクトに参加してみたいという方がいらっしゃいましたら、ご連絡よろしくお願いします。
 
-[API](http://api.cakephp.org) - A reference to CakePHP's classes
-
-[Plugins](http://plugins.cakephp.org/) - A repository of extensions to the framework
-
-[The Bakery](http://bakery.cakephp.org) - Tips, tutorials and articles
-
-[Community Center](http://community.cakephp.org) - A source for everything community related
-
-[Training](http://training.cakephp.org) - Join a live session and get skilled with the framework
-
-[CakeFest](http://cakefest.org) - Don't miss our annual CakePHP conference
-
-[Cake Software Foundation](http://cakefoundation.org) - Promoting development related to CakePHP
-
-Get Support!
-------------
-
-[#cakephp](http://webchat.freenode.net/?channels=#cakephp) on irc.freenode.net - Come chat with us, we have cake
-
-[Google Group](https://groups.google.com/group/cake-php) - Community mailing list and forum
-
-[GitHub Issues](https://github.com/cakephp/cakephp/issues) - Got issues? Please tell us!
-
-[Roadmaps](https://github.com/cakephp/cakephp/wiki#roadmaps) - Want to contribute? Get involved!
-
-[![Bake Status](https://secure.travis-ci.org/cakephp/cakephp.png?branch=master)](http://travis-ci.org/cakephp/cakephp)
-
-![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)
+PlusStudy制作チーム
+plusstudy.info@gmail.com
