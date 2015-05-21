@@ -9,17 +9,18 @@
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts.Email.html
+ * @package       app.View.Emails.text
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-<head>
-	<title><?php echo $title_for_layout; ?></title>
-</head>
-<body>
-	<?php echo $this->fetch('content'); ?>
-</body>
-</html>
+勉強会の参加申し込みを受け付けました。
+勉強会内容の詳細は下記の通りです。
+
+勉強会名：　<?php echo $sem_name."\r\n"; ?>
+主催者　：　<?php echo $host."\r\n"; ?>
+時間　　：　<?php echo $date."\r\n"; ?>
+場所　　：　<?php echo $place; ?>
+
+
+<?php echo SIGNATURE; ?>

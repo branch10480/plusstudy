@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
+App::uses( 'CakeEmail', 'Network/Email');
 /**
  * Accounts Controller
  *
@@ -15,7 +16,7 @@ class AccountsController extends AppController {
  * @var array
  */
 	public $uses = array('Account', 'Seminar', 'Participant', 'TeachMe', 'NewaccTmp');
-	public $components = array('Paginator', 'MyAuth', 'RequestHandler');
+	public $components = array('Paginator', 'MyAuth', 'RequestHandler', 'ProfImage');
 
 /**
  * beforeFilter method
@@ -58,6 +59,9 @@ class AccountsController extends AppController {
 				// セッションにIDを格納
 				$account = $this->Account->find('first', $options);
 				$this->Session->write('Auth.id', $account['Account']['id']);
+				$this->Session->write('Auth.email', $account['Account']['mailaddress']);
+				$this->Session->write('Auth.first_name', $account['Account']['first_name']);
+				$this->Session->write('Auth.last_name', $account['Account']['last_name']);
 				return $this->redirect(array('action' => 'top'));
 			}
 			else {
@@ -104,25 +108,9 @@ class AccountsController extends AppController {
 	public function top() {
 		// ページタイトル設定
 		$this->set('title_for_layout', 'PlusStudy');
-		$msg = '';
-		if($this->request->is('post')) {
-			// ログアウト
-			$this->Session->delete('Auth');
-			return $this->redirect(array('action' => 'index'));
-		}
 
-		if($this->Session->check('Auth')) {
-			// セッションのIDを元にデータを取得する
-			$options = array(
-				'conditions' => array(
-						'Account.' . $this->Account->primaryKey => $this->Session->read('Auth.id')
-					)
-			);
-			$account = $this->Account->find('first', $options);
-			$msg = 'こんにちは、' . $account['Account']['last_name'] . $account['Account']['first_name'] . 'さん！';
-		}
-
-		$this->set("msg", $msg);
+		// セッション内のプロフィール画像情報更新処理
+		$this->Session->write('Auth.profImg', $this->ProfImage->getProfImage($this));
 
 		// ニーズ一覧を取得
 		$this->set('teachmes', $this->TeachMe->find('all'));
@@ -173,6 +161,9 @@ class AccountsController extends AppController {
  * @return void
  */
 	public function profile() {
+
+		// セッション内のプロフィール画像情報更新処理
+		$this->Session->write('Auth.profImg', $this->ProfImage->getProfImage($this));
 
 		// 指定されたIDを元にアカウント情報を取得
 		$id = $this->params['url']['id'];
@@ -315,6 +306,17 @@ class AccountsController extends AppController {
 		$this->set(array(
 			'url' => $url,
 		));
+
+		//*******************************
+		// メール送信
+		//*******************************
+		$email = new CakeEmail('sakura');
+		$email->to($this->Session->read('NewAcc.mailaddress'));
+		$email->subject('【重要】会員登録の受付完了');
+		$email->emailFormat('text');
+		$email->template('newacc_01');
+		$email->viewVars(compact('url'));
+		$email->send();
 
 	}
 

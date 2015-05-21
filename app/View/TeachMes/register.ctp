@@ -18,6 +18,6 @@
 
 <div class="plot">
 	<div class="complete_links">
-		<a href="/plusstudy/"><img src="<?php echo IMG_PATH . 'backtop_btn.png'; ?>" width="138" height="54" alt=""></a>
+		<a href=<?php echo ROOT_URL; ?>><img src="<?php echo IMG_PATH . 'backtop_btn.png'; ?>" width="138" height="54" alt=""></a>
 	</div>
 </div>

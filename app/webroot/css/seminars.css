@@ -9,6 +9,7 @@
 # Questions
 # Feedback
 # join & cancel
+# Delete
 
 ----------------------------------*/
 
@@ -51,7 +52,7 @@ section .wrapper {
     float: left;
     z-index: 2;
 }
-.teachmetag h4 {
+.teachmetag h4, .teachmetag h5 {
     position: relative;
     margin-top: 5px;
     line-height: 30px;
@@ -68,7 +69,14 @@ section .wrapper {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: calc(642px - 50px);
+    max-width: 345px;
+}
+.teachmetag a {
+    color: #fff;
+    text-decoration: none;
+}
+.teachmetag a:hover {
+    text-decoration: underline;
 }
 dt {
     font-size: 16px;
@@ -579,3 +587,147 @@ section .wrapper dl dd .btnArea > a:first-child {
     margin-bottom: 50px;
     padding-bottom: 50px;
 }
+
+
+
+
+/* Delete
+----------------------------------------------------------------------*/
+.index_textarea{
+      font-size: 16px;
+      line-height: 1.4;
+      width: calc(562px - 20px);
+      height: calc(220px - 20px);
+      margin-top: 10px;
+      padding: 15px 10px 15px 10px;
+      border: 1px solid #4cbdce;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      resize: none;
+}
+
+.tsd{
+    margin-top: 10px;
+}
+
+.bsd{
+    margin-right: 20px;
+}
+
+#sdelh{
+    line-height: 0;
+}
+
+#sdel{
+    background: #fff;
+}
+
+.sdelin{
+    margin-bottom: 80px;
+}
+
+.sdelcf{
+    margin-bottom: 80px;
+}
+
+#sdel .wrapper {
+    background: #fff;
+}
+
+#sdel .wrapper .inner {
+    width: 810px;
+    margin: 0 auto;
+}
+
+#sdel p.msg {
+    font-size: 24px;
+    padding-top: 60px;
+    color: #656565;
+}
+
+#sdel h3 {
+    font-size: 36px;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    color: #656565;
+    border-bottom: 1px #4cbdce solid;
+}
+
+#sdel dl {
+    margin-top: 40px;
+}
+
+#sdel dt {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 5px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    color: #656565;
+}
+
+#sdel dd {
+    font-size: 22px;
+    color: #4cbdce;
+}
+
+#sdel .btnarea {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+.stopreason{
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 5px;
+      margin-top: 40px;
+      margin-bottom: 6px;
+      color: #656565;
+      display: block;
+}
+
+
+.stopreasonContent{
+    font-size: 22px;
+    color: #4cbdce;
+    display: block;
+    line-height: 1.6;
+    padding-top: 13px;
+}
+
+
+#btnArea{
+    margin-top: 30px;
+    line-height: 0;
+    padding-bottom: 60px;
+}
+
+
+#sdelCAna{
+    color: #ffb425;
+    font-size: 32px;
+    margin: 0 auto 40px auto;
+    padding-top: 80px;
+    display: block;
+    text-align: center;
+    line-height: 1;
+    font-weight: bold;
+}
+
+
+#sdelCNote{
+    font-size: 18px;
+    color: #a8a8a8;
+    padding-bottom: 80px;
+    margin: 0 auto 0 auto;
+    display: block;
+    text-align: center;
+    line-height: 1;
+}
+
+
+#susendBacktopBtn{
+    text-align: center;
+    margin: 40px auto 80px auto;
+}
+

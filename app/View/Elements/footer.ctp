@@ -1,6 +1,6 @@
 <footer>
 	<div id="pagetopArArea" class="plot cf">
-		<a href="#"><img id="pagetopAr" src="<?php echo IMG_PATH . 'scrollupar.png'; ?>" alt="ページトップへ"></a>
+		<a href="#"><img id="pagetopAr" src="<?php echo IMG_PATH . 'scrollupAr.png'; ?>" alt="ページトップへ"></a>
 	</div>
 
 	<div id="footerContent">
